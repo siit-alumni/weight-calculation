@@ -1,5 +1,8 @@
 # Weight caculator
 
+## Calculation spreadsheet
+https://docs.google.com/spreadsheets/d/1onO6sMqx0A5rerYSaIluzIrM9h3Uxedd/edit?usp=sharing&ouid=105950649166999062173&rtpof=true&sd=true
+
 ## Input values
 1. W = weight (in kg)
 2. H = height (in cm)
@@ -22,5 +25,3 @@ BMR = 24 × IBW  × GC
 
 ### Total Daily Energy Expenditure (TDEE) - according to the customer indications
 TDEE = BMR + AFC × 24
-
-first test :D
