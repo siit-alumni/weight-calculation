@@ -22,3 +22,5 @@ BMR = 24 × IBW  × GC
 
 ### Total Daily Energy Expenditure (TDEE) - according to the customer indications
 TDEE = BMR + AFC × 24
+
+first test :D
