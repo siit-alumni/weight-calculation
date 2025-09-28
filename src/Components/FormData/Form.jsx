@@ -50,10 +50,10 @@ export function Form({ onCalculate, getName }) {
         />
       </div>
       <div>
-        <label htmlFor="gender">Sex</label>
+        <label htmlFor="gender">Sexul</label>
         <select name="gender" id="gender">
-          <option value="female">Femeie</option>
-          <option value="male">Bărbat</option>
+          <option value="female">Feminin</option>
+          <option value="male">Masculin</option>
         </select>
       </div>
 
