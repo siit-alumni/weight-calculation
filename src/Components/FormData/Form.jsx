@@ -57,6 +57,15 @@ export function Form({ onCalculate, getName }) {
         </select>
       </div>
 
+      <div>
+        <label htmlFor="bodyType">Tipul de corp</label>
+        <select name="bodyType" id="bodyType">
+          <option value="ectomorf">Ectomorf</option>
+          <option value="mezomorf">Mezomorf</option>
+          <option value="endomorf">Endomorf</option>
+        </select>
+      </div>
+
       <button type="submit">Calculează IMC</button>
     </form>
   );
