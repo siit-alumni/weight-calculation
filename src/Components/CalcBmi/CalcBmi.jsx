@@ -25,15 +25,15 @@ export function CalcBmi() {
     <div>
       <form onSubmit={handleFormSubmit}>
         <div>
-          <label htmlFor="weight">Introdu Greutatea</label>
-          <input type="number" name="weight" id="weight" />
+          <label htmlFor="weight">Introdu Greutatea (kg)</label>
+          <input type="number" name="weight" id="weight" placeholder="Greutate în kg" />
         </div>
         <div>
-          <label htmlFor="height">Introdu inaltimea</label>
-          <input type="number" name="height" id="height" />
+          <label htmlFor="height">Introdu Inălțimea (cm)</label>
+          <input type="number" name="height" id="height" placeholder="Înalțime în cm" />
         </div>
 
-        <button type="submit">Submit</button>
+        <button type="submit">Calculează IMC</button>
       </form>
       {showResult && <h2>IMC: {bmi}</h2>}
     </div>
