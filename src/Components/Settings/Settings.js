@@ -6,3 +6,8 @@ export const settings = {
   supraponderal: [25, 29.9, "Supraponderal"],
   obezitate: [30, Infinity, "Obezitate"],
 };
+
+export const genderCoefficient = {
+  female: 0.9,
+  male: 1,
+};

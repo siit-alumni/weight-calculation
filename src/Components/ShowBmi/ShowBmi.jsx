@@ -1,3 +1,8 @@
-export function ShowBMI({ bmi }) {
-  return <h2>IMC-ul tău: {bmi}</h2>;
+export function ShowBMI({ bmi, name }) {
+  return (
+    <div>
+      <h3>Raport complet {name}</h3>
+      <h3>IMC: {bmi}</h3>
+    </div>
+  );
 }
