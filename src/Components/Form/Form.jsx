@@ -1,9 +1,9 @@
-export function Form({ onCalculate, getName }) {
+export function Form({ getDetails, getName }) {
   const handleFormSubmit = (e) => {
     e.preventDefault();
     const data = Object.fromEntries(new FormData(e.target));
     const { name, weight, height } = data;
-    onCalculate(Number(weight), Number(height));
+    getDetails(Number(weight), Number(height));
     getName(name);
   };
 

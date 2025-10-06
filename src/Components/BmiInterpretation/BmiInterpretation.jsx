@@ -1,14 +1,7 @@
-import { settings } from "../Settings/Settings";
+import { bmiInterpretation } from "../functions/functions";
 
 export function BmiInterpretation({ bmi, name }) {
-  let message = "";
-  for (const key in settings) {
-    const [min, max, text] = settings[key];
-    if (Number(bmi) >= min && Number(bmi) < max) {
-      message = text;
-      break;
-    }
-  }
+  const message = bmiInterpretation(bmi);
 
   return (
     <div>
