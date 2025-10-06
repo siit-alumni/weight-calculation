@@ -6,24 +6,27 @@ import { calcBmi } from "../functions/functions";
 import "./CalcBmi.css";
 
 export function CalcBmi() {
+  const [formData, setFormData] = useState({
+    name: "",
+    age: "",
+    weight: "",
+    height: "",
+    gender: "",
+    bodyType: "",
+  });
   const [bmi, setBmi] = useState(null);
-  const [name, setName] = useState(null);
 
-  function getDetails(weight, height) {
-    const details = calcBmi(weight, height);
-    setBmi(details);
-  }
-
-  function getName(name) {
-    setName(name);
+  function getDetails(data) {
+    setFormData(data);
+    setBmi(calcBmi(data.weight, data.height));
   }
 
   return (
     <div>
-      <Form getDetails={getDetails} getName={getName} />
+      <Form getDetails={getDetails} />
       {bmi && (
         <>
-          <BmiInterpretation bmi={bmi} name={name} />
+          <BmiInterpretation bmi={bmi} name={formData.name} />
           <IdealBmi />
         </>
       )}

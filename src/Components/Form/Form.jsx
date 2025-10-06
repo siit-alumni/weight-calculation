@@ -1,10 +1,26 @@
-export function Form({ getDetails, getName }) {
+import { useState } from "react";
+
+export function Form({ getDetails }) {
+  const [formData, setFormData] = useState({
+    name: "",
+    age: "",
+    weight: "",
+    height: "",
+    gender: "",
+    bodyType: "",
+  });
+
+  const onHandleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    const data = Object.fromEntries(new FormData(e.target));
-    const { name, weight, height } = data;
-    getDetails(Number(weight), Number(height));
-    getName(name);
+    getDetails(formData);
   };
 
   return (
@@ -16,6 +32,8 @@ export function Form({ getDetails, getName }) {
           name="name"
           id="name"
           placeholder="Alexandru Popescu"
+          onChange={onHandleChange}
+          value={formData.name}
           required
         />
       </div>
@@ -26,6 +44,8 @@ export function Form({ getDetails, getName }) {
           name="age"
           id="age"
           placeholder="Vârsta"
+          onChange={onHandleChange}
+          value={formData.age}
           required
         />
       </div>
@@ -36,6 +56,8 @@ export function Form({ getDetails, getName }) {
           name="weight"
           id="weight"
           placeholder="Greutate în kg"
+          onChange={onHandleChange}
+          value={formData.weight}
           required
         />
       </div>
@@ -46,12 +68,19 @@ export function Form({ getDetails, getName }) {
           name="height"
           id="height"
           placeholder="Înălțime în cm"
+          onChange={onHandleChange}
+          value={formData.height}
           required
         />
       </div>
       <div>
         <label htmlFor="gender">Sexul</label>
-        <select name="gender" id="gender">
+        <select
+          name="gender"
+          id="gender"
+          onChange={onHandleChange}
+          value={formData.gender}
+        >
           <option value="female">Feminin</option>
           <option value="male">Masculin</option>
         </select>
@@ -59,7 +88,12 @@ export function Form({ getDetails, getName }) {
 
       <div>
         <label htmlFor="bodyType">Tipul de corp</label>
-        <select name="bodyType" id="bodyType">
+        <select
+          name="bodyType"
+          id="bodyType"
+          onChange={onHandleChange}
+          value={formData.bodyType}
+        >
           <option value="ectomorf">Ectomorf</option>
           <option value="mezomorf">Mezomorf</option>
           <option value="endomorf">Endomorf</option>
