@@ -2,12 +2,12 @@ import { useState } from "react";
 
 export function Form({ getDetails }) {
   const [formData, setFormData] = useState({
-    name: "",
-    age: "",
-    weight: "",
-    height: "",
-    gender: "",
-    bodyType: "",
+    name: "Rares",
+    age: "45",
+    weight: "80",
+    height: "180",
+    gender: "male",
+    bodyType: "mezomorf",
   });
 
   const onHandleChange = (e) => {

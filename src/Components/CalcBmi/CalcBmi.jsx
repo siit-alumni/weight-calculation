@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Form } from "../Form/Form";
-import { IdealBmi } from "../IdealBmi/IdealBmi";
+import IdealWeight from "../IdealWeight/IdealWeight";
 import { BmiInterpretation } from "../BmiInterpretation/BmiInterpretation";
 import { calcBmi } from "../functions/functions";
 import "./CalcBmi.css";
@@ -27,7 +27,8 @@ export function CalcBmi() {
       {bmi && (
         <>
           <BmiInterpretation bmi={bmi} name={formData.name} />
-          <IdealBmi />
+          <IdealWeight formData={formData} />
+          {/* <IdealWeight></IdealWeight> */}
         </>
       )}
     </div>
