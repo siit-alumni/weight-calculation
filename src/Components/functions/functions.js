@@ -1,4 +1,4 @@
-import { settings } from "../Settings/Settings";
+import { settings, bodyTypeCoeff } from "../Settings/Settings";
 
 export function calcBmi(weight, height) {
   const newHeight = height / 100;
@@ -26,18 +26,13 @@ export function calcIdealWeight(height, gender, bodyType, age) {
 
 export function bodyTypeCoefficient(bodyType) {
   let coefficient;
-  switch (bodyType) {
-    case "ectomorf":
-      coefficient = 0.9;
+
+for (const key in bodyTypeCoeff) {  
+    if (key === bodyType) {
+      coefficient = bodyTypeCoeff[key];
       break;
-    case "mezomorf":
-      coefficient = 1.0;
-      break;
-    case "endomorf":
-      coefficient = 1.1;
-      break;
-    default:
-      coefficient = 1.0;
+    }
   }
+
   return coefficient;
 }

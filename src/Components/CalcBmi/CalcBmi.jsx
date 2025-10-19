@@ -28,7 +28,6 @@ export function CalcBmi() {
         <>
           <BmiInterpretation bmi={bmi} name={formData.name} />
           <IdealWeight formData={formData} />
-          {/* <IdealWeight></IdealWeight> */}
         </>
       )}
     </div>

@@ -11,3 +11,9 @@ export const genderCoefficient = {
   female: 0.9,
   male: 1,
 };
+
+export const bodyTypeCoeff = {
+  ectomorf: 0.9,
+  mezomorf: 1,
+  endomorf: 1.1,
+};
