@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { userBodyType, userSex } from "../Settings/Settings";
+import { userBodyType, userSex } from "../Settings/settings";
 
 export function Form({ getDetails }) {
   const [formData, setFormData] = useState({

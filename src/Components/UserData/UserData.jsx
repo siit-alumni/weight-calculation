@@ -1,4 +1,4 @@
-import { userSex, userBodyType } from '../Settings/Settings';
+import { userSex, userBodyType } from '../Settings/settings';
 
 export default function UserData({ userData }) {
     if (!userData) {

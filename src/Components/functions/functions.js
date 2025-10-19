@@ -1,4 +1,4 @@
-import { settings, bodyTypeCoeff } from "../Settings/Settings";
+import { settings, bodyTypeCoeff } from "../Settings/settings";
 
 
 export function calcBmi(weight, height) {
