@@ -25,10 +25,10 @@ export function CalcBmi() {
     <div>
       <Form getDetails={getDetails} />
       {bmi && (
-        <>
+        <div className="results">
           <BmiInterpretation bmi={bmi} name={formData.name} />
           <IdealWeight formData={formData} />
-        </>
+        </div>
       )}
     </div>
   );

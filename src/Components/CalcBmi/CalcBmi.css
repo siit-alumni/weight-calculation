@@ -8,3 +8,8 @@ form > div {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
 }
+
+.results > * {
+  border-bottom: 1px solid black;
+}
+
