@@ -1,9 +1,10 @@
 import { settings, bodyTypeCoeff } from "../Settings/Settings";
 
+
 export function calcBmi(weight, height) {
-  const newHeight = height / 100;
-  return (weight / (newHeight * newHeight)).toFixed(2);
+  return (weight / ((height / 100) ** 2)).toFixed(2);
 }
+
 
 export function bmiInterpretation(bmi) {
   let message = "";
@@ -16,23 +17,17 @@ export function bmiInterpretation(bmi) {
   }
 }
 
-export function calcIdealWeight(height, gender, bodyType, age) {
-  let idealWeight;
 
-  idealWeight = (height - 100 + age / 10) * bodyTypeCoefficient(bodyType);
-  
-  return idealWeight;
+export function calcIdealWeight(height, gender, bodyType, age) {
+  return (height - 100 + age / 10) * bodyTypeCoefficient(bodyType);
 }
+
 
 export function bodyTypeCoefficient(bodyType) {
-  let coefficient;
-
-for (const key in bodyTypeCoeff) {  
-    if (key === bodyType) {
-      coefficient = bodyTypeCoeff[key];
-      break;
+  for (const key in bodyTypeCoeff) {  
+      if (key === bodyType) {
+        return bodyTypeCoeff[key];
+      }
     }
-  }
-
-  return coefficient;
 }
+

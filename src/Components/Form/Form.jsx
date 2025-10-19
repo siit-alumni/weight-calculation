@@ -8,7 +8,7 @@ export function Form({ getDetails }) {
     weight: "80",
     height: "180",
     gender: "male",
-    bodyType: "mezomorf",
+    bodyType: "mezomorph",
   });
 
   const onHandleChange = (e) => {
