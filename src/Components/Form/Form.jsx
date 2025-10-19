@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { userBodyType, userSex } from "../Settings/Settings";
 
 export function Form({ getDetails }) {
   const [formData, setFormData] = useState({
@@ -81,8 +82,8 @@ export function Form({ getDetails }) {
           onChange={onHandleChange}
           value={formData.gender}
         >
-          <option value="female">Feminin</option>
-          <option value="male">Masculin</option>
+          <option value="female">{userSex.female}</option>
+          <option value="male">{userSex.male}</option>
         </select>
       </div>
 
@@ -94,9 +95,9 @@ export function Form({ getDetails }) {
           onChange={onHandleChange}
           value={formData.bodyType}
         >
-          <option value="ectomorf">Ectomorf</option>
-          <option value="mezomorf">Mezomorf</option>
-          <option value="endomorf">Endomorf</option>
+          <option value="ectomorph">{userBodyType.ectomorph}</option>
+          <option value="mezomorph">{userBodyType.mezomorph}</option>
+          <option value="endomorph">{userBodyType.endomorph}</option>
         </select>
       </div>
 

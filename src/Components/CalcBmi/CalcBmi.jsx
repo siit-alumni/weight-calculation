@@ -4,6 +4,7 @@ import IdealWeight from "../IdealWeight/IdealWeight";
 import { BmiInterpretation } from "../BmiInterpretation/BmiInterpretation";
 import { calcBmi } from "../functions/functions";
 import "./CalcBmi.css";
+import UserData from "../UserData/UserData";
 
 export function CalcBmi() {
   const [formData, setFormData] = useState({
@@ -26,6 +27,7 @@ export function CalcBmi() {
       <Form getDetails={getDetails} />
       {bmi && (
         <div className="results">
+          <UserData userData={formData} />
           <BmiInterpretation bmi={bmi} name={formData.name} />
           <IdealWeight formData={formData} />
         </div>
