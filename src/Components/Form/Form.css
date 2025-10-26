@@ -1,0 +1,126 @@
+/* base field styling — used by inputs, selects and the outside preview */
+.form-root {
+  max-width: 520px;
+  display: grid;
+  gap: 12px;
+}
+
+.form-field {
+  margin-bottom: 0;
+  display: grid;
+  grid-template-columns: 160px 1fr; /* label column, control column */
+  align-items: center;
+  column-gap: 12px;
+}
+
+.form-field label {
+  font-weight: 600;
+  margin: 0; /* remove margin-bottom for row layout */
+  color: #222;
+  font-size: 14px;
+  text-align: left; /* ensure label text is left-aligned */
+}
+.form-field input[type="text"],
+.form-field input[type="number"],
+.form-field select,
+.dropdown-toggle {
+  padding: 8px 10px;
+  border: 1px solid #cfcfcf;
+  border-radius: 6px;
+  background: #fff;
+  font-size: 14px;
+  color: #222;
+  min-width: 220px;
+}
+
+/* row variant for label + control inline (used for bodyType) */
+.form-field-row {
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+}
+
+/* custom dropdown styles */
+.custom-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 240px;
+  cursor: pointer;
+}
+
+.caret {
+  margin-left: 8px;
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+.dropdown-list {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  background: #fff;
+  border: 1px solid #ddd;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  z-index: 100;
+  min-width: 100%;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.dropdown-option {
+  padding: 10px 12px;
+  cursor: pointer;
+  white-space: nowrap;
+  font-size: 14px;
+  color: #222;
+}
+
+.dropdown-option:hover {
+  background: #f5f7ff;
+}
+
+.dropdown-option.selected {
+  background: #e9eefc;
+}
+
+
+.outside-preview {
+
+  position: fixed;
+  left: 700px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 999;
+  max-width: none;
+  margin-top: 0;
+}
+
+.bodytype-preview {
+  width: 480px;
+  height: 480px;
+  object-fit: contain;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  background: #fff;
+  padding: 8px;
+  margin-top: 6px;
+}
+
+
+
+
+.submit-button {
+  padding: 10px 14px;
+  border-radius: 6px;
+  border: 1px solid #2b6cb0;
+  background: #2b6cb0;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 600;
+}
