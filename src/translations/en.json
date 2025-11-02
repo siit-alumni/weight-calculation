@@ -1,0 +1,13 @@
+ {
+    "greeting": {
+                 "welcome": "Welcome!"
+                },
+    "form": {
+                "name": "Full Name",
+                "age": "Age",   
+                "weight": "Weight",
+                "height": "Height",
+                "gender": "Gender",
+                "bodyType": "Body Type"
+            }
+ }

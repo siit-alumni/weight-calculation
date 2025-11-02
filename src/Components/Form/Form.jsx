@@ -1,8 +1,11 @@
 import { useState } from "react";
 import { userBodyType, userSex } from "../Settings/settings";
 import { BodyType } from "./BodyTypeButtonDesign";
+import { useTranslation } from "react-i18next";
 
 export function Form({ getDetails }) {
+  const { t } = useTranslation();
+
   const [formData, setFormData] = useState({
     name: "Rares",
     age: "45",
@@ -30,7 +33,7 @@ export function Form({ getDetails }) {
       <div className="row mb-3">
         <div className="col-md-6 mb-3">
           <label htmlFor="name" className="form-label">
-            Numele complet
+            {t("form.name")}
           </label>
           <input
             type="text"

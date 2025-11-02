@@ -1,0 +1,13 @@
+ {
+    "greeting": {
+                 "welcome": "BINE AI VENIT!"
+                },
+    "form": {
+                "name": "Numele complet",
+                "age": "Vârsta",
+                "weight": "Greutatea",
+                "height": "Înălțimea",
+                "gender": "Sexul",
+                "bodyType": "Tipul de corp"
+            }
+ }
