@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { userBodyType, userSex } from "../Settings/settings";
 import { BodyType } from "./BodyTypeButtonDesign";
 import { useTranslation } from "react-i18next";
 

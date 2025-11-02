@@ -1,26 +1,46 @@
- {
+{
     "greeting": {
-                 "welcome": "Welcome!"
-                },
+        "welcome": "Welcome!"
+    },
     "form": {
-                "name": "Full Name",
-                "age": "Age",
-                "agePlaceholder": "Enter your age",
-                "weight": "Weight (kg)",
-                "weightPlaceholder": "Enter your weight",
-                "height": "Height (cm)",
-                "heightPlaceholder": "Enter your height",
-                "gender": "Gender",
-                "genderOption": {
-                                    "male": "Male",
-                                    "female": "Female"
-                },
-                "bodyType": "Body Type",
-                "bodyTypeOption": {
-                                    "ectomorph": "Ectomorph",
-                                    "mesomorph": "Mesomorph",
-                                    "endomorph": "Endomorph"
-                },
-                "calculateButton": "Calculate BMI"
-            }
- }
+        "name": "Full Name",
+        "age": "Age",
+        "agePlaceholder": "Enter your age",
+        "weight": "Weight (kg)",
+        "weightPlaceholder": "Enter your weight",
+        "height": "Height (cm)",
+        "heightPlaceholder": "Enter your height",
+        "gender": "Gender",
+        "genderOption": {
+            "male": "Male",
+            "female": "Female"
+        },
+        "bodyType": "Body Type",
+        "bodyTypeOption": {
+            "ectomorph": "Ectomorph",
+            "mesomorph": "Mesomorph",
+            "endomorph": "Endomorph"
+        },
+        "calculateButton": "Calculate BMI"
+    },
+    "userData": {
+        "title": "Information about {{name}}:",
+        "age": "Age",
+        "height": "Height",
+        "weight": "Weight",
+        "gender": "Gender",
+        "bodyType": "Body Type",
+        "ageUnit": "years",
+        "heightUnit": "cm",
+        "weightUnit": "kg",
+        "bodyTypeOption": {
+            "ectomorph": "Ectomorph",
+            "mesomorph": "Mesomorph",
+            "endomorph": "Endomorph"
+        },
+        "genderOption": {
+            "male": "Male",
+            "female": "Female"
+        }
+    }
+}

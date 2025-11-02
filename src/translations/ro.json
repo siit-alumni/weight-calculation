@@ -22,5 +22,25 @@
             "endomorph": "Endomorf"
         },
         "calculateButton": "Calculează IMC"
+    },
+    "userData": {
+        "title": "Informații despre {{name}}:",
+        "age": "Vârstă",
+        "height": "Înălțime",
+        "weight": "Greutate",
+        "gender": "Sex",
+        "bodyType": "Tip de corp",
+        "ageUnit": "ani",
+        "heightUnit": "cm",
+        "weightUnit": "kg",
+        "bodyTypeOption": {
+            "ectomorph": "Ectomorf",
+            "mesomorph": "Mezomorf",
+            "endomorph": "Endomorf"
+        },
+        "genderOption": {
+            "male": "Masculin",
+            "female": "Feminin"
+        }
     }
 }
