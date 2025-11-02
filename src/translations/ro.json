@@ -21,7 +21,13 @@
             "mesomorph": "Mezomorf",
             "endomorph": "Endomorf"
         },
-        "calculateButton": "Calculează IMC"
+        "calculateButton": "Calculează IMC",
+        "detailsButton": "Detalii",
+        "bodyTypeExample": {
+            "bodyTypeTitle": "Tipuri de corp",
+            "bodyTypeDescription": "Imaginea de mai jos ilustrează cele trei tipuri de corp:",
+            "closeButton": "Închide"
+        }
     },
     "userData": {
         "title": "Informații despre {{name}}:",
@@ -42,5 +48,19 @@
             "male": "Masculin",
             "female": "Feminin"
         }
+    },
+    "bmiInterpretation": {
+        "title": "Raport complet pentru {{name}}:",
+        "bmiLabel": "IMC",
+        "evaluationLabel": "Evaluare",
+        "evaluationValue": {
+            "subponderal": "Subponderal",
+            "normal": "Greutate normală",
+            "supraponderal": "Supraponderal",
+            "obezitate": "Obezitate"
+        }
+    },
+    "idealWeight": {
+        "title": "Greutate ideală"
     }
 }

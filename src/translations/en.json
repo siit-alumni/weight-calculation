@@ -21,7 +21,13 @@
             "mesomorph": "Mesomorph",
             "endomorph": "Endomorph"
         },
-        "calculateButton": "Calculate BMI"
+        "calculateButton": "Calculate BMI",
+        "detailsButton": "Details",
+        "bodyTypeExample": {
+            "bodyTypeTitle": "Body Types",
+            "bodyTypeDescription": "The image below illustrates the three body types:",
+            "closeButton": "Close"
+        }
     },
     "userData": {
         "title": "Information about {{name}}:",
@@ -42,5 +48,19 @@
             "male": "Male",
             "female": "Female"
         }
+    },
+    "bmiInterpretation": {
+        "title": "Complete Report for {{name}}:",
+        "bmiLabel": "BMI",
+        "evaluationLabel": "Evaluation",
+        "evaluationValue": {
+            "subponderal": "Underweight",
+            "normal": "Normal Weight",
+            "supraponderal": "Overweight",
+            "obezitate": "Obesity"
+        }
+    },
+    "idealWeight": {
+        "title": "Ideal Weight"
     }
 }

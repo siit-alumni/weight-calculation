@@ -1,7 +1,8 @@
 import bodyTypes from "../../assets/img/bodyTypes.png";
-
+import { useTranslation } from "react-i18next";
 
 export function BodyType() {
+  const { t } = useTranslation();
   return (
     <>
       <button
@@ -10,7 +11,7 @@ export function BodyType() {
         data-bs-toggle="modal"
         data-bs-target="#bodyTypeModal"
       >
-        <i className="bi bi-images me-1"></i> Detalii
+        <i className="bi bi-images me-1"></i> {t("form.detailsButton")}
       </button>
 
       <div
@@ -24,7 +25,7 @@ export function BodyType() {
           <div className="modal-content">
             <div className="modal-header bg-primary text-white">
               <h5 className="modal-title" id="bodyTypeModalLabel">
-                Tipurile de corp
+                {t("form.bodyTypeExample.bodyTypeTitle")}
               </h5>
               <button
                 type="button"
@@ -36,9 +37,9 @@ export function BodyType() {
 
             <div className="modal-body text-center">
               <p className="mb-3">
-                Imaginea de mai jos ilustrează cele trei tipuri de corp:
-                <strong> Ectomorf</strong>, <strong>Mezomorf</strong> și{" "}
-                <strong>Endomorf</strong>.
+                {t("form.bodyTypeExample.bodyTypeDescription")}
+                <strong> {t("form.bodyTypeOption.ectomorph")}</strong>, <strong>{t("form.bodyTypeOption.mesomorph")}</strong> și{" "}
+                <strong>{t("form.bodyTypeOption.endomorph")}</strong>.
               </p>
 
               <img
@@ -54,7 +55,7 @@ export function BodyType() {
                 className="btn btn-secondary"
                 data-bs-dismiss="modal"
               >
-                Închide
+                {t("form.bodyTypeExample.closeButton")}
               </button>
             </div>
           </div>

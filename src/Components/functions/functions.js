@@ -7,12 +7,12 @@ export function calcBmi(weight, height) {
 
 
 export function bmiInterpretation(bmi) {
-  let message = "";
+
   for (const key in settings) {
-    const [min, max, text] = settings[key];
+    const [min, max] = settings[key];
     if (Number(bmi) >= min && Number(bmi) < max) {
-      message = text;
-      return message;
+
+      return key;
     }
   }
 }
