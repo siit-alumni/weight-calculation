@@ -4,10 +4,23 @@
                 },
     "form": {
                 "name": "Full Name",
-                "age": "Age",   
-                "weight": "Weight",
-                "height": "Height",
+                "age": "Age",
+                "agePlaceholder": "Enter your age",
+                "weight": "Weight (kg)",
+                "weightPlaceholder": "Enter your weight",
+                "height": "Height (cm)",
+                "heightPlaceholder": "Enter your height",
                 "gender": "Gender",
-                "bodyType": "Body Type"
+                "genderOption": {
+                                    "male": "Male",
+                                    "female": "Female"
+                },
+                "bodyType": "Body Type",
+                "bodyTypeOption": {
+                                    "ectomorph": "Ectomorph",
+                                    "mesomorph": "Mesomorph",
+                                    "endomorph": "Endomorph"
+                },
+                "calculateButton": "Calculate BMI"
             }
  }

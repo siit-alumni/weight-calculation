@@ -12,7 +12,7 @@ export function Form({ getDetails }) {
     weight: "80",
     height: "180",
     gender: "male",
-    bodyType: "mezomorph",
+    bodyType: "mesomorph",
   });
 
   const onHandleChange = (e) => {
@@ -48,14 +48,14 @@ export function Form({ getDetails }) {
         </div>
         <div className="col-md-6 mb-3">
           <label htmlFor="age" className="form-label">
-            Vârsta
+            {t("form.age")}
           </label>
           <input
             type="number"
             className="form-control"
             name="age"
             id="age"
-            placeholder="Vârsta"
+            placeholder={t("form.agePlaceholder")}
             onChange={onHandleChange}
             value={formData.age}
             required
@@ -66,14 +66,14 @@ export function Form({ getDetails }) {
       <div className="row mb-3">
         <div className="col-md-6 mb-3">
           <label htmlFor="weight" className="form-label">
-            Greutate (kg)
+            {t("form.weight")}
           </label>
           <input
             type="number"
             className="form-control"
             name="weight"
             id="weight"
-            placeholder="Greutate în kg"
+            placeholder={t("form.weightPlaceholder")}
             onChange={onHandleChange}
             value={formData.weight}
             required
@@ -81,14 +81,14 @@ export function Form({ getDetails }) {
         </div>
         <div className="col-md-6 mb-3">
           <label htmlFor="height" className="form-label">
-            Înălțime (cm)
+            {t("form.height")}
           </label>
           <input
             type="number"
             className="form-control"
             name="height"
             id="height"
-            placeholder="Înălțime în cm"
+            placeholder={t("form.heightPlaceholder")}
             onChange={onHandleChange}
             value={formData.height}
             required
@@ -99,7 +99,7 @@ export function Form({ getDetails }) {
       <div className="row mb-3">
         <div className="col-md-6 mb-3">
           <label htmlFor="gender" className="form-label">
-            Sexul
+            {t("form.gender")}
           </label>
           <select
             className="form-select"
@@ -108,15 +108,15 @@ export function Form({ getDetails }) {
             onChange={onHandleChange}
             value={formData.gender}
           >
-            <option value="female">{userSex.female}</option>
-            <option value="male">{userSex.male}</option>
+            <option value="female">{t("form.genderOption.female")}</option>
+            <option value="male">{t("form.genderOption.male")}</option>
           </select>
         </div>
 
         <div className="col-md-6 mb-3">
           <div className="d-flex justify-content-between align-items-center">
             <label htmlFor="bodyType" className="form-label mb-0">
-              Tipul de corp
+              {t("form.bodyType")}
             </label>
             <BodyType/>
           </div>
@@ -128,15 +128,15 @@ export function Form({ getDetails }) {
             onChange={onHandleChange}
             value={formData.bodyType}
           >
-            <option value="ectomorph">{userBodyType.ectomorph}</option>
-            <option value="mezomorph">{userBodyType.mezomorph}</option>
-            <option value="endomorph">{userBodyType.endomorph}</option>
+            <option value="ectomorph">{t("form.bodyTypeOption.ectomorph")}</option>
+            <option value="mesomorph">{t("form.bodyTypeOption.mesomorph")}</option>
+            <option value="endomorph">{t("form.bodyTypeOption.endomorph")}</option>
           </select>
         </div>
       </div>
 
       <button type="submit" className="btn btn-primary">
-        Calculează IMC
+        {t("form.calculateButton")}
       </button>
     </form>
   );

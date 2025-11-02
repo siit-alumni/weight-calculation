@@ -14,7 +14,7 @@ export const genderCoefficient = {
 
 export const bodyTypeCoeff = {
   ectomorph: 0.9,
-  mezomorph: 1,
+  mesomorph: 1,
   endomorph: 1.1,
 };
 
@@ -25,6 +25,6 @@ export const userSex = {
 
 export const userBodyType = {
   ectomorph: "Ectomorf",
-  mezomorph: "Mezomorf",
+  mesomorph: "Mezomorf",
   endomorph: "Endomorf",
 };

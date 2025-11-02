@@ -1,13 +1,26 @@
- {
+{
     "greeting": {
-                 "welcome": "BINE AI VENIT!"
-                },
+        "welcome": "BINE AI VENIT!"
+    },
     "form": {
-                "name": "Numele complet",
-                "age": "Vârsta",
-                "weight": "Greutatea",
-                "height": "Înălțimea",
-                "gender": "Sexul",
-                "bodyType": "Tipul de corp"
-            }
- }
+        "name": "Numele complet",
+        "age": "Vârsta",
+        "agePlaceholder": "Introdu vârsta ta",
+        "weight": "Greutatea (kg)",
+        "weightPlaceholder": "Introdu greutatea ta",
+        "height": "Înălțimea (cm)",
+        "heightPlaceholder": "Introdu înălțimea ta",
+        "gender": "Sexul",
+        "genderOption": {
+            "male": "Masculin",
+            "female": "Feminin"
+        },
+        "bodyType": "Tipul de corp",
+        "bodyTypeOption": {
+            "ectomorph": "Ectomorf",
+            "mesomorph": "Mezomorf",
+            "endomorph": "Endomorf"
+        },
+        "calculateButton": "Calculează IMC"
+    }
+}
