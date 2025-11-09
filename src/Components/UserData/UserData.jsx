@@ -13,8 +13,8 @@ export default function UserData({ userData }) {
             <p><strong>{t("userData.age")}:</strong> {userData.age} {t("userData.ageUnit")}</p>
             <p><strong>{t("userData.height")}:</strong> {userData.height} {t("userData.heightUnit")}</p>
             <p><strong>{t("userData.weight")}:</strong> {userData.weight} {t("userData.weightUnit")}</p>
-            <p><strong>{t("userData.gender")}:</strong> {t(`userData.genderOption.${userData.gender}`)}</p>
-            <p><strong>{t("userData.bodyType")}:</strong> {t(`userData.bodyTypeOption.${userData.bodyType}`)}</p>
+            <p><strong>{t("userData.gender")}:</strong> {t(`common.genderOption.${userData.gender}`)}</p>
+            <p><strong>{t("userData.bodyType")}:</strong> {t(`common.bodyTypeOption.${userData.bodyType}`)}</p>
         </div>
     );
 };

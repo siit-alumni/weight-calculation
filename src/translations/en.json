@@ -2,6 +2,17 @@
     "greeting": {
         "welcome": "Welcome!"
     },
+    "common": {
+        "genderOption": {
+            "male": "Male",
+            "female": "Female"
+        },
+        "bodyTypeOption": {
+            "ectomorph": "Ectomorph",
+            "mesomorph": "Mesomorph",
+            "endomorph": "Endomorph"
+        }
+    },
     "form": {
         "name": "Full Name",
         "age": "Age",
@@ -11,16 +22,7 @@
         "height": "Height (cm)",
         "heightPlaceholder": "Enter your height",
         "gender": "Gender",
-        "genderOption": {
-            "male": "Male",
-            "female": "Female"
-        },
         "bodyType": "Body Type",
-        "bodyTypeOption": {
-            "ectomorph": "Ectomorph",
-            "mesomorph": "Mesomorph",
-            "endomorph": "Endomorph"
-        },
         "calculateButton": "Calculate BMI",
         "detailsButton": "Details",
         "bodyTypeExample": {
@@ -38,16 +40,7 @@
         "bodyType": "Body Type",
         "ageUnit": "years",
         "heightUnit": "cm",
-        "weightUnit": "kg",
-        "bodyTypeOption": {
-            "ectomorph": "Ectomorph",
-            "mesomorph": "Mesomorph",
-            "endomorph": "Endomorph"
-        },
-        "genderOption": {
-            "male": "Male",
-            "female": "Female"
-        }
+        "weightUnit": "kg"
     },
     "bmiInterpretation": {
         "title": "Complete Report for {{name}}:",

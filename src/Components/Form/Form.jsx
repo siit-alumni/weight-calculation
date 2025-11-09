@@ -107,8 +107,8 @@ export function Form({ getDetails }) {
             onChange={onHandleChange}
             value={formData.gender}
           >
-            <option value="female">{t("form.genderOption.female")}</option>
-            <option value="male">{t("form.genderOption.male")}</option>
+            <option value="female">{t("common.genderOption.female")}</option>
+            <option value="male">{t("common.genderOption.male")}</option>
           </select>
         </div>
 
@@ -127,9 +127,9 @@ export function Form({ getDetails }) {
             onChange={onHandleChange}
             value={formData.bodyType}
           >
-            <option value="ectomorph">{t("form.bodyTypeOption.ectomorph")}</option>
-            <option value="mesomorph">{t("form.bodyTypeOption.mesomorph")}</option>
-            <option value="endomorph">{t("form.bodyTypeOption.endomorph")}</option>
+            <option value="ectomorph">{t("common.bodyTypeOption.ectomorph")}</option>
+            <option value="mesomorph">{t("common.bodyTypeOption.mesomorph")}</option>
+            <option value="endomorph">{t("common.bodyTypeOption.endomorph")}</option>
           </select>
         </div>
       </div>
