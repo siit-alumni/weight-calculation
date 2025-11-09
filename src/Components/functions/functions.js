@@ -1,4 +1,4 @@
-import { settings, bodyTypeCoeff } from "../Settings/settings";
+import { settings } from "../Settings/settings";
 
 
 export function calcBmi(weight, height) {
@@ -8,8 +8,8 @@ export function calcBmi(weight, height) {
 
 export function bmiInterpretation(bmi) {
 
-  for (const key in settings) {
-    const [min, max] = settings[key];
+  for (const key in settings.bodyEvaluation) {
+    const [min, max] = settings.bodyEvaluation[key];
     if (Number(bmi) >= min && Number(bmi) < max) {
 
       return key;
@@ -24,9 +24,9 @@ export function calcIdealWeight(height, gender, bodyType, age) {
 
 
 export function bodyTypeCoefficient(bodyType) {
-  for (const key in bodyTypeCoeff) {  
+  for (const key in settings.bodyTypeCoeff) {
       if (key === bodyType) {
-        return bodyTypeCoeff[key];
+        return settings.bodyTypeCoeff[key];
       }
     }
 }
