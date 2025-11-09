@@ -54,10 +54,10 @@
         "bmiLabel": "BMI",
         "evaluationLabel": "Evaluation",
         "evaluationValue": {
-            "subponderal": "Underweight",
+            "underweight": "Underweight",
             "normal": "Normal Weight",
-            "supraponderal": "Overweight",
-            "obezitate": "Obesity"
+            "overweight": "Overweight",
+            "obesity": "Obesity"
         }
     },
     "idealWeight": {

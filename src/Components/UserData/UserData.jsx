@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { userSex, userBodyType } from '../Settings/settings';
+// import { userSex, userBodyType } from '../Settings/settings';
 
 
 export default function UserData({ userData }) {

@@ -2,10 +2,10 @@
 
 
 export const settings = {
-  subponderal: [0, 18.49],
+  underweight: [0, 18.49],
   normal: [18.5, 24.99],
-  supraponderal: [25, 29.99],
-  obezitate: [30, Infinity],
+  overweight: [25, 29.99],
+  obesity: [30, Infinity],
 };
 
 export const genderCoefficient = {
@@ -19,13 +19,4 @@ export const bodyTypeCoeff = {
   endomorph: 1.1,
 };
 
-export const userSex = {
-  female: "Feminin",
-  male: "Masculin",
-};
 
-export const userBodyType = {
-  ectomorph: "Ectomorf",
-  mesomorph: "Mezomorf",
-  endomorph: "Endomorf",
-};

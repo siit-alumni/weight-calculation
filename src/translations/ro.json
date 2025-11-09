@@ -54,10 +54,10 @@
         "bmiLabel": "IMC",
         "evaluationLabel": "Evaluare",
         "evaluationValue": {
-            "subponderal": "Subponderal",
+            "underweight": "Subponderal",
             "normal": "Greutate normală",
-            "supraponderal": "Supraponderal",
-            "obezitate": "Obezitate"
+            "overweight": "Supraponderal",
+            "obesity": "Obezitate"
         }
     },
     "idealWeight": {
