@@ -19,7 +19,7 @@ export function bmiInterpretation(bmi) {
 
 
 export function calcIdealWeight(height, gender, bodyType, age) {
-  return (height - 100 + age / 10) * bodyTypeCoefficient(bodyType);
+  return (height - 100 + age / 10) * settings.genderCoefficient[gender] * bodyTypeCoefficient(bodyType);
 }
 
 
