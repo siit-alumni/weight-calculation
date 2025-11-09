@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { BodyType } from "./BodyTypeButtonDesign";
 import { useTranslation } from "react-i18next";
+import { settings } from "../Settings/Settings";
 
 export function Form({ getDetails }) {
   const { t } = useTranslation();
@@ -130,6 +131,12 @@ export function Form({ getDetails }) {
             <option value="ectomorph">{t("common.bodyTypeOption.ectomorph")}</option>
             <option value="mesomorph">{t("common.bodyTypeOption.mesomorph")}</option>
             <option value="endomorph">{t("common.bodyTypeOption.endomorph")}</option>
+         
+           {/* {Object.entries(settings.bodyEvaluation).map(([key]) => (
+              <option key={key} value={key}>
+                {t(`common.bodyTypeOption.${key}`)}
+              </option> */}
+            {/* ))} */}
           </select>
         </div>
       </div>
