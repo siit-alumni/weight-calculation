@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { BodyType } from "./BodyTypeButtonDesign";
 import { useTranslation } from "react-i18next";
-import { settings } from "../Settings/Settings";
+// import { settings } from "../Settings/Settings";
 
 export function Form({ getDetails }) {
   const { t } = useTranslation();

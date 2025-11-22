@@ -10,7 +10,7 @@ export default function IdealWeight({formData}) {
 
   return (
     <div>
-      <h3>{t("idealWeight.title")}: {idealWeight} kg</h3>
+      <h5>{t("idealWeight.title")}: {idealWeight} kg</h5>
     </div>
   );
 }

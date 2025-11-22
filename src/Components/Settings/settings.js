@@ -12,16 +12,10 @@ export const settings = {
     endomorph: 1.1,
   },
   bodyEvaluation: {
-    underweight: "Subponderal",
-    normal: "Normal",
-    overweight: "Supraponderal",
-    obesity: "Obezitate",
-  },
-  settings: {
-    subponderal: [0, 18.5, "Subponderal"],
+    underweight: [0, 18.5, "Subponderal"],
     normal: [18.5, 24.9, "Greutate normală"],
-    supraponderal: [25, 29.9, "Supraponderal"],
-    obezitate: [30, Infinity, "Obezitate"],
+    overweight: [25, 29.9, "Supraponderal"],
+    obesity: [30, Infinity, "Obezitate"],
   },
   calorieConsumptionLevels: {
     sedentary: [25,30],

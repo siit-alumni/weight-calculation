@@ -10,8 +10,8 @@ export function BmiInterpretation({ bmi, name }) {
   return (
     <div className="bmi-interpretation">
       <h2>{t("bmiInterpretation.title", { name })}</h2>
-      <h3>{t("bmiInterpretation.bmiLabel")}: {bmi}</h3>
-      <h3>{t("bmiInterpretation.evaluationLabel")}: {t(`bmiInterpretation.evaluationValue.${message}`)}</h3>
+      <h5>{t("bmiInterpretation.bmiLabel")}: {bmi}</h5>
+      <h5>{t("bmiInterpretation.evaluationLabel")}: {t(`bmiInterpretation.evaluationValue.${message}`)}</h5>
     </div>
   );
 }
