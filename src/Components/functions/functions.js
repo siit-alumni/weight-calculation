@@ -19,7 +19,7 @@ export function bmiInterpretation(bmi) {
 
 
 export function calcIdealWeight(height, gender, bodyType, age) {
-  return (height - 100 + age / 10) * settings.genderCoefficient[gender] * bodyTypeCoefficient(bodyType);
+  return Number(((height - 100 + age / 10) * settings.genderCoefficient[gender] * bodyTypeCoefficient(bodyType)).toFixed(2));
 }
 
 
@@ -31,12 +31,16 @@ export function bodyTypeCoefficient(bodyType) {
     }
 }
 
-export function calcBasalMetabolism(weight, height, age, gender) {
-  if (gender === "male") {
-    return Math.round(88.36 + (13.4 * weight) + (4.8 * height) - (5.7 * age));
-  } else {
-    return Math.round(447.6 + (9.2 * weight) + (3.1 * height) - (4.3 * age));
-  }   
+
+export function calcBasalMetabolism(height, gender, bodyType, age) {
+  return Math.round(calcIdealWeight(height, gender, bodyType, age)*24)  ;
 }
 
-export function calcCalorieConsumption(basalMetabolism, activityLevel) {}
+export function calcCalorieConsumption(basalMetabolism, activityTypes) {
+  const [minLevel, maxLevel] = settings.calorieConsumptionLevels[activityTypes];
+  
+  const minCalories = Math.round(basalMetabolism + (minLevel* 24));
+  const maxCalories = Math.round(basalMetabolism + (maxLevel * 24));
+
+  return [minCalories, maxCalories];
+}

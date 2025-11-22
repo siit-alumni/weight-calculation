@@ -1,14 +1,15 @@
 import { useTranslation } from "react-i18next"; 
-import { calcCaloricRequirements} from "../functions/functions";
+import { calcBasalMetabolism, calcCalorieConsumption} from "../functions/functions";
 
 export function CaloricRequirements({ formData }) {
-  const { weight, height, age, gender } = formData;
+  const { weight, height, age, gender, bodyType, activityTypes } = formData;
   const { t } = useTranslation();       
-  const basalMetabolism = calcBasalMetabolism(weight, height, age, gender);
-    const caloricRequirements = calcCaloricRequirements(basalMetabolism, gender);
+  
+  const basalMetabolism = calcBasalMetabolism(height, gender, bodyType, age);
+    const caloricRequirements = calcCalorieConsumption(basalMetabolism, activityTypes);
     return (
       <div>
-        <h5>{t("caloricRequirements.title")}: {caloricRequirements} kcal/day</h5>
+        <h5>{t("caloricRequirements.title")}: {caloricRequirements[0]} - {caloricRequirements[1]} kcal/day</h5>
       </div>
     );
 }

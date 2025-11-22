@@ -81,5 +81,8 @@
     },
     "basalMetabolism": {
         "title": "Basal Metabolic Rate"
+    },
+    "caloricRequirements": {
+        "title": "Daily Caloric Requirements"
     }
 }

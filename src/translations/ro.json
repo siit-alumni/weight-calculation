@@ -81,5 +81,8 @@
     },
     "basalMetabolism": {
         "title": "Metabolism bazal"
+    },
+    "caloricRequirements": {
+        "title": "Necesar caloric zilnic"
     }
 }

@@ -12,8 +12,8 @@ export function Form({ getDetails }) {
     weight: "80",
     height: "180",
     gender: "male",
-    bodyType: "mesomorph",
-    activityTypes: "moderate",
+    bodyType: "ectomorph",
+    activityTypes: "sedentary",
   });
 
   const onHandleChange = (e) => {
