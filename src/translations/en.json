@@ -78,5 +78,8 @@
             "label": "Heavy/Very heavy",
             "description": "Very intense exercise/sports and/or heavy physical work"
         }
+    },
+    "basalMetabolism": {
+        "title": "Basal Metabolic Rate"
     }
 }

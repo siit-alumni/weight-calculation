@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { BodyType } from "./BodyTypeButtonDesign";
 import { useTranslation } from "react-i18next";
-// import { settings } from "../Settings/Settings";
+import { settings } from "../Settings/settings";
 
 export function Form({ getDetails }) {
   const { t } = useTranslation();
@@ -13,6 +13,7 @@ export function Form({ getDetails }) {
     height: "180",
     gender: "male",
     bodyType: "mesomorph",
+    activityTypes: "moderate",
   });
 
   const onHandleChange = (e) => {
@@ -27,6 +28,7 @@ export function Form({ getDetails }) {
     e.preventDefault();
     getDetails(formData);
   };
+
 
   return (
     <form onSubmit={handleFormSubmit} className="p-3">
@@ -118,7 +120,7 @@ export function Form({ getDetails }) {
             <label htmlFor="bodyType" className="form-label mb-0">
               {t("form.bodyType")}
             </label>
-            <BodyType/>
+            <BodyType />
           </div>
 
           <select
@@ -128,17 +130,38 @@ export function Form({ getDetails }) {
             onChange={onHandleChange}
             value={formData.bodyType}
           >
-            <option value="ectomorph">{t("common.bodyTypeOption.ectomorph")}</option>
-            <option value="mesomorph">{t("common.bodyTypeOption.mesomorph")}</option>
-            <option value="endomorph">{t("common.bodyTypeOption.endomorph")}</option>
-         
-           {/* {Object.entries(settings.bodyEvaluation).map(([key]) => (
+           
+            {Object.entries(settings.bodyTypeCoeff).map(([key]) => (
               <option key={key} value={key}>
                 {t(`common.bodyTypeOption.${key}`)}
-              </option> */}
-            {/* ))} */}
+              </option>
+            ))}
           </select>
         </div>
+
+        <div className="col-md-6 mb-3">
+          <div className="d-flex justify-content-between align-items-center">
+            <label htmlFor="activityTypes" className="form-label mb-0">
+              {t("activityTypes.title")}
+            </label>
+          </div>
+
+          <select
+            className="form-select mt-2"
+            name="activityTypes"
+            id="activityTypes"
+            onChange={onHandleChange}
+            value={formData.activityTypes}
+          >
+
+            {Object.entries(settings.calorieConsumptionLevels).map(([key]) =>
+            (<option key={key} value={key}>
+              {t(`activityTypes.${key}.label`)}
+            </option>))}
+
+          </select>
+        </div>
+
       </div>
 
       <button type="submit" className="btn btn-primary">

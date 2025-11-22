@@ -78,5 +78,8 @@
             "label": "Grea/Foarte grea",
             "description": "Exerciții foarte intense/sport și/sau muncă fizică grea"
         }
+    },
+    "basalMetabolism": {
+        "title": "Metabolism bazal"
     }
 }
