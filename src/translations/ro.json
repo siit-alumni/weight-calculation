@@ -55,5 +55,28 @@
     },
     "idealWeight": {
         "title": "Greutate ideală"
+    },
+    "activityTypes": {
+        "title": "Tip de activitate fizică",
+        "sedentary": {
+            "label": "Sedentar",
+            "description": "Puțină sau nicio activitate fizică"
+        },
+        "lightlyActive": {
+            "label": "Ușoară",
+            "description": "Exerciții ușoare/sport 1-3 zile pe săptămână"
+        },
+        "moderatelyActive": {
+            "label": "Moderată",
+            "description": "Exerciții moderate/sport 3-5 zile pe săptămână"
+        },
+        "intense": {
+            "label": "Intensă",
+            "description": "Exerciții intense/sport 6-7 zile pe săptămână"
+        },
+        "heavy": {
+            "label": "Grea/Foarte grea",
+            "description": "Exerciții foarte intense/sport și/sau muncă fizică grea"
+        }
     }
 }

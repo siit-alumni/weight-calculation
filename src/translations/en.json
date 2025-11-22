@@ -55,5 +55,28 @@
     },
     "idealWeight": {
         "title": "Ideal Weight"
+    },
+    "activityTypes": {
+        "title": "Physical Activity Type",
+        "sedentary": {
+            "label": "Sedentary",
+            "description": "Little or no physical activity"
+        },
+        "lightlyActive": {
+            "label": "Light",
+            "description": "Light exercise/sports 1-3 days a week"
+        },
+        "moderatelyActive": {
+            "label": "Moderate",
+            "description": "Moderate exercise/sports 3-5 days a week"
+        },
+        "intense": {
+            "label": "Intense",
+            "description": "Intense exercise/sports 6-7 days a week"
+        },
+        "heavy": {
+            "label": "Heavy/Very heavy",
+            "description": "Very intense exercise/sports and/or heavy physical work"
+        }
     }
 }

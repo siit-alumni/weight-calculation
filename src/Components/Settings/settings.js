@@ -17,4 +17,17 @@ export const settings = {
     overweight: "Supraponderal",
     obesity: "Obezitate",
   },
+  settings: {
+    subponderal: [0, 18.5, "Subponderal"],
+    normal: [18.5, 24.9, "Greutate normală"],
+    supraponderal: [25, 29.9, "Supraponderal"],
+    obezitate: [30, Infinity, "Obezitate"],
+  },
+  calorieConsumptionLevels: {
+    sedentary: [25,30],
+    lightlyActive: [30,35],
+    moderatelyActive: [35,45],
+    intense: [45,50],
+    heavy: [50,60],
+  },
 };
