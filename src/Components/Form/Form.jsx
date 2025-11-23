@@ -31,9 +31,9 @@ export function Form({ getDetails }) {
 
 
   return (
-    <form onSubmit={handleFormSubmit} className="p-3">
-      <div className="row mb-3">
-        <div className="col-md-6 mb-3">
+    <form onSubmit={handleFormSubmit} className="container p-3">
+      <div className="row mb-2">
+        <div className="col col-md mb-3">
           <label htmlFor="name" className="form-label">
             {t("form.name")}
           </label>
@@ -48,7 +48,7 @@ export function Form({ getDetails }) {
             required
           />
         </div>
-        <div className="col-md-6 mb-3">
+        <div className="col col-md mb-3">
           <label htmlFor="age" className="form-label">
             {t("form.age")}
           </label>
@@ -62,6 +62,21 @@ export function Form({ getDetails }) {
             value={formData.age}
             required
           />
+        </div>
+        <div className="col col-md mb-3">
+          <label htmlFor="gender" className="form-label">
+            {t("form.gender")}
+          </label>
+          <select
+            className="form-select"
+            name="gender"
+            id="gender"
+            onChange={onHandleChange}
+            value={formData.gender}
+          >
+            <option value="female">{t("common.genderOption.female")}</option>
+            <option value="male">{t("common.genderOption.male")}</option>
+          </select>
         </div>
       </div>
 
@@ -99,21 +114,7 @@ export function Form({ getDetails }) {
       </div>
 
       <div className="row mb-3">
-        <div className="col-md-6 mb-3">
-          <label htmlFor="gender" className="form-label">
-            {t("form.gender")}
-          </label>
-          <select
-            className="form-select"
-            name="gender"
-            id="gender"
-            onChange={onHandleChange}
-            value={formData.gender}
-          >
-            <option value="female">{t("common.genderOption.female")}</option>
-            <option value="male">{t("common.genderOption.male")}</option>
-          </select>
-        </div>
+       
 
         <div className="col-md-6 mb-3">
           <div className="d-flex justify-content-between align-items-center">
@@ -157,6 +158,7 @@ export function Form({ getDetails }) {
             {Object.entries(settings.calorieConsumptionLevels).map(([key]) =>
             (<option key={key} value={key}>
               {t(`activityTypes.${key}.label`)}
+               {/* - {t(`activityTypes.${key}.description`)} */}
             </option>))}
 
           </select>
