@@ -13,6 +13,9 @@
             "endomorph": "Endomorf"
         }
     },
+    "report": {
+        "title": "Raport complet pentru {{name}}:"
+    },
     "form": {
         "name": "Numele complet",
         "age": "Vârsta",
@@ -44,7 +47,8 @@
         "weightUnit": "kg"
     },
     "bmiInterpretation": {
-        "title": "Raport complet pentru {{name}}:",
+        "title": "Indice masa corporală",
+        "description": "IMC-ul (Indicele de Masă Corporală) este o măsură utilizată pentru a evalua greutatea corporală în raport cu înălțimea. Este un indicator util pentru a evalua grăsimea corporală și categoriile de risc pentru sănătate.",
         "bmiLabel": "IMC",
         "evaluationLabel": "Evaluare",
         "evaluationValue": {
@@ -55,7 +59,8 @@
         }
     },
     "idealWeight": {
-        "title": "Greutate ideală"
+        "title": "Greutate ideală",
+        "description": "Greutatea ideală este o estimare a greutății corporale considerate sănătoase pentru o anumită înălțime, sex, vârstă și tip de corp."
     },
     "activityTypes": {
         "title": "Tip de activitate fizică",
@@ -81,9 +86,13 @@
         }
     },
     "basalMetabolism": {
-        "title": "Metabolism bazal"
+        "title": "Metabolism bazal",
+        "BMRlabel": "RMB",
+        "description": "Rata metabolică bazală (RMB) este numărul de calorii de care corpul tău are nevoie pentru a menține funcțiile fiziologice de bază în repaus."
     },
     "caloricRequirements": {
-        "title": "Necesar caloric zilnic"
+        "title": "Necesar caloric zilnic",
+        "description": "Necesarul caloric zilnic (NE) reprezintă intervalul de calorii pe care trebuie să le consumi în fiecare zi pentru a-ți menține greutatea actuală în funcție de nivelul tău de activitate.",
+        "DCRLabel": "NE"
     }
 }

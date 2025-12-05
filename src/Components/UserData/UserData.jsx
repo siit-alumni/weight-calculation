@@ -9,7 +9,7 @@ export default function UserData({ userData }) {
   
     return (
         <div>
-            <h2>{t("userData.title", { name: userData.name })}</h2>
+            <h3>{t("userData.title", { name: userData.name })}</h3>
             <p><strong>{t("userData.age")}:</strong> {userData.age} {t("userData.ageUnit")}</p>
             <p><strong>{t("userData.height")}:</strong> {userData.height} {t("userData.heightUnit")}</p>
             <p><strong>{t("userData.weight")}:</strong> {userData.weight} {t("userData.weightUnit")}</p>

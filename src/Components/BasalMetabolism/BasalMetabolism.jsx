@@ -8,7 +8,9 @@ export function BasalMetabolism({ formData }) {
     const basalMetabolism = calcBasalMetabolism(height, gender, bodyType, age);
     return (
         <div>
-            <h5>{t("basalMetabolism.title")}: {basalMetabolism} kcal/day</h5>
+            <h3>{t("basalMetabolism.title")}</h3>
+            <p>{t("basalMetabolism.description")}</p>
+            <h5>{t("basalMetabolism.BMRlabel")}: {basalMetabolism} kcal/day</h5>
         </div>
     );
 }

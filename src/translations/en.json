@@ -13,6 +13,9 @@
             "endomorph": "Endomorph"
         }
     },
+    "report": {
+        "title": "Complete Report for {{name}}:"
+    },
     "form": {
         "name": "Full Name",
         "age": "Age",
@@ -48,7 +51,8 @@
         "weightUnit": "kg"
     },
     "bmiInterpretation": {
-        "title": "Complete Report for {{name}}:",
+        "title": "Body Mass Index",
+        "description": "BMI (Body Mass Index) is a measure used to assess body weight in relation to height. It is a useful indicator for evaluating body fat and health risk categories.",
         "bmiLabel": "BMI",
         "evaluationLabel": "Evaluation",
         "evaluationValue": {
@@ -59,7 +63,8 @@
         }
     },
     "idealWeight": {
-        "title": "Ideal Weight"
+        "title": "Ideal Weight",
+        "description": "Ideal weight is an estimate of a healthy body weight for a given height, gender, age, and body type."
     },
     "activityTypes": {
         "title": "Physical Activity Type",
@@ -85,9 +90,13 @@
         }
     },
     "basalMetabolism": {
-        "title": "Basal Metabolic Rate"
+        "title": "Basal Metabolic Rate",
+        "BMRlabel": "BMR",
+        "description": "Basal Metabolic Rate (BMR) is the number of calories your body needs to maintain basic physiological functions at rest."
     },
     "caloricRequirements": {
-        "title": "Daily Caloric Requirements"
+        "title": "Daily Caloric Requirements",
+        "description": "Daily Caloric Requirements (DRC) represent the range of calories you need to consume each day to maintain your current weight based on your activity level.",
+        "DCRLabel": "DCR"
     }
 }

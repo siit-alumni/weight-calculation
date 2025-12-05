@@ -31,7 +31,7 @@ export function Report() {
       <Form getDetails={getDetails} />
       {bmi && (
         <div className="results">
-          <h2>{t("bmiInterpretation.title", { name: formData.name })}</h2>
+          <h2>{t("report.title", { name: formData.name })}</h2>
           <UserData userData={formData} />
           <BmiInterpretation bmi={bmi} name={formData.name} />
           <IdealWeight formData={formData} />
