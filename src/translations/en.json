@@ -25,12 +25,15 @@
         "bodyType": "Body Type",
         "calculateButton": "Calculate BMI",
         "detailsButton": "Details",
+        "closeButton": "Close",
+        "and": "and",
         "bodyTypeExample": {
             "bodyTypeTitle": "Body Types",
-            "bodyTypeDescription": "The image below illustrates the three body types:",
-            "closeButton": "Close",
-            "and": "and"
-
+            "bodyTypeDescription": "The image below illustrates the three body types:"
+        },
+        "activityTypeExample": {
+            "activityTypeTitle": "Activity Types",
+            "activityTypeDescription": "The image below illustrates the different activity types:"
         }
     },
     "userData": {

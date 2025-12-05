@@ -2,6 +2,7 @@ import { useState } from "react";
 import { BodyType } from "./BodyTypeButtonDesign";
 import { useTranslation } from "react-i18next";
 import { settings } from "../Settings/settings";
+import { ActivityType } from "./ActivityTypeButtonDesign";
 
 export function Form({ getDetails }) {
   const { t } = useTranslation();
@@ -143,6 +144,7 @@ export function Form({ getDetails }) {
             <label htmlFor="activityTypes" className="form-label mb-0">
               {t("activityTypes.title")}
             </label>
+            <ActivityType />
           </div>
 
           <select

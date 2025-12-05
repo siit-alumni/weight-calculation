@@ -25,11 +25,11 @@
         "bodyType": "Tipul de corp",
         "calculateButton": "Calculează IMC",
         "detailsButton": "Detalii",
+        "closeButton": "Închide",
+        "and": "și",
         "bodyTypeExample": {
             "bodyTypeTitle": "Tipuri de corp",
-            "bodyTypeDescription": "Imaginea de mai jos ilustrează cele trei tipuri de corp:",
-            "closeButton": "Închide",
-            "and": "și"
+            "bodyTypeDescription": "Imaginea de mai jos ilustrează cele trei tipuri de corp:"
         }
     },
     "userData": {

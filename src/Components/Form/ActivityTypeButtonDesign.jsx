@@ -1,31 +1,38 @@
 import bodyTypes from "../../assets/img/bodyTypes.png";
 import { useTranslation } from "react-i18next";
 
-export function BodyType() {
+export function ActivityType() {
   const { t } = useTranslation();
+  const activityTypes = [
+    "sedentary",
+    "lightlyActive",
+    "moderatelyActive",
+    "intense",
+    "heavy",
+  ];
   return (
     <>
       <button
         type="button"
         className="btn btn-outline-primary btn-sm rounded-pill"
         data-bs-toggle="modal"
-        data-bs-target="#bodyTypeModal"
+        data-bs-target="#activityTypeModal"
       >
         <i className="bi bi-images me-1"></i>{t("form.detailsButton")}
       </button>
 
       <div
         className="modal fade"
-        id="bodyTypeModal"
+        id="activityTypeModal"
         tabIndex="-1"
-        aria-labelledby="bodyTypeModalLabel"
+        aria-labelledby="activityTypeModalLabel"
         aria-hidden="true"
       >
         <div className="modal-dialog modal-lg modal-dialog-centered">
           <div className="modal-content">
             <div className="modal-header bg-primary text-white">
-              <h5 className="modal-title" id="bodyTypeModalLabel">
-                {t("form.bodyTypeExample.bodyTypeTitle")}
+              <h5 className="modal-title" id="activityTypeModalLabel">
+                {t("activityTypes.title")}
               </h5>
               <button
                 type="button"
@@ -35,21 +42,26 @@ export function BodyType() {
               ></button>
             </div>
 
-            <div className="modal-body text-center">
-              <p className="mb-3">
-                {t("form.bodyTypeExample.bodyTypeDescription")}
-                <strong> {t("common.bodyTypeOption.ectomorph")}</strong>, <strong>{t("common.bodyTypeOption.mesomorph")}</strong> {t("form.and")}{" "}
-                <strong>{t("common.bodyTypeOption.endomorph")}</strong>.
-              </p>
-
-              <img
-                src={bodyTypes}
-                alt="Tipuri de corp"
-                className="img-fluid rounded shadow-sm"
-              />
+            <div className="modal-body">
+              <table className="table table-bordered table-hover">
+                <thead>
+                  <tr>
+                    <th>Title</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {activityTypes.map((key) => (
+                    <tr key={key}>
+                      <td>{t(`activityTypes.${key}.label`)}</td>
+                      <td>{t(`activityTypes.${key}.description`)}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
 
-            <div className="modal-footer">
+            <div className="modal-footer border-0">
               <button
                 type="button"
                 className="btn btn-secondary"
