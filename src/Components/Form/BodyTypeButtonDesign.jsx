@@ -38,8 +38,8 @@ export function BodyType() {
             <div className="modal-body text-center">
               <p className="mb-3">
                 {t("form.bodyTypeExample.bodyTypeDescription")}
-                <strong> {t("form.bodyTypeOption.ectomorph")}</strong>, <strong>{t("form.bodyTypeOption.mesomorph")}</strong> și{" "}
-                <strong>{t("form.bodyTypeOption.endomorph")}</strong>.
+                <strong> {t("common.bodyTypeOption.ectomorph")}</strong>, <strong>{t("common.bodyTypeOption.mesomorph")}</strong> {t("form.bodyTypeExample.and")}{" "}
+                <strong>{t("common.bodyTypeOption.endomorph")}</strong>.
               </p>
 
               <img

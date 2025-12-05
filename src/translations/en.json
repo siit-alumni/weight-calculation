@@ -28,7 +28,9 @@
         "bodyTypeExample": {
             "bodyTypeTitle": "Body Types",
             "bodyTypeDescription": "The image below illustrates the three body types:",
-            "closeButton": "Close"
+            "closeButton": "Close",
+            "and": "and"
+
         }
     },
     "userData": {

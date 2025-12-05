@@ -33,7 +33,7 @@ export function Form({ getDetails }) {
   return (
     <form onSubmit={handleFormSubmit} className="container p-3">
       <div className="row mb-2">
-        <div className="col col-md mb-3">
+        <div className="col-md mb-3">
           <label htmlFor="name" className="form-label">
             {t("form.name")}
           </label>
@@ -48,7 +48,7 @@ export function Form({ getDetails }) {
             required
           />
         </div>
-        <div className="col col-md mb-3">
+        <div className="col-md mb-3">
           <label htmlFor="age" className="form-label">
             {t("form.age")}
           </label>
@@ -63,7 +63,7 @@ export function Form({ getDetails }) {
             required
           />
         </div>
-        <div className="col col-md mb-3">
+        <div className="col-md mb-3">
           <label htmlFor="gender" className="form-label">
             {t("form.gender")}
           </label>
@@ -80,7 +80,7 @@ export function Form({ getDetails }) {
         </div>
       </div>
 
-      <div className="row mb-3">
+      <div className="row mb-2">
         <div className="col-md-6 mb-3">
           <label htmlFor="weight" className="form-label">
             {t("form.weight")}
@@ -114,8 +114,6 @@ export function Form({ getDetails }) {
       </div>
 
       <div className="row mb-3">
-       
-
         <div className="col-md-6 mb-3">
           <div className="d-flex justify-content-between align-items-center">
             <label htmlFor="bodyType" className="form-label mb-0">
@@ -131,7 +129,7 @@ export function Form({ getDetails }) {
             onChange={onHandleChange}
             value={formData.bodyType}
           >
-           
+
             {Object.entries(settings.bodyTypeCoeff).map(([key]) => (
               <option key={key} value={key}>
                 {t(`common.bodyTypeOption.${key}`)}
@@ -158,7 +156,7 @@ export function Form({ getDetails }) {
             {Object.entries(settings.calorieConsumptionLevels).map(([key]) =>
             (<option key={key} value={key}>
               {t(`activityTypes.${key}.label`)}
-               {/* - {t(`activityTypes.${key}.description`)} */}
+              {/* - {t(`activityTypes.${key}.description`)} */}
             </option>))}
 
           </select>

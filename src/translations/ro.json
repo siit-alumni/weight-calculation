@@ -28,7 +28,8 @@
         "bodyTypeExample": {
             "bodyTypeTitle": "Tipuri de corp",
             "bodyTypeDescription": "Imaginea de mai jos ilustrează cele trei tipuri de corp:",
-            "closeButton": "Închide"
+            "closeButton": "Închide",
+            "and": "și"
         }
     },
     "userData": {
