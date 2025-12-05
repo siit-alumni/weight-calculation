@@ -9,7 +9,7 @@ export function calcBmi(weight, height) {
 export function bmiInterpretation(bmi) {
 
   for (const key in settings.bodyEvaluation) {
-    const [min, max] = settings.bodyEvaluation[key];
+    const {min, max} = settings.bodyEvaluation[key];
     if (Number(bmi) >= min && Number(bmi) < max) {
 
       return key;
@@ -37,7 +37,7 @@ export function calcBasalMetabolism(height, gender, bodyType, age) {
 }
 
 export function calcCalorieConsumption(basalMetabolism, activityTypes) {
-  const [minLevel, maxLevel] = settings.calorieConsumptionLevels[activityTypes];
+  const {min: minLevel, max: maxLevel} = settings.calorieConsumptionLevels[activityTypes];
   
   const minCalories = Math.round(basalMetabolism + (minLevel* 24));
   const maxCalories = Math.round(basalMetabolism + (maxLevel * 24));

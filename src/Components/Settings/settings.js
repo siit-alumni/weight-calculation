@@ -12,16 +12,43 @@ export const settings = {
     endomorph: 1.1,
   },
   bodyEvaluation: {
-    underweight: [0, 18.5],
-    normal: [18.5, 24.9],
-    overweight: [25, 29.9],
-    obesity: [30, Infinity],
+    underweight: {
+      min: 0,
+      max: 18.49
+    },
+    normal: {
+      min: 18.5,
+      max: 24.99
+    },
+    overweight: {
+      min: 25,
+      max: 29.99
+    },
+    obesity: {
+      min: 30,
+      max: Infinity
+    },
   },
   calorieConsumptionLevels: {
-    sedentary: [25,30],
-    lightlyActive: [30,35],
-    moderatelyActive: [35,45],
-    intense: [45,50],
-    heavy: [50,60],
+    sedentary: {
+      min: 25,
+      max: 30
+    },
+    lightlyActive: {
+      min: 30,
+      max: 35
+    },
+    moderatelyActive: {
+      min: 35,
+      max: 45
+    },
+    intense: {
+      min: 45,
+      max: 50
+    },
+    heavy: {
+      min: 50,
+      max: 60
+    },
   },
 };
