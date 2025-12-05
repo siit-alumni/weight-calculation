@@ -1,4 +1,4 @@
-import { CalcBmi } from "./Components/CalcBmi/CalcBmi";
+import { Report } from "./Components/Report/Report";
 import "./App.css";
 import { useTranslation } from "react-i18next";
 
@@ -14,7 +14,7 @@ export function App() {
         <button onClick={() => switchLanguage("en")}>English</button>
       </div>
       <div>
-        <CalcBmi />
+        <Report/>
       </div>
     </>
   );

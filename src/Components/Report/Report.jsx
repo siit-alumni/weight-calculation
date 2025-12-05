@@ -3,12 +3,12 @@ import { Form } from "../Form/Form";
 import IdealWeight from "../IdealWeight/IdealWeight";
 import { BmiInterpretation } from "../BmiInterpretation/BmiInterpretation";
 import { calcBmi } from "../functions/functions";
-import "./CalcBmi.css";
+import "./Report.css";
 import UserData from "../UserData/UserData";
 import { BasalMetabolism } from "../BasalMetabolism/BAsalMetabolism";
 import { CaloricRequirements } from "../CaloricRequirements/CaloricRequirements";
 
-export function CalcBmi() {
+export function Report() {
   const [formData, setFormData] = useState({
     name: "",
     age: "",
