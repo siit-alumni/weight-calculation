@@ -119,17 +119,13 @@
             "fish": "Pește",
             "fats": "Grăsimi",
             "seeds": "Semințe",
-            "bread": "Pâine",
             "cereals/grains": "Cereale",
-            "starchy vegetables": "Legume amidonoase",
             "legumes": "Leguminoase",
-            "dried fruits": "Fructe uscate",
-            "sweets": "Dulciuri",
-            "sauces": "Sosuri",
-            "beverages": "Băuturi",
-            "alcohol": "Alcool",
-            "supplements": "Suplimente",
-            "eggs": "Ouă"
+            "egg": "Ouă",
+            "oil": "Ulei",
+            "flour": "Făinoase",
+            "condiment": "Condimente",
+            "sugar": "Zahăr"
         },
         "Calories 100g": {
             "title": "Calorii per 100g"

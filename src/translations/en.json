@@ -121,21 +121,16 @@
             "grains": "Grains",
             "organs": "Organs",
             "fish": "Fish",
-            "fats": "Fats",
             "seeds": "Seeds",
-            "bread": "Bread",
             "cereals/grains": "Cereals/Grains",
-            "starchy vegetables": "Starchy Vegetables",
             "legumes": "Legumes",
-            "dried fruits": "Dried Fruits",
-            "sweets": "Sweets",
-            "sauces": "Sauces",
-            "beverages": "Beverages",
-            "alcohol": "Alcohol",
-            "supplements": "Supplements",
-            "egg": "Egg"
+            "egg": "Egg",
+            "oil": "Oil",
+            "flour": "Flour",
+            "condiment": "Condiments",
+            "sugar": "Sugar"
         },
-                "Calories 100g": {
+        "Calories 100g": {
             "title": "Calories per 100g"
         },
         "Protein g": {
@@ -156,7 +151,7 @@
         "Serving g": {
             "title": "Serving size (g)"
         },
-        "product":{
+        "product": {
             "Egg": "Egg",
             "Egg white": "Egg white",
             "Egg yolk": "Egg yolk",
