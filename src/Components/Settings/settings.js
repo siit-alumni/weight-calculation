@@ -51,4 +51,61 @@ export const settings = {
       max: 60
     },
   },
-};
+  mealsRepartition: {
+    breakfast: 0.3,
+    lunch: 0.45,
+    dinner: 0.15,
+    snack1: 0.05,
+    snack2: 0.05,
+  },
+  // macronutrient distribution in cal/g
+  macronutrientDistribution: {
+    protein: 4.1,
+    carbs: 4.1,
+    fat: 9.3,
+  },
+  recommendedMacronutrientPercentageIntake: {
+    ectomorph: {
+      protein: {
+        min: 25,
+        max: 30,
+      },
+      carbs: {
+        min: 55,
+        max: 60,
+      },
+      fat: {
+        min: 20,
+        max: 10,
+      },
+    },
+    mesomorph: {
+      protein: {
+        min: 30,
+        max: 30,
+      },
+      carbs: {
+        min: 40,
+        max: 50,
+      },
+      fat: {
+        min: 30,
+        max: 20,
+      },
+    },
+    endomorph: {
+      protein: {
+        min: 30,
+        max: 30,
+      },
+      carbs: {
+        min: 40,
+        max: 40,
+      },
+      fat: {
+        min: 30,
+        max: 30,
+      },
+    },
+  },
+};  
