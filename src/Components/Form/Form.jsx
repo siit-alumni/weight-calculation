@@ -158,7 +158,6 @@ export function Form({ getDetails }) {
             {Object.entries(settings.calorieConsumptionLevels).map(([key]) =>
             (<option key={key} value={key}>
               {t(`activityTypes.${key}.label`)}
-              {/* - {t(`activityTypes.${key}.description`)} */}
             </option>))}
 
           </select>
