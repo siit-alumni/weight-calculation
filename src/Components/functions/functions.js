@@ -42,5 +42,31 @@ export function calcCalorieConsumption(basalMetabolism, activityTypes) {
   const minCalories = Math.round(basalMetabolism + (minLevel* 24));
   const maxCalories = Math.round(basalMetabolism + (maxLevel * 24));
 
-  return [minCalories, maxCalories];
+  let caloriesRange = {minCalories, maxCalories};
+
+  return caloriesRange;
+}
+
+export function calcMacronutrientsCalories(calories, bodyType) {
+  const carbsCalories = calories * settings.recommendedMacronutrientPercentageIntake[bodyType].carbs.max/100;
+  const proteinCalories = calories * settings.recommendedMacronutrientPercentageIntake[bodyType].protein.max/100;
+  const fatCalories = calories * settings.recommendedMacronutrientPercentageIntake[bodyType].fat.max/100;   
+
+  return {
+    carbsCalories,
+    proteinCalories,
+    fatCalories
+  };
+}
+
+export function calcMacronutrientsGrams(macronutrientsCalories) {
+  const {carbsCalories, proteinCalories, fatCalories} = macronutrientsCalories; 
+  const carbsGrams = Math.round(carbsCalories / settings.macronutrientDistribution.carbs);
+  const proteinGrams = Math.round(proteinCalories / settings.macronutrientDistribution.protein);
+  const fatGrams = Math.round(fatCalories / settings.macronutrientDistribution.fat);   
+  return {
+    carbsGrams,
+    proteinGrams,
+    fatGrams
+  };
 }

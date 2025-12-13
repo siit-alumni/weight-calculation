@@ -11,6 +11,15 @@
             "ectomorph": "Ectomorph",
             "mesomorph": "Mesomorph",
             "endomorph": "Endomorph"
+        },
+        "measurement": {
+            "weightUnit": "grams",
+            "caloricUnit": "calories"
+        },
+        "Macronutrients": {
+            "carbs": "Carbohydrates",
+            "protein": "Protein",
+            "fat": "Fat"
         }
     },
     "report": {
@@ -65,6 +74,10 @@
     "idealWeight": {
         "title": "Ideal Weight",
         "description": "Ideal weight is an estimate of a healthy body weight for a given height, gender, age, and body type."
+    },
+    "macronutrientsPerDay": {
+        "title": "Macronutrients Per Day",
+        "description": "Macronutrients per day represent the daily recommended amount of carbohydrates, proteins, and fats for a given height, gender, age, and body type."
     },
     "activityTypes": {
         "title": "Physical Activity Type",

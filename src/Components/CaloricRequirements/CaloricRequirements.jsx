@@ -7,11 +7,12 @@ export function CaloricRequirements({ formData }) {
 
   const basalMetabolism = calcBasalMetabolism(height, gender, bodyType, age);
   const caloricRequirements = calcCalorieConsumption(basalMetabolism, activityTypes);
+
   return (
     <div>
       <h3>{t("caloricRequirements.title")}</h3>
       <p>{t("caloricRequirements.description")}</p>
-      <h5>{t("caloricRequirements.DCRLabel")}: {caloricRequirements[0]} - {caloricRequirements[1]} kcal/day</h5>
+      <h5>{t("caloricRequirements.DCRLabel")}: {caloricRequirements.minCalories} - {caloricRequirements.maxCalories} kcal/day</h5>
     </div>
   );
 }

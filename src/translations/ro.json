@@ -11,6 +11,15 @@
             "ectomorph": "Ectomorf",
             "mesomorph": "Mezomorf",
             "endomorph": "Endomorf"
+        },
+        "measurement": {
+            "weightUnit": "grame",
+            "caloricUnit": "calorii"
+        },
+        "Macronutrients": {
+            "carbs": "Carbohidrați",
+            "protein": "Proteine",
+            "fat": "Grăsimi"
         }
     },
     "report": {
@@ -61,6 +70,10 @@
     "idealWeight": {
         "title": "Greutate ideală",
         "description": "Greutatea ideală este o estimare a greutății corporale considerate sănătoase pentru o anumită înălțime, sex, vârstă și tip de corp."
+    },
+    "macronutrientsPerDay": {
+        "title": "Macronutrienți pe zi",
+        "description": "Macronutrienții pe zi reprezintă cantitatea zilnică de carbohidrați, proteine și grăsimi recomandată pentru o anumită înălțime, sex, vârstă și tip de corp."
     },
     "activityTypes": {
         "title": "Tip de activitate fizică",

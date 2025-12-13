@@ -8,6 +8,7 @@ import UserData from "../UserData/UserData";
 import { BasalMetabolism } from "../BasalMetabolism/BAsalMetabolism";
 import { CaloricRequirements } from "../CaloricRequirements/CaloricRequirements";
 import { useTranslation } from "react-i18next";
+import MacronutrientsPerDay from "../MacronutrientsPerDay/MacronutrientsPerDay";
 
 export function Report() {
   const { t } = useTranslation();
@@ -37,6 +38,7 @@ export function Report() {
           <IdealWeight formData={formData} />
           <BasalMetabolism formData={formData} />
           <CaloricRequirements formData={formData} />
+          <MacronutrientsPerDay formData={formData} />
         </div>
       )}
     </div>
