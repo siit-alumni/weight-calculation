@@ -2,6 +2,16 @@
 
 
 export const settings = {
+  defaultUser:  {
+    name: "",
+    age: "",
+    weight: "",
+    height: "",
+    gender: "female",
+    bodyType: "ectomorph",
+    activityTypes: "sedentary",
+  },
+
   genderCoefficient: {
     female: 0.9,
     male: 1,

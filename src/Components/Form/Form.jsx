@@ -3,19 +3,11 @@ import { BodyType } from "./BodyTypeButtonDesign";
 import { useTranslation } from "react-i18next";
 import { settings } from "../Settings/settings";
 import { ActivityType } from "./ActivityTypeButtonDesign";
+import { getUserDataFromLocalStorage, saveUserDataToLocalStorage } from "../functions/functions";
 
 export function Form({ getDetails }) {
   const { t } = useTranslation();
-
-  const [formData, setFormData] = useState({
-    name: "Rares",
-    age: "45",
-    weight: "80",
-    height: "180",
-    gender: "male",
-    bodyType: "ectomorph",
-    activityTypes: "sedentary",
-  });
+  const [formData, setFormData] = useState(getUserDataFromLocalStorage());
 
   const onHandleChange = (e) => {
     const { name, value } = e.target;
@@ -23,11 +15,13 @@ export function Form({ getDetails }) {
       ...prev,
       [name]: value,
     }));
+ 
   };
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
     getDetails(formData);
+       saveUserDataToLocalStorage(formData);
   };
 
 

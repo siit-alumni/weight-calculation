@@ -70,3 +70,16 @@ export function calcMacronutrientsGrams(macronutrientsCalories) {
     fatGrams
   };
 }
+
+export function getUserDataFromLocalStorage() {
+  const userData = localStorage.getItem("userData");
+  return userData ? JSON.parse(userData) : settings.defaultUser;
+}
+
+export function saveUserDataToLocalStorage(userData) {
+  localStorage.setItem("userData", JSON.stringify(userData));
+}
+
+export function clearUserDataFromLocalStorage() {
+  localStorage.setItem("userData", JSON.stringify(settings.defaultUser));
+}
