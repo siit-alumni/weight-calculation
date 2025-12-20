@@ -170,8 +170,9 @@ export function Form({ getDetails }) {
           {t("form.calculateButton")}
         </button>
       </form>
-      <button className="btn btn-secondary" onClick={handleReset}>{t("form.resetButton")}</button>
-
+      {formData.name && (
+        <button className="btn btn-secondary" onClick={handleReset}>{t("form.resetButton")}</button>
+      )}
 
     </div>
   );
