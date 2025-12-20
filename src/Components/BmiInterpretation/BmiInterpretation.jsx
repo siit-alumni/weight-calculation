@@ -1,9 +1,10 @@
 import { useTranslation } from "react-i18next";
-import { bmiInterpretation } from "../functions/functions";
+import { bmiInterpretation, calcBmi } from "../functions/functions";
 import "./BmiInterpretation.css";
 
 
-export function BmiInterpretation({ bmi, name }) {
+export function BmiInterpretation({ formData }) {
+  const bmi = calcBmi(formData.weight, formData.height)
   const message = bmiInterpretation(bmi);
   const { t } = useTranslation();
 

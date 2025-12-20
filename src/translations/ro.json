@@ -36,6 +36,7 @@
         "gender": "Sexul",
         "bodyType": "Tipul de corp",
         "calculateButton": "Calculează IMC",
+        "resetButton": "Resetează formularul",
         "detailsButton": "Detalii",
         "closeButton": "Închide",
         "and": "și",

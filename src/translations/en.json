@@ -36,6 +36,7 @@
         "gender": "Gender",
         "bodyType": "Body Type",
         "calculateButton": "Calculate BMI",
+        "resetButton": "Reset Form",
         "detailsButton": "Details",
         "closeButton": "Close",
         "and": "and",
