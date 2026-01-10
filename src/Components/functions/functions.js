@@ -47,10 +47,10 @@ export function calcCalorieConsumption(basalMetabolism, activityTypes) {
   return caloriesRange;
 }
 
-export function calcMacronutrientsCalories(calories, bodyType) {
-  const carbsCalories = calories * settings.recommendedMacronutrientPercentageIntake[bodyType].carbs.max/100;
-  const proteinCalories = calories * settings.recommendedMacronutrientPercentageIntake[bodyType].protein.max/100;
-  const fatCalories = calories * settings.recommendedMacronutrientPercentageIntake[bodyType].fat.max/100;   
+export function calcMacronutrientsCalories(calories, macronutrientPercentages) {
+  const carbsCalories = calories * macronutrientPercentages.carbs / 100;
+  const proteinCalories = calories * macronutrientPercentages.protein / 100;
+  const fatCalories = calories * macronutrientPercentages.fat / 100;   
 
   return {
     carbsCalories,

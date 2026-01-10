@@ -1,7 +1,5 @@
 import { useTranslation } from "react-i18next";
 import { calcBasalMetabolism, calcCalorieConsumption, calcIdealWeight, calcMacronutrientsCalories, calcMacronutrientsGrams } from "../functions/functions";
-import { MacronutrientsPercentageSelection } from "./MacronutrientsPercentageSelection";
-
 
 export default function MacronutrientsPerDay({ formData, macronutrientPercentages }) {
   const { weight, height, gender, bodyType, age, activityTypes } = formData;
@@ -9,8 +7,8 @@ export default function MacronutrientsPerDay({ formData, macronutrientPercentage
 
   const basalMetabolism = calcBasalMetabolism(height, gender, bodyType, age);
   const { minCalories, maxCalories } = calcCalorieConsumption(basalMetabolism, activityTypes);
-  const minMacronutrientsCalories = calcMacronutrientsCalories(minCalories, bodyType);
-  const maxMacronutrientsCalories = calcMacronutrientsCalories(maxCalories, bodyType);
+  const minMacronutrientsCalories = calcMacronutrientsCalories(minCalories, macronutrientPercentages);
+  const maxMacronutrientsCalories = calcMacronutrientsCalories(maxCalories, macronutrientPercentages);
   const minMacronutrientsGrams = calcMacronutrientsGrams(minMacronutrientsCalories);
   const maxMacronutrientsGrams = calcMacronutrientsGrams(maxMacronutrientsCalories);
 
