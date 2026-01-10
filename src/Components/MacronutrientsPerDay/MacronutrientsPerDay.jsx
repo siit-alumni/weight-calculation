@@ -1,8 +1,9 @@
 import { useTranslation } from "react-i18next";
 import { calcBasalMetabolism, calcCalorieConsumption, calcIdealWeight, calcMacronutrientsCalories, calcMacronutrientsGrams } from "../functions/functions";
+import { MacronutrientsPercentageSelection } from "./MacronutrientsPercentageSelection";
 
 
-export default function MacronutrientsPerDay({ formData }) {
+export default function MacronutrientsPerDay({ formData, macronutrientPercentages }) {
   const { weight, height, gender, bodyType, age, activityTypes } = formData;
   const { t } = useTranslation();
 

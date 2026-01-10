@@ -8,13 +8,20 @@ import { BasalMetabolism } from "../BasalMetabolism/BAsalMetabolism";
 import { CaloricRequirements } from "../CaloricRequirements/CaloricRequirements";
 import { useTranslation } from "react-i18next";
 import MacronutrientsPerDay from "../MacronutrientsPerDay/MacronutrientsPerDay";
+import { MacronutrientsPercentageSelection } from "../MacronutrientsPerDay/MacronutrientsPercentageSelection";
 
 export function Report() {
   const { t } = useTranslation();
   const [formData, setFormData] = useState(null);
+  const [macronutrientPercentages, setMacronutrientPercentages] = useState(null);
+
+  function getPercentages(percentages) {
+    setMacronutrientPercentages(percentages);
+  }
 
   function getDetails(data) {
     setFormData(data);
+    setMacronutrientPercentages(null);
   }
 
   return (
@@ -28,7 +35,9 @@ export function Report() {
           <IdealWeight formData={formData} />
           <BasalMetabolism formData={formData} />
           <CaloricRequirements formData={formData} />
-          <MacronutrientsPerDay formData={formData} />
+          <MacronutrientsPercentageSelection formData={formData} getPercentages={getPercentages}/>
+          {macronutrientPercentages && 
+            <MacronutrientsPerDay formData={formData} macronutrientPercentages={macronutrientPercentages} />}
         </div>
       )}
     </div>

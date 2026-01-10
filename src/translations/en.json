@@ -80,6 +80,15 @@
         "title": "Macronutrients Per Day",
         "description": "Macronutrients per day represent the daily recommended amount of carbohydrates, proteins, and fats for a given height, gender, age, and body type."
     },
+    "macronutrientsPercentageSelection": {
+        "title": "Macronutrients Percentage Selection",
+        "description": "Choose your desired percentages for carbohydrates, proteins, and fats. The total sum must be 100%.",
+        "carbsLabel": "Carbohydrates (%)",
+        "proteinLabel": "Protein (%)",
+        "fatLabel": "Fat (%)",
+        "errorMessage": "The sum of the percentages must be 100%.",
+        "submitButton": "Calculate Macronutrients Per Day"
+    },
     "activityTypes": {
         "title": "Physical Activity Type",
         "sedentary": {

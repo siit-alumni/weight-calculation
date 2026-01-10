@@ -76,6 +76,15 @@
         "title": "Macronutrienți pe zi",
         "description": "Macronutrienții pe zi reprezintă cantitatea zilnică de carbohidrați, proteine și grăsimi recomandată pentru o anumită înălțime, sex, vârstă și tip de corp."
     },
+    "macronutrientsPercentageSelection": {
+        "title": "Selectarea procentajului macronutrienților",
+        "description": "Alegeți procentajele dorite pentru carbohidrați, proteine și grăsimi. Suma totală trebuie să fie 100%.",
+        "carbsLabel": "Carbohidrați: intre ",
+        "proteinLabel": "Proteine: intre ",
+        "fatLabel": "Grăsimi: intre  ",
+        "errorMessage": "Suma procentajelor trebuie să fie 100%.",
+        "submitButton": "Calculează macronutrienti pe zi"
+    },
     "activityTypes": {
         "title": "Tip de activitate fizică",
         "sedentary": {
