@@ -83,7 +83,8 @@
         "proteinLabel": "Proteine: intre ",
         "fatLabel": "Grăsimi: intre  ",
         "errorMessage": "Suma procentajelor trebuie să fie 100%.",
-        "submitButton": "Calculează macronutrienti pe zi"
+        "submitButton": "Calculează macronutrienti pe zi",
+        "resetButton": "Resetează la valorile implicite"
     },
     "activityTypes": {
         "title": "Tip de activitate fizică",

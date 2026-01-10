@@ -9,7 +9,7 @@ export function calcBmi(weight, height) {
 export function bmiInterpretation(bmi) {
 
   for (const key in settings.bodyEvaluation) {
-    const {min, max} = settings.bodyEvaluation[key];
+    const { min, max } = settings.bodyEvaluation[key];
     if (Number(bmi) >= min && Number(bmi) < max) {
 
       return key;
@@ -25,24 +25,24 @@ export function calcIdealWeight(height, gender, bodyType, age) {
 
 export function bodyTypeCoefficient(bodyType) {
   for (const key in settings.bodyTypeCoeff) {
-      if (key === bodyType) {
-        return settings.bodyTypeCoeff[key];
-      }
+    if (key === bodyType) {
+      return settings.bodyTypeCoeff[key];
     }
+  }
 }
 
 
 export function calcBasalMetabolism(height, gender, bodyType, age) {
-  return Math.round(calcIdealWeight(height, gender, bodyType, age)*24)  ;
+  return Math.round(calcIdealWeight(height, gender, bodyType, age) * 24);
 }
 
 export function calcCalorieConsumption(basalMetabolism, activityTypes) {
-  const {min: minLevel, max: maxLevel} = settings.calorieConsumptionLevels[activityTypes];
-  
-  const minCalories = Math.round(basalMetabolism + (minLevel* 24));
+  const { min: minLevel, max: maxLevel } = settings.calorieConsumptionLevels[activityTypes];
+
+  const minCalories = Math.round(basalMetabolism + (minLevel * 24));
   const maxCalories = Math.round(basalMetabolism + (maxLevel * 24));
 
-  let caloriesRange = {minCalories, maxCalories};
+  let caloriesRange = { minCalories, maxCalories };
 
   return caloriesRange;
 }
@@ -50,7 +50,7 @@ export function calcCalorieConsumption(basalMetabolism, activityTypes) {
 export function calcMacronutrientsCalories(calories, macronutrientPercentages) {
   const carbsCalories = calories * macronutrientPercentages.carbs / 100;
   const proteinCalories = calories * macronutrientPercentages.protein / 100;
-  const fatCalories = calories * macronutrientPercentages.fat / 100;   
+  const fatCalories = calories * macronutrientPercentages.fat / 100;
 
   return {
     carbsCalories,
@@ -60,10 +60,10 @@ export function calcMacronutrientsCalories(calories, macronutrientPercentages) {
 }
 
 export function calcMacronutrientsGrams(macronutrientsCalories) {
-  const {carbsCalories, proteinCalories, fatCalories} = macronutrientsCalories; 
+  const { carbsCalories, proteinCalories, fatCalories } = macronutrientsCalories;
   const carbsGrams = Math.round(carbsCalories / settings.macronutrientDistribution.carbs);
   const proteinGrams = Math.round(proteinCalories / settings.macronutrientDistribution.protein);
-  const fatGrams = Math.round(fatCalories / settings.macronutrientDistribution.fat);   
+  const fatGrams = Math.round(fatCalories / settings.macronutrientDistribution.fat);
   return {
     carbsGrams,
     proteinGrams,
@@ -82,4 +82,35 @@ export function saveUserDataToLocalStorage(userData) {
 
 export function clearUserDataFromLocalStorage() {
   localStorage.setItem("userData", JSON.stringify(settings.defaultUser));
+}
+
+export function getMacronutrientsPercentagesFromLocalStorage(bodyType) {
+  const macronutrientsPercentages = localStorage.getItem(`macronutrientsPercentages_${bodyType}`);
+  const percentages = {
+    protein: settings.recommendedMacronutrientPercentageIntake[bodyType].protein.max,
+    carbs: settings.recommendedMacronutrientPercentageIntake[bodyType].carbs.max,
+    fat: settings.recommendedMacronutrientPercentageIntake[bodyType].fat.max,
+  }
+  return macronutrientsPercentages ? JSON.parse(macronutrientsPercentages) : percentages;
+}
+
+export function saveMacronutrientsPercentagesToLocalStorage(bodyType, percentages) {
+  localStorage.setItem(`macronutrientsPercentages_${bodyType}`, JSON.stringify(percentages));
+}
+
+export function clearMacronutrientsPercentagesFromLocalStorage(bodyType) {
+  localStorage.removeItem(`macronutrientsPercentages_${bodyType}`);
+}
+
+export function checkDefaultPercentages(bodyType, percentages) {
+  const defaultPercentages = {
+    protein: settings.recommendedMacronutrientPercentageIntake[bodyType].protein.max,
+    carbs: settings.recommendedMacronutrientPercentageIntake[bodyType].carbs.max,
+    fat: settings.recommendedMacronutrientPercentageIntake[bodyType].fat.max,
+  }
+  return (
+    percentages.protein === defaultPercentages.protein &&
+    percentages.carbs === defaultPercentages.carbs &&
+    percentages.fat === defaultPercentages.fat
+  );
 }

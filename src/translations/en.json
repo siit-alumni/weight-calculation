@@ -83,11 +83,12 @@
     "macronutrientsPercentageSelection": {
         "title": "Macronutrients Percentage Selection",
         "description": "Choose your desired percentages for carbohydrates, proteins, and fats. The total sum must be 100%.",
-        "carbsLabel": "Carbohydrates (%)",
-        "proteinLabel": "Protein (%)",
-        "fatLabel": "Fat (%)",
+        "carbsLabel": "Carbohydrates: between ",
+        "proteinLabel": "Protein: between ",
+        "fatLabel": "Fat: between ",
         "errorMessage": "The sum of the percentages must be 100%.",
-        "submitButton": "Calculate Macronutrients Per Day"
+        "submitButton": "Calculate Macronutrients Per Day",
+        "resetButton": "Reset to Default Values"
     },
     "activityTypes": {
         "title": "Physical Activity Type",
