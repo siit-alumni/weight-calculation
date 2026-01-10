@@ -31,12 +31,24 @@ export function Report() {
         <div className="results">
           <h2>{t("report.title", { name: formData.name })}</h2>
           <UserData userData={formData} />
-          <BmiInterpretation formData={formData} />
-          <IdealWeight formData={formData} />
-          <BasalMetabolism formData={formData} />
-          <CaloricRequirements formData={formData} />
-          <MacronutrientsPercentageSelection formData={formData} getPercentages={getPercentages}/>
-          {macronutrientPercentages && 
+          <div className="row mb-2">
+            <div className="col-md-6 mb-3">
+              <BmiInterpretation formData={formData} />
+            </div>
+            <div className="col-md-6 mb-3">
+              <IdealWeight formData={formData} />
+            </div>
+          </div>
+          <div className="row mb-2">
+            <div className="col-md-6 mb-3">
+              <BasalMetabolism formData={formData} />
+            </div>
+            <div className="col-md-6 mb-3">
+              <CaloricRequirements formData={formData} />
+            </div>
+          </div>
+          <MacronutrientsPercentageSelection formData={formData} getPercentages={getPercentages} />
+          {macronutrientPercentages &&
             <MacronutrientsPerDay formData={formData} macronutrientPercentages={macronutrientPercentages} />}
         </div>
       )}
