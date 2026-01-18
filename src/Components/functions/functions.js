@@ -76,12 +76,49 @@ export function getUserDataFromLocalStorage() {
   return userData ? JSON.parse(userData) : settings.defaultUser;
 }
 
+export function clearUserDataFromLocalStorage() {
+  localStorage.setItem("userData", JSON.stringify(settings.defaultUser));
+}
+
 export function saveUserDataToLocalStorage(userData) {
   localStorage.setItem("userData", JSON.stringify(userData));
 }
 
-export function clearUserDataFromLocalStorage() {
-  localStorage.setItem("userData", JSON.stringify(settings.defaultUser));
+export function getUsersFromLocalStorage(){
+  const users = localStorage.getItem("WeightCalculatorApp");
+  return users ? JSON.parse(users) : { profiles: [] };
+}
+
+export function saveUsersToLocalStorage(users){
+  const usersData = { profiles: users };
+  localStorage.setItem('WeightCalculatorApp', JSON.stringify(usersData));
+}
+
+export function addNewUserToLocalStorage(user){
+  const usersData = getUsersFromLocalStorage();
+  usersData.profiles.push(user);
+  localStorage.setItem('WeightCalculatorApp', JSON.stringify(usersData));
+}
+
+export function deleteUserFromLocalStorage(user){
+  const usersData = getUsersFromLocalStorage();
+  const filteredUsers = usersData.profiles.filter(profile => profile.id !== user.id);
+  const newUsersData = { profiles: filteredUsers };
+  localStorage.setItem('WeightCalculatorApp', JSON.stringify(newUsersData));
+}
+
+export function updateUserInLocalStorage(user){
+  const usersData = getUsersFromLocalStorage();
+  const index = usersData.profiles.findIndex(profile => profile.id === user.id);
+  user.id = user.name;
+  usersData.profiles[index] = user;
+  localStorage.setItem('WeightCalculatorApp', JSON.stringify(usersData));
+}
+
+export function findUserInLocalStorage(userId){
+  const usersData = getUsersFromLocalStorage();
+  const index = usersData.profiles.findIndex(profile => profile.id === userId);
+  return usersData.profiles[index];
 }
 
 export function getMacronutrientsPercentagesFromLocalStorage(bodyType) {

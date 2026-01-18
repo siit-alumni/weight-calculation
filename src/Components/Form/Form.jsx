@@ -3,7 +3,7 @@ import { BodyType } from "./BodyTypeButtonDesign";
 import { useTranslation } from "react-i18next";
 import { settings } from "../Settings/settings";
 import { ActivityType } from "./ActivityTypeButtonDesign";
-import { clearUserDataFromLocalStorage, getUserDataFromLocalStorage, saveUserDataToLocalStorage } from "../functions/functions";
+import { addNewUserToLocalStorage, clearUserDataFromLocalStorage, getUserDataFromLocalStorage, saveUserDataToLocalStorage } from "../functions/functions";
 
 export function Form({ getDetails }) {
   const { t } = useTranslation();
@@ -21,7 +21,9 @@ export function Form({ getDetails }) {
   const handleFormSubmit = (e) => {
     e.preventDefault();
     getDetails(formData);
+    formData.id = formData.name;
     saveUserDataToLocalStorage(formData);
+    // addNewUserToLocalStorage(formData);
   };
 
   const handleReset = (e) => {
