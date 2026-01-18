@@ -9,6 +9,7 @@ import { CaloricRequirements } from "../CaloricRequirements/CaloricRequirements"
 import { useTranslation } from "react-i18next";
 import MacronutrientsPerDay from "../MacronutrientsPerDay/MacronutrientsPerDay";
 import { MacronutrientsPercentageSelection } from "../MacronutrientsPerDay/MacronutrientsPercentageSelection";
+import SelectUser from "../SelectUser/SelectUser";
 
 export function Report() {
   const { t } = useTranslation();
@@ -26,6 +27,7 @@ export function Report() {
 
   return (
     <div>
+      <SelectUser />
       <Form getDetails={getDetails} />
       {formData && (
         <div className="results">
