@@ -25,6 +25,8 @@ export default function SelectUser() {
     const handleCreateUser = () => {
         console.log('Create new user');
 
+    const userSelected = selectedUser !== null ? "" : "disabled";
+
     };
 
     return (
@@ -45,12 +47,14 @@ export default function SelectUser() {
               </option>))}
             </select>
 
-            <div>
-                <button onClick={handleSelectUser}>{t("selectUser.selectButton")}</button>
-                <button onClick={handleUpdateUser}>{t("selectUser.modifyButton")}</button>
-                <button onClick={handleCreateUser}>{t("selectUser.createButton")}</button>
-            </div>
             <UserData userData={users.profiles[selectedUser]} />
+
+            <div className="d-flex align-items-center md-3">
+                <button className="btn btn-primary col-md-4 " disabled={!selectedUser}onClick={handleSelectUser}>{t("selectUser.selectButton")}</button>
+                <button className="btn btn-primary col-md-4 " disabled={!selectedUser} onClick={handleUpdateUser}>{t("selectUser.modifyButton")}</button>
+                <button className="btn btn-primary col-md-4" disabled={!selectedUser}>{t("selectUser.deleteButton")}</button>
+                <button className="btn btn-primary col-md-4" onClick={handleCreateUser}>{t("selectUser.createButton")}</button>
+            </div>
         </div>
     );
 }
