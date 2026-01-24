@@ -2,6 +2,22 @@
     "greeting": {
         "welcome": "BINE AI VENIT!"
     },
+    "selectUser": {
+        "selectUser": "Selectează un utilizator!",
+        "noUsers": "Nu există utilizatori salvați.",
+        "selectButton": "Selectează utilizatorul",
+        "selectPlaceholder": "Selectează un utilizator",
+        "deleteButton": "Șterge utilizatorul",
+        "deleteUser": "Șterge utilizatorul selectat",
+        "confirmDelete": "Ești sigur că vrei să ștergi utilizatorul {{name}}?",
+        "cancelButton": "Anulează",
+        "modifyButton": "Modifică utilizatorul",
+        "modifyUser": "Modifică utilizatorul selectat",
+        "modifySuccess": "Informațiile utilizatorului au fost actualizate cu succes!",
+        "createButton": "Utilizator nou",
+        "createUser": "Creează un utilizator nou",
+        "createSuccess": "Utilizatorul a fost creat cu succes!"
+    },
     "common": {
         "genderOption": {
             "male": "Masculin",
@@ -54,7 +70,8 @@
         "bodyType": "Tip de corp",
         "ageUnit": "ani",
         "heightUnit": "cm",
-        "weightUnit": "kg"
+        "weightUnit": "kg",
+        "notAvailable": "Nu există date despre utilizator disponibile."
     },
     "bmiInterpretation": {
         "title": "Indice masa corporală",

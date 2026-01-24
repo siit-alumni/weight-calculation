@@ -2,6 +2,22 @@
     "greeting": {
         "welcome": "Welcome!"
     },
+    "selectUser": {
+        "selectUser": "Select a user!",
+        "noUsers": "No users available. Please add a user first.",
+        "selectButton": "Select User",
+        "selectPlaceholder": "Select a user",
+        "deleteButton": "Delete User",
+        "DeleteUser": "Delete Selected User",
+        "confirmDelete": "Are you sure you want to delete {{name}}?",
+        "cancelButton": "Cancel",
+        "modifyButton": "Modify User",
+        "modifyUser": "Modify User Information",
+        "modifySuccess": "User information updated successfully!",
+        "createButton": "New User",
+        "createUser": "Create New User",
+        "createSuccess": "New user created successfully!"
+    },
     "common": {
         "genderOption": {
             "male": "Male",
@@ -58,7 +74,8 @@
         "bodyType": "Body Type",
         "ageUnit": "years",
         "heightUnit": "cm",
-        "weightUnit": "kg"
+        "weightUnit": "kg",
+        "notAvailable": "No user data available."
     },
     "bmiInterpretation": {
         "title": "Body Mass Index",

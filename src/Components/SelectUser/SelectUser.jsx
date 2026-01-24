@@ -1,22 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { getUsersFromLocalStorage } from '../functions/functions';
+import { useTranslation } from 'react-i18next';
+import UserData from '../UserData/UserData';
 
 export default function SelectUser() {
     const [users, setUsers] = useState(getUsersFromLocalStorage());
     const [selectedUser, setSelectedUser] = useState(null);
-
-    // useEffect(() => {
-    //     const storedUsers = getUserDataFromLocalStorage();
-    //     if (storedUsers) {
-    //         setUsers(JSON.parse(storedUsers));
-    //     }
-    // }, []);
-
-    console.log(users);
-    
-
+      const { t } = useTranslation();
     const handleSelectUser = () => {
-        console.log(selectedUser);
         
         if (selectedUser !== null) {
             console.log('Selected user:', users.profiles[selectedUser]);
@@ -38,7 +29,7 @@ export default function SelectUser() {
 
     return (
         <div>
-            <h2>Select a User</h2>
+            <h2>{t("selectUser.selectUser")}</h2>
 
             <select
               className="form-select mt-2"
@@ -47,7 +38,7 @@ export default function SelectUser() {
               onChange={(e) => setSelectedUser(e.target.value)}
               value={selectedUser || ""}
             >
-              <option value="">-- Select a user --</option>
+              <option value="">-- {t("selectUser.selectPlaceholder")} --</option>
               {Object.entries(users.profiles).map(([key]) =>
               (<option key={key} value={key}>
                 {users.profiles[key].id}
@@ -55,10 +46,11 @@ export default function SelectUser() {
             </select>
 
             <div>
-                <button onClick={handleSelectUser}>Select User</button>
-                <button onClick={handleUpdateUser}>Update User</button>
-                <button onClick={handleCreateUser}>Create New User</button>
+                <button onClick={handleSelectUser}>{t("selectUser.selectButton")}</button>
+                <button onClick={handleUpdateUser}>{t("selectUser.modifyButton")}</button>
+                <button onClick={handleCreateUser}>{t("selectUser.createButton")}</button>
             </div>
+            <UserData userData={users.profiles[selectedUser]} />
         </div>
     );
 }

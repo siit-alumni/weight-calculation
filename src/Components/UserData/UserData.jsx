@@ -2,10 +2,12 @@ import { useTranslation } from 'react-i18next';
 
 
 export default function UserData({ userData }) {
-    if (!userData) {
-        return <p>No user data available.</p>;
-    }
     const { t } = useTranslation();
+
+    if (!userData) {
+        return <p>{t("userData.notAvailable")}</p>;
+    }
+
 
     return (
         <div>
