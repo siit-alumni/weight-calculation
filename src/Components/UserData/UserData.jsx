@@ -1,9 +1,11 @@
+import { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
+import { UserContext } from '../../App';
 
 
-export default function UserData({ userData }) {
+export default function UserData() {
     const { t } = useTranslation();
-
+const { userData, setUserData } = useContext(UserContext);
     if (!userData) {
         return <p>{t("userData.notAvailable")}</p>;
     }

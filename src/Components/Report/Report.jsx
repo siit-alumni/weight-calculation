@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Form } from "../Form/Form";
 import IdealWeight from "../IdealWeight/IdealWeight";
 import { BmiInterpretation } from "../BmiInterpretation/BmiInterpretation";
@@ -15,6 +15,10 @@ export function Report() {
   const { t } = useTranslation();
   const [formData, setFormData] = useState(null);
   const [macronutrientPercentages, setMacronutrientPercentages] = useState(null);
+  // const { userData, setUserData } = useContext(UserContext);
+
+  // console.log(userData);
+  
 
   function getPercentages(percentages) {
     setMacronutrientPercentages(percentages);
