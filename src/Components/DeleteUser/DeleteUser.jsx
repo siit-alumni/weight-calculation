@@ -3,20 +3,19 @@ import { Link, useNavigate } from "react-router-dom";
 import UserData from "../UserData/UserData";
 import { useContext } from "react";
 import { UserContext } from "../../App";
-import { getUsersFromLocalStorage, saveUsersToLocalStorage } from "../functions/functions";
+import { deleteUserFromLocalStorage, getUsersFromLocalStorage, saveUsersToLocalStorage } from "../functions/functions";
 
 export function DeleteUser() {
-    const { t } = useTranslation();
-   const navigate = useNavigate();
-    const users = getUsersFromLocalStorage();
-    const { userData, setUserData } = useContext(UserContext);
-    const updatedUsers = users.profiles.filter(user => user.id !== userData.id);
+  const { t } = useTranslation();
+  const navigate = useNavigate();
+  const users = getUsersFromLocalStorage();
+  const { userData, setUserData } = useContext(UserContext);
 
-      const handleDelete = (e) => {
-        e.preventDefault();
-        saveUsersToLocalStorage(updatedUsers);
-        navigate('/selectUser');
-      };
+  const handleDelete = (e) => {
+    e.preventDefault();
+    deleteUserFromLocalStorage(userData);
+    navigate('/selectUser');
+  };
 
   return (
     <div>
