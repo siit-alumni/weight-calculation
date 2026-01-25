@@ -95,6 +95,8 @@ export function saveUsersToLocalStorage(users){
 }
 
 export function addNewUserToLocalStorage(user){
+  console.log("Add new user", user);
+  
   const usersData = getUsersFromLocalStorage();
   usersData.profiles.push(user);
   localStorage.setItem('WeightCalculatorApp', JSON.stringify(usersData));

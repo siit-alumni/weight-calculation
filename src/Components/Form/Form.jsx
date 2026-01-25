@@ -7,9 +7,9 @@ import { addNewUserToLocalStorage, clearUserDataFromLocalStorage, getUserDataFro
 import { useNavigate } from "react-router-dom";
 
 
-export function Form() {
+export function Form({getDetails, userData}) {
   const { t } = useTranslation();
-  const [formData, setFormData] = useState(settings.defaultUser);
+  const [formData, setFormData] = useState(userData);
   const navigate = useNavigate();
 
   const onHandleChange = (e) => {
@@ -18,8 +18,13 @@ export function Form() {
       ...prev,
       [name]: value,
     }));
-
+    getDetails(formData);
+    
+    console.log("Form", formData);
+    
+    
   };
+  console.log("Form user data", userData);
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
@@ -169,13 +174,13 @@ export function Form() {
 
         </div>
 
-        <button type="submit" className="btn btn-primary">
+        {/* <button type="submit" className="btn btn-primary">
           {t("form.saveButton")}
-        </button>
-      </form>
+        </button> */}
       {formData.name && (
         <button className="btn btn-secondary" onClick={handleReset}>{t("form.resetButton")}</button>
       )}
+      </form>
 
     </div>
   );
