@@ -20,10 +20,16 @@ export default function SelectUser() {
 
     const handleUpdateUser = () => {
         if (selectedUser !== null) {
-            
+
             console.log('Update user:', users.profiles[selectedUser]);
             console.log(userData);
         }
+    };
+
+    const handleDeleteUser = () => {
+        console.log('Delete user:', users.profiles[selectedUser]);
+        console.log(userData);
+        navigate('/deleteUser');
     };
 
     const handleCreateUser = () => {
@@ -54,12 +60,12 @@ export default function SelectUser() {
                 </option>))}
             </select>
 
-            <UserData  />
+            <UserData />
 
             <div className="d-flex align-items-center md-3">
                 <button className="btn btn-primary col-md-4 " disabled={!selectedUser} onClick={handleSelectUser}>{t("selectUser.selectButton")}</button>
                 <button className="btn btn-primary col-md-4 " disabled={!selectedUser} onClick={handleUpdateUser}>{t("selectUser.modifyButton")}</button>
-                <button className="btn btn-primary col-md-4" disabled={!selectedUser}>{t("selectUser.deleteButton")}</button>
+                <button className="btn btn-primary col-md-4" disabled={!selectedUser} onClick={handleDeleteUser}>{t("selectUser.deleteButton")}</button>
                 <button className="btn btn-primary col-md-4" onClick={handleCreateUser}>{t("selectUser.createButton")}</button>
             </div>
         </div>

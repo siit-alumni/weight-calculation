@@ -42,6 +42,12 @@
         "title": "Raport complet pentru {{name}}:",
         "userSelectionButton": "Selectare utilizator nou"
     },
+    "deleteUser": {
+        "title": "Șterge utilizator",
+        "confirmMessage": "Ești sigur că vrei să ștergi utilizatorul '{{name}}'?",
+        "confirmButton": "Șterge",
+        "cancelButton": "Anulează"
+    },
     "form": {
         "name": "Numele complet",
         "age": "Vârsta",

@@ -42,6 +42,12 @@
         "title": "Complete Report for {{name}}:",
         "userSelectionButton": "Select New User"
     },
+    "deleteUser": {
+        "title": "Delete User",
+        "confirmMessage": "Are you sure you want to delete the user '{{name}}'?",
+        "confirmButton": "Delete",
+        "cancelButton": "Cancel"
+    },
     "form": {
         "name": "Full Name",
         "age": "Age",

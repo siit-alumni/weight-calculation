@@ -15,7 +15,7 @@ export function Report() {
   const { t } = useTranslation();
   const [formData, setFormData] = useState(null);
   const [macronutrientPercentages, setMacronutrientPercentages] = useState(null);
-  // const { userData, setUserData } = useContext(UserContext);
+ 
 
   // console.log(userData);
   
