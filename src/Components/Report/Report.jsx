@@ -15,9 +15,6 @@ export function Report() {
   const { t } = useTranslation();
   const [formData, setFormData] = useState(null);
   const [macronutrientPercentages, setMacronutrientPercentages] = useState(null);
- 
-
-  // console.log(userData);
   
 
   function getPercentages(percentages) {

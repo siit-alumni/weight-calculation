@@ -23,6 +23,7 @@ export default function SelectUser() {
 
             console.log('Update user:', users.profiles[selectedUser]);
             console.log(userData);
+            navigate('/editUser');
         }
     };
 
