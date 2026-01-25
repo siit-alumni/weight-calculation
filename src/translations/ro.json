@@ -39,7 +39,8 @@
         }
     },
     "report": {
-        "title": "Raport complet pentru {{name}}:"
+        "title": "Raport complet pentru {{name}}:",
+        "userSelectionButton": "Selectare utilizator nou"
     },
     "form": {
         "name": "Numele complet",
@@ -51,7 +52,7 @@
         "heightPlaceholder": "Introdu înălțimea ta",
         "gender": "Sexul",
         "bodyType": "Tipul de corp",
-        "calculateButton": "Calculează IMC",
+        "saveButton": "Salvează formularul",
         "resetButton": "Resetează formularul",
         "detailsButton": "Detalii",
         "closeButton": "Închide",

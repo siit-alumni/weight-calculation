@@ -39,7 +39,8 @@
         }
     },
     "report": {
-        "title": "Complete Report for {{name}}:"
+        "title": "Complete Report for {{name}}:",
+        "userSelectionButton": "Select New User"
     },
     "form": {
         "name": "Full Name",
@@ -51,7 +52,7 @@
         "heightPlaceholder": "Enter your height",
         "gender": "Gender",
         "bodyType": "Body Type",
-        "calculateButton": "Calculate BMI",
+        "saveButton": "Save Form",
         "resetButton": "Reset Form",
         "detailsButton": "Details",
         "closeButton": "Close",

@@ -28,6 +28,7 @@ export default function SelectUser() {
 
     const handleCreateUser = () => {
         console.log('Create new user');
+        navigate('/newUser');
 
     };
 

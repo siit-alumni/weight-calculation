@@ -1,13 +1,16 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { BodyType } from "./BodyTypeButtonDesign";
 import { useTranslation } from "react-i18next";
 import { settings } from "../Settings/settings";
 import { ActivityType } from "./ActivityTypeButtonDesign";
 import { addNewUserToLocalStorage, clearUserDataFromLocalStorage, getUserDataFromLocalStorage, saveUserDataToLocalStorage } from "../functions/functions";
+import { useNavigate } from "react-router-dom";
 
-export function Form({ getDetails }) {
+
+export function Form() {
   const { t } = useTranslation();
-  const [formData, setFormData] = useState(getUserDataFromLocalStorage());
+  const [formData, setFormData] = useState(settings.defaultUser);
+  const navigate = useNavigate();
 
   const onHandleChange = (e) => {
     const { name, value } = e.target;
@@ -20,16 +23,14 @@ export function Form({ getDetails }) {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    getDetails(formData);
     formData.id = formData.name;
     saveUserDataToLocalStorage(formData);
-    // addNewUserToLocalStorage(formData);
+    addNewUserToLocalStorage(formData);
+    navigate("/selectUser");
   };
 
   const handleReset = (e) => {
     e.preventDefault();
-    clearUserDataFromLocalStorage();
-    getDetails(null);
     setFormData(settings.defaultUser);
   };
 
@@ -169,7 +170,7 @@ export function Form({ getDetails }) {
         </div>
 
         <button type="submit" className="btn btn-primary">
-          {t("form.calculateButton")}
+          {t("form.saveButton")}
         </button>
       </form>
       {formData.name && (
