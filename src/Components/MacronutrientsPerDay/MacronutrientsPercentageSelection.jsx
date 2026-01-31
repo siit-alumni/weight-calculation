@@ -32,12 +32,12 @@ export function MacronutrientsPercentageSelection({ formData, getPercentages }) 
         saveMacronutrientsPercentagesToLocalStorage(bodyType, percentages);
     };
 
-      const handleReset = (e) => {
+    const handleReset = (e) => {
         e.preventDefault();
         clearMacronutrientsPercentagesFromLocalStorage(bodyType);
         setPercentages(getMacronutrientsPercentagesFromLocalStorage(bodyType));
         getPercentages(null);
-      };
+    };
 
     return (
         <div>
@@ -47,10 +47,10 @@ export function MacronutrientsPercentageSelection({ formData, getPercentages }) 
                 <div className="row">
                     <div className="col-md mb-4">
                         <label htmlFor="proteinPercentage" className="form-label">
-                            {t("macronutrientsPercentageSelection.proteinLabel")} 
-                            {settings.recommendedMacronutrientPercentageIntake[bodyType].protein.min} 
-                            - 
-                            <strong>{settings.recommendedMacronutrientPercentageIntake[bodyType].protein.max}</strong> %                  
+                            {t("macronutrientsPercentageSelection.proteinLabel")}
+                            {settings.recommendedMacronutrientPercentageIntake[bodyType].protein.min}
+                            -
+                            <strong>{settings.recommendedMacronutrientPercentageIntake[bodyType].protein.max}</strong> %
                         </label>
                         <input
                             type="number"
@@ -67,9 +67,9 @@ export function MacronutrientsPercentageSelection({ formData, getPercentages }) 
 
                     <div className="col-md mb-4">
                         <label htmlFor="carbsPercentage" className="form-label">
-                            {t("macronutrientsPercentageSelection.carbsLabel")} 
-                            {settings.recommendedMacronutrientPercentageIntake[bodyType].carbs.min} 
-                            - 
+                            {t("macronutrientsPercentageSelection.carbsLabel")}
+                            {settings.recommendedMacronutrientPercentageIntake[bodyType].carbs.min}
+                            -
                             <strong>{settings.recommendedMacronutrientPercentageIntake[bodyType].carbs.max} </strong>
                             %
                         </label>
@@ -87,9 +87,9 @@ export function MacronutrientsPercentageSelection({ formData, getPercentages }) 
                     </div>
                     <div className="col-md mb-4">
                         <label htmlFor="fatPercentage" className="form-label">
-                            {t("macronutrientsPercentageSelection.fatLabel")} 
-                            <strong>{settings.recommendedMacronutrientPercentageIntake[bodyType].fat.max}</strong> 
-                            - 
+                            {t("macronutrientsPercentageSelection.fatLabel")}
+                            <strong>{settings.recommendedMacronutrientPercentageIntake[bodyType].fat.max}</strong>
+                            -
                             {settings.recommendedMacronutrientPercentageIntake[bodyType].fat.min} %
                         </label>
                         <input
@@ -110,9 +110,9 @@ export function MacronutrientsPercentageSelection({ formData, getPercentages }) 
                 </button>
             </form>
 
-      {!checkDefaultPercentages(bodyType, percentages) && (
-        <button className="btn btn-secondary" onClick={handleReset}>{t("macronutrientsPercentageSelection.resetButton")}</button>
-      )}
+            {!checkDefaultPercentages(bodyType, percentages) && (
+                <button className="btn btn-secondary" onClick={handleReset}>{t("macronutrientsPercentageSelection.resetButton")}</button>
+            )}
 
         </div>
     );

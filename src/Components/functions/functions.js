@@ -95,8 +95,6 @@ export function saveUsersToLocalStorage(users){
 }
 
 export function addNewUserToLocalStorage(user){
-  console.log("Add new user", user);
-  
   const usersData = getUsersFromLocalStorage();
   usersData.profiles.push(user);
   localStorage.setItem('WeightCalculatorApp', JSON.stringify(usersData));
@@ -121,6 +119,14 @@ export function findUserInLocalStorage(userId){
   const usersData = getUsersFromLocalStorage();
   const index = usersData.profiles.findIndex(profile => profile.id === userId);
   return usersData.profiles[index];
+}
+
+export function sortUsersAlphabetically() {
+  const usersData = getUsersFromLocalStorage();
+  const users = usersData.profiles;
+  users.sort((a, b) => a.name < b.name ? -1 : 1);
+
+  return users;
 }
 
 export function getMacronutrientsPercentagesFromLocalStorage(bodyType) {

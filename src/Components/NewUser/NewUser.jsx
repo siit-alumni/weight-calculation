@@ -2,7 +2,7 @@ import { useTranslation } from "react-i18next";
 import { Link, useNavigate } from "react-router-dom";
 import { Form } from "../Form/Form";
 import { useState } from "react";
-import { addNewUserToLocalStorage, saveUserDataToLocalStorage } from "../functions/functions";
+import { addNewUserToLocalStorage, saveUserDataToLocalStorage, saveUsersToLocalStorage, sortUsersAlphabetically } from "../functions/functions";
 import { settings } from "../Settings/settings";
 
 export function NewUser() {
@@ -15,13 +15,18 @@ export function NewUser() {
         setFormData(data);
     }
 
-      const handleFormSubmit = (e) => {
+    const handleFormSubmit = (e) => {
         e.preventDefault();
         formData.id = formData.name;
         saveUserDataToLocalStorage(formData);
         addNewUserToLocalStorage(formData);
+        saveUsersToLocalStorage(sortUsersAlphabetically());
         navigate("/selectUser");
-      };
+    };
+
+    const handleSelectUser = () => {
+        navigate('/selectUser');
+    }
 
     return (
         <div>
@@ -30,13 +35,14 @@ export function NewUser() {
             <form onSubmit={handleFormSubmit} className="container p-3">
 
                 <Form getDetails={getDetails} userData={emptyUser} />
-
-                <button type="submit" className="btn btn-primary">
-                    {t("form.saveButton")}
-                </button>
+                <div>
+                    <button type="submit" className="btn btn-primary">
+                        {t("form.saveButton")}
+                    </button>
+                </div>
             </form>
+            <button onClick={handleSelectUser} className="btn btn-secondary col-md-4">{t("report.userSelectionButton")}</button>
 
-            <Link to="/selectUser"><button>{t("report.userSelectionButton")}</button></Link>
         </div>
     );
 }

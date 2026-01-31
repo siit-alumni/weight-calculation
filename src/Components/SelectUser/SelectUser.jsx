@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext, use } from 'react';
-import { getUsersFromLocalStorage } from '../functions/functions';
+import { getUserDataFromLocalStorage, getUsersFromLocalStorage, saveUserDataToLocalStorage } from '../functions/functions';
 import { useTranslation } from 'react-i18next';
 import UserData from '../UserData/UserData';
 import { UserContext } from '../../App';
@@ -7,13 +7,15 @@ import { useNavigate } from 'react-router-dom';
 
 export default function SelectUser() {
     const [users, setUsers] = useState(getUsersFromLocalStorage());
-    const [selectedUser, setSelectedUser] = useState(null);
+    const [selectedUser, setSelectedUser] = useState(getUserDataFromLocalStorage()?.id || "");
     const { userData, setUserData } = useContext(UserContext);
     const navigate = useNavigate();
     const { t } = useTranslation();
 
     const handleSelectUser = () => {
-        setUserData(users.profiles[selectedUser]);
+        const user = users.profiles.find(profile => profile.id === selectedUser);
+        setUserData(user);
+        saveUserDataToLocalStorage(user);
         navigate('/results');
     };
 
@@ -26,12 +28,12 @@ export default function SelectUser() {
     };
 
     const handleCreateUser = () => {
-        console.log('Create new user');
         navigate('/newUser');
     };
 
     useEffect(() => {
-        setUserData(users.profiles[selectedUser]);
+        const user = users.profiles.find(profile => profile.id === selectedUser);
+        setUserData(user);
     }, [selectedUser]);
 
     return (
@@ -48,7 +50,7 @@ export default function SelectUser() {
             >
                 <option value="">-- {t("selectUser.selectPlaceholder")} --</option>
                 {Object.entries(users.profiles).map(([key]) =>
-                (<option key={key} value={key}>
+                (<option key={users.profiles[key].id} value={users.profiles[key].id}>
                     {users.profiles[key].id}
                 </option>))}
             </select>

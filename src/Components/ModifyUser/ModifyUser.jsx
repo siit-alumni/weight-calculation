@@ -2,7 +2,7 @@ import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { Form } from "../Form/Form";
 import { useContext, useState } from "react";
-import { saveUserDataToLocalStorage, updateUserInLocalStorage } from "../functions/functions";
+import { saveUserDataToLocalStorage, saveUsersToLocalStorage, sortUsersAlphabetically, updateUserInLocalStorage } from "../functions/functions";
 import { UserContext } from "../../App";
 
 export function ModifyUser() {
@@ -19,9 +19,9 @@ export function ModifyUser() {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    formData.id = formData.name;
     saveUserDataToLocalStorage(formData);
     updateUserInLocalStorage(formData);
+    saveUsersToLocalStorage(sortUsersAlphabetically());
     navigate("/selectUser");
   };
   const handleSelectUser = () => {
@@ -36,12 +36,12 @@ export function ModifyUser() {
 
         <Form getDetails={getDetails} userData={userData} />
 
-        <button type="submit" className="btn btn-primary col-md-5">
+        <button type="submit" className="btn btn-primary col-md-5 me-2">
           {t("form.saveButton")}
         </button>
       </form>
+      <button onClick={handleSelectUser} className="btn btn-secondary col-md-3">{t("common.buttons.cancelButton")}</button>
 
-      <button onClick={handleSelectUser}>{t("common.buttons.cancelButton")}</button>
 
     </div>
 
