@@ -54,6 +54,9 @@
     "modifyUser": {
         "title": "Modify User"
     },
+    "newUser": {
+        "title": "Create New User"
+    },
     "form": {
         "name": "Full Name",
         "age": "Age",

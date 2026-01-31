@@ -45,7 +45,7 @@ export function MacronutrientsPercentageSelection({ formData, getPercentages }) 
                 <h3>{t("macronutrientsPercentageSelection.title")}</h3>
                 <p>{t("macronutrientsPercentageSelection.description")} </p>
                 <div className="row">
-                    <div className="col-md mb-3">
+                    <div className="col-md mb-4">
                         <label htmlFor="proteinPercentage" className="form-label">
                             {t("macronutrientsPercentageSelection.proteinLabel")} 
                             {settings.recommendedMacronutrientPercentageIntake[bodyType].protein.min} 
@@ -65,7 +65,7 @@ export function MacronutrientsPercentageSelection({ formData, getPercentages }) 
                         />
                     </div>
 
-                    <div className="col-md mb-3">
+                    <div className="col-md mb-4">
                         <label htmlFor="carbsPercentage" className="form-label">
                             {t("macronutrientsPercentageSelection.carbsLabel")} 
                             {settings.recommendedMacronutrientPercentageIntake[bodyType].carbs.min} 
@@ -85,7 +85,7 @@ export function MacronutrientsPercentageSelection({ formData, getPercentages }) 
                             required
                         />
                     </div>
-                    <div className="col-md mb-3">
+                    <div className="col-md mb-4">
                         <label htmlFor="fatPercentage" className="form-label">
                             {t("macronutrientsPercentageSelection.fatLabel")} 
                             <strong>{settings.recommendedMacronutrientPercentageIntake[bodyType].fat.max}</strong> 

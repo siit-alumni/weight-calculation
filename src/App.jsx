@@ -19,7 +19,7 @@ export function App() {
 
   return (
     <>
-      <div style={{ marginTop: "10px" }}>
+      <div className="app-header">
         <button onClick={() => switchLanguage("ro")}>Romana</button>
         <button onClick={() => switchLanguage("en")}>English</button>
       </div>

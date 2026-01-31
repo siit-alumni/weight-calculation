@@ -54,6 +54,9 @@
     "modifyUser": {
         "title": "Modifică utilizator"
     },
+    "newUser": {
+        "title": "Creează utilizator nou"
+    },
     "form": {
         "name": "Numele complet",
         "age": "Vârsta",

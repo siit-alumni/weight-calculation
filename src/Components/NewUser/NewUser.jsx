@@ -20,14 +20,12 @@ export function NewUser() {
         formData.id = formData.name;
         saveUserDataToLocalStorage(formData);
         addNewUserToLocalStorage(formData);
-        console.log("formData:", formData);
-        
         navigate("/selectUser");
       };
 
     return (
         <div>
-            <h2>New User Component</h2>
+            <h2>{t("newUser.title")}</h2>
 
             <form onSubmit={handleFormSubmit} className="container p-3">
 

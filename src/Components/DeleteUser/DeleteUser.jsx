@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import UserData from "../UserData/UserData";
 import { useContext } from "react";
 import { UserContext } from "../../App";
@@ -17,13 +17,19 @@ export function DeleteUser() {
     navigate('/selectUser');
   };
 
+  const handleSelectUser = () => {
+    navigate('/selectUser');
+  };
+
   return (
     <div>
       <h2>{t("deleteUser.title")}</h2>
       <UserData />
       <h3>{t("deleteUser.confirmMessage", { name: userData.name })}</h3>
-      <button onClick={handleDelete}>{t("deleteUser.confirmButton")}</button>
-      <Link to="/selectUser"><button>{t("common.buttons.cancelButton")}</button></Link>
+      <div className="d-flex align-items-center justify-content-center flex-wrap mt-3">
+        <button onClick={handleDelete} className="btn btn-primary col-md-3 me-2">{t("deleteUser.confirmButton")}</button>
+        <button onClick={handleSelectUser} className="btn btn-primary col-md-3">{t("common.buttons.cancelButton")}</button>
+      </div>
     </div>
   );
 }

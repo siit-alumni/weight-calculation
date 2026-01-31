@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext, use } from 'react';
+import { useState, useEffect, useContext, use } from 'react';
 import { getUsersFromLocalStorage } from '../functions/functions';
 import { useTranslation } from 'react-i18next';
 import UserData from '../UserData/UserData';
@@ -10,7 +10,6 @@ export default function SelectUser() {
     const [selectedUser, setSelectedUser] = useState(null);
     const { userData, setUserData } = useContext(UserContext);
     const navigate = useNavigate();
-
     const { t } = useTranslation();
 
     const handleSelectUser = () => {
@@ -19,24 +18,16 @@ export default function SelectUser() {
     };
 
     const handleUpdateUser = () => {
-        if (selectedUser !== null) {
-
-            console.log('Update user:', users.profiles[selectedUser]);
-            console.log(userData);
-            navigate('/editUser');
-        }
+        navigate('/editUser');
     };
 
     const handleDeleteUser = () => {
-        console.log('Delete user:', users.profiles[selectedUser]);
-        console.log(userData);
         navigate('/deleteUser');
     };
 
     const handleCreateUser = () => {
         console.log('Create new user');
         navigate('/newUser');
-
     };
 
     useEffect(() => {
@@ -49,6 +40,7 @@ export default function SelectUser() {
 
             <select
                 className="form-select mt-2"
+                style={ { textAlign: "center" } }
                 name="activityTypes"
                 id="activityTypes"
                 onChange={(e) => setSelectedUser(e.target.value)}
@@ -63,12 +55,13 @@ export default function SelectUser() {
 
             <UserData />
 
-            <div className="d-flex align-items-center md-3">
-                <button className="btn btn-primary col-md-4 " disabled={!selectedUser} onClick={handleSelectUser}>{t("selectUser.selectButton")}</button>
+            <div className="d-flex align-items-center justify-content-center flex-wrap">
+                <button className="btn btn-primary col-md-4  " disabled={!selectedUser} onClick={handleSelectUser}>{t("selectUser.selectButton")}</button>
                 <button className="btn btn-primary col-md-4 " disabled={!selectedUser} onClick={handleUpdateUser}>{t("selectUser.modifyButton")}</button>
-                <button className="btn btn-primary col-md-4" disabled={!selectedUser} onClick={handleDeleteUser}>{t("selectUser.deleteButton")}</button>
+                <button className="btn btn-primary col-md-4 " disabled={!selectedUser} onClick={handleDeleteUser}>{t("selectUser.deleteButton")}</button>
                 <button className="btn btn-primary col-md-4" onClick={handleCreateUser}>{t("selectUser.createButton")}</button>
             </div>
+
         </div>
     );
 }
