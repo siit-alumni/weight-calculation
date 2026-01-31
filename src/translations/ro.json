@@ -36,6 +36,10 @@
             "carbs": "Carbohidrați",
             "protein": "Proteine",
             "fat": "Grăsimi"
+        },
+        "buttons": {
+            "back": "Înapoi la selecția utilizatorului",
+            "cancelButton": "Anulează"
         }
     },
     "report": {
@@ -45,8 +49,10 @@
     "deleteUser": {
         "title": "Șterge utilizator",
         "confirmMessage": "Ești sigur că vrei să ștergi utilizatorul '{{name}}'?",
-        "confirmButton": "Șterge",
-        "cancelButton": "Anulează"
+        "confirmButton": "Șterge"
+    },
+    "modifyUser": {
+        "title": "Modifică utilizator"
     },
     "form": {
         "name": "Numele complet",

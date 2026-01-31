@@ -8,42 +8,42 @@ import { UserContext } from "../../App";
 
 export function ModifyUser() {
 
-    const { t } = useTranslation();
-    const [formData, setFormData] = useState({});
-    const navigate = useNavigate();
-    const { userData, setUserData } = useContext(UserContext);
+  const { t } = useTranslation();
+  const [formData, setFormData] = useState({});
+  const navigate = useNavigate();
+  const { userData, setUserData } = useContext(UserContext);
 
-    function getDetails(data) {
-        setFormData(data);
-        setUserData(data);
-        console.log("Modify User userData:", userData);
-    }
+  function getDetails(data) {
+    setFormData(data);
+    setUserData(data);
+    console.log("Modify User userData:", userData);
+  }
 
-      const handleFormSubmit = (e) => {
-        e.preventDefault();
-        formData.id = formData.name;
-        saveUserDataToLocalStorage(formData);
-        updateUserInLocalStorage(formData);
-        console.log("formData:", formData);
-        
-        navigate("/selectUser");
-      };
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    formData.id = formData.name;
+    saveUserDataToLocalStorage(formData);
+    updateUserInLocalStorage(formData);
+    console.log("formData:", formData);
+
+    navigate("/selectUser");
+  };
 
   return (
     <div>
-      <h2>Modify User Component</h2>
+      <h2>{t("modifyUser.title")}</h2>
 
-                  <form onSubmit={handleFormSubmit} className="container p-3">
+      <form onSubmit={handleFormSubmit} className="container p-3">
 
-                <Form getDetails={getDetails} userData={userData} />
+        <Form getDetails={getDetails} userData={userData} />
 
-                <button type="submit" className="btn btn-primary">
-                    {t("form.saveButton")}
-                </button>
-            </form>
+        <button type="submit" className="btn btn-primary">
+          {t("form.saveButton")}
+        </button>
+      </form>
 
-            <Link to="/selectUser"><button>{t("report.userSelectionButton")}</button></Link>
-        </div>
+      <Link to="/selectUser"><button>{t("report.userSelectionButton")}</button></Link>
+    </div>
 
   );
 }

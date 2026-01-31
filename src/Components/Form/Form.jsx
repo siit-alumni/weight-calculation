@@ -14,13 +14,14 @@ export function Form({getDetails, userData}) {
 
   const onHandleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
+    const updatedFormData = {
+      ...formData,
       [name]: value,
-    }));
-    getDetails(formData);
+    };
+    setFormData(updatedFormData);
+    getDetails(updatedFormData);
     
-    console.log("Form", formData);
+    console.log("Form", updatedFormData);
     
     
   };
@@ -41,7 +42,7 @@ export function Form({getDetails, userData}) {
 
   return (
     <div>
-      <form onSubmit={handleFormSubmit} className="container p-3">
+      <div onSubmit={handleFormSubmit} className="container p-3">
         <div className="row mb-2">
           <div className="col-md mb-3">
             <label htmlFor="name" className="form-label">
@@ -180,7 +181,7 @@ export function Form({getDetails, userData}) {
       {formData.name && (
         <button className="btn btn-secondary" onClick={handleReset}>{t("form.resetButton")}</button>
       )}
-      </form>
+      </div>
 
     </div>
   );

@@ -25,16 +25,16 @@ export function App() {
       </div>
       <UserContext.Provider value={{ userData, setUserData }}>
 
-      <Routes>
-        <Route exact path="/selectUser" element={<SelectUser />} />
-        <Route path="/editUser" element={<ModifyUser />} />
-        <Route path="/deleteUser" element={<DeleteUser />} />
-        <Route path="/newUser" element={<NewUser />} />
+        <Routes>
+          <Route path="/selectUser" element={<SelectUser />} />
+          <Route path="/editUser" element={<ModifyUser />} />
+          <Route path="/deleteUser" element={<DeleteUser />} />
+          <Route path="/newUser" element={<NewUser />} />
+          <Route exact path="" element={<SelectUser />} />
+          <Route path="/results" element={<Results />} />
 
-        <Route path="/results" element={<Results />} />
-
-      </Routes >
-        </UserContext.Provider>
+        </Routes >
+      </UserContext.Provider>
     </>
   );
 }

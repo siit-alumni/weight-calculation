@@ -36,6 +36,10 @@
             "carbs": "Carbohydrates",
             "protein": "Protein",
             "fat": "Fat"
+        },
+        "buttons": {
+            "back": "Back to User Selection",
+      "cancelButton": "Cancel"
         }
     },
     "report": {
@@ -45,8 +49,10 @@
     "deleteUser": {
         "title": "Delete User",
         "confirmMessage": "Are you sure you want to delete the user '{{name}}'?",
-        "confirmButton": "Delete",
-        "cancelButton": "Cancel"
+        "confirmButton": "Delete"
+    },
+    "modifyUser": {
+        "title": "Modify User"
     },
     "form": {
         "name": "Full Name",

@@ -23,7 +23,7 @@ export function DeleteUser() {
       <UserData />
       <h3>{t("deleteUser.confirmMessage", { name: userData.name })}</h3>
       <button onClick={handleDelete}>{t("deleteUser.confirmButton")}</button>
-      <Link to="/selectUser"><button>{t("deleteUser.cancelButton")}</button></Link>
+      <Link to="/selectUser"><button>{t("common.buttons.cancelButton")}</button></Link>
     </div>
   );
 }
