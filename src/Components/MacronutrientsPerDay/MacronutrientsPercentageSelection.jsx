@@ -58,8 +58,8 @@ export function MacronutrientsPercentageSelection({ formData, getPercentages }) 
                             name="protein"
                             id="proteinPercentage"
                             onChange={handleChange}
-                            min={settings.recommendedMacronutrientPercentageIntake[bodyType].protein.min}
-                            max={settings.recommendedMacronutrientPercentageIntake[bodyType].protein.max}
+                            // min={settings.recommendedMacronutrientPercentageIntake[bodyType].protein.min}
+                            // max={settings.recommendedMacronutrientPercentageIntake[bodyType].protein.max}
                             value={percentages.protein}
                             required
                         />
@@ -80,8 +80,8 @@ export function MacronutrientsPercentageSelection({ formData, getPercentages }) 
                             id="carbsPercentage"
                             value={percentages.carbs}
                             onChange={handleChange}
-                            min={settings.recommendedMacronutrientPercentageIntake[bodyType].carbs.min}
-                            max={settings.recommendedMacronutrientPercentageIntake[bodyType].carbs.max}
+                            // min={settings.recommendedMacronutrientPercentageIntake[bodyType].carbs.min}
+                            // max={settings.recommendedMacronutrientPercentageIntake[bodyType].carbs.max}
                             required
                         />
                     </div>
@@ -99,8 +99,8 @@ export function MacronutrientsPercentageSelection({ formData, getPercentages }) 
                             id="fatPercentage"
                             value={percentages.fat}
                             onChange={handleChange}
-                            min={settings.recommendedMacronutrientPercentageIntake[bodyType].fat.max}
-                            max={settings.recommendedMacronutrientPercentageIntake[bodyType].fat.min}
+                            // min={settings.recommendedMacronutrientPercentageIntake[bodyType].fat.max}
+                            // max={settings.recommendedMacronutrientPercentageIntake[bodyType].fat.min}
                             required
                         />
                     </div>
