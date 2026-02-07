@@ -1,12 +1,22 @@
 import { useTranslation } from "react-i18next";
 import { settings } from "../Settings/settings";
 import { useEffect, useState } from "react";
-import { checkDefaultPercentages, clearMacronutrientsPercentagesFromLocalStorage, getMacronutrientsPercentagesFromLocalStorage, saveMacronutrientsPercentagesToLocalStorage } from "../functions/functions";
+import { checkDefaultPercentages, getDefaultMacronutrientsPerBodyType, updateUserInLocalStorage } from "../functions/functions";
 
 export function MacronutrientsPercentageSelection({ formData, getPercentages }) {
     const { t } = useTranslation();
     const bodyType = formData.bodyType;
-    const perc = getMacronutrientsPercentagesFromLocalStorage(bodyType);
+if (!formData.macronutrientsPercentages) {
+    formData.macronutrientsPercentages = {};
+    formData.macronutrientsPercentages[bodyType] = getDefaultMacronutrientsPerBodyType(bodyType);
+    updateUserInLocalStorage(formData);
+}
+if (!formData.macronutrientsPercentages[bodyType]) {
+    formData.macronutrientsPercentages[bodyType] = getDefaultMacronutrientsPerBodyType(bodyType);
+    updateUserInLocalStorage(formData);
+}
+
+    const perc = formData.macronutrientsPercentages[bodyType];
     const [percentages, setPercentages] = useState(perc);
 
     useEffect(() => {
@@ -29,14 +39,16 @@ export function MacronutrientsPercentageSelection({ formData, getPercentages }) 
             return;
         }
         getPercentages(percentages);
-        saveMacronutrientsPercentagesToLocalStorage(bodyType, percentages);
+            formData.macronutrientsPercentages[bodyType] = percentages;
+            updateUserInLocalStorage(formData);
     };
 
     const handleReset = (e) => {
         e.preventDefault();
-        clearMacronutrientsPercentagesFromLocalStorage(bodyType);
-        setPercentages(getMacronutrientsPercentagesFromLocalStorage(bodyType));
         getPercentages(null);
+        setPercentages(getDefaultMacronutrientsPerBodyType(bodyType));
+            formData.macronutrientsPercentages[bodyType] = percentages;
+            updateUserInLocalStorage(formData);
     };
 
     return (

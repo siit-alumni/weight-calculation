@@ -18,6 +18,7 @@ export function NewUser() {
     const handleFormSubmit = (e) => {
         e.preventDefault();
         formData.id = formData.name;
+        // addMacronutrientsToFormData(formData);
         saveUserDataToLocalStorage(formData);
         addNewUserToLocalStorage(formData);
         saveUsersToLocalStorage(sortUsersAlphabetically());

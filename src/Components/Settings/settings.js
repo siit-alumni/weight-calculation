@@ -10,8 +10,23 @@ export const settings = {
     gender: "female",
     bodyType: "ectomorph",
     activityTypes: "sedentary",
-  },
-
+    macronutrientsPercentages: {
+      endomorph: {
+        protein: 30,
+        carbs: 40,
+        fat: 30
+      },
+      mesomorph: {
+        protein: 30,
+        carbs: 40,
+        fat: 30
+      },
+      ectomorph: {
+        protein: 25,
+        carbs: 55,
+        fat: 20
+      }
+    }},
   genderCoefficient: {
     female: 0.9,
     male: 1,

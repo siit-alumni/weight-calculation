@@ -129,33 +129,27 @@ export function sortUsersAlphabetically() {
   return users;
 }
 
-export function getMacronutrientsPercentagesFromLocalStorage(bodyType) {
-  const macronutrientsPercentages = localStorage.getItem(`macronutrientsPercentages_${bodyType}`);
-  const percentages = {
-    protein: settings.recommendedMacronutrientPercentageIntake[bodyType].protein.max,
-    carbs: settings.recommendedMacronutrientPercentageIntake[bodyType].carbs.max,
-    fat: settings.recommendedMacronutrientPercentageIntake[bodyType].fat.max,
-  }
-  return macronutrientsPercentages ? JSON.parse(macronutrientsPercentages) : percentages;
-}
-
-export function saveMacronutrientsPercentagesToLocalStorage(bodyType, percentages) {
-  localStorage.setItem(`macronutrientsPercentages_${bodyType}`, JSON.stringify(percentages));
-}
-
-export function clearMacronutrientsPercentagesFromLocalStorage(bodyType) {
-  localStorage.removeItem(`macronutrientsPercentages_${bodyType}`);
-}
 
 export function checkDefaultPercentages(bodyType, percentages) {
-  const defaultPercentages = {
-    protein: settings.recommendedMacronutrientPercentageIntake[bodyType].protein.max,
-    carbs: settings.recommendedMacronutrientPercentageIntake[bodyType].carbs.max,
-    fat: settings.recommendedMacronutrientPercentageIntake[bodyType].fat.max,
-  }
+  const defaultPercentages = getDefaultMacronutrientsPerBodyType(bodyType);
   return (
     percentages.protein === defaultPercentages.protein &&
     percentages.carbs === defaultPercentages.carbs &&
     percentages.fat === defaultPercentages.fat
   );
+}
+
+// export function addMacronutrientsToFormData(formData) {
+//   formData.macronutrientsPercentages.endomorph = getDefaultMacronutrientsPerBodyType(endomorph);
+//   formData.macronutrientsPercentages.mesomorph = getDefaultMacronutrientsPerBodyType(mesomorph);
+//   formData.macronutrientsPercentages.ectomorph = getDefaultMacronutrientsPerBodyType(ectomorph);
+// }
+
+export function getDefaultMacronutrientsPerBodyType(bodyType) {
+    const percentages = {
+    protein: settings.recommendedMacronutrientPercentageIntake[bodyType].protein.max,
+    carbs: settings.recommendedMacronutrientPercentageIntake[bodyType].carbs.max,
+    fat: settings.recommendedMacronutrientPercentageIntake[bodyType].fat.max,
+  }
+  return percentages;
 }

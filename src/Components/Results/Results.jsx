@@ -15,7 +15,7 @@ export function Results() {
     const { userData, setUserData } = useContext(UserContext);
     const { t } = useTranslation();
     const navigate = useNavigate();
-    const [macronutrientPercentages, setMacronutrientPercentages] = useState(null);
+    const [macronutrientPercentage, setMacronutrientPercentages] = useState(null);
     function getPercentages(percentages) {
         setMacronutrientPercentages(percentages);
     }
@@ -51,8 +51,8 @@ export function Results() {
                     </div>
                 </div>
                 <MacronutrientsPercentageSelection formData={userData} getPercentages={getPercentages} />
-                {macronutrientPercentages &&
-                    <MacronutrientsPerDay formData={userData} macronutrientPercentages={macronutrientPercentages} />}
+                {macronutrientPercentage &&
+                    <MacronutrientsPerDay formData={userData} macronutrientPercentage={macronutrientPercentage} />}
             </div>
 
             <button onClick={handleSelectUser} className="btn btn-secondary">{t("report.userSelectionButton")}</button>
