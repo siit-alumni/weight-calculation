@@ -66,6 +66,8 @@ export function Form({ getDetails, userData }) {
               placeholder={t("form.agePlaceholder")}
               onChange={onHandleChange}
               value={formData.age}
+              min="15"
+              max="120"
               required
             />
           </div>
@@ -99,6 +101,8 @@ export function Form({ getDetails, userData }) {
               placeholder={t("form.weightPlaceholder")}
               onChange={onHandleChange}
               value={formData.weight}
+              min="30"
+              max="300"
               required
             />
           </div>
@@ -114,6 +118,8 @@ export function Form({ getDetails, userData }) {
               placeholder={t("form.heightPlaceholder")}
               onChange={onHandleChange}
               value={formData.height}
+              min="100"
+              max="250"
               required
             />
           </div>
