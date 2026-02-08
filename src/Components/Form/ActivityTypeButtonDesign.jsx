@@ -1,15 +1,18 @@
 import bodyTypes from "../../assets/img/bodyTypes.png";
 import { useTranslation } from "react-i18next";
+import { settings } from "../Settings/settings";
 
 export function ActivityType() {
   const { t } = useTranslation();
-  const activityTypes = [
-    "sedentary",
-    "lightlyActive",
-    "moderatelyActive",
-    "intense",
-    "heavy",
-  ];
+  // const activityTypes = [
+  //   "sedentary",
+  //   "lightlyActive",
+  //   "moderatelyActive",
+  //   "intense",
+  //   "heavy",
+  // ];
+  const activityTypes = Object.keys(settings.calorieConsumptionLevels);
+    
   return (
     <>
       <button

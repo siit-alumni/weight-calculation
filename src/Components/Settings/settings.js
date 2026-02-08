@@ -18,13 +18,13 @@ export const settings = {
       },
       mesomorph: {
         protein: 30,
-        carbs: 40,
-        fat: 30
+        carbs: 50,
+        fat: 20
       },
       ectomorph: {
-        protein: 25,
-        carbs: 55,
-        fat: 20
+        protein: 30,
+        carbs: 60,
+        fat: 10
       }
     }},
   genderCoefficient: {
