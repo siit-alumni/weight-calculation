@@ -4,13 +4,6 @@ import { settings } from "../Settings/settings";
 
 export function ActivityType() {
   const { t } = useTranslation();
-  // const activityTypes = [
-  //   "sedentary",
-  //   "lightlyActive",
-  //   "moderatelyActive",
-  //   "intense",
-  //   "heavy",
-  // ];
   const activityTypes = Object.keys(settings.calorieConsumptionLevels);
     
   return (

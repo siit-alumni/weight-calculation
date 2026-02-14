@@ -72,42 +72,52 @@ export function calcMacronutrientsGrams(macronutrientsCalories) {
 }
 
 export function getUserDataFromLocalStorage() {
-  const userData = localStorage.getItem("userData");
-  return userData ? JSON.parse(userData) : settings.defaultUser;
+  const appData = localStorage.getItem("WeightCalculatorApp");
+  const parsed = JSON.parse(appData);
+  return parsed.selectedUser ? parsed.selectedUser : settings.defaultUser.id;
+
 }
 
 export function clearUserDataFromLocalStorage() {
-  localStorage.setItem("userData", JSON.stringify(settings.defaultUser));
+  const appData = localStorage.getItem("WeightCalculatorApp");
+  const usersData = appData ? JSON.parse(appData) : { profiles: [], selectedUser: null };
+  usersData.selectedUser = settings.defaultUser.id;
+  localStorage.setItem("WeightCalculatorApp", JSON.stringify(usersData));
 }
 
 export function saveUserDataToLocalStorage(userData) {
-  localStorage.setItem("userData", JSON.stringify(userData));
+  const appData = localStorage.getItem("WeightCalculatorApp");
+  const usersData = appData ? JSON.parse(appData) : { profiles: [], selectedUser: null };
+  usersData.selectedUser = userData.id;
+  localStorage.setItem("WeightCalculatorApp", JSON.stringify(usersData));
 }
 
-export function getUsersFromLocalStorage(){
+export function getUsersFromLocalStorage() {
   const users = localStorage.getItem("WeightCalculatorApp");
   return users ? JSON.parse(users) : { profiles: [] };
 }
 
-export function saveUsersToLocalStorage(users){
-  const usersData = { profiles: users };
+export function saveUsersToLocalStorage(users) {
+  const appData = localStorage.getItem("WeightCalculatorApp");
+  const usersData = appData ? JSON.parse(appData) : { profiles: [], selectedUser: null };
+  usersData.profiles = users;
   localStorage.setItem('WeightCalculatorApp', JSON.stringify(usersData));
 }
 
-export function addNewUserToLocalStorage(user){
+export function addNewUserToLocalStorage(user) {
   const usersData = getUsersFromLocalStorage();
   usersData.profiles.push(user);
   localStorage.setItem('WeightCalculatorApp', JSON.stringify(usersData));
 }
 
-export function deleteUserFromLocalStorage(user){
+export function deleteUserFromLocalStorage(user) {
   const usersData = getUsersFromLocalStorage();
   const filteredUsers = usersData.profiles.filter(profile => profile.id !== user.id);
   const newUsersData = { profiles: filteredUsers };
   localStorage.setItem('WeightCalculatorApp', JSON.stringify(newUsersData));
 }
 
-export function updateUserInLocalStorage(user){
+export function updateUserInLocalStorage(user) {
   const usersData = getUsersFromLocalStorage();
   const index = usersData.profiles.findIndex(profile => profile.id === user.id);
   user.id = user.name;
@@ -115,7 +125,7 @@ export function updateUserInLocalStorage(user){
   localStorage.setItem('WeightCalculatorApp', JSON.stringify(usersData));
 }
 
-export function findUserInLocalStorage(userId){
+export function findUserInLocalStorage(userId) {
   const usersData = getUsersFromLocalStorage();
   const index = usersData.profiles.findIndex(profile => profile.id === userId);
   return usersData.profiles[index];
@@ -139,14 +149,8 @@ export function checkDefaultPercentages(bodyType, percentages) {
   );
 }
 
-// export function addMacronutrientsToFormData(formData) {
-//   formData.macronutrientsPercentages.endomorph = getDefaultMacronutrientsPerBodyType(endomorph);
-//   formData.macronutrientsPercentages.mesomorph = getDefaultMacronutrientsPerBodyType(mesomorph);
-//   formData.macronutrientsPercentages.ectomorph = getDefaultMacronutrientsPerBodyType(ectomorph);
-// }
-
 export function getDefaultMacronutrientsPerBodyType(bodyType) {
-    const percentages = {
+  const percentages = {
     protein: settings.recommendedMacronutrientPercentageIntake[bodyType].protein.max,
     carbs: settings.recommendedMacronutrientPercentageIntake[bodyType].carbs.max,
     fat: settings.recommendedMacronutrientPercentageIntake[bodyType].fat.max,

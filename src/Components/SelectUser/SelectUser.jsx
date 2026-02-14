@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 
 export default function SelectUser() {
     const [users, setUsers] = useState(getUsersFromLocalStorage());
-    const [selectedUser, setSelectedUser] = useState(getUserDataFromLocalStorage()?.id || "");
+    const [selectedUser, setSelectedUser] = useState(getUserDataFromLocalStorage() || "");
     const { userData, setUserData } = useContext(UserContext);
     const navigate = useNavigate();
     const { t } = useTranslation();
