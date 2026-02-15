@@ -23,18 +23,24 @@ export function App() {
         <button onClick={() => switchLanguage("ro")}>Romana</button>
         <button onClick={() => switchLanguage("en")}>English</button>
       </div>
-      <UserContext.Provider value={{ userData, setUserData }}>
 
-        <Routes>
-          <Route path="/selectUser" element={<SelectUser />} />
-          <Route path="/editUser" element={<ModifyUser />} />
-          <Route path="/deleteUser" element={<DeleteUser />} />
-          <Route path="/newUser" element={<NewUser />} />
-          <Route exact path="" element={<SelectUser />} />
-          <Route path="/results" element={<Results />} />
+      <div className="row">
+        <div className="col-12 col-md-8 offset-md-2">
 
-        </Routes >
-      </UserContext.Provider>
+          <UserContext.Provider value={{ userData, setUserData }}>
+
+            <Routes>
+              <Route path="/selectUser" element={<SelectUser />} />
+              <Route path="/editUser" element={<ModifyUser />} />
+              <Route path="/deleteUser" element={<DeleteUser />} />
+              <Route path="/newUser" element={<NewUser />} />
+              <Route exact path="" element={<SelectUser />} />
+              <Route path="/results" element={<Results />} />
+
+            </Routes >
+          </UserContext.Provider>
+        </div>
+      </div>
     </>
   );
 }
