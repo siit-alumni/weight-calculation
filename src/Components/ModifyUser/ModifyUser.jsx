@@ -21,7 +21,7 @@ export function ModifyUser() {
     e.preventDefault();
     saveUserDataToLocalStorage(formData);
     updateUserInLocalStorage(formData);
-    saveUsersToLocalStorage(sortUsersAlphabetically());
+    // saveUsersToLocalStorage(sortUsersAlphabetically());
     navigate("/selectUser");
   };
   const handleSelectUser = () => {
