@@ -54,7 +54,7 @@
     },
     "report": {
         "title": "Complete Report for {{name}}:",
-        "userSelectionButton": "Select New User"
+        "userSelectionButton": "User Selection"
     },
     "deleteUser": {
         "title": "Delete User",

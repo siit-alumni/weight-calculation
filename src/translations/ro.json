@@ -56,7 +56,7 @@
     },
     "report": {
         "title": "Raport complet pentru {{name}}:",
-        "userSelectionButton": "Selectare utilizator nou"
+        "userSelectionButton": "Selectare utilizatori"
     },
     "deleteUser": {
         "title": "Șterge utilizator",

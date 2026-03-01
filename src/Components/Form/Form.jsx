@@ -66,7 +66,7 @@ export function Form({ getDetails, userData }) {
               placeholder={t("form.agePlaceholder")}
               onChange={onHandleChange}
               value={formData.age}
-              min="15"
+              min="12"
               max="120"
               required
             />

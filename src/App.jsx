@@ -8,7 +8,7 @@ import { ModifyUser } from "./Components/ModifyUser/ModifyUser";
 import { DeleteUser } from "./Components/DeleteUser/DeleteUser";
 import { Results } from "./Components/Results/Results";
 import { NewUser } from "./Components/NewUser/NewUser";
-import UsersList from "./Components/UsersList/UsersList";
+import UserListContainer from "./Components/UsersList/UserListContainer";
 
 export function App() {
 
@@ -33,7 +33,7 @@ export function App() {
           <Route path="/newUser" element={<NewUser />} />
           <Route exact path="" element={<SelectUser />} />
           <Route path="/results" element={<Results />} />
-          <Route path="/usersList" element={<UsersList />} />
+          <Route path="/usersList" element={<UserListContainer />} />
 
 
         </Routes >
