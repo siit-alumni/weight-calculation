@@ -16,8 +16,18 @@
         "modifySuccess": "User information updated successfully!",
         "createButton": "New User",
         "createUser": "Create New User",
-        "createSuccess": "New user created successfully!"
+        "createSuccess": "New user created successfully!",
+        "userListButton": "Users List"
     },
+    "usersList": {
+        "title": "Users List",
+        "noUsers": "No users available. Please add a user first.",
+        "selectedUser": "Selected User: {{name}}",
+        "nameHeader": "Name",
+        "ageHeader": "Age",
+        "heightHeader": "Height (cm)",
+        "weightHeader": "Weight (kg)",
+        "genderHeader": "Gender"},
     "common": {
         "genderOption": {
             "male": "Male",
@@ -39,7 +49,7 @@
         },
         "buttons": {
             "back": "Back to User Selection",
-      "cancelButton": "Cancel"
+            "cancelButton": "Cancel"
         }
     },
     "report": {

@@ -31,6 +31,10 @@ export default function SelectUser() {
         navigate('/newUser');
     };
 
+    const handleUserList = () => {
+        navigate('/usersList');
+    };
+
     useEffect(() => {
         const user = users.profiles.find(profile => profile.id === selectedUser);
         setUserData(user);
@@ -62,6 +66,8 @@ export default function SelectUser() {
                 <button className="btn btn-primary col-md-4 " disabled={!selectedUser} onClick={handleUpdateUser}>{t("selectUser.modifyButton")}</button>
                 <button className="btn btn-primary col-md-4 " disabled={!selectedUser} onClick={handleDeleteUser}>{t("selectUser.deleteButton")}</button>
                 <button className="btn btn-primary col-md-4" onClick={handleCreateUser}>{t("selectUser.createButton")}</button>
+                <button className="btn btn-primary col-md-4" onClick={handleUserList}>{t("selectUser.userListButton")}</button>
+
             </div>
 
         </div>

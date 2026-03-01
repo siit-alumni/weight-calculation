@@ -21,7 +21,7 @@ export function NewUser() {
         // addMacronutrientsToFormData(formData);
         saveUserDataToLocalStorage(formData);
         addNewUserToLocalStorage(formData);
-        saveUsersToLocalStorage(sortUsersAlphabetically());
+        // saveUsersToLocalStorage(sortUsersAlphabetically());
         navigate("/selectUser");
     };
 

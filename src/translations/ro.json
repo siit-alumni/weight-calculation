@@ -16,7 +16,19 @@
         "modifySuccess": "Informațiile utilizatorului au fost actualizate cu succes!",
         "createButton": "Utilizator nou",
         "createUser": "Creează un utilizator nou",
-        "createSuccess": "Utilizatorul a fost creat cu succes!"
+        "createSuccess": "Utilizatorul a fost creat cu succes!",
+        "userListButton": "Lista utilizatorilor"
+    },
+    
+    "usersList": {
+        "title": "Lista utilizatorilor",
+        "noUsers": "Nu există utilizatori disponibili. Vă rugăm să adăugați un utilizator.",
+        "selectedUser": "Utilizator selectat: {{name}}",
+        "nameHeader": "Nume",
+        "ageHeader": "Vârstă",
+        "heightHeader": "Înălțime (cm)",
+        "weightHeader": "Greutate (kg)",
+        "genderHeader": "Sex"
     },
     "common": {
         "genderOption": {
@@ -205,8 +217,7 @@
         "Serving g": {
             "title": "Mărimea porției (g)"
         },
-
-        "product":{
+        "product": {
             "Egg": "Ou",
             "Egg white": "Albuș de ou",
             "Egg yolk": "Gălbenuș de ou",
