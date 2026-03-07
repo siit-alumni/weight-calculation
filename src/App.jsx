@@ -9,6 +9,7 @@ import { DeleteUser } from "./Components/DeleteUser/DeleteUser";
 import { Results } from "./Components/Results/Results";
 import { NewUser } from "./Components/NewUser/NewUser";
 import UserListContainer from "./Components/UsersList/UserListContainer";
+import { replaceUsersIDs } from "./Components/functions/functions";
 
 export function App() {
 
@@ -16,7 +17,7 @@ export function App() {
   const switchLanguage = (lng) => i18n.changeLanguage(lng);
   const [userData, setUserData] = useState(null);
 
-
+  replaceUsersIDs();
 
   return (
     <>

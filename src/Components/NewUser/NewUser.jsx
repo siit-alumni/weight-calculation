@@ -2,7 +2,7 @@ import { useTranslation } from "react-i18next";
 import { Link, useNavigate } from "react-router-dom";
 import { Form } from "../Form/Form";
 import { useState } from "react";
-import { addNewUserToLocalStorage, saveUserDataToLocalStorage, saveUsersToLocalStorage} from "../functions/functions";
+import { addNewUserToLocalStorage, getUsersFromLocalStorage, saveUserDataToLocalStorage, saveUsersToLocalStorage } from "../functions/functions";
 import { settings } from "../Settings/settings";
 
 export function NewUser() {
@@ -10,6 +10,7 @@ export function NewUser() {
     const [formData, setFormData] = useState({});
     const navigate = useNavigate();
     const emptyUser = settings.defaultUser;
+    const length = Object.keys(getUsersFromLocalStorage().profiles).length;
 
     function getDetails(data) {
         setFormData(data);
@@ -17,7 +18,7 @@ export function NewUser() {
 
     const handleFormSubmit = (e) => {
         e.preventDefault();
-        formData.id = formData.name;
+        formData.id = length;
         saveUserDataToLocalStorage(formData);
         addNewUserToLocalStorage(formData);
         navigate("/selectUser");

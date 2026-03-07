@@ -88,6 +88,7 @@ export function clearUserDataFromLocalStorage() {
 export function saveUserDataToLocalStorage(userData) {
   const appData = localStorage.getItem("WeightCalculatorApp");
   const usersData = appData ? JSON.parse(appData) : { profiles: [], selectedUser: null };
+
   usersData.selectedUser = userData.id;
   localStorage.setItem("WeightCalculatorApp", JSON.stringify(usersData));
 }
@@ -120,7 +121,6 @@ export function deleteUserFromLocalStorage(user) {
 export function updateUserInLocalStorage(user) {
   const usersData = getUsersFromLocalStorage();
   const index = usersData.profiles.findIndex(profile => profile.id === user.id);
-  user.id = user.name;
   usersData.profiles[index] = user;
   localStorage.setItem('WeightCalculatorApp', JSON.stringify(usersData));
 }
@@ -153,4 +153,17 @@ export function getDefaultMacronutrientsPerBodyType(bodyType) {
     fat: settings.recommendedMacronutrientPercentageIntake[bodyType].fat.max,
   }
   return percentages;
+}
+
+export function replaceUsersIDs() {
+  const usersData = getUsersFromLocalStorage();
+  if (usersData.profiles[0].id !== 0) {
+    const updatedUsers = usersData.profiles.map((user, index) => {
+      return {
+        ...user,
+        id: index
+      };
+    });
+    saveUsersToLocalStorage(updatedUsers);
+  }
 }

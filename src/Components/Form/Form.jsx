@@ -3,7 +3,7 @@ import { BodyType } from "./BodyTypeButtonDesign";
 import { useTranslation } from "react-i18next";
 import { settings } from "../Settings/settings";
 import { ActivityType } from "./ActivityTypeButtonDesign";
-import { addNewUserToLocalStorage, clearUserDataFromLocalStorage, getUserDataFromLocalStorage, saveUserDataToLocalStorage } from "../functions/functions";
+import { addNewUserToLocalStorage, getUsersFromLocalStorage, saveUserDataToLocalStorage } from "../functions/functions";
 import { useNavigate } from "react-router-dom";
 
 
@@ -11,6 +11,8 @@ export function Form({ getDetails, userData }) {
   const { t } = useTranslation();
   const [formData, setFormData] = useState(userData);
   const navigate = useNavigate();
+
+  
 
   const onHandleChange = (e) => {
     const { name, value } = e.target;
@@ -24,7 +26,7 @@ export function Form({ getDetails, userData }) {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    formData.id = formData.name;
+    // formData.id = formData.name;
     saveUserDataToLocalStorage(formData);
     addNewUserToLocalStorage(formData);
     navigate("/selectUser");

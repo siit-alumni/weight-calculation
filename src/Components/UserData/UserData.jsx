@@ -6,6 +6,9 @@ import { UserContext } from '../../App';
 export default function UserData() {
     const { t } = useTranslation();
     const { userData, setUserData } = useContext(UserContext);
+
+    // console.log("UserData component :", userData);
+    
     if (!userData) {
         return <p>{t("userData.notAvailable")}</p>;
     }

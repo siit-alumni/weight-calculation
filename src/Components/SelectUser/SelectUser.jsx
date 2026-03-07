@@ -13,8 +13,8 @@ export default function SelectUser() {
     const { t } = useTranslation();
     const sortedUsers = sortUsersAlphabetically(users);
 
-    const handleSelectUser = () => {
-        const user = users.profiles.find(profile => profile.id === selectedUser);
+    const handleSelectUser = () => {        
+        const user = users.profiles.find(profile => profile.id === userData.id);
         setUserData(user);
         saveUserDataToLocalStorage(user);
         navigate('/results');
@@ -37,7 +37,7 @@ export default function SelectUser() {
     };
 
     useEffect(() => {
-        const user = users.profiles.find(profile => profile.id === selectedUser);
+        const user = users.profiles.find(profile => profile.id == selectedUser);
         setUserData(user);
     }, [selectedUser]);
 
@@ -56,7 +56,7 @@ export default function SelectUser() {
                 <option value="">-- {t("selectUser.selectPlaceholder")} --</option>
                 {Object.entries(sortedUsers).map(([key]) =>
                 (<option key={sortedUsers[key].id} value={sortedUsers[key].id}>
-                    {sortedUsers[key].id}
+                    {sortedUsers[key].name}
                 </option>))}
             </select>
 
