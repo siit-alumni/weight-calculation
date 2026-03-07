@@ -12,14 +12,28 @@ export default function UserListSort({ users, onFilteredUsersChange }) {
         onFilteredUsersChange(filteredUsers);
     }, [searchInput]);
 
+    const handleClearSearch = () => {
+        setSearchInput('');
+    };
+
     return (
-        <div className="pb-4">
+        <div className="pb-4 flex-column d-flex align-items-md-center ">
             <input
                 type="text"
+                className="form-control"
                 placeholder={t("usersList.searchPlaceholder")}
                 value={searchInput}
                 onChange={(e) => setSearchInput(e.target.value)}
+                style={{ width: "auto", minWidth: "200px" }}
             />
+            
+            {searchInput && 
+            <button 
+                onClick={handleClearSearch}
+                className="btn btn-secondary btn-sm mt-2"
+            >
+                {t("usersList.clearButton") || "Clear"}
+            </button>}
         </div>
     );
 }

@@ -29,7 +29,8 @@
         "weightHeader": "Weight (kg)",
         "genderHeader": "Gender",
         "searchPlaceholder": "Search users...",
-        "searchTitle": "Search users by name"
+        "searchTitle": "Search users by name",
+        "clearButton": "Clear Search"
     },
     "common": {
         "genderOption": {

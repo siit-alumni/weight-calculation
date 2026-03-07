@@ -30,7 +30,8 @@
         "weightHeader": "Greutate (kg)",
         "genderHeader": "Sex",
         "searchPlaceholder": "Caută utilizatori...",
-        "searchTitle": "Căutare utilizatori după nume"
+        "searchTitle": "Căutare utilizatori după nume",
+        "clearButton": "Șterge căutarea"
     },
     "common": {
         "genderOption": {
