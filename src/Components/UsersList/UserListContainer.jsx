@@ -3,7 +3,7 @@ import UserData from "../UserData/UserData";
 import UsersList from "./UsersList";
 import { useContext, useState } from "react";
 import { UserContext } from "../../App";
-import { getUserDataFromLocalStorage, getUsersFromLocalStorage, saveUserDataToLocalStorage } from "../functions/functions";
+import { getUserDataFromLocalStorage, getUsersFromLocalStorage, saveUserDataToLocalStorage, sortUsersAlphabetically } from "../functions/functions";
 import { useTranslation } from "react-i18next";
 
 export default function UserListContainer() {
@@ -12,9 +12,10 @@ export default function UserListContainer() {
     const [selectedUserId, setSelectedUserId] = useState(getUserDataFromLocalStorage() || "");
     const { t } = useTranslation();
     const navigate = useNavigate();
+    const sortedUsers = sortUsersAlphabetically(users);
 
     const handleSelectUser = () => {
-        const user = users.profiles.find(profile => profile.id === selectedUserId);
+        const user = users.profiles.find(profile => profile.id === userData.id);
         setUserData(user);
         saveUserDataToLocalStorage(user);
         navigate('/results');
@@ -45,20 +46,20 @@ export default function UserListContainer() {
                 {users.profiles.length === 0 ? (
                     <p>{t("usersList.noUsers")}</p>
                 ) : (
-                    <UsersList />
+                    <UsersList users={sortedUsers} />
                 )}
 
                 <UserData />
             </div>
 
             <div className="d-flex align-items-center justify-content-center flex-wrap">
-                <button className="btn btn-primary col-md-4  " disabled={!selectedUserId} onClick={handleSelectUser}>{t("selectUser.selectButton")}</button>
-                <button className="btn btn-primary col-md-4 " disabled={!selectedUserId} onClick={handleUpdateUser}>{t("selectUser.modifyButton")}</button>
-                <button className="btn btn-primary col-md-4 " disabled={!selectedUserId} onClick={handleDeleteUser}>{t("selectUser.deleteButton")}</button>
+                <button className="btn btn-primary col-md-4  " disabled={!userData} onClick={handleSelectUser}>{t("selectUser.selectButton")}</button>
+                <button className="btn btn-primary col-md-4 " disabled={!userData} onClick={handleUpdateUser}>{t("selectUser.modifyButton")}</button>
+                <button className="btn btn-primary col-md-4 " disabled={!userData} onClick={handleDeleteUser}>{t("selectUser.deleteButton")}</button>
                 <button className="btn btn-primary col-md-4" onClick={handleCreateUser}>{t("selectUser.createButton")}</button>
 
             </div>
-            
+
             <button onClick={handleUserSelection} className="btn btn-secondary col-md-4 mt-3">{t("report.userSelectionButton")}</button>
 
         </div>

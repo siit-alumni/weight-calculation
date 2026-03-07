@@ -29,6 +29,10 @@ export function Results() {
         navigate('/selectUser');
     };
 
+    const handleUserList = () => {
+        navigate('/usersList');
+    };
+
     return (
         <div>
             <div className="results">
@@ -56,6 +60,7 @@ export function Results() {
             </div>
 
             <button onClick={handleSelectUser} className="btn btn-secondary">{t("report.userSelectionButton")}</button>
+            <button onClick={handleUserList} className="btn btn-secondary">{t("selectUser.userListButton")}</button>
         </div>
     );
 }

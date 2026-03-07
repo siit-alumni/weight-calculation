@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext, use } from 'react';
-import { getUserDataFromLocalStorage, getUsersFromLocalStorage, saveUserDataToLocalStorage } from '../functions/functions';
+import { getUserDataFromLocalStorage, getUsersFromLocalStorage, saveUserDataToLocalStorage, sortUsersAlphabetically } from '../functions/functions';
 import { useTranslation } from 'react-i18next';
 import UserData from '../UserData/UserData';
 import { UserContext } from '../../App';
@@ -11,6 +11,7 @@ export default function SelectUser() {
     const { userData, setUserData } = useContext(UserContext);
     const navigate = useNavigate();
     const { t } = useTranslation();
+    const sortedUsers = sortUsersAlphabetically(users);
 
     const handleSelectUser = () => {
         const user = users.profiles.find(profile => profile.id === selectedUser);
@@ -53,9 +54,9 @@ export default function SelectUser() {
                 value={selectedUser || ""}
             >
                 <option value="">-- {t("selectUser.selectPlaceholder")} --</option>
-                {Object.entries(users.profiles).map(([key]) =>
-                (<option key={users.profiles[key].id} value={users.profiles[key].id}>
-                    {users.profiles[key].id}
+                {Object.entries(sortedUsers).map(([key]) =>
+                (<option key={sortedUsers[key].id} value={sortedUsers[key].id}>
+                    {sortedUsers[key].id}
                 </option>))}
             </select>
 

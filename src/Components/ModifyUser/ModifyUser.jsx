@@ -2,7 +2,7 @@ import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { Form } from "../Form/Form";
 import { useContext, useState } from "react";
-import { saveUserDataToLocalStorage, saveUsersToLocalStorage, sortUsersAlphabetically, updateUserInLocalStorage } from "../functions/functions";
+import { saveUserDataToLocalStorage, saveUsersToLocalStorage, updateUserInLocalStorage } from "../functions/functions";
 import { UserContext } from "../../App";
 
 export function ModifyUser() {
@@ -21,7 +21,6 @@ export function ModifyUser() {
     e.preventDefault();
     saveUserDataToLocalStorage(formData);
     updateUserInLocalStorage(formData);
-    // saveUsersToLocalStorage(sortUsersAlphabetically());
     navigate("/selectUser");
   };
   const handleSelectUser = () => {

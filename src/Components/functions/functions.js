@@ -131,11 +131,8 @@ export function findUserInLocalStorage(userId) {
   return usersData.profiles[index];
 }
 
-export function sortUsersAlphabetically() {
-  const usersData = getUsersFromLocalStorage();
-  const users = usersData.profiles;
-  users.sort((a, b) => a.name < b.name ? -1 : 1);
-
+export function sortUsersAlphabetically(unsortedUsers) {
+  const users = unsortedUsers.profiles.sort((a, b) => a.name < b.name ? -1 : 1);
   return users;
 }
 

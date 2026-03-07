@@ -3,12 +3,11 @@ import { useNavigate } from "react-router-dom";
 import UserData from "../UserData/UserData";
 import { useContext } from "react";
 import { UserContext } from "../../App";
-import { clearUserDataFromLocalStorage, deleteUserFromLocalStorage, getUsersFromLocalStorage, saveUsersToLocalStorage } from "../functions/functions";
+import { clearUserDataFromLocalStorage, deleteUserFromLocalStorage } from "../functions/functions";
 
 export function DeleteUser() {
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const users = getUsersFromLocalStorage();
   const { userData, setUserData } = useContext(UserContext);
 
   const handleDelete = (e) => {
