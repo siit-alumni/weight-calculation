@@ -28,7 +28,9 @@
         "ageHeader": "Vârstă",
         "heightHeader": "Înălțime (cm)",
         "weightHeader": "Greutate (kg)",
-        "genderHeader": "Sex"
+        "genderHeader": "Sex",
+        "searchPlaceholder": "Caută utilizatori...",
+        "searchTitle": "Căutare utilizatori după nume"
     },
     "common": {
         "genderOption": {

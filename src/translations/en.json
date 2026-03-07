@@ -27,7 +27,10 @@
         "ageHeader": "Age",
         "heightHeader": "Height (cm)",
         "weightHeader": "Weight (kg)",
-        "genderHeader": "Gender"},
+        "genderHeader": "Gender",
+        "searchPlaceholder": "Search users...",
+        "searchTitle": "Search users by name"
+    },
     "common": {
         "genderOption": {
             "male": "Male",
