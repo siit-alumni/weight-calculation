@@ -35,6 +35,7 @@ export function NewUser() {
             <form onSubmit={handleFormSubmit} className="container p-3">
 
                 <Form getDetails={getDetails} userData={emptyUser} />
+              
                 <div>
                     <button type="submit" className="btn btn-primary">
                         {t("form.saveButton")}

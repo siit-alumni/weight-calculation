@@ -33,6 +33,15 @@
         "searchTitle": "Căutare utilizatori după nume",
         "clearButton": "Șterge căutarea"
     },
+    "comments": {
+        "title": "Comentarii",
+        "placeholder": "Adaugă un comentariu pentru {{name}}...",
+        "saveButton": "Salvează comentariul",
+        "editButton": "Renunta la modificari",
+        "deleteButton": "Șterge comentariul",
+        "confirmDelete": "Ești sigur că vrei să ștergi acest comentariu?",
+        "cancelButton": "Anulează"
+    },
     "common": {
         "genderOption": {
             "male": "Masculin",

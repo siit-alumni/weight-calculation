@@ -32,6 +32,12 @@
         "searchTitle": "Search users by name",
         "clearButton": "Clear Search"
     },
+    "comments": {
+        "title": "Comments",
+        "placeholder": "Enter your comment here for {{name}}...",
+        "saveButton": "Save Comment",
+        "resetButton": "Reset Comment"
+    },
     "common": {
         "genderOption": {
             "male": "Male",

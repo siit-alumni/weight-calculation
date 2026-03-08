@@ -9,6 +9,7 @@ import { BasalMetabolism } from "../BasalMetabolism/BAsalMetabolism";
 import { CaloricRequirements } from "../CaloricRequirements/CaloricRequirements";
 import { MacronutrientsPercentageSelection } from "../MacronutrientsPerDay/MacronutrientsPercentageSelection";
 import MacronutrientsPerDay from "../MacronutrientsPerDay/MacronutrientsPerDay";
+import Comment from "../Comment/Comment";
 
 
 export function Results() {
@@ -38,6 +39,7 @@ export function Results() {
             <div className="results">
                 <h2>{t("report.title", { name: userData.name })}</h2>
                 <UserData />
+                <Comment />
                 <div className="row mb-2">
                     <div className="col-md-6 mb-3">
                         <BmiInterpretation formData={userData} />
