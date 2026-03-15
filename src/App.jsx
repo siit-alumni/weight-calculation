@@ -21,24 +21,33 @@ export function App() {
 
   return (
     <>
-      <div className="app-header">
-        <button onClick={() => switchLanguage("ro")}>Romana</button>
-        <button onClick={() => switchLanguage("en")}>English</button>
+      <nav class="navbar bg-body-tertiary">
+        <div class="container">
+          <a class="navbar-brand" href="#">Weight Calculator</a>
+          <div className="app-header1">
+            <button class="btn  btn-sm btn-outline-secondary me-2" onClick={() => switchLanguage("ro")}>Romana</button>
+            <button class="btn  btn-sm btn-outline-secondary" onClick={() => switchLanguage("en")}>English</button>
+          </div>
+        </div>
+      </nav>
+
+      <div class="container py-3">
+        <UserContext.Provider value={{ userData, setUserData }}>
+
+          <Routes>
+            <Route path="/selectUser" element={<SelectUser />} />
+            <Route path="/editUser" element={<ModifyUser />} />
+            <Route path="/deleteUser" element={<DeleteUser />} />
+            <Route path="/newUser" element={<NewUser />} />
+            <Route exact path="" element={<SelectUser />} />
+            <Route path="/results" element={<Results />} />
+            <Route path="/usersList" element={<UserListContainer />} />
+
+
+          </Routes >
+        </UserContext.Provider>
       </div>
-      <UserContext.Provider value={{ userData, setUserData }}>
 
-        <Routes>
-          <Route path="/selectUser" element={<SelectUser />} />
-          <Route path="/editUser" element={<ModifyUser />} />
-          <Route path="/deleteUser" element={<DeleteUser />} />
-          <Route path="/newUser" element={<NewUser />} />
-          <Route exact path="" element={<SelectUser />} />
-          <Route path="/results" element={<Results />} />
-          <Route path="/usersList" element={<UserListContainer />} />
-
-
-        </Routes >
-      </UserContext.Provider>
     </>
   );
 }
