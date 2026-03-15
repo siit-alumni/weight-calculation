@@ -33,7 +33,7 @@
         "clearButton": "Clear Search"
     },
     "comments": {
-        "title": "Comments",
+        "title": "Comments for",
         "placeholder": "Enter your comment here for {{name}}...",
         "saveButton": "Save Comment",
         "resetButton": "Reset Comment"
@@ -112,6 +112,21 @@
         "heightUnit": "cm",
         "weightUnit": "kg",
         "notAvailable": "No user data available."
+    },
+    "measurementLog": {
+        "title": "Measurement Log for {{name}}",
+        "date": "Date",
+        "weight": "Weight (kg)",
+        "muscleMass": "Muscle Mass",
+        "fat": "Fat",
+        "noMeasurements": "No measurements available for this user.",
+        "addMeasurementButton": "Add Measurement",
+        "datePlaceholder": "Select date",
+        "weightPlaceholder": "Enter weight in kg",
+        "muscleMassPlaceholder": "Enter muscle mass in kg",
+        "fatPlaceholder": "Enter fat in kg",
+        "saveButton": "Save Measurement",
+        "cancelButton": "Cancel"
     },
     "bmiInterpretation": {
         "title": "Body Mass Index",

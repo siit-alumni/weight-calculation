@@ -19,6 +19,7 @@ export default function UserListContainer() {
     
     const handleSelectUser = () => {
         const user = users.profiles.find(profile => profile.id === userData.id);
+        if (!user) return;
         setUserData(user);
         saveUserDataToLocalStorage(user);
         navigate('/results');

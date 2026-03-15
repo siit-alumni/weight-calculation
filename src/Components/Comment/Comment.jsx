@@ -32,12 +32,13 @@ export default function Comment() {
 
     return (
         <div className="comment-container">
-            <h4>{t('comments.title')} for {userData.name}</h4>
+            <h4>{t('comments.title')} {userData.name}</h4>
             <textarea
                 value={comment}
                 onChange={(e) => setComment(e.target.value)}
                 placeholder={t('comments.placeholder').replace('{{name}}', userData.name)}
                 rows="6"
+                style={{ resize: 'both' }}
             />
             <div className="button-group">
                 <button onClick={handleSave}>{t('comments.saveButton')}</button>

@@ -34,7 +34,7 @@
         "clearButton": "Șterge căutarea"
     },
     "comments": {
-        "title": "Comentarii",
+        "title": "Comentarii pentru",
         "placeholder": "Adaugă un comentariu pentru {{name}}...",
         "saveButton": "Salvează comentariul",
         "editButton": "Renunta la modificari",
@@ -112,6 +112,22 @@
         "heightUnit": "cm",
         "weightUnit": "kg",
         "notAvailable": "Nu există date despre utilizator disponibile."
+    },
+    "measurementLog": {
+        "title": "Jurnal de măsurători pentru {{name}}",
+        "date": "Data",
+        "weight": "Greutate (kg)",
+        "muscleMass": "Masă musculară",
+        "fat": "Grăsimi",
+        "noMeasurements": "Nu există măsurători disponibile pentru acest utilizator.",
+        "addMeasurementButton": "Adaugă măsurătoare",
+        "datePlaceholder": "Selectează data",
+        "weightPlaceholder": "Introdu greutatea (kg)",
+        "muscleMassPlaceholder": "Introdu masa musculară (kg)",
+        "fatPlaceholder": "Introdu grăsimi (kg)",
+        "saveButton": "Salvează măsurătoarea",
+        "cancelButton": "Anulează"
+
     },
     "bmiInterpretation": {
         "title": "Indice masa corporală",

@@ -38,7 +38,6 @@ export function calcBasalMetabolism(height, gender, bodyType, age) {
 
 export function calcCalorieConsumption(basalMetabolism, activityTypes) {
   const { min: minLevel, max: maxLevel } = settings.calorieConsumptionLevels[activityTypes];
-
   const minCalories = Math.round(basalMetabolism + (minLevel * 24));
   const maxCalories = Math.round(basalMetabolism + (maxLevel * 24));
 
@@ -86,6 +85,8 @@ export function clearUserDataFromLocalStorage() {
 }
 
 export function saveUserDataToLocalStorage(userData) {
+  if (!userData || !userData.id) return;
+  
   const appData = localStorage.getItem("WeightCalculatorApp");
   const usersData = appData ? JSON.parse(appData) : { profiles: [], selectedUser: null };
 
@@ -166,4 +167,26 @@ export function replaceUsersIDs() {
     });
     saveUsersToLocalStorage(updatedUsers);
   }
+}
+
+export function getMeasurementLogFromLocalStorage(userId) {
+  const users = localStorage.getItem("WeightCalculatorApp");
+  const userData = users ? JSON.parse(users) : { profiles: [] };
+  return userData.profiles.find(profile => profile.id === userId)?.measurementLog || [];
+}
+
+
+
+export function saveMeasurementLogToLocalStorage(userId, measurementLog) {
+  console.log(userId, measurementLog);
+  
+  const usersData = getUsersFromLocalStorage();
+  const user = usersData.profiles.find(profile => profile.id === userId);
+  if (!user.measurementLog) {
+    user.measurementLog = [];
+  }
+  
+    user.measurementLog.push(measurementLog);
+    localStorage.setItem('WeightCalculatorApp', JSON.stringify(usersData));
+  
 }

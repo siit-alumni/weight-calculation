@@ -10,6 +10,7 @@ export const settings = {
     gender: "female",
     bodyType: "ectomorph",
     activityTypes: "sedentary",
+    measurementLog: [],
     macronutrientsPercentages: {
       endomorph: {
         protein: 30,

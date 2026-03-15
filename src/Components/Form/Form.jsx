@@ -26,7 +26,6 @@ export function Form({ getDetails, userData }) {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    // formData.id = formData.name;
     saveUserDataToLocalStorage(formData);
     addNewUserToLocalStorage(formData);
     navigate("/selectUser");
