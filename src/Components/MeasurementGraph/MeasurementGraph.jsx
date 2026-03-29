@@ -1,5 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { Line } from 'react-chartjs-2';
+
 
 export default function MeasurementGraph({ measurements }) {
     const { t } = useTranslation();
@@ -7,18 +9,23 @@ export default function MeasurementGraph({ measurements }) {
     if (!Array.isArray(measurements)) {
         return null;
     }
+    const data = {
+        labels: measurements.map(m => m.date),
+        datasets: [{
+            label: t('measurementLog.weight'),
+            data: measurements.map(m => m.weight),
+            // fill: true,
+            borderColor: 'rgb(75, 192, 192)',
+            tension: 0.1
+        }]
+    };
+    console.log(data);
+    
 
     return (
-        <ul className="list-unstyled">
-            {measurements.map((m, idx) => (
-                <li key={idx}>
-                    <strong>{t('measurementLog.date')}:</strong> {m.date} | 
-                    <strong> {t('measurementLog.weight')}:</strong> {m.weight} kg | 
-                    <strong> {t('measurementLog.fat')}:</strong> {m.fat}% | 
-                    <strong> {t('measurementLog.muscleMass')}:</strong> {m.muscleMass} kg
-                </li>
-            ))}
-        </ul>
+        <div className="container">
+            <Line data={data} />
+        </div>
     );
 };
 
