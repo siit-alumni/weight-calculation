@@ -126,7 +126,9 @@
         "muscleMassPlaceholder": "Introdu masa musculară (kg)",
         "fatPlaceholder": "Introdu grăsimi (kg)",
         "saveButton": "Salvează măsurătoarea",
-        "cancelButton": "Anulează"
+        "cancelButton": "Anulează",
+        "showGraphButton": "Graficul evolutiei",
+        "hideGraphButton": "Ascunde graficul"
 
     },
     "bmiInterpretation": {
