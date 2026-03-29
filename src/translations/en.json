@@ -116,9 +116,12 @@
     "measurementLog": {
         "title": "Measurement Log for {{name}}",
         "date": "Date",
-        "weight": "Weight (kg)",
+        "weight": "Weight",
         "muscleMass": "Muscle Mass",
         "fat": "Fat",
+        "weightUM": "kg",
+        "muscleMassUM": "kg",
+        "fatUM": "%",
         "noMeasurements": "No measurements available for this user.",
         "addMeasurementButton": "Add Measurement",
         "datePlaceholder": "Select date",
@@ -126,7 +129,11 @@
         "muscleMassPlaceholder": "Enter muscle mass in kg",
         "fatPlaceholder": "Enter fat in kg",
         "saveButton": "Save Measurement",
-        "cancelButton": "Cancel"
+        "cancelButton": "Cancel",
+        "showGraphButton": "Show Progress Graph",
+        "hideGraphButton": "Hide Progress Graph",   
+        "graphTitle": "Progress of measurements over time",
+        "allMeasurements": "All Measurements"
     },
     "bmiInterpretation": {
         "title": "Body Mass Index",

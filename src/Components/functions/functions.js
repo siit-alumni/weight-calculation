@@ -86,7 +86,7 @@ export function clearUserDataFromLocalStorage() {
 
 export function saveUserDataToLocalStorage(userData) {
   if (!userData || !userData.id) return;
-  
+
   const appData = localStorage.getItem("WeightCalculatorApp");
   const usersData = appData ? JSON.parse(appData) : { profiles: [], selectedUser: null };
 
@@ -97,6 +97,21 @@ export function saveUserDataToLocalStorage(userData) {
 export function getUsersFromLocalStorage() {
   const users = localStorage.getItem("WeightCalculatorApp");
   return users ? JSON.parse(users) : { profiles: [] };
+}
+
+export function stringToRgbColor(str) {
+  let hash = 0;
+
+  // Generate hash from string
+  for (let i = 0; i < str.length; i++) {
+    hash = str.charCodeAt(i) + ((hash << 5) - hash);
+  }
+
+  const r = (hash >> 0) & 255;
+  const g = (hash >> 8) & 255;
+  const b = (hash >> 16) & 255;
+
+  return `rgb(${r}, ${g}, ${b})`;
 }
 
 export function saveUsersToLocalStorage(users) {
@@ -179,14 +194,14 @@ export function getMeasurementLogFromLocalStorage(userId) {
 
 export function saveMeasurementLogToLocalStorage(userId, measurementLog) {
   console.log(userId, measurementLog);
-  
+
   const usersData = getUsersFromLocalStorage();
   const user = usersData.profiles.find(profile => profile.id === userId);
   if (!user.measurementLog) {
     user.measurementLog = [];
   }
-  
-    user.measurementLog.push(measurementLog);
-    localStorage.setItem('WeightCalculatorApp', JSON.stringify(usersData));
-  
+
+  user.measurementLog.push(measurementLog);
+  localStorage.setItem('WeightCalculatorApp', JSON.stringify(usersData));
+
 }

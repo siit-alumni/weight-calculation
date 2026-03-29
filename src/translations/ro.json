@@ -116,9 +116,12 @@
     "measurementLog": {
         "title": "Jurnal de măsurători pentru {{name}}",
         "date": "Data",
-        "weight": "Greutate (kg)",
+        "weight": "Greutate",
         "muscleMass": "Masă musculară",
-        "fat": "Grăsimi",
+        "fat": "Grăsime corporală",
+        "weightUM": "kg",
+        "muscleMassUM": "kg",
+        "fatUM": "%",
         "noMeasurements": "Nu există măsurători disponibile pentru acest utilizator.",
         "addMeasurementButton": "Adaugă măsurătoare",
         "datePlaceholder": "Selectează data",
@@ -128,7 +131,9 @@
         "saveButton": "Salvează măsurătoarea",
         "cancelButton": "Anulează",
         "showGraphButton": "Graficul evolutiei",
-        "hideGraphButton": "Ascunde graficul"
+        "hideGraphButton": "Ascunde graficul",
+        "graphTitle": "Evoluția măsurătorilor în timp",
+        "allMeasurements": "Toate măsurătorile"
 
     },
     "bmiInterpretation": {
