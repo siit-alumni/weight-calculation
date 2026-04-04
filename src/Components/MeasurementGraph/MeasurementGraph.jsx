@@ -41,23 +41,23 @@ export default function MeasurementGraph({ measurements }) {
         }]
     };
 
-    const options = {
-        responsive: true,
-        plugins: {
-            legend: {
-                position: 'top',
-            },
-            title: {
-                display: true,
-                text: t('measurementLog.weight')
-            }
-        },
-        scales: {
-            y: {
-                beginAtZero: false
-            }
-        }
-    };
+    // const options = {
+    //     responsive: true,
+    //     plugins: {
+    //         legend: {
+    //             position: 'top',
+    //         },
+    //         title: {
+    //             display: true,
+    //             text: t('measurementLog.weight')
+    //         }
+    //     },
+    //     scales: {
+    //         y: {
+    //             beginAtZero: false
+    //         }
+    //     }
+    // };
 
 
 
@@ -79,27 +79,20 @@ export default function MeasurementGraph({ measurements }) {
             </ul>
             <div className="tab-content" id="myTabContent">
                 <div className="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all-tab">
-                    <ul className="list-unstyled">
-                        {measurements.map((m, idx) => (
-                            <li key={idx}>
-                                <strong>{t('measurementLog.date')}:</strong> {m.date} | 
-                                <strong> {t('measurementLog.weight')}:</strong> {m.weight} kg | 
-                                <strong> {t('measurementLog.fat')}:</strong> {m.fat}% | 
-                                <strong> {t('measurementLog.muscleMass')}:</strong> {m.muscleMass} kg
-                            </li>
-                        ))}
-                    </ul>
+                    <div >
+                    <DisplayGraph measurements={measurements} value={["weight", "fat", "muscleMass"]} />
+                    </div>
                 </div>
                 <div className="tab-pane fade" id="weight" role="tabpanel" aria-labelledby="weight-tab">
                     <div >
-                    <DisplayGraph measurements={measurements} value="weight" />
+                    <DisplayGraph measurements={measurements} value={["weight"]} />
                     </div>
                 </div>
                 <div className="tab-pane fade" id="fat" role="tabpanel" aria-labelledby="fat-tab">
-                    <DisplayGraph measurements={measurements} value="fat" />
+                    <DisplayGraph measurements={measurements} value={["fat"]} />
                 </div>
                 <div className="tab-pane fade" id="muscle" role="tabpanel" aria-labelledby="muscle-tab">
-                    <DisplayGraph measurements={measurements} value="muscleMass" />
+                    <DisplayGraph measurements={measurements} value={["muscleMass"]} />
                 </div>
             </div>
         </div>

@@ -27,13 +27,13 @@ export default function DisplayGraph({ measurements, value }) {
     const { t } = useTranslation();
     const data = {
         labels: measurements.map(m => m.date),
-        datasets: [{
-            label: ` ${t(`measurementLog.${value}`)} (${t(`measurementLog.${value}UM`)})`,
-            data: measurements.map(m => m[value]),
-            borderColor: stringToRgbColor(value),
+        datasets: value.map(param => ({
+            label: ` ${t(`measurementLog.${param}`)} (${t(`measurementLog.${param}UM`)})`,
+            data: measurements.map(m => m[param]),
+            borderColor: stringToRgbColor(param),
             backgroundColor: 'rgba(75, 192, 192, 0.1)',
             // tension: 0.1
-        }]
+        }))
     };
 
     return (
