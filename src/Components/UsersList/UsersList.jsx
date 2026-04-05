@@ -14,10 +14,9 @@ export default function UsersList({ users }) {
     const handleListSelectUser = (userId) => {
         setSelectedUserId(userId);
         const user = users.find(profile => profile.id === userId);
-        setUserData(user);
-
-
+        setUserData(userId);
     };
+
 
 
     return (

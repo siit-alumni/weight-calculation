@@ -1,10 +1,11 @@
 import React, { useContext, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { saveMeasurementLogToLocalStorage } from '../functions/functions';
+import { getUserFromId, saveMeasurementLogToLocalStorage } from '../functions/functions';
 import { UserContext } from '../../App';
 
 export default function NewMeasurements({ setShowMeasurement, onAddMeasurement }) {
         const { userData } = useContext(UserContext);
+              const selectedUser = getUserFromId(userData);
     const [weight, setWeight] = useState('');
     const [date, setDate] = useState('');
     const [muscleMass, setMuscleMass] = useState('');
@@ -20,7 +21,7 @@ export default function NewMeasurements({ setShowMeasurement, onAddMeasurement }
             fat,
         };
         setShowMeasurement(false);
-        saveMeasurementLogToLocalStorage(userData.id, newMeasurement);
+        saveMeasurementLogToLocalStorage(selectedUser.id, newMeasurement);
         setWeight('');
         setMuscleMass('');
         setFat('');

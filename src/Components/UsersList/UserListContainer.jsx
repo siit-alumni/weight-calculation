@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import UserData from "../UserData/UserData";
 import UsersList from "./UsersList";
-import { useContext, useState } from "react";
+import { use, useContext, useEffect, useState } from "react";
 import { UserContext } from "../../App";
 import { getUserDataFromLocalStorage, getUsersFromLocalStorage, saveUserDataToLocalStorage, sortUsersAlphabetically } from "../functions/functions";
 import { useTranslation } from "react-i18next";
@@ -16,11 +16,10 @@ export default function UserListContainer() {
     const navigate = useNavigate();
     const sortedUsers = sortUsersAlphabetically(users);
 
-    
     const handleSelectUser = () => {
-        const user = users.profiles.find(profile => profile.id === userData.id);
+        const user = users.profiles.find(profile => profile.id === userData);
         if (!user) return;
-        setUserData(user);
+        setUserData(userData);
         saveUserDataToLocalStorage(user);
         navigate('/results');
     };

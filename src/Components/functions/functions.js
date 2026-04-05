@@ -205,3 +205,9 @@ export function saveMeasurementLogToLocalStorage(userId, measurementLog) {
   localStorage.setItem('WeightCalculatorApp', JSON.stringify(usersData));
 
 }
+
+export function getUserFromId(userId) {
+  const users = localStorage.getItem("WeightCalculatorApp");
+  const userData = users ? JSON.parse(users) : { profiles: [] };
+  return userData.profiles.find(profile => profile.id == userId);
+}

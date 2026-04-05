@@ -1,22 +1,23 @@
 import { useTranslation } from "react-i18next";
 import { settings } from "../Settings/settings";
 import { useEffect, useState } from "react";
-import { checkDefaultPercentages, getDefaultMacronutrientsPerBodyType, updateUserInLocalStorage } from "../functions/functions";
+import { checkDefaultPercentages, getDefaultMacronutrientsPerBodyType, getUserFromId, updateUserInLocalStorage } from "../functions/functions";
 
 export function MacronutrientsPercentageSelection({ formData, getPercentages }) {
     const { t } = useTranslation();
-    const bodyType = formData.bodyType;
-if (!formData.macronutrientsPercentages) {
-    formData.macronutrientsPercentages = {};
-    formData.macronutrientsPercentages[bodyType] = getDefaultMacronutrientsPerBodyType(bodyType);
-    updateUserInLocalStorage(formData);
-}
-if (!formData.macronutrientsPercentages[bodyType]) {
-    formData.macronutrientsPercentages[bodyType] = getDefaultMacronutrientsPerBodyType(bodyType);
-    updateUserInLocalStorage(formData);
-}
+    const selectedUser = getUserFromId(formData);
+    const bodyType = selectedUser.bodyType;
+    if (!selectedUser.macronutrientsPercentages) {
+        selectedUser.macronutrientsPercentages = {};
+        selectedUser.macronutrientsPercentages[bodyType] = getDefaultMacronutrientsPerBodyType(bodyType);
+        updateUserInLocalStorage(selectedUser);
+    }
+    if (!selectedUser.macronutrientsPercentages[bodyType]) {
+        selectedUser.macronutrientsPercentages[bodyType] = getDefaultMacronutrientsPerBodyType(bodyType);
+        updateUserInLocalStorage(selectedUser);
+    }
 
-    const perc = formData.macronutrientsPercentages[bodyType];
+    const perc = selectedUser.macronutrientsPercentages[bodyType];
     const [percentages, setPercentages] = useState(perc);
 
     useEffect(() => {
@@ -39,16 +40,16 @@ if (!formData.macronutrientsPercentages[bodyType]) {
             return;
         }
         getPercentages(percentages);
-            formData.macronutrientsPercentages[bodyType] = percentages;
-            updateUserInLocalStorage(formData);
+        selectedUser.macronutrientsPercentages[bodyType] = percentages;
+        updateUserInLocalStorage(selectedUser);
     };
 
     const handleReset = (e) => {
         e.preventDefault();
         getPercentages(null);
         setPercentages(getDefaultMacronutrientsPerBodyType(bodyType));
-            formData.macronutrientsPercentages[bodyType] = percentages;
-            updateUserInLocalStorage(formData);
+        selectedUser.macronutrientsPercentages[bodyType] = percentages;
+        updateUserInLocalStorage(selectedUser);
     };
 
     return (

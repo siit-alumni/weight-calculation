@@ -1,12 +1,14 @@
 import { useTranslation } from "react-i18next";
-import { calcBasalMetabolism, calcCalorieConsumption } from "../functions/functions";
+import { calcBasalMetabolism, calcCalorieConsumption, getUserFromId } from "../functions/functions";
 
 export function CaloricRequirements({ formData }) {
-  const { weight, height, age, gender, bodyType, activityTypes } = formData;
+  const selectedUser = getUserFromId(formData);
+  const { weight, height, age, gender, bodyType, activityTypes } = selectedUser;
   const { t } = useTranslation();
 
   const basalMetabolism = calcBasalMetabolism(height, gender, bodyType, age);
   const caloricRequirements = calcCalorieConsumption(basalMetabolism, activityTypes);
+
 
   return (
     <div>

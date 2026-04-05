@@ -14,8 +14,8 @@ export default function SelectUser() {
     const sortedUsers = sortUsersAlphabetically(users);
 
     const handleSelectUser = () => {        
-        const user = users.profiles.find(profile => profile.id === userData.id);
-        setUserData(user);
+        const user = users.profiles.find(profile => profile.id === selectedUser);
+        setUserData(selectedUser);
         saveUserDataToLocalStorage(user);
         navigate('/results');
     };
@@ -38,7 +38,7 @@ export default function SelectUser() {
 
     useEffect(() => {
         const user = users.profiles.find(profile => profile.id == selectedUser);
-        setUserData(user);
+        setUserData(selectedUser);
     }, [selectedUser]);
 
     return (

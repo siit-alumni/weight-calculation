@@ -1,11 +1,12 @@
 import { useTranslation } from "react-i18next";
-import { calcBasalMetabolism, calcCalorieConsumption,  calcMacronutrientsCalories, calcMacronutrientsGrams } from "../functions/functions";
+import { calcBasalMetabolism, calcCalorieConsumption,  calcMacronutrientsCalories, calcMacronutrientsGrams, getUserFromId } from "../functions/functions";
 
 export default function MacronutrientsPerDay({ formData, macronutrientPercentage }) {
-  const { weight, height, gender, bodyType, age, activityTypes } = formData;
+        const selectedUser = getUserFromId(formData);
+  const { weight, height, gender, bodyType, age, activityTypes } = selectedUser;
   const { t } = useTranslation();
 
-  const macronutrientPercentages =  formData.macronutrientsPercentages[bodyType];
+  const macronutrientPercentages =  selectedUser.macronutrientsPercentages[bodyType];
   const basalMetabolism = calcBasalMetabolism(height, gender, bodyType, age);
   const { minCalories, maxCalories } = calcCalorieConsumption(basalMetabolism, activityTypes);
   const minMacronutrientsCalories = calcMacronutrientsCalories(minCalories, macronutrientPercentages);

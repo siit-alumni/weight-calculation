@@ -15,7 +15,7 @@ export function App() {
 
   const { t, i18n } = useTranslation();
   const switchLanguage = (lng) => i18n.changeLanguage(lng);
-  const selectedUser = getUserDataFromLocalStorage()?.selectedUser || {};
+  const selectedUser = getUserDataFromLocalStorage();
   const [userData, setUserData] = useState(selectedUser);
 
   replaceUsersIDs();

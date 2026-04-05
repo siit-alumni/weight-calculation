@@ -40,7 +40,7 @@
         "editButton": "Renunta la modificari",
         "deleteButton": "Șterge comentariul",
         "confirmDelete": "Ești sigur că vrei să ștergi acest comentariu?",
-        "cancelButton": "Anulează"
+        "resetButton": "Anulează modificările"
     },
     "common": {
         "genderOption": {

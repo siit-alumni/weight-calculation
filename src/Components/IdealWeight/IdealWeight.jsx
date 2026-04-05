@@ -1,9 +1,10 @@
 import { useTranslation } from "react-i18next";
-import { calcIdealWeight } from "../functions/functions";
+import { calcIdealWeight, getUserFromId } from "../functions/functions";
 
 
 export default function IdealWeight({formData}) {
-  const { weight, height, gender, bodyType, age } = formData;
+        const selectedUser = getUserFromId(formData);
+  const { weight, height, gender, bodyType, age } = selectedUser;
   const { t } = useTranslation();
 
   let idealWeight = calcIdealWeight(height, gender, bodyType, age);
