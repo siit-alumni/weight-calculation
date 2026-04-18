@@ -10,7 +10,7 @@ import { getUserFromId } from '../functions/functions';
 export default function MeasurementLog() {
     const { t } = useTranslation();
     const { userData, setUserData } = useContext(UserContext);
-          const selectedUser = getUserFromId(userData);
+    const selectedUser = getUserFromId(userData);
     const initMeasurementLog = selectedUser.measurementLog || [];
     const [showNewMeasurement, setShowNewMeasurement] = useState(false);
     const [showGraph, setShowGraph] = useState(false);
@@ -24,6 +24,8 @@ export default function MeasurementLog() {
     const handleHideGraph = () => {
         setShowGraph(false);
     }
+
+
 
     return (
         <div>
@@ -49,7 +51,6 @@ export default function MeasurementLog() {
                     <MeasurementGraph measurements={initMeasurementLog} />
                 </>
             )}
-
 
 
             {!showGraph && (

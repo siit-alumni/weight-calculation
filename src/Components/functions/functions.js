@@ -213,3 +213,12 @@ export function getUserFromId(userId) {
   const userData = users ? JSON.parse(users) : { profiles: [] };
   return userData.profiles.find(profile => profile.id == userId);
 }
+
+export function deleteMeasurementFromLocalStorage(userId, measurementIndex) {
+  const usersData = getUsersFromLocalStorage();
+  const user = usersData.profiles.find(profile => profile.id === userId); 
+  if (user && user.measurementLog) {
+    user.measurementLog.splice((user.measurementLog.length - 1 - measurementIndex), 1);
+    localStorage.setItem('WeightCalculatorApp', JSON.stringify(usersData));
+  }
+}
