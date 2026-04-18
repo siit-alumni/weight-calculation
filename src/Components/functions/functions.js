@@ -153,6 +153,7 @@ export function sortUsersAlphabetically(unsortedUsers) {
 }
 
 
+
 export function checkDefaultPercentages(bodyType, percentages) {
   const defaultPercentages = getDefaultMacronutrientsPerBodyType(bodyType);
   return (
@@ -190,18 +191,19 @@ export function getMeasurementLogFromLocalStorage(userId) {
   return userData.profiles.find(profile => profile.id === userId)?.measurementLog || [];
 }
 
+export function sortMeasurementsByDate(measurements) {
+  return measurements.sort((a, b) => new Date(a.date) - new Date(b.date));
+}
 
 
 export function saveMeasurementLogToLocalStorage(userId, measurementLog) {
-  console.log(userId, measurementLog);
-
   const usersData = getUsersFromLocalStorage();
   const user = usersData.profiles.find(profile => profile.id === userId);
   if (!user.measurementLog) {
     user.measurementLog = [];
   }
-
   user.measurementLog.push(measurementLog);
+  sortMeasurementsByDate(user.measurementLog);
   localStorage.setItem('WeightCalculatorApp', JSON.stringify(usersData));
 
 }
