@@ -133,7 +133,9 @@
         "showGraphButton": "Graficul evolutiei",
         "hideGraphButton": "Ascunde graficul",
         "graphTitle": "Evoluția măsurătorilor în timp",
-        "allMeasurements": "Toate măsurătorile"
+        "allMeasurements": "Toate măsurătorile",
+        "editMeasurementButton": "Editează măsurătoarea",
+        "deleteMeasurementButton": "Șterge măsurătoarea"
 
     },
     "bmiInterpretation": {

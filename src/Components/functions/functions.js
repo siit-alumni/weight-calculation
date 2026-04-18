@@ -153,7 +153,6 @@ export function sortUsersAlphabetically(unsortedUsers) {
 }
 
 
-
 export function checkDefaultPercentages(bodyType, percentages) {
   const defaultPercentages = getDefaultMacronutrientsPerBodyType(bodyType);
   return (
@@ -191,9 +190,6 @@ export function getMeasurementLogFromLocalStorage(userId) {
   return userData.profiles.find(profile => profile.id === userId)?.measurementLog || [];
 }
 
-export function sortMeasurementsByDate(measurements) {
-  return measurements.sort((a, b) => new Date(a.date) - new Date(b.date));
-}
 
 
 export function saveMeasurementLogToLocalStorage(userId, measurementLog) {
@@ -202,16 +198,10 @@ export function saveMeasurementLogToLocalStorage(userId, measurementLog) {
   if (!user.measurementLog) {
     user.measurementLog = [];
   }
+
   user.measurementLog.push(measurementLog);
-  sortMeasurementsByDate(user.measurementLog);
   localStorage.setItem('WeightCalculatorApp', JSON.stringify(usersData));
 
-}
-
-export function getUserFromId(userId) {
-  const users = localStorage.getItem("WeightCalculatorApp");
-  const userData = users ? JSON.parse(users) : { profiles: [] };
-  return userData.profiles.find(profile => profile.id == userId);
 }
 
 export function deleteMeasurementFromLocalStorage(userId, measurementIndex) {
@@ -222,3 +212,11 @@ export function deleteMeasurementFromLocalStorage(userId, measurementIndex) {
     localStorage.setItem('WeightCalculatorApp', JSON.stringify(usersData));
   }
 }
+
+
+export function getUserFromId(userId) {
+  const users = localStorage.getItem("WeightCalculatorApp");
+  const userData = users ? JSON.parse(users) : { profiles: [] };
+  return userData.profiles.find(profile => profile.id == userId);
+}
+

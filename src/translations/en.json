@@ -133,7 +133,9 @@
         "showGraphButton": "Show Progress Graph",
         "hideGraphButton": "Hide Progress Graph",   
         "graphTitle": "Progress of measurements over time",
-        "allMeasurements": "All Measurements"
+        "allMeasurements": "All Measurements",
+        "editMeasurementButton": "Edit Measurement",
+        "deleteMeasurementButton": "Delete Measurement"
     },
     "bmiInterpretation": {
         "title": "Body Mass Index",
