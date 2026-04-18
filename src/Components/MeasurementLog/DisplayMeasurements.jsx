@@ -1,13 +1,42 @@
-import React from 'react';
+import React, { use, useContext, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { deleteMeasurementFromLocalStorage } from '../functions/functions';
+import { UserContext } from '../../App';
+import { select } from 'react-i18next/icu.macro';
 
-export default function DisplayMeasurements({ measurements }) {
+export default function DisplayMeasurements({ selectedUser }) {
     const { t } = useTranslation();
-
+    const measurements = selectedUser.measurementLog || [];
+    const{ userData, setUserData } = useContext(UserContext);
+    const [selectedMeasurementIndex, setSelectedMeasurementIndex] = useState(null);
+    
+    const handleEditMeasurement = (index) => {
+        console.log(`Edit measurement at index: ${selectedMeasurementIndex}`);
+        
+    }
+    
+    const handleDeleteMeasurement = (index) => {
+        console.log(`Delete measurement at index: ${selectedMeasurementIndex}`);
+        deleteMeasurementFromLocalStorage(userData, selectedMeasurementIndex);
+        setSelectedMeasurementIndex(null);
+    }
+    
+    console.log(`selectedMeasurementIndex: ${selectedMeasurementIndex}`);
     if (!Array.isArray(measurements)) {
         return null;
     }
+    
+    const handleSelectDate = (index) => {
+        console.log(index);
+        setSelectedMeasurementIndex(index);
 
+    };
+    
+    useEffect(() => {
+        console.log('Measurements changed:', measurements);
+    }, [measurements, selectedMeasurementIndex]);
+
+  
     return (
         <div>
 
@@ -21,8 +50,9 @@ export default function DisplayMeasurements({ measurements }) {
                     </tr>
                 </thead>
                 <tbody>
-                    {measurements.map((m, idx) => (
-                        <tr key={idx}>
+                    {measurements.slice().reverse().map((m, idx) => (
+                        <tr key={idx}
+                            onClick={() => handleSelectDate(idx)}>
                             <td>{m.date}</td>
                             <td>{m.weight}</td>
                             <td>{m.fat}%</td>
@@ -32,6 +62,18 @@ export default function DisplayMeasurements({ measurements }) {
                 </tbody>
             </table>
 
+
+
+            {selectedMeasurementIndex && (
+                <button onClick={handleEditMeasurement}>
+                    {t('measurementLog.editMeasurementButton')}
+                </button>
+            )}
+            {selectedMeasurementIndex && (
+                <button onClick={handleDeleteMeasurement}>
+                    {t('measurementLog.deleteMeasurementButton')}
+                </button>
+            )}
         </div>
 
     );
