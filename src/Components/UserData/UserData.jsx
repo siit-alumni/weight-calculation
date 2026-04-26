@@ -14,19 +14,45 @@ export default function UserData() {
     }
 
     return (
-        <div>
+        <div className="mt-4">
             <h3>{t("userData.title", { name: userData.name })}</h3>
             <div className="row mb-2">
-                <p className="col-md mb-3"><strong>{t("userData.age")}:</strong> {userData.age} {t("userData.ageUnit")}</p>
-                <p className="col-md mb-3"><strong>{t("userData.gender")}:</strong> {t(`common.genderOption.${userData.gender}`)}</p>
-            </div>
-            <div className="row mb-2">
-                <p className="col-md mb-3"><strong>{t("userData.height")}:</strong> {userData.height} {t("userData.heightUnit")}</p>
-                <p className="col-md mb-3"><strong>{t("userData.weight")}:</strong> {userData.weight} {t("userData.weightUnit")}</p>
-            </div>
-            <div className="row mb-2">
-                <p className="col-md mb-3"><strong>{t("userData.bodyType")}:</strong> {t(`common.bodyTypeOption.${userData.bodyType}`)}</p>
-                <p className="col-md mb-3"><strong>{t("activityTypes.title")}:</strong> {t(`activityTypes.${userData.activityTypes}.description`)}</p>
+                <div className="col-md-4 p-2">
+                    <div className='border rounded p-2'>
+                        <h4 className="lead">{t("userData.age")}:</h4>
+                        {userData.age} {t("userData.ageUnit")}
+                    </div>
+                </div>
+                <div className="col-md-4 p-2">
+                    <div className='border rounded p-2'>
+                        <h4 className="lead">{t("userData.gender")}:</h4>
+                        {t(`common.genderOption.${userData.gender}`)}
+                    </div>
+                </div>
+                <div className="col-md-4 p-2">
+                    <div className='border rounded p-2'>
+                        <h4 className="lead">{t("userData.height")}:</h4>
+                        {userData.height} {t("userData.heightUnit")}
+                    </div>
+                </div>
+                <div className="col-md-4 p-2">
+                    <div className='border rounded p-2'>
+                        <h4 className="lead">{t("userData.weight")}:</h4>
+                        {userData.weight} {t("userData.weightUnit")}
+                    </div>
+                </div>
+                <div className="col-md-4 p-2">
+                    <div className='border rounded p-2'>
+                        <h4 className="lead">{t("userData.bodyType")}:</h4>
+                        {t(`common.bodyTypeOption.${userData.bodyType}`)}
+                    </div>
+                </div>
+                <div className="col-md-4 p-2">
+                    <div className='border rounded p-2'>
+                        <h4 className="lead">{t("activityTypes.title")}:</h4>
+                        {t(`activityTypes.${userData.activityTypes}.description`)}
+                    </div>
+                </div>
             </div>
         </div>
     );

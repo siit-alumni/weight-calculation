@@ -21,17 +21,17 @@ export function App() {
 
   return (
     <>
-      <nav class="navbar bg-body-tertiary">
-        <div class="container">
-          <a class="navbar-brand" href="#">Weight Calculator</a>
+      <nav className="navbar bg-body-tertiary">
+        <div className="container">
+          <a className="navbar-brand" href="#">Weight Calculator</a>
           <div className="app-header1">
-            <button class="btn  btn-sm btn-outline-secondary me-2" onClick={() => switchLanguage("ro")}>Romana</button>
-            <button class="btn  btn-sm btn-outline-secondary" onClick={() => switchLanguage("en")}>English</button>
+            <button className="btn  btn-sm btn-outline-secondary me-2" onClick={() => switchLanguage("ro")}>Romana</button>
+            <button className="btn  btn-sm btn-outline-secondary" onClick={() => switchLanguage("en")}>English</button>
           </div>
         </div>
       </nav>
 
-      <div class="container py-3">
+      <div className="container py-3">
         <UserContext.Provider value={{ userData, setUserData }}>
 
           <Routes>
