@@ -4,18 +4,17 @@ import { deleteMeasurementFromLocalStorage } from '../functions/functions';
 import { UserContext } from '../../App';
 
 
-export default function DisplayMeasurements({ getIndex, measurements }) {
+export default function DisplayMeasurements({ selectedMeasurementIndex, getIndex, measurements }) {
     const { t } = useTranslation();
     const{ userData, setUserData } = useContext(UserContext);
-    const[selectedMeasurementIndex, setSelectedMeasurementIndex] = useState(null);
+   
     if (!Array.isArray(measurements)) {
         return null;
     }
     
     const handleSelectDate = (index) => {
-        console.log(index);
         getIndex(index);
-        setSelectedMeasurementIndex(index);
+
     };
 
     return (

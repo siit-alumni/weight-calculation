@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { use, useContext, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { UserContext } from '../../App';
 import DisplayMeasurements from './DisplayMeasurements';
@@ -41,14 +41,13 @@ export default function MeasurementLog() {
         setSelectedMeasurementIndex(index);
     }
 
-
     return (
         <div>
             <h3>{t("measurementLog.title", { name: selectedUser.name })}</h3>
             {initMeasurementLog.length === 0 ? (
                 <p>{t("measurementLog.noMeasurements")}</p>
             ) : (
-                <DisplayMeasurements getIndex={getIndex} measurements={initMeasurementLog} />
+                <DisplayMeasurements selectedMeasurementIndex={selectedMeasurementIndex} getIndex={getIndex} measurements={initMeasurementLog} />
             )}
 
             {showNewMeasurement && (
@@ -56,12 +55,12 @@ export default function MeasurementLog() {
             )}
 
             <div>
-                {selectedMeasurementIndex && (
+                {selectedMeasurementIndex !== null && (
                     <button onClick={handleEditMeasurement}>
                         {t('measurementLog.editMeasurementButton')}
                     </button>
                 )}
-                {selectedMeasurementIndex && (
+                {selectedMeasurementIndex !== null && (
                     <button onClick={handleDeleteMeasurement}>
                         {t('measurementLog.deleteMeasurementButton')}
                     </button>
