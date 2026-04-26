@@ -192,17 +192,23 @@ export function getMeasurementLogFromLocalStorage(userId) {
 
 
 
+export function sortMeasurementsByDate(measurements) {
+  return measurements.sort((a, b) => new Date(a.date) - new Date(b.date));
+}
+
+
 export function saveMeasurementLogToLocalStorage(userId, measurementLog) {
   const usersData = getUsersFromLocalStorage();
   const user = usersData.profiles.find(profile => profile.id === userId);
   if (!user.measurementLog) {
     user.measurementLog = [];
   }
-
   user.measurementLog.push(measurementLog);
+  sortMeasurementsByDate(user.measurementLog);
   localStorage.setItem('WeightCalculatorApp', JSON.stringify(usersData));
 
 }
+
 
 export function deleteMeasurementFromLocalStorage(userId, measurementIndex) {
   const usersData = getUsersFromLocalStorage();

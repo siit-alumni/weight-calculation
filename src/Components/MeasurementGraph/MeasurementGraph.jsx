@@ -30,35 +30,7 @@ export default function MeasurementGraph({ measurements }) {
     if (!Array.isArray(measurements)) {
         return null;
     }
-    // const data = {
-    //     labels: measurements.map(m => m.date),
-    //     datasets: [{
-    //         label: t('measurementLog.weight'),
-    //         data: measurements.map(m => m.weight),
-    //         borderColor: 'rgb(75, 192, 192)',
-    //         backgroundColor: 'rgba(75, 192, 192, 0.1)',
-    //         // tension: 0.1
-    //     }]
-    // };
-
-    // const options = {
-    //     responsive: true,
-    //     plugins: {
-    //         legend: {
-    //             position: 'top',
-    //         },
-    //         title: {
-    //             display: true,
-    //             text: t('measurementLog.weight')
-    //         }
-    //     },
-    //     scales: {
-    //         y: {
-    //             beginAtZero: false
-    //         }
-    //     }
-    // };
-
+ 
 
 
     return (

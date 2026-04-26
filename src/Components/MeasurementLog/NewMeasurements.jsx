@@ -80,6 +80,11 @@ export default function NewMeasurements({ setShowMeasurement, onAddMeasurement }
                 </label>
             </div>
             <button type="submit">{t('measurementLog.saveButton')}</button>
+                            {(
+                    <button onClick={() => setShowNewMeasurement(false)}>
+                        {t('measurementLog.cancelButton')}
+                    </button>
+                )}
         </form>
     );
 };

@@ -40,6 +40,7 @@ export function NewUser() {
                     <button type="submit" className="btn btn-primary">
                         {t("form.saveButton")}
                     </button>
+                    
                 </div>
             </form>
             <button onClick={handleSelectUser} className="btn btn-secondary col-md-4">{t("report.userSelectionButton")}</button>

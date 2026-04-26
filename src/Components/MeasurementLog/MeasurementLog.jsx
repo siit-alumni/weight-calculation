@@ -4,7 +4,7 @@ import { UserContext } from '../../App';
 import DisplayMeasurements from './DisplayMeasurements';
 import NewMeasurements from './NewMeasurements';
 import MeasurementGraph from '../MeasurementGraph/measurementGraph';
-import { getUserFromId } from '../functions/functions';
+import { deleteMeasurementFromLocalStorage, getUserFromId } from '../functions/functions';
 
 
 export default function MeasurementLog() {
@@ -14,6 +14,18 @@ export default function MeasurementLog() {
     const initMeasurementLog = selectedUser.measurementLog || [];
     const [showNewMeasurement, setShowNewMeasurement] = useState(false);
     const [showGraph, setShowGraph] = useState(false);
+    const [selectedMeasurementIndex, setSelectedMeasurementIndex] = useState(null);
+
+    const handleEditMeasurement = (index) => {
+        console.log(`Edit measurement at index: ${selectedMeasurementIndex}`);
+        setSelectedMeasurementIndex(null);
+    }
+
+    const handleDeleteMeasurement = (index) => {
+        console.log(`Delete measurement at index: ${selectedMeasurementIndex}`);
+        deleteMeasurementFromLocalStorage(userData, selectedMeasurementIndex);
+        setSelectedMeasurementIndex(null);
+    }
 
     const handleLoadMeasurements = () => {
         setShowNewMeasurement(true);
@@ -25,6 +37,9 @@ export default function MeasurementLog() {
         setShowGraph(false);
     }
 
+    function getIndex(index) {
+        setSelectedMeasurementIndex(index);
+    }
 
 
     return (
@@ -33,18 +48,36 @@ export default function MeasurementLog() {
             {initMeasurementLog.length === 0 ? (
                 <p>{t("measurementLog.noMeasurements")}</p>
             ) : (
-                <DisplayMeasurements measurements={initMeasurementLog} />
+                <DisplayMeasurements getIndex={getIndex} measurements={initMeasurementLog} />
             )}
 
             {showNewMeasurement && (
                 <NewMeasurements setShowMeasurement={setShowNewMeasurement} />
             )}
 
-            {!showNewMeasurement && (
-                <button onClick={handleLoadMeasurements}>
-                    {t('measurementLog.addMeasurementButton')}
-                </button>
-            )}
+            <div>
+                {selectedMeasurementIndex && (
+                    <button onClick={handleEditMeasurement}>
+                        {t('measurementLog.editMeasurementButton')}
+                    </button>
+                )}
+                {selectedMeasurementIndex && (
+                    <button onClick={handleDeleteMeasurement}>
+                        {t('measurementLog.deleteMeasurementButton')}
+                    </button>
+                )}
+            </div>
+
+            <div className="d-flex align-items-center justify-content-center flex-column">
+                {!showNewMeasurement && (
+                    <button onClick={handleLoadMeasurements}>
+                        {t('measurementLog.addMeasurementButton')}
+                    </button>
+                )}
+
+
+            </div>
+
             {showGraph && (
                 <>
                     <p>{t('measurementLog.graphTitle')}</p>
