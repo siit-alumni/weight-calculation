@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { UserContext } from '../../App';
 import DisplayMeasurements from './DisplayMeasurements';
 import NewMeasurements from './NewMeasurements';
+import EditMeasurement from './EditMeasurement';
 import MeasurementGraph from '../MeasurementGraph/measurementGraph';
 import { deleteMeasurementFromLocalStorage, getUserFromId } from '../functions/functions';
 
@@ -13,22 +14,26 @@ export default function MeasurementLog() {
     const selectedUser = getUserFromId(userData);
     const initMeasurementLog = selectedUser.measurementLog || [];
     const [showNewMeasurement, setShowNewMeasurement] = useState(false);
+    const [showEditMeasurement, setShowEditMeasurement] = useState(false);
     const [showGraph, setShowGraph] = useState(false);
     const [selectedMeasurementIndex, setSelectedMeasurementIndex] = useState(null);
 
     const handleEditMeasurement = (index) => {
-        console.log(`Edit measurement at index: ${selectedMeasurementIndex}`);
-        setSelectedMeasurementIndex(null);
+        setShowEditMeasurement(true);
+
     }
 
     const handleDeleteMeasurement = (index) => {
         console.log(`Delete measurement at index: ${selectedMeasurementIndex}`);
         deleteMeasurementFromLocalStorage(userData, selectedMeasurementIndex);
         setSelectedMeasurementIndex(null);
+        
     }
 
     const handleLoadMeasurements = () => {
         setShowNewMeasurement(true);
+        setSelectedMeasurementIndex(null);
+        console.log(selectedMeasurementIndex);
     };
     const handleShowGraph = () => {
         setShowGraph(true);
@@ -51,7 +56,19 @@ export default function MeasurementLog() {
             )}
 
             {showNewMeasurement && (
-                <NewMeasurements setShowMeasurement={setShowNewMeasurement} />
+                <NewMeasurements 
+                    setShowMeasurement={setShowNewMeasurement} 
+                    setSelectedMeasurementIndex={setSelectedMeasurementIndex}
+                />
+            )}
+
+            {showEditMeasurement && selectedMeasurementIndex !== null && (
+                <EditMeasurement
+                    measurement={initMeasurementLog[initMeasurementLog.length - 1 - selectedMeasurementIndex]}
+                    measurementIndex={selectedMeasurementIndex}
+                    setShowEditMeasurement={setShowEditMeasurement}
+                    setSelectedMeasurementIndex={setSelectedMeasurementIndex}
+                />
             )}
 
             <div>

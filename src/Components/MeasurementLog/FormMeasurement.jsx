@@ -1,22 +1,22 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-export default function FormMeasurement({ onSubmit, setShowMeasurement }) {
+export default function FormMeasurement({ onSubmit, setShowMeasurement, initialWeight = '', initialDate = '', initialMuscleMass = '', initialFat = '' }) {
     const { t } = useTranslation();
-    const [weight, setWeight] = useState('');
-    const [date, setDate] = useState('');
-    const [muscleMass, setMuscleMass] = useState('');
-    const [fat, setFat] = useState('');
+    const [weight, setWeight] = useState(initialWeight);
+    const [date, setDate] = useState(initialDate);
+    const [muscleMass, setMuscleMass] = useState(initialMuscleMass);
+    const [fat, setFat] = useState(initialFat);
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const newMeasurement = {
+        const measurement = {
             weight,
             date,
             muscleMass,
             fat,
         };
-        onSubmit(newMeasurement);
+        onSubmit(measurement);
         setWeight('');
         setDate('');
         setMuscleMass('');

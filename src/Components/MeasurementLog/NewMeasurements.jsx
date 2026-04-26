@@ -3,15 +3,14 @@ import { getUserFromId, saveMeasurementLogToLocalStorage } from '../functions/fu
 import { UserContext } from '../../App';
 import FormMeasurement from './FormMeasurement';
 
-export default function NewMeasurements({ setShowMeasurement, onAddMeasurement }) {
+export default function NewMeasurements({ setShowMeasurement, setSelectedMeasurementIndex }) {
     const { userData } = useContext(UserContext);
-    const selectedUser = getUserFromId(userData);
-
     const handleFormSubmit = (newMeasurement) => {
-        saveMeasurementLogToLocalStorage(selectedUser.id, newMeasurement);
+        saveMeasurementLogToLocalStorage(userData, newMeasurement);
         setShowMeasurement(false);
     };
 
+    
     return (
         <FormMeasurement
             onSubmit={handleFormSubmit}

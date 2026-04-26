@@ -213,8 +213,21 @@ export function saveMeasurementLogToLocalStorage(userId, measurementLog) {
 export function deleteMeasurementFromLocalStorage(userId, measurementIndex) {
   const usersData = getUsersFromLocalStorage();
   const user = usersData.profiles.find(profile => profile.id === userId); 
+  
   if (user && user.measurementLog) {
     user.measurementLog.splice((user.measurementLog.length - 1 - measurementIndex), 1);
+    localStorage.setItem('WeightCalculatorApp', JSON.stringify(usersData));
+  }
+}
+
+export function updateMeasurementInLocalStorage(userId, measurementIndex, updatedMeasurement) {
+  const usersData = getUsersFromLocalStorage();
+  const user = usersData.profiles.find(profile => profile.id === userId);
+
+  if (user && user.measurementLog) {
+    const actualIndex = user.measurementLog.length - 1 - measurementIndex;
+    user.measurementLog[actualIndex] = updatedMeasurement ;
+    sortMeasurementsByDate(user.measurementLog);
     localStorage.setItem('WeightCalculatorApp', JSON.stringify(usersData));
   }
 }
