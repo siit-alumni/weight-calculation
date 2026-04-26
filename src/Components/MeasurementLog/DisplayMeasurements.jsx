@@ -21,7 +21,7 @@ export default function DisplayMeasurements({ getIndex, measurements }) {
     return (
         <div>
 
-            <table className="table table-bordered table-hover">
+            <table className="table table-bordered table-hover table-sm">
                 <thead>
                     <tr>
                         <th>{t('measurementLog.date')}</th>
@@ -34,7 +34,7 @@ export default function DisplayMeasurements({ getIndex, measurements }) {
                     {measurements.slice().reverse().map((m, idx) => (
                         <tr key={idx}
                             onClick={() => handleSelectDate(idx)}
-                            className={selectedMeasurementIndex === idx ? 'table-active fw-bold' : ''}>
+                            className={selectedMeasurementIndex === idx ? 'table-primary fw-bold' : ''}>
                             <td>{m.date}</td>
                             <td>{m.weight}</td>
                             <td>{m.fat}%</td>
