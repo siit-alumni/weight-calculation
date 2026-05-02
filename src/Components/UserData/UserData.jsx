@@ -1,17 +1,23 @@
 import { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import { UserContext } from '../../App';
-import { getUserFromId } from '../functions/functions';
+import { getUserFromId, saveUserDataToLocalStorage } from '../functions/functions';
 
 
 export default function UserData() {
+
+    // saveUserDataToLocalStorage(0);
     const { t } = useTranslation();
     const { userData, setUserData } = useContext(UserContext);
     const selectedUser = getUserFromId(userData);
+
+    console.log('userData :', userData);
+    
+
     
     // return (<p>{t("userData.notAvailable")}</p>);
     
-    if (!userData && userData !== 0) {
+    if (userData === "" || userData == undefined) {
         return <p>{t("userData.notAvailable")}</p>;
     }
 

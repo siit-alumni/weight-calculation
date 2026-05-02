@@ -2,7 +2,7 @@ import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { Form } from "../Form/Form";
 import { useContext, useState } from "react";
-import { saveUserDataToLocalStorage, saveUsersToLocalStorage, updateUserInLocalStorage } from "../functions/functions";
+import { getUserFromId, saveUserDataToLocalStorage, saveUsersToLocalStorage, updateUserInLocalStorage } from "../functions/functions";
 import { UserContext } from "../../App";
 
 export function ModifyUser() {
@@ -14,12 +14,12 @@ export function ModifyUser() {
 
   function getDetails(data) {
     setFormData(data);
-    setUserData(data);
+    setUserData(data.id);
   }
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    saveUserDataToLocalStorage(formData);
+    saveUserDataToLocalStorage(formData.id);
     updateUserInLocalStorage(formData);
     navigate("/selectUser");
   };
@@ -33,7 +33,7 @@ export function ModifyUser() {
 
       <form onSubmit={handleFormSubmit} className="container p-3">
 
-        <Form getDetails={getDetails} userData={userData} />
+        <Form getDetails={getDetails} userData={getUserFromId(userData)} />
 
         <button type="submit" className="btn btn-primary col-md-5 me-2">
           {t("form.saveButton")}

@@ -19,7 +19,7 @@ export function NewUser() {
     const handleFormSubmit = (e) => {
         e.preventDefault();
         formData.id = length;
-        saveUserDataToLocalStorage(formData);
+        saveUserDataToLocalStorage(formData.id);
         addNewUserToLocalStorage(formData);
         navigate("/selectUser");
     };

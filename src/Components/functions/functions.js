@@ -129,10 +129,15 @@ export function addNewUserToLocalStorage(user) {
   localStorage.setItem('WeightCalculatorApp', JSON.stringify(usersData));
 }
 
-export function deleteUserFromLocalStorage(user) {
+export function deleteUserFromLocalStorage(userId) {
+  console.log(userId);
+  
   const usersData = getUsersFromLocalStorage();
-  const filteredUsers = usersData.profiles.filter(profile => profile.id !== user.id);
+  const filteredUsers = usersData.profiles.filter(profile => profile.id != userId);
+  console.log(filteredUsers);
+  
   const newUsersData = { profiles: filteredUsers };
+  console.log(newUsersData);
   localStorage.setItem('WeightCalculatorApp', JSON.stringify(newUsersData));
 }
 
@@ -175,7 +180,7 @@ export function getDefaultMacronutrientsPerBodyType(bodyType) {
 
 export function replaceUsersIDs() {
   const usersData = getUsersFromLocalStorage();
-  if (usersData.profiles[0].id !== 0) {
+
     const updatedUsers = usersData.profiles.map((user, index) => {
       return {
         ...user,
@@ -183,7 +188,7 @@ export function replaceUsersIDs() {
       };
     });
     saveUsersToLocalStorage(updatedUsers);
-  }
+
 }
 
 export function getMeasurementLogFromLocalStorage(userId) {

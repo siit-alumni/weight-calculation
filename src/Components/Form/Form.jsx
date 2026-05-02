@@ -3,7 +3,7 @@ import { BodyType } from "./BodyTypeButtonDesign";
 import { useTranslation } from "react-i18next";
 import { settings } from "../Settings/settings";
 import { ActivityType } from "./ActivityTypeButtonDesign";
-import { addNewUserToLocalStorage, getUsersFromLocalStorage, saveUserDataToLocalStorage } from "../functions/functions";
+import { addNewUserToLocalStorage, getUserFromId, getUsersFromLocalStorage, saveUserDataToLocalStorage } from "../functions/functions";
 import { useNavigate } from "react-router-dom";
 
 
@@ -26,7 +26,7 @@ export function Form({ getDetails, userData }) {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    saveUserDataToLocalStorage(formData);
+    saveUserDataToLocalStorage(formData.id);
     addNewUserToLocalStorage(formData);
     navigate("/selectUser");
   };
