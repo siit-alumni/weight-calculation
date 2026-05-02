@@ -16,7 +16,9 @@ export default function SelectUser() {
     const handleSelectUser = () => {        
         const user = users.profiles.find(profile => profile.id === selectedUser);
         setUserData(selectedUser);
-        saveUserDataToLocalStorage(user);
+        saveUserDataToLocalStorage(selectedUser);
+        console.log('selectedUser in SelectUser.jsx',selectedUser);
+        
         navigate('/results');
     };
 

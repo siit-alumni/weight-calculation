@@ -9,8 +9,9 @@ export default function UserData() {
     const { userData, setUserData } = useContext(UserContext);
     const selectedUser = getUserFromId(userData);
     
+    // return (<p>{t("userData.notAvailable")}</p>);
     
-    if (!userData) {
+    if (!userData && userData !== 0) {
         return <p>{t("userData.notAvailable")}</p>;
     }
 

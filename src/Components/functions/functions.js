@@ -85,12 +85,16 @@ export function clearUserDataFromLocalStorage() {
 }
 
 export function saveUserDataToLocalStorage(userData) {
-  if (!userData || !userData.id) return;
+  // if (!userData || !userData.id) 
+  //   {
+  //     console.log('Invalid userData:', userData);
+  //     return;
+  //   }
 
   const appData = localStorage.getItem("WeightCalculatorApp");
   const usersData = appData ? JSON.parse(appData) : { profiles: [], selectedUser: null };
 
-  usersData.selectedUser = userData.id;
+  usersData.selectedUser = userData;
   localStorage.setItem("WeightCalculatorApp", JSON.stringify(usersData));
 }
 
@@ -101,8 +105,6 @@ export function getUsersFromLocalStorage() {
 
 export function stringToRgbColor(str) {
   let hash = 0;
-
-  // Generate hash from string
   for (let i = 0; i < str.length; i++) {
     hash = str.charCodeAt(i) + ((hash << 5) - hash);
   }
