@@ -72,6 +72,7 @@ export function calcMacronutrientsGrams(macronutrientsCalories) {
 
 export function getUserDataFromLocalStorage() {
   const appData = localStorage.getItem("WeightCalculatorApp");
+  if (!appData) return settings.defaultUser.id;
   const parsed = JSON.parse(appData);
   return parsed.selectedUser ? parsed.selectedUser : settings.defaultUser.id;
 

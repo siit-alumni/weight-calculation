@@ -6,25 +6,22 @@ import { useTranslation } from 'react-i18next';
 export default function Comment() {
     const { userData, setUserData } = useContext(UserContext);
     const selectedUser = getUserFromId(userData);
-    const [comment, setComment] = useState('');
-    const [originalComment, setOriginalComment] = useState('');
+    const [comment, setComment] = useState(selectedUser.comment || '');
+    const [originalComment, setOriginalComment] = useState(selectedUser.comment || '');
     const { t } = useTranslation();
-
-    useEffect(() => {
-
-        const initialComment = selectedUser.comment || '';
-        setComment(initialComment);
-        setOriginalComment(initialComment);
-
-    }, [selectedUser]);
 
     const handleSave = () => {
         if (selectedUser && selectedUser.id !== undefined) {
             const updatedUser = { ...selectedUser, comment };
             updateUserInLocalStorage(updatedUser);
-            setUserData(updatedUser);
+            setUserData(updatedUser.id);
             setOriginalComment(comment);
+            
         }
+    };
+
+    const handleChange = (e) => {
+        setComment(e.target.value);
     };
 
     const handleDiscard = () => {
@@ -36,7 +33,7 @@ export default function Comment() {
             <h4>{t('comments.title')} {selectedUser.name}</h4>
             <textarea
                 value={comment}
-                onChange={(e) => setComment(e.target.value)}
+                onChange={handleChange}
                 placeholder={t('comments.placeholder').replace('{{name}}', selectedUser.name)}
                 rows="6"
                 style={{ resize: 'both' }}

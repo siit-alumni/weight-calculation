@@ -11,13 +11,9 @@ export default function UserData() {
     const { userData, setUserData } = useContext(UserContext);
     const selectedUser = getUserFromId(userData);
 
-    console.log('userData :', userData);
-    
-
-    
     // return (<p>{t("userData.notAvailable")}</p>);
     
-    if (userData === "" || userData == undefined) {
+    if (userData === "" || userData == undefined || !selectedUser) {
         return <p>{t("userData.notAvailable")}</p>;
     }
 
