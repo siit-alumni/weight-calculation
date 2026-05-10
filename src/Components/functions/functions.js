@@ -208,6 +208,8 @@ export function sortMeasurementsByDate(measurements) {
 export function saveMeasurementLogToLocalStorage(userId, measurementLog) {
   const usersData = getUsersFromLocalStorage();
   const user = usersData.profiles.find(profile => profile.id === userId);
+  console.log(userId, typeof userId);
+  
   if (!user.measurementLog) {
     user.measurementLog = [];
   }

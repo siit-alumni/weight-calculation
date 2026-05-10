@@ -50,8 +50,8 @@ export default function SelectUser() {
                 style={ { textAlign: "center" } }
                 name="activityTypes"
                 id="activityTypes"
-                onChange={(e) => setSelectedUser(e.target.value)}
-                value={selectedUser || ""}
+                onChange={(e) => setSelectedUser(Number(e.target.value))}
+                value={selectedUser}
             >
                 <option value="">-- {t("selectUser.selectPlaceholder")} --</option>
                 {Object.entries(sortedUsers).map(([key]) =>
@@ -63,9 +63,9 @@ export default function SelectUser() {
             <UserData />
 
             <div className="d-flex align-items-center justify-content-center flex-wrap">
-                <button className="btn btn-primary col-md-4  " disabled={!selectedUser} onClick={handleSelectUser}>{t("selectUser.selectButton")}</button>
-                <button className="btn btn-primary col-md-4 " disabled={!selectedUser} onClick={handleUpdateUser}>{t("selectUser.modifyButton")}</button>
-                <button className="btn btn-primary col-md-4 " disabled={!selectedUser} onClick={handleDeleteUser}>{t("selectUser.deleteButton")}</button>
+                <button className="btn btn-primary col-md-4  " disabled={!selectedUser && selectedUser !== 0} onClick={handleSelectUser}>{t("selectUser.selectButton")}</button>
+                <button className="btn btn-primary col-md-4 " disabled={!selectedUser && selectedUser !== 0} onClick={handleUpdateUser}>{t("selectUser.modifyButton")}</button>
+                <button className="btn btn-primary col-md-4 " disabled={!selectedUser && selectedUser !== 0} onClick={handleDeleteUser}>{t("selectUser.deleteButton")}</button>
                 <button className="btn btn-primary col-md-4" onClick={handleCreateUser}>{t("selectUser.createButton")}</button>
 
             </div>
