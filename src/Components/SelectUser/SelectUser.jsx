@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 
 export default function SelectUser() {
     const [users, setUsers] = useState(getUsersFromLocalStorage());
-    const [selectedUser, setSelectedUser] = useState(getUserDataFromLocalStorage() || "");
+    const [selectedUser, setSelectedUser] = useState(getUserDataFromLocalStorage());
     const { userData, setUserData } = useContext(UserContext);
     const navigate = useNavigate();
     const { t } = useTranslation();
@@ -37,9 +37,10 @@ export default function SelectUser() {
     };
 
     useEffect(() => {
-        const user = users.profiles.find(profile => profile.id == selectedUser);
+        const user = users.profiles.find(profile => profile.id === selectedUser);
         setUserData(selectedUser);
     }, [selectedUser]);
+
 
     return (
         <div>
@@ -50,7 +51,7 @@ export default function SelectUser() {
                 style={ { textAlign: "center" } }
                 name="activityTypes"
                 id="activityTypes"
-                onChange={(e) => setSelectedUser(Number(e.target.value))}
+                onChange={(e) => setSelectedUser(e.target.value === "" ? "" : Number(e.target.value))}
                 value={selectedUser}
             >
                 <option value="">-- {t("selectUser.selectPlaceholder")} --</option>
@@ -63,7 +64,7 @@ export default function SelectUser() {
             <UserData />
 
             <div className="d-flex align-items-center justify-content-center flex-wrap">
-                <button className="btn btn-primary col-md-4  " disabled={!selectedUser && selectedUser !== 0} onClick={handleSelectUser}>{t("selectUser.selectButton")}</button>
+                <button className="btn btn-primary col-md-4  " disabled={!selectedUser &&  selectedUser !== 0} onClick={handleSelectUser}>{t("selectUser.selectButton")}</button>
                 <button className="btn btn-primary col-md-4 " disabled={!selectedUser && selectedUser !== 0} onClick={handleUpdateUser}>{t("selectUser.modifyButton")}</button>
                 <button className="btn btn-primary col-md-4 " disabled={!selectedUser && selectedUser !== 0} onClick={handleDeleteUser}>{t("selectUser.deleteButton")}</button>
                 <button className="btn btn-primary col-md-4" onClick={handleCreateUser}>{t("selectUser.createButton")}</button>

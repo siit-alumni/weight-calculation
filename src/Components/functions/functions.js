@@ -72,16 +72,16 @@ export function calcMacronutrientsGrams(macronutrientsCalories) {
 
 export function getUserDataFromLocalStorage() {
   const appData = localStorage.getItem("WeightCalculatorApp");
-  if (!appData) return settings.defaultUser.id;
+  if (!appData) return "";
   const parsed = JSON.parse(appData);
-  return parsed.selectedUser ? parsed.selectedUser : settings.defaultUser.id;
+  return parsed.selectedUser !== undefined && parsed.selectedUser !== null ? parsed.selectedUser : "";
 
 }
 
 export function clearUserDataFromLocalStorage() {
   const appData = localStorage.getItem("WeightCalculatorApp");
   const usersData = appData ? JSON.parse(appData) : { profiles: [], selectedUser: null };
-  usersData.selectedUser = settings.defaultUser.id;
+  usersData.selectedUser = "";
   localStorage.setItem("WeightCalculatorApp", JSON.stringify(usersData));
 }
 

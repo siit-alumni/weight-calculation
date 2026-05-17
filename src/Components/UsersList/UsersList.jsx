@@ -8,7 +8,7 @@ import { UserContext } from '../../App';
 export default function UsersList({ users }) {
 
     const { userData, setUserData } = useContext(UserContext);
-    const [selectedUserId, setSelectedUserId] = useState(getUserDataFromLocalStorage() || "");
+    const [selectedUserId, setSelectedUserId] = useState(getUserDataFromLocalStorage());
     const { t } = useTranslation();
 
     const handleListSelectUser = (userId) => {
