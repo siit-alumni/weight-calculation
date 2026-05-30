@@ -17,7 +17,9 @@
         "createButton": "New User",
         "createUser": "Create New User",
         "createSuccess": "New user created successfully!",
-        "userListButton": "Users List"
+        "userListButton": "Users List",
+        "displayUserButton": "Display User Information",
+        "hideUserDataButton": "Hide User Information"
     },
     "usersList": {
         "title": "Users List",

@@ -5,13 +5,17 @@ import './UsersList.css';
 
 import { UserContext } from '../../App';
 import { useNavigate } from 'react-router-dom';
+import UserData from '../UserData/UserData';
 
 export default function UsersList({ users }) {
 
     const { userData, setUserData } = useContext(UserContext);
+    const [displayUser, setDisplayUser] = useState(false);
     const [selectedUserId, setSelectedUserId] = useState(getUserDataFromLocalStorage());
     const { t } = useTranslation();
     const navigate = useNavigate();
+
+    const displayUserDataText = displayUser ? t("selectUser.hideUserDataButton") : t("selectUser.displayUserButton");
     const handleListSelectUser = (userId) => {
         setSelectedUserId(userId);
         const user = users.find(profile => profile.id === userId);
@@ -36,11 +40,14 @@ export default function UsersList({ users }) {
     const handleDeleteUser = () => {
         navigate('/deleteUser');
     };
+    const handleDisplayUser = () => {
+        setDisplayUser(prev => !prev);
+    }
 
 
 
     return (
-        <div className="users-list-container border-top border-bottom mb-3 ">
+        <div className="users-list-container border-top border-bottom ">
 
             <ul className="users-list-ul">
                 {users.map((user) => (
@@ -49,19 +56,25 @@ export default function UsersList({ users }) {
                         key={user.id}
                         onClick={() => handleListSelectUser(user.id)}
                     >
-                        <div className="d-flex align-items-center justify-content-center flex-wrap">
+                        <div className="user-list-div">
                             <div>
                                 {user.name}
                             </div>
-                            <button className="btn btn-primary  " onClick={handleSelectUser}>{t("selectUser.selectButton")}</button>
-                            <button className="btn btn-primary  " onClick={handleUpdateUser}>{t("selectUser.modifyButton")}</button>
-                            <button className="btn btn-primary " onClick={handleDeleteUser}>{t("selectUser.deleteButton")}</button>
+                            <div>
+                                <button className="btn btn-primary  " onClick={handleSelectUser}>{t("selectUser.selectButton")}</button>
+                                <button className="btn btn-primary  " onClick={handleUpdateUser}>{t("selectUser.modifyButton")}</button>
+                                <button className="btn btn-primary " onClick={handleDeleteUser}>{t("selectUser.deleteButton")}</button>
+                                <button className="btn btn-primary " onClick={handleDisplayUser}>{displayUserDataText}</button>
+                            </div>
 
                         </div>
                     </li>
                 ))}
             </ul>
+            <div>
+                {displayUser && <UserData />}
 
+            </div>
         </div>
     );
 }

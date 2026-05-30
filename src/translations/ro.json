@@ -17,7 +17,9 @@
         "createButton": "Utilizator nou",
         "createUser": "Creează un utilizator nou",
         "createSuccess": "Utilizatorul a fost creat cu succes!",
-        "userListButton": "Lista utilizatorilor"
+        "userListButton": "Lista utilizatorilor",
+        "displayUserButton": "Afișează informațiile utilizatorului",
+        "hideUserDataButton": "Ascunde informațiile utilizatorului"
     },
     
     "usersList": {
