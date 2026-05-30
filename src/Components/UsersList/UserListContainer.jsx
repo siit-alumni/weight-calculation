@@ -63,9 +63,9 @@ export default function UserListContainer() {
             </div>
 
             <div className="d-flex align-items-center justify-content-center flex-wrap">
-                <button className="btn btn-primary col-md-4  " disabled={!userData && userData !== 0} onClick={handleSelectUser}>{t("selectUser.selectButton")}</button>
+                {/* <button className="btn btn-primary col-md-4  " disabled={!userData && userData !== 0} onClick={handleSelectUser}>{t("selectUser.selectButton")}</button>
                 <button className="btn btn-primary col-md-4 " disabled={!userData && userData !== 0} onClick={handleUpdateUser}>{t("selectUser.modifyButton")}</button>
-                <button className="btn btn-primary col-md-4 " disabled={!userData && userData !== 0} onClick={handleDeleteUser}>{t("selectUser.deleteButton")}</button>
+                <button className="btn btn-primary col-md-4 " disabled={!userData && userData !== 0} onClick={handleDeleteUser}>{t("selectUser.deleteButton")}</button> */}
                 <button className="btn btn-primary col-md-4" onClick={handleCreateUser}>{t("selectUser.createButton")}</button>
 
             </div>
