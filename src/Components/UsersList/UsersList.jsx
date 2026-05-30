@@ -60,11 +60,11 @@ export default function UsersList({ users }) {
                             <div>
                                 {user.name}
                             </div>
-                            <div>
+                            <div className='d-flex gap-1'>
                                 <button className="btn btn-primary  " onClick={handleSelectUser}>{t("selectUser.selectButton")}</button>
                                 <button className="btn btn-primary  " onClick={handleUpdateUser}>{t("selectUser.modifyButton")}</button>
                                 <button className="btn btn-primary " onClick={handleDeleteUser}>{t("selectUser.deleteButton")}</button>
-                                <button className="btn btn-primary " onClick={handleDisplayUser}>{displayUserDataText}</button>
+                                <button className="btn btn-primary {displayUser ? 'active' : ''}" aria-pressed={displayUser} onClick={handleDisplayUser}>{displayUserDataText}</button>
                             </div>
 
                         </div>
