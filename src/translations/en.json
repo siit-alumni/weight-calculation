@@ -57,7 +57,9 @@
         "Macronutrients": {
             "carbs": "Carbohydrates",
             "protein": "Protein",
-            "fat": "Fat"
+            "fat": "Fat",
+            "fiber": "Fiber",
+            "calories": "Calories"
         },
         "buttons": {
             "back": "Back to User Selection",
@@ -402,6 +404,7 @@
     },
     "foodTable": {
         "title": "Food Table",
-        "description": "This table contains information about different foods and their caloric value."
+        "description": "This table contains information about different foods and their caloric value.",
+        "product": "Product"
      }
 }

@@ -61,7 +61,9 @@
         "Macronutrients": {
             "carbs": "Carbohidrați",
             "protein": "Proteine",
-            "fat": "Grăsimi"
+            "fat": "Grăsimi",
+            "fiber": "Fibre",
+            "calories": "Calorii"
         },
         "buttons": {
             "back": "Înapoi la selecția utilizatorului",
@@ -404,6 +406,7 @@
     },
     "foodTable": {
         "title": "Tabel cu alimente",
-        "description": "Acest tabel conține informații despre diferite alimente și valoarea lor calorică."
+        "description": "Acest tabel conține informații despre diferite alimente și valoarea lor calorică.",
+        "product": "Produs"
     }
 }
