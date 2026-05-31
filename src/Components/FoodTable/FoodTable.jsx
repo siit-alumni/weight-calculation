@@ -22,17 +22,17 @@ export default function FoodTable() {
                 <thead>
                     <tr>
                         <th>{t("foodTable.product")}</th>
-                        <th>{t("common.Macronutrients.calories")}/100g</th>
-                        <th>{t("common.Macronutrients.protein")}</th>
-                        <th>{t("common.Macronutrients.carbs")}</th>
-                        <th>{t("common.Macronutrients.fat")}</th>
-                        <th>{t("common.Macronutrients.fiber")}</th>
+                        <th>{t("foodDB.Calories 100g.title")}</th>
+                        <th>{t("foodDB.Protein g.title")}</th>
+                        <th>{t("foodDB.Carbs g.title")}</th>
+                        <th>{t("foodDB.Fat g.title")}</th>
+                        <th>{t("foodDB.Fiber g.title")}</th>
                     </tr>
                 </thead>
                 <tbody>
                     {Object.entries(foodData).map(([foodName, foodInfo]) => (
                         <tr key={foodName}>
-                            <td>{foodName}</td>
+                            <td>{t(`foodDB.product.${foodName}`)}</td>
                             <td>{foodInfo["Calories 100g"]}</td>
                             <td>{foodInfo["Protein g"]}</td>
                             <td>{foodInfo["Carbs g"]}</td>

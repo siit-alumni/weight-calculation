@@ -6,7 +6,7 @@
         "Protein g": 13,
         "Carbs g": 0,
         "Fat g": 10,
-        "Fiber g": null,
+        "Fiber g": 0,
         "Details": "1 egg=45g",
         "Serving g": 95
     },
@@ -483,7 +483,7 @@
         "Details": null,
         "Serving g": 200
     },
-    "Red lentils": {
+    "Red lentil": {
         "Category": "CHP",
         "Subgroup": "vegetables",
         "Calories 100g": 358,
@@ -637,7 +637,7 @@
         "Details": null,
         "Serving g": 50
     },
-    "Nutritional yeast flakes": {
+    "Yeast flakes": {
         "Category": "CHS",
         "Subgroup": "flour",
         "Calories 100g": 245,
