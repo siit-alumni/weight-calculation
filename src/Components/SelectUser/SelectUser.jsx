@@ -13,7 +13,7 @@ export default function SelectUser() {
     const { t } = useTranslation();
     const sortedUsers = sortUsersAlphabetically(users);
 
-    const handleSelectUser = () => {        
+    const handleSelectUser = () => {
         const user = users.profiles.find(profile => profile.id === selectedUser);
         setUserData(selectedUser);
         saveUserDataToLocalStorage(selectedUser);
@@ -36,6 +36,10 @@ export default function SelectUser() {
         navigate('/usersList');
     };
 
+    const handleFoodTable = () => {
+        navigate('/foodTable');
+    };
+
     useEffect(() => {
         const user = users.profiles.find(profile => profile.id === selectedUser);
         setUserData(selectedUser);
@@ -48,7 +52,7 @@ export default function SelectUser() {
 
             <select
                 className="form-select mt-2"
-                style={ { textAlign: "center" } }
+                style={{ textAlign: "center" }}
                 name="activityTypes"
                 id="activityTypes"
                 onChange={(e) => setSelectedUser(e.target.value === "" ? "" : Number(e.target.value))}
@@ -64,13 +68,14 @@ export default function SelectUser() {
             <UserData />
 
             <div className="d-flex align-items-center justify-content-center flex-wrap">
-                <button className="btn btn-primary col-md-4  " disabled={!selectedUser &&  selectedUser !== 0} onClick={handleSelectUser}>{t("selectUser.selectButton")}</button>
+                <button className="btn btn-primary col-md-4  " disabled={!selectedUser && selectedUser !== 0} onClick={handleSelectUser}>{t("selectUser.selectButton")}</button>
                 <button className="btn btn-primary col-md-4 " disabled={!selectedUser && selectedUser !== 0} onClick={handleUpdateUser}>{t("selectUser.modifyButton")}</button>
                 <button className="btn btn-primary col-md-4 " disabled={!selectedUser && selectedUser !== 0} onClick={handleDeleteUser}>{t("selectUser.deleteButton")}</button>
                 <button className="btn btn-primary col-md-4" onClick={handleCreateUser}>{t("selectUser.createButton")}</button>
 
             </div>
-                <button className="btn btn-secondary col-md-4 mt-3" onClick={handleUserList}>{t("selectUser.userListButton")}</button>
+            <button className="btn btn-secondary col-md-4 mt-3" onClick={handleUserList}>{t("selectUser.userListButton")}</button>
+            <button onClick={handleFoodTable} className="btn btn-secondary col-md-4 mt-3">{t("foodTable.title")}</button>
 
         </div>
     );

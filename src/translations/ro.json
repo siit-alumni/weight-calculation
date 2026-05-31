@@ -5,21 +5,21 @@
     "selectUser": {
         "selectUser": "Selectează un utilizator!",
         "noUsers": "Nu există utilizatori salvați.",
-        "selectButton": "Selectează utilizatorul",
+        "selectButton": "Selectează",
         "selectPlaceholder": "Selectează un utilizator",
-        "deleteButton": "Șterge utilizatorul",
+        "deleteButton": "Șterge",
         "deleteUser": "Șterge utilizatorul selectat",
         "confirmDelete": "Ești sigur că vrei să ștergi utilizatorul {{name}}?",
         "cancelButton": "Anulează",
-        "modifyButton": "Modifică utilizatorul",
+        "modifyButton": "Modifică",
         "modifyUser": "Modifică utilizatorul selectat",
         "modifySuccess": "Informațiile utilizatorului au fost actualizate cu succes!",
         "createButton": "Utilizator nou",
         "createUser": "Creează un utilizator nou",
         "createSuccess": "Utilizatorul a fost creat cu succes!",
         "userListButton": "Lista utilizatorilor",
-        "displayUserButton": "Afișează informațiile utilizatorului",
-        "hideUserDataButton": "Ascunde informațiile utilizatorului"
+        "displayUserButton": "Afișează informațiile",
+        "hideUserDataButton": "Ascunde informațiile"
     },
     
     "usersList": {
@@ -401,5 +401,9 @@
             "Chia seeds (2)": "Semințe de chia",
             "Flax seeds (2)": "Semințe de in"
         }
+    },
+    "foodTable": {
+        "title": "Tabel cu alimente",
+        "description": "Acest tabel conține informații despre diferite alimente și valoarea lor calorică."
     }
 }

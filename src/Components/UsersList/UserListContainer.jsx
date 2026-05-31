@@ -40,6 +40,10 @@ export default function UserListContainer() {
         navigate('/newUser');
     };
     
+    const handleFoodTable = () => {
+        navigate('/foodTable');
+    };
+    
     const handleFilteredUsersChange = (filtered) => {
         setFilteredUsers(filtered);
     };
@@ -71,6 +75,7 @@ export default function UserListContainer() {
             </div>
 
             <button onClick={handleUserSelection} className="btn btn-secondary col-md-4 mt-3">{t("report.userSelectionButton")}</button>
+            <button onClick={handleFoodTable} className="btn btn-secondary col-md-4 mt-3">{t("foodTable.title")}</button>
 
         </div>
 

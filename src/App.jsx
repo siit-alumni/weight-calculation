@@ -10,6 +10,7 @@ import { Results } from "./Components/Results/Results";
 import { NewUser } from "./Components/NewUser/NewUser";
 import UserListContainer from "./Components/UsersList/UserListContainer";
 import { getUserDataFromLocalStorage, replaceUsersIDs } from "./Components/functions/functions";
+import FoodTable from "./Components/FoodTable/FoodTable";
 
 export function App() {
 
@@ -36,6 +37,7 @@ export function App() {
           <Route exact path="" element={<SelectUser />} />
           <Route path="/results" element={<Results />} />
           <Route path="/usersList" element={<UserListContainer />} />
+          <Route path="/foodTable" element={<FoodTable />} />
 
 
         </Routes >

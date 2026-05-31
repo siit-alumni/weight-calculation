@@ -399,5 +399,9 @@
             "Chia seeds (2)": "Chia seeds",
             "Flax seeds (2)": "Flax seeds"
         }
-    }
+    },
+    "foodTable": {
+        "title": "Food Table",
+        "description": "This table contains information about different foods and their caloric value."
+     }
 }
