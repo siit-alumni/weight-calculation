@@ -72,6 +72,7 @@ export default function SelectUser() {
                 <button className="btn btn-primary col-md-4 " disabled={!selectedUser && selectedUser !== 0} onClick={handleUpdateUser}>{t("selectUser.modifyButton")}</button>
                 <button className="btn btn-primary col-md-4 " disabled={!selectedUser && selectedUser !== 0} onClick={handleDeleteUser}>{t("selectUser.deleteButton")}</button>
                 <button className="btn btn-primary col-md-4" onClick={handleCreateUser}>{t("selectUser.createButton")}</button>
+                
 
             </div>
             <button className="btn btn-secondary col-md-4 mt-3" onClick={handleUserList}>{t("selectUser.userListButton")}</button>
