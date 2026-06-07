@@ -18,8 +18,8 @@
         "createUser": "Creează un utilizator nou",
         "createSuccess": "Utilizatorul a fost creat cu succes!",
         "userListButton": "Lista utilizatorilor",
-        "displayUserButton": "Afișează informațiile",
-        "hideUserDataButton": "Ascunde informațiile"
+        "displayUserButton": "Afișează informațiile utilizatorului",
+        "hideUserDataButton": "Ascunde informațiile utilizatorului"
     },
     "usersList": {
         "title": "Lista utilizatorilor",
@@ -32,7 +32,10 @@
         "genderHeader": "Sex",
         "searchPlaceholder": "Caută utilizatori...",
         "searchTitle": "Căutare utilizatori după nume",
-        "clearButton": "Șterge căutarea"
+        "clearButton": "Șterge căutarea",
+        "selectUserIcon": "Selectează utilizator",
+        "deleteUserIcon": "Șterge utilizator",
+        "updateUserIcon": "Modifică utilizator"
     },
     "comments": {
         "title": "Comentarii pentru",

@@ -32,7 +32,10 @@
         "genderHeader": "Gender",
         "searchPlaceholder": "Search users...",
         "searchTitle": "Search users by name",
-        "clearButton": "Clear Search"
+        "clearButton": "Clear Search",
+        "selectUserIcon": "Select user",
+        "deleteUserIcon": "Delete user",
+        "updateUserIcon": "Modify user"
     },
     "comments": {
         "title": "Comments for",
