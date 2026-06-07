@@ -6,7 +6,8 @@ import { getUserDataFromLocalStorage, getUsersFromLocalStorage, saveUserDataToLo
 import { useTranslation } from "react-i18next";
 import foodData from '../../assets/foodDB.json';
 
-export default function FoodTable() {
+export default function FoodTable({ foodList }) {
+    // const foodList = foodData;
     const { t } = useTranslation();
     const navigate = useNavigate();
     const handleUserSelection = () => {
@@ -15,8 +16,6 @@ export default function FoodTable() {
 
     return (
         <div>
-            <h2>{t("foodTable.title")}</h2>
-            <p>{t("foodTable.description")}</p>
 
             <table className="table table-bordered table-hover">
                 <thead>
@@ -32,11 +31,11 @@ export default function FoodTable() {
                     </tr>
                 </thead>
                 <tbody>
-                    {Object.entries(foodData).map(([foodName, foodInfo]) => (
+                    {Object.entries(foodList).map(([foodName, foodInfo]) => (
                         <tr key={foodName}>
                             <td>{t(`foodDB.product.${foodName}`)}</td>
                             <td>{foodInfo["Category"]}</td>
-                            <td>{foodInfo["Subgroup"]}</td>
+                            <td>{t(`foodDB.subgroup.${foodInfo["Subgroup"]}`)}</td>
                             <td>{foodInfo["Calories 100g"]}</td>
                             <td>{foodInfo["Protein g"]}</td>
                             <td>{foodInfo["Carbs g"]}</td>

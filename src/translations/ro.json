@@ -491,6 +491,7 @@
     "foodTable": {
         "title": "Tabel cu alimente",
         "description": "Acest tabel conține informații despre diferite alimente și valoarea lor calorică.",
-        "product": "Produs"
+        "product": "Produs",
+        "searchPlaceholder": "Caută alimente..."
     }
 }

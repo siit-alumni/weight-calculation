@@ -95,26 +95,27 @@ export default function UsersList({ users }) {
                     </li>
                 ))}
             </ul>
-            <div>
-                {/* {displayUser && <UserData />} */}
-                <div class="modal fade" id="userInfoModal" tabindex="-1" aria-labelledby="userInfoModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            {/* <div class="modal-header">
+
+            {/* {displayUser && <UserData />} */}
+            
+            <div class="modal fade" id="userInfoModal" tabindex="-1" aria-labelledby="userInfoModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        {/* <div class="modal-header">
                                 <h1 class="modal-title fs-5" id="userInfoModalLabel">Modal title</h1>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div> */}
-                            <div class="modal-body">
-                                <UserData />
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">{t("form.closeButton")}</button>
-                            </div>
+                        <div class="modal-body">
+                            <UserData />
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">{t("form.closeButton")}</button>
                         </div>
                     </div>
                 </div>
-
             </div>
+
+
         </div>
     );
 }

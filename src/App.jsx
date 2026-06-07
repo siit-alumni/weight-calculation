@@ -11,6 +11,7 @@ import { NewUser } from "./Components/NewUser/NewUser";
 import UserListContainer from "./Components/UsersList/UserListContainer";
 import { getUserDataFromLocalStorage, replaceUsersIDs } from "./Components/functions/functions";
 import FoodTable from "./Components/FoodTable/FoodTable";
+import FoodTableContainer from "./Components/FoodTable/FoodTableContainer";
 
 export function App() {
 
@@ -37,7 +38,7 @@ export function App() {
           <Route exact path="" element={<SelectUser />} />
           <Route path="/results" element={<Results />} />
           <Route path="/usersList" element={<UserListContainer />} />
-          <Route path="/foodTable" element={<FoodTable />} />
+          <Route path="/foodTable" element={<FoodTableContainer />} />
 
 
         </Routes >
