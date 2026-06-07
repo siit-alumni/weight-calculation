@@ -22,6 +22,8 @@ export default function FoodTable() {
                 <thead>
                     <tr>
                         <th>{t("foodTable.product")}</th>
+                        <th>{t("foodDB.category.title")}</th>
+                        <th>{t("foodDB.subgroup.title")}</th>
                         <th>{t("foodDB.Calories 100g.title")}</th>
                         <th>{t("foodDB.Protein g.title")}</th>
                         <th>{t("foodDB.Carbs g.title")}</th>
@@ -33,6 +35,8 @@ export default function FoodTable() {
                     {Object.entries(foodData).map(([foodName, foodInfo]) => (
                         <tr key={foodName}>
                             <td>{t(`foodDB.product.${foodName}`)}</td>
+                            <td>{foodInfo["Category"]}</td>
+                            <td>{foodInfo["Subgroup"]}</td>
                             <td>{foodInfo["Calories 100g"]}</td>
                             <td>{foodInfo["Protein g"]}</td>
                             <td>{foodInfo["Carbs g"]}</td>
