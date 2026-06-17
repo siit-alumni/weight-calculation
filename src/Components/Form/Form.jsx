@@ -55,6 +55,8 @@ export function Form({ getDetails, userData }) {
               required
             />
           </div>
+          </div>
+          <div className="row mb-2">
           <div className="col-md mb-3">
             <label htmlFor="age" className="form-label">
               {t("form.age")}

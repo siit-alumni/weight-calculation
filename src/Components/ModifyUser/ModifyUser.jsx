@@ -35,11 +35,11 @@ export function ModifyUser() {
 
         <Form getDetails={getDetails} userData={getUserFromId(userData)} />
 
-        <button type="submit" className="btn btn-primary col-md-5 me-2">
+        {/* <button type="submit" className="btn btn-primary col-md-5 me-2">
           {t("form.saveButton")}
-        </button>
+        </button> */}
       </form>
-      <button onClick={handleSelectUser} className="btn btn-secondary col-md-3">{t("common.buttons.cancelButton")}</button>
+      {/* <button onClick={handleSelectUser} className="btn btn-secondary col-md-3">{t("common.buttons.cancelButton")}</button> */}
 
 
     </div>
