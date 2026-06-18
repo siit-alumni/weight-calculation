@@ -12,6 +12,7 @@ import { DeleteUser } from '../DeleteUser/DeleteUser';
 import UserListSort from './UserListSort';
 import { Results } from '../Results/Results';
 import { Form } from '../Form/Form';
+import { settings } from '../Settings/settings';
 
 export default function UsersList({ users }) {
 
@@ -60,13 +61,17 @@ export default function UsersList({ users }) {
         setUserData(userData);
         setModalType("Display");
     }
-
-
+  
     const modalTitles = {
         Delete: "Delete user",
         Edit: "Edit user",
         Display: "User info"
     };
+
+    const closeModal = () => {
+        setModalType(null);
+    };
+
 
 
     return (
@@ -167,7 +172,7 @@ export default function UsersList({ users }) {
                                 <>
                                     <button
                                         className="btn btn-secondary"
-                                        onClick={ModifyUser}
+                                       
                                     >
                                         {t("form.resetButton")}
                                     </button>
@@ -190,6 +195,10 @@ export default function UsersList({ users }) {
                                         type="button"
                                         className="btn btn-danger"
                                         data-bs-dismiss="modal"
+                                        onClick={() => {
+                                            handleDeleteUser();
+                                            closeModal();
+                                        }}
                                     >
                                         Delete
                                     </button>
@@ -210,15 +219,6 @@ export default function UsersList({ users }) {
                                 </button>
                             )}
 
-
-
-                            {/* <button className="btn btn-secondary"
-                             onClick={ModifyUser}>{t("form.resetButton")}</button>
-
-                            <button type="button" class="btn btn-secondary" 
-                            data-bs-dismiss="modal">Close</button>
-                            <button type="button"
-                             class="btn btn-primary">{t("form.saveButton")}</button> */}
                         </div>
                     </div>
                 </div>

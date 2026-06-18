@@ -27,7 +27,7 @@ export function DeleteUser() {
     <div>
       <h2>{t("deleteUser.title")}</h2>
       <UserData />
-      <h3>{t("deleteUser.confirmMessage", { name: userData.name })}</h3>
+      {/* <h3>{t("deleteUser.confirmMessage", { name: userData.name })}</h3> */}
       <div className="d-flex align-items-center justify-content-center flex-wrap mt-3">
         <button onClick={handleDelete} className="btn btn-primary col-md-3 me-2">{t("deleteUser.confirmButton")}</button>
         <button onClick={handleSelectUser} className="btn btn-secondary col-md-3">{t("common.buttons.cancelButton")}</button>

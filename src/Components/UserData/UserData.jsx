@@ -19,7 +19,7 @@ export default function UserData() {
 
     return (
         <div>
-            <h3>{t("userData.title", { name: selectedUser.name })}</h3>
+            <h3>User:  {t(selectedUser.name )}</h3>
             <div className="row mb-2">
                 <p className="col-md mb-3"><strong>{t("userData.age")}:</strong> {selectedUser.age} {t("userData.ageUnit")}</p>
                 <p className="col-md mb-3"><strong>{t("userData.gender")}:</strong> {t(`common.genderOption.${selectedUser.gender}`)}</p>
