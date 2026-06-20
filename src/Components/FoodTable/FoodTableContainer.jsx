@@ -9,11 +9,14 @@ import FoodTable from "./FoodTable";
 import FoodTableSearch from "./FoodTableSearch";
 
 export default function FoodTableContainer() {
-        const foodList = foodData;
+    const foodList = foodData;
     const { t } = useTranslation();
     const navigate = useNavigate();
     const [filteredFood, setFilteredFood] = useState(foodList);
+    Object.entries(foodList).forEach(([foodName, foodInfo]) => {
+        foodList[foodName]["Name"] = t(`foodDB.product.${foodName}`);
 
+    });
 
     const handleUserSelection = () => {
         navigate('/selectUser');
