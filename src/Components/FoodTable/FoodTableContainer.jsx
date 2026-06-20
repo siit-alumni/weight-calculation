@@ -28,7 +28,7 @@ export default function FoodTableContainer() {
             <p>{t("foodTable.description")}</p>
             <FoodTableSearch foodList={foodList} onFilteredFoodChange={setFilteredFood} />
 
-            <FoodTable foodList={filteredFood} />
+            <FoodTable foodList={filteredFood} onFilteredFoodChange={setFilteredFood} />
         </div>
         );
 }
