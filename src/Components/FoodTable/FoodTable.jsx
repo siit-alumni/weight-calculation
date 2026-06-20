@@ -14,6 +14,7 @@ export default function FoodTable({ foodList, onFilteredFoodChange }) {
     const selectedUser = getUserFromId(userData);
     const userFavorites = Array.isArray(selectedUser?.favorites) ? selectedUser.favorites : [];
     const [showFavourites, setShowFavourites] = useState(false);
+    const [userFavoritesState, setUserFavoritesState] = useState(userFavorites);
     const handleUserSelection = () => {
         navigate('/selectUser');
     };
@@ -91,7 +92,6 @@ export default function FoodTable({ foodList, onFilteredFoodChange }) {
         }
     };
 
-    console.log(showFavourites);
 
     return (
         <div>
@@ -123,6 +123,7 @@ export default function FoodTable({ foodList, onFilteredFoodChange }) {
                 </thead>
                 <tbody>
                     {Object.entries(foodList).map(([foodName, foodInfo]) => (
+                         !(showFavourites && !userFavorites.includes(foodName))  &&
                         <tr key={foodName}>
                             <td>{t(`foodDB.product.${foodName}`)}</td>
                             {/* <td>{foodInfo["Name"]}</td> */}
@@ -146,16 +147,17 @@ export default function FoodTable({ foodList, onFilteredFoodChange }) {
                                                 : [...userFavorites, foodName];
                                             const updatedUser = { ...selectedUser, favorites: updatedFavorites };
                                             updateUserInLocalStorage(updatedUser);
-
                                             setUserData(selectedUser.id);
                                             saveUserDataToLocalStorage(selectedUser.id);
-
+                                            setUserFavoritesState(updatedFavorites);
                                         }}
                                     />
                                 </div>
                             </td>
                         </tr>
-                    ))}
+                    )
+                    )}
+
                 </tbody>
             </table>
             <button onClick={handleUserSelection} className="btn btn-secondary col-md-4 mt-3">{t("report.userSelectionButton")}</button>
