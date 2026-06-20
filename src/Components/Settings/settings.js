@@ -12,6 +12,7 @@ export const settings = {
     activityTypes: "sedentary",
     id: 0,
     measurementLog: [],
+    favorites: [],
     macronutrientsPercentages: {
       endomorph: {
         protein: 30,

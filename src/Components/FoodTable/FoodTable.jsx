@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import UserData from "../UserData/UserData";
 import { use, useContext, useEffect, useState } from "react";
 import { UserContext } from "../../App";
-import { getUserDataFromLocalStorage, getUsersFromLocalStorage, saveUserDataToLocalStorage, sortUsersAlphabetically } from "../functions/functions";
+import { getUserDataFromLocalStorage, getUsersFromLocalStorage, saveUserDataToLocalStorage, sortUsersAlphabetically, getUserFromId, updateUserInLocalStorage } from "../functions/functions";
 import { useTranslation } from "react-i18next";
 import foodData from '../../assets/foodDB.json';
 
@@ -10,12 +10,19 @@ export default function FoodTable({ foodList, onFilteredFoodChange }) {
     // const foodList = foodData;
     const { t } = useTranslation();
     const navigate = useNavigate();
+    const { userData, setUserData } = useContext(UserContext);
+    const selectedUser = getUserFromId(userData);
+    const userFavorites = Array.isArray(selectedUser?.favorites) ? selectedUser.favorites : [];
+    const [showFavourites, setShowFavourites] = useState(false);
     const handleUserSelection = () => {
         navigate('/selectUser');
     };
+    const handleShowFavouritesChange = (event) => {
+        setShowFavourites(event.target.checked);
+    };
     const handleProductSort = () => {
         const sortedFoodList = Object.fromEntries(
-            Object.entries(foodList).sort(([keyA], [keyB]) =>   
+            Object.entries(foodList).sort(([keyA], [keyB]) =>
                 t(`foodDB.product.${keyA}`).localeCompare(t(`foodDB.product.${keyB}`))
             )
         );
@@ -84,8 +91,9 @@ export default function FoodTable({ foodList, onFilteredFoodChange }) {
         }
     };
 
+    console.log(showFavourites);
 
-    return (    
+    return (
         <div>
 
             <table className="table table-bordered table-hover">
@@ -99,6 +107,18 @@ export default function FoodTable({ foodList, onFilteredFoodChange }) {
                         <th onClick={handleCarbsSort}>{t("foodDB.Carbs g.title")}</th>
                         <th onClick={handleFatSort}>{t("foodDB.Fat g.title")}</th>
                         <th onClick={handleFiberSort}>{t("foodDB.Fiber g.title")}</th>
+                        <th>
+                            {t("foodTable.favourites")}
+                            <div className="form-check">
+                                <input
+                                    className="form-check-input"
+                                    type="checkbox"
+                                    id="showFavourites"
+                                    checked={showFavourites}
+                                    onChange={handleShowFavouritesChange}
+                                />
+                            </div>
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -113,6 +133,27 @@ export default function FoodTable({ foodList, onFilteredFoodChange }) {
                             <td>{foodInfo["Carbs g"]}</td>
                             <td>{foodInfo["Fat g"]}</td>
                             <td>{foodInfo["Fiber g"]}</td>
+                            <td>
+                                <div className="form-check">
+                                    <input
+                                        className="form-check-input"
+                                        type="checkbox"
+                                        id={`favourite-${foodName}`}
+                                        checked={userFavorites.includes(foodName)}
+                                        onChange={() => {
+                                            const updatedFavorites = userFavorites.includes(foodName)
+                                                ? userFavorites.filter(fav => fav !== foodName)
+                                                : [...userFavorites, foodName];
+                                            const updatedUser = { ...selectedUser, favorites: updatedFavorites };
+                                            updateUserInLocalStorage(updatedUser);
+
+                                            setUserData(selectedUser.id);
+                                            saveUserDataToLocalStorage(selectedUser.id);
+
+                                        }}
+                                    />
+                                </div>
+                            </td>
                         </tr>
                     ))}
                 </tbody>

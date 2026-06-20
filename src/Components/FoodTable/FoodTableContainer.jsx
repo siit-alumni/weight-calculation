@@ -13,15 +13,15 @@ export default function FoodTableContainer() {
     const { t } = useTranslation();
     const navigate = useNavigate();
     const [filteredFood, setFilteredFood] = useState(foodList);
-    Object.entries(foodList).forEach(([foodName, foodInfo]) => {
-        foodList[foodName]["Name"] = t(`foodDB.product.${foodName}`);
-
-    });
 
     const handleUserSelection = () => {
         navigate('/selectUser');
     };
 
+    Object.entries(foodList).forEach(([foodName, foodInfo]) => {
+        foodList[foodName]["Name"] = t(`foodDB.product.${foodName}`);
+    }
+    );
     return (
         <div>
             <h2>{t("foodTable.title")}</h2>
@@ -30,5 +30,5 @@ export default function FoodTableContainer() {
 
             <FoodTable foodList={filteredFood} onFilteredFoodChange={setFilteredFood} />
         </div>
-        );
+    );
 }
