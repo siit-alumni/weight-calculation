@@ -23,7 +23,7 @@ export function NewUser({ show, onClose }) {
         saveUserDataToLocalStorage(formData.id);
         addNewUserToLocalStorage(formData);
         onClose();
-        // navigate("/selectUser");
+        navigate("/usersList");
     };
 
     const handleSelectUser = () => {
@@ -36,7 +36,7 @@ export function NewUser({ show, onClose }) {
         <>
             {show && (
                 <div className="modal show d-block" tabIndex="-1">
-                    <div className="modal-dialog">
+                    <div className="modal-dialog modal-lg">
                         <div className="modal-content">
 
                             <div className="modal-header">
