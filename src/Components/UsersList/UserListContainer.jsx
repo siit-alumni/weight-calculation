@@ -39,15 +39,15 @@ export default function UserListContainer() {
         navigate('/deleteUser');
     };
 
-    
+
     const handleFoodTable = () => {
         navigate('/foodTable');
     };
-    
+
     const handleFilteredUsersChange = (filtered) => {
         setFilteredUsers(filtered);
     };
-    
+
     const handleCreateUser = () => {
         setShowNewUser(true);
     };
@@ -69,11 +69,13 @@ export default function UserListContainer() {
                 {/* <UserData  /> */}
             </div>
 
-            <div className="d-flex align-items-center justify-content-center flex-wrap">
+            <div className="d-flex align-items-center
+             justify-content-center flex-wrap">
                 {/* <button className="btn btn-primary col-md-4  " disabled={!userData && userData !== 0} onClick={handleSelectUser}>{t("selectUser.selectButton")}</button>
                 <button className="btn btn-primary col-md-4 " disabled={!userData && userData !== 0} onClick={handleUpdateUser}>{t("selectUser.modifyButton")}</button>
                 <button className="btn btn-primary col-md-4 " disabled={!userData && userData !== 0} onClick={handleDeleteUser}>{t("selectUser.deleteButton")}</button> */}
-                <button className="btn btn-primary col-md-4" onClick={handleCreateUser}>{t("selectUser.createButton")}</button>
+                <button className="btn btn-primary col-md-4" 
+                onClick={handleCreateUser}>aici-test{t("selectUser.createButton")}</button>
 
                 {showNewUser && (
                     <NewUser
@@ -83,8 +85,12 @@ export default function UserListContainer() {
                 )}
             </div>
 
-            <button onClick={handleUserSelection} className="btn btn-secondary col-md-4 mt-3">{t("report.userSelectionButton")}</button>
-            <button onClick={handleFoodTable} className="btn btn-secondary col-md-4 mt-3">{t("foodTable.title")}</button>
+            <button onClick={handleUserSelection}
+                className="btn btn-secondary col-md-4 mt-3">
+                {t("report.userSelectionButton")}</button>
+            <button onClick={handleFoodTable}
+                className="btn btn-secondary col-md-4 mt-3">
+                {t("foodTable.title")}</button>
 
         </div>
 
