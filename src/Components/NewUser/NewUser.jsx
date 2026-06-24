@@ -29,16 +29,13 @@ export function NewUser({ show, onClose }) {
     const handleSelectUser = () => {
         navigate('/selectUser');
 
-
     }
-    
     return (
         <>
             {show && (
                 <div className="modal show d-block" tabIndex="-1">
                     <div className="modal-dialog modal-lg">
                         <div className="modal-content">
-
                             <div className="modal-header">
                                 <h2 className="modal-title">
                                     {t("newUser.title")}
@@ -51,35 +48,37 @@ export function NewUser({ show, onClose }) {
                                 ></button>
                             </div>
 
+                            <div className="modal-footer">
 
-                            <div className="modal-body">
-
-                                <form
-                                    onSubmit={handleFormSubmit}
-                                    className="container p-3"
-                                >
-
+                                <form onSubmit={handleFormSubmit} className="w-100">
                                     <Form
                                         getDetails={getDetails}
                                         userData={emptyUser}
                                     />
-
-                                    <button
-                                        type="submit"
-                                        className="btn btn-primary"
-                                    >
-                                        {t("form.saveButton")}
-                                    </button>
-
+                                    <div className="d-flex justify-content-end gap-2 mt-3">
+                                        <button
+                                            type="button"
+                                            onClick={handleSelectUser}
+                                            className="btn btn-secondary"
+                                        >
+                                            {t("report.userSelectionButton")}
+                                        </button>
+                                        <button
+                                            type="submit"
+                                            className="btn btn-primary"
+                                        >
+                                            {t("form.saveButton")}
+                                        </button>
+                                        <button
+                                            type="button"
+                                            className="btn btn-secondary"
+                                            data-bs-dismiss="modal"
+                                            onClick={onClose}
+                                        >
+                                            Close
+                                        </button>
+                                    </div>
                                 </form>
-
-                                <button
-                                    onClick={handleSelectUser}
-                                    className="btn btn-secondary"
-                                >
-                                    {t("report.userSelectionButton")}
-                                </button>
-
                             </div>
 
                         </div>

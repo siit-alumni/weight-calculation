@@ -73,6 +73,13 @@ export default function UsersList({ users }) {
         setModalType("Display");
     }
 
+    const handleReset = (e) => {
+        e.preventDefault();
+        setSelectedUserId(null);
+        setUserData(null);
+    };
+
+
     const modalTitles = {
         Delete: t("usersList.deleteUserIcon"),
         Edit: t("usersList.updateUserIcon"),
@@ -179,7 +186,7 @@ export default function UsersList({ users }) {
                                 <>
                                     <button
                                         className="btn btn-secondary"
-
+                                        onClick={handleReset}
                                     >
                                         {t("form.resetButton")}
                                     </button>
