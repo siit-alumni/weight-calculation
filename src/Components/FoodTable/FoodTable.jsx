@@ -96,7 +96,7 @@ export default function FoodTable({ foodList, onFilteredFoodChange }) {
     return (
         <div>
 
-            <table className="table table-bordered table-hover">
+            <table className="table table-striped table-hover table-sm">
                 <thead>
                     <tr>
                         <th onClick={handleProductSort}>{t("foodTable.product")}</th>
@@ -123,7 +123,7 @@ export default function FoodTable({ foodList, onFilteredFoodChange }) {
                 </thead>
                 <tbody>
                     {Object.entries(foodList).map(([foodName, foodInfo]) => (
-                         !(showFavourites && !userFavorites.includes(foodName))  &&
+                        !(showFavourites && !userFavorites.includes(foodName)) &&
                         <tr key={foodName}>
                             <td>{t(`foodDB.product.${foodName}`)}</td>
                             {/* <td>{foodInfo["Name"]}</td> */}
