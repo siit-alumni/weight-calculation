@@ -94,7 +94,8 @@ export default function UsersList({ users }) {
 
     return (
 
-        <div className="users-list-container border-top border-bottom ">
+        <div className="users-list-container 
+        border-top border-bottom ">
 
             <ul className="users-list-ul">
                 {users.map((user) => (

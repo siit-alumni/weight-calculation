@@ -5,6 +5,9 @@ import { useState } from "react";
 import { addNewUserToLocalStorage, getUsersFromLocalStorage, saveUserDataToLocalStorage, saveUsersToLocalStorage } from "../functions/functions";
 import { settings } from "../Settings/settings";
 
+import './NewUser.css';
+
+
 export function NewUser({ show, onClose }) {
     const { t } = useTranslation();
     const [formData, setFormData] = useState({});
@@ -35,7 +38,7 @@ export function NewUser({ show, onClose }) {
             {show && (
                 <div className="modal show d-block" tabIndex="-1">
                     <div className="modal-dialog modal-lg">
-                        <div className="modal-content">
+                        <div className="modal-content modal-content-user mt-5">
                             <div className="modal-header">
                                 <h2 className="modal-title">
                                     {t("newUser.title")}
@@ -48,13 +51,15 @@ export function NewUser({ show, onClose }) {
                                 ></button>
                             </div>
 
-                            <div className="modal-footer">
+                            <div className="modal-body mt-5">
 
                                 <form onSubmit={handleFormSubmit} className="w-100">
                                     <Form
                                         getDetails={getDetails}
                                         userData={emptyUser}
                                     />
+
+                                    <div className="modal-footer"></div>
                                     <div className="d-flex justify-content-end gap-2 mt-3">
                                         <button
                                             type="button"

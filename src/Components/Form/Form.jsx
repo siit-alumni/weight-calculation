@@ -37,7 +37,7 @@ export function Form({ getDetails, userData }) {
   };
 
   return (
-    <div>
+    <div className="w-100">
       <div onSubmit={handleFormSubmit} className="container p-3">
         <div className="row mb-2">
           <div className="col-md mb-3">
