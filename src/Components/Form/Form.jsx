@@ -12,7 +12,9 @@ export function Form({ getDetails, userData }) {
   const [formData, setFormData] = useState(userData);
   const navigate = useNavigate();
 
-  
+// useEffect(() => {
+//     console.log("Form a primit:", userData);
+// }, [userData]);
 
   const onHandleChange = (e) => {
     const { name, value } = e.target;
@@ -55,8 +57,8 @@ export function Form({ getDetails, userData }) {
               required
             />
           </div>
-          </div>
-          <div className="row mb-2">
+        </div>
+        <div className="row mb-2">
           <div className="col-md mb-3">
             <label htmlFor="age" className="form-label">
               {t("form.age")}
@@ -177,10 +179,25 @@ export function Form({ getDetails, userData }) {
             </select>
           </div>
         </div>
+        <div className="modal-footer nx-n3 mb-n3">
 
-        {formData.name && (
-          <button className="btn btn-secondary" onClick={handleReset}>{t("form.resetButton")}</button>
-        )}
+          {formData.name && (
+            <>
+              <button className="btn btn-secondary"
+                onClick={handleReset}>{t("form.resetButton")}</button>
+              <button type="submit"
+                className="btn btn-primary
+             col-md-5 me-2">
+                {t("form.saveButton")}
+              </button>
+              <button type="button"
+                className="btn btn-secondary"
+                data-bs-dismiss="modal">
+                {t("common.buttons.cancelButton")}
+              </button>
+            </>
+          )}
+        </div>
       </div>
 
     </div>

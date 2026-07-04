@@ -183,7 +183,7 @@ export default function UsersList({ users }) {
                         </div>
                         <div className="modal-footer">
 
-                            {modalType === "Edit" && (
+                            {/* {modalType === "Edit" && (
                                 <>
                                     <button
                                         className="btn btn-secondary"
@@ -203,7 +203,7 @@ export default function UsersList({ users }) {
                                         data-bs-dismiss="modal">Close
                                     </button>
                                 </>
-                            )}
+                            )} */}
                             {modalType === "Delete" && (
                                 <>
                                     <button
