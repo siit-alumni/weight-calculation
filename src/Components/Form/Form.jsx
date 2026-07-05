@@ -12,9 +12,6 @@ export function Form({ getDetails, userData }) {
   const [formData, setFormData] = useState(userData);
   const navigate = useNavigate();
 
-// useEffect(() => {
-//     console.log("Form a primit:", userData);
-// }, [userData]);
 
   const onHandleChange = (e) => {
     const { name, value } = e.target;
@@ -179,7 +176,7 @@ export function Form({ getDetails, userData }) {
             </select>
           </div>
         </div>
-        <div className="modal-footer nx-n3 mb-n3">
+        {/* <div className="modal-footer nx-n3 mb-n3">
 
           {formData.name && (
             <>
@@ -197,7 +194,14 @@ export function Form({ getDetails, userData }) {
               </button>
             </>
           )}
-        </div>
+        </div> */}
+
+        {/* <div>
+          {formData.name && (
+            <button className="btn btn-secondary" onClick={handleReset}>{t("form.resetButton")}</button>
+          )}
+         
+        </div> */}
       </div>
 
     </div>
