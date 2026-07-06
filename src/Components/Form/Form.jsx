@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { BodyType } from "./BodyTypeButtonDesign";
 import { useTranslation } from "react-i18next";
 import { settings } from "../Settings/settings";
@@ -12,7 +12,9 @@ export function Form({ getDetails, userData }) {
   const [formData, setFormData] = useState(userData);
   const navigate = useNavigate();
 
-
+useEffect(() => {
+  setFormData(userData);
+}, [userData]);
   const onHandleChange = (e) => {
     const { name, value } = e.target;
     const updatedFormData = {
