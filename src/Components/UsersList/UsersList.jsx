@@ -48,11 +48,10 @@ export default function UsersList({ users }) {
         // setModalType("Select");
     }
     //eu
-    const handleDeleteUser = () => {
-        setUserData(userData);
-        setModalType("Delete");
-
-    }
+   const handleDeleteUser = (userId) => {
+    setUserData(userId);
+    setModalType("Delete");
+};
 
     const handleDelete = () => {
         deleteUserFromLocalStorage(userData);
@@ -62,16 +61,21 @@ export default function UsersList({ users }) {
         navigate('/selectUser');
     };
     //eu
-    const handleUpdateUser = () => {
-        setUserData(userData);
-        setModalType("Edit");
-    };
+   const handleUpdateUser = (userId) => {
+      console.log(
+  users.map(user => ({
+    id: user.id,
+    name: user.name
+  }))
+);
+    setUserData(userId);
+    setModalType("Edit");
+};
 
-    const handleDisplayUser = () => {
-        // setDisplayUser(prev => !prev);
-        setUserData(userData);
-        setModalType("Display");
-    }
+   const handleDisplayUser = (userId) => {
+    setUserData(userId);
+    setModalType("Display");
+};
 
     const handleReset = (e) => {
         e.preventDefault();
@@ -90,7 +94,7 @@ export default function UsersList({ users }) {
         setModalType(null);
     };
 
-
+   console.log(users);
 
     return (
 
@@ -121,7 +125,8 @@ export default function UsersList({ users }) {
                                 </a>
                                 <a className="icon-link"
                                     title={t("usersList.deleteUserIcon")}
-                                    onClick={handleDeleteUser} data-bs-toggle="modal"
+                                    onClick={() => handleDeleteUser(user.id)}
+                                    data-bs-toggle="modal"
                                     data-bs-target="#userInfoModal">
                                     <svg xmlns="http://www.w3.org/2000/svg"
                                         width="16" height="16" fill="currentColor"
@@ -132,7 +137,8 @@ export default function UsersList({ users }) {
                                 </a>
                                 <a className="icon-link"
                                     title={t("usersList.updateUserIcon")}
-                                    onClick={handleUpdateUser} data-bs-toggle="modal"
+                                    onClick={() => handleUpdateUser(user.id)}
+                                    data-bs-toggle="modal"
                                     data-bs-target="#userInfoModal">
                                     <svg xmlns="http://www.w3.org/2000/svg"
                                         width="16" height="16" fill="currentColor"
@@ -143,7 +149,7 @@ export default function UsersList({ users }) {
                                 </a>
                                 <a className="icon-link"
                                     title={displayUserDataText}
-                                    onClick={handleDisplayUser}
+                                  onClick={() => handleDisplayUser(user.id)}
                                     data-bs-toggle="modal"
                                     data-bs-target="#userInfoModal">
                                     <svg xmlns="http://www.w3.org/2000/svg"
@@ -182,7 +188,7 @@ export default function UsersList({ users }) {
                             {modalType === "Display" && <UserData user={userData} />}
                         </div>
                         <div className="modal-footer">
-
+{/* 
                             {modalType === "Edit" && (
                                 <>
                                     <button
@@ -193,17 +199,21 @@ export default function UsersList({ users }) {
                                     </button>
 
                                     <button
-                                        type="button"
+                                        type="submit"
                                         className="btn btn-primary"
+                                       
                                     >
                                         {t("form.saveButton")}
+                                        
+                                        
                                     </button>
+
                                     <button type="button"
                                         className="btn btn-secondary"
                                         data-bs-dismiss="modal">Close
                                     </button>
                                 </>
-                            )}
+                            )} */}
                             {modalType === "Delete" && (
                                 <>
                                     <button

@@ -12,9 +12,15 @@ export function Form({ getDetails, userData }) {
   const [formData, setFormData] = useState(userData);
   const navigate = useNavigate();
 
-useEffect(() => {
-  setFormData(userData);
-}, [userData]);
+  useEffect(() => {
+    console.log("userData:", userData);
+    setFormData(userData);
+  }, [userData]);
+
+  useEffect(() => {
+    console.log("formData:", formData);
+  }, [formData]);
+
   const onHandleChange = (e) => {
     const { name, value } = e.target;
     const updatedFormData = {
@@ -52,7 +58,7 @@ useEffect(() => {
               id="name"
               placeholder="Alexandru Popescu"
               onChange={onHandleChange}
-              value={formData.name}
+              value={formData?.name ?? ""}
               required
             />
           </div>
@@ -69,7 +75,7 @@ useEffect(() => {
               id="age"
               placeholder={t("form.agePlaceholder")}
               onChange={onHandleChange}
-              value={formData.age}
+              value={formData?.age ?? ""}
               min="12"
               max="120"
               required
@@ -84,7 +90,8 @@ useEffect(() => {
               name="gender"
               id="gender"
               onChange={onHandleChange}
-              value={formData.gender}
+              value={formData?.gender ?? ""}
+
             >
               <option value="female">{t("common.genderOption.female")}</option>
               <option value="male">{t("common.genderOption.male")}</option>
@@ -104,7 +111,7 @@ useEffect(() => {
               id="weight"
               placeholder={t("form.weightPlaceholder")}
               onChange={onHandleChange}
-              value={formData.weight}
+              value={formData?.weight ?? ""}
               min="30"
               max="300"
               required
@@ -121,7 +128,7 @@ useEffect(() => {
               id="height"
               placeholder={t("form.heightPlaceholder")}
               onChange={onHandleChange}
-              value={formData.height}
+              value={formData?.height ?? ""}
               min="100"
               max="250"
               required
@@ -143,7 +150,8 @@ useEffect(() => {
               name="bodyType"
               id="bodyType"
               onChange={onHandleChange}
-              value={formData.bodyType}
+              value={formData?.bodyType ?? ""}
+
             >
 
               {Object.entries(settings.bodyTypeCoeff).map(([key]) => (
@@ -167,7 +175,8 @@ useEffect(() => {
               name="activityTypes"
               id="activityTypes"
               onChange={onHandleChange}
-              value={formData.activityTypes}
+              value={formData?.activityTypes ?? ""}
+
             >
 
               {Object.entries(settings.calorieConsumptionLevels).map(([key]) =>
@@ -178,32 +187,13 @@ useEffect(() => {
             </select>
           </div>
         </div>
-        {/* <div className="modal-footer nx-n3 mb-n3">
 
-          {formData.name && (
-            <>
-              <button className="btn btn-secondary"
-                onClick={handleReset}>{t("form.resetButton")}</button>
-              <button type="submit"
-                className="btn btn-primary
-             col-md-5 me-2">
-                {t("form.saveButton")}
-              </button>
-              <button type="button"
-                className="btn btn-secondary"
-                data-bs-dismiss="modal">
-                {t("common.buttons.cancelButton")}
-              </button>
-            </>
-          )}
-        </div> */}
-
-        {/* <div>
-          {formData.name && (
+        <div>
+          {/* {formData.name && (
             <button className="btn btn-secondary" onClick={handleReset}>{t("form.resetButton")}</button>
-          )}
-         
-        </div> */}
+          )} */}
+
+        </div>
       </div>
 
     </div>
