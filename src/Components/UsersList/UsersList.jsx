@@ -62,12 +62,12 @@ export default function UsersList({ users }) {
     };
     //eu
    const handleUpdateUser = (userId) => {
-      console.log(
-  users.map(user => ({
-    id: user.id,
-    name: user.name
-  }))
-);
+//       console.log(
+//   users.map(user => ({
+//     id: user.id,
+//     name: user.name
+//   }))
+// );
     setUserData(userId);
     setModalType("Edit");
 };
