@@ -3,6 +3,7 @@ import { ModifyUser } from "../ModifyUser/ModifyUser";
 export function EditUserModal({
     title,
     user,
+    setUsers,
     handleReset,
     t,
 }) {
@@ -30,7 +31,9 @@ export function EditUserModal({
                     </div>
 
                     <div className="modal-body">
-                        <ModifyUser user={user} />
+                        <ModifyUser 
+                        user={user} 
+                        setUsers={setUsers}/>
                     </div>
                     
                 </div>

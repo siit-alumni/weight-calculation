@@ -2,11 +2,11 @@ import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { Form } from "../Form/Form";
 import { useContext, useEffect, useState } from "react";
-import { getUserDataFromLocalStorage, getUserFromId, saveUserDataToLocalStorage, saveUsersToLocalStorage, updateUserInLocalStorage } from "../functions/functions";
+import { getUserDataFromLocalStorage,getUsersFromLocalStorage, getUserFromId, saveUserDataToLocalStorage, saveUsersToLocalStorage, updateUserInLocalStorage } from "../functions/functions";
 import { UserContext } from "../../App";
 
 
-export function ModifyUser() {
+export function ModifyUser({ user, setUsers }) {
 
   const { t } = useTranslation();
   const [formData, setFormData] = useState({});
@@ -27,7 +27,16 @@ export function ModifyUser() {
     e.preventDefault();
     saveUserDataToLocalStorage(formData.id);
     updateUserInLocalStorage(formData);
-    navigate("/selectUser");
+
+const updatedUsers = getUsersFromLocalStorage();
+
+console.log(updatedUsers);
+
+setUsers(updatedUsers);
+
+
+    setUsers(getUsersFromLocalStorage());
+    // navigate("/selectUser");
   };
 
   const handleSelectUser = () => {
@@ -56,7 +65,8 @@ export function ModifyUser() {
             {t("form.resetButton")}
           </button>
           <button type="submit"
-            className="btn btn-primary col-md-5 me-2">
+            className="btn btn-primary col-md-5 me-2"
+            data-bs-dismiss="modal">
             {t("form.saveButton")}
           </button>
 

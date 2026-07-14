@@ -177,6 +177,7 @@ export default function UsersList({ users, setUsers }) {
                 title={modalTitles.Edit}
                 user={userData}
                 handleReset={handleReset}
+                setUsers={setUsers}
                 t={t}
             />
 
