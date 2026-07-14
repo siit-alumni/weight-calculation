@@ -2,7 +2,13 @@ import { DeleteUser } from "../DeleteUser/DeleteUser";
 
 
 
-export function DeleteUserModal() {
+export function DeleteUserModal({
+    title,
+    user,
+    handleDelete,
+    closeModal,
+    t,
+}) {
     return (
         <div
             className="modal fade"

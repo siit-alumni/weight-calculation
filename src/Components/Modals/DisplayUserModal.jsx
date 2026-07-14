@@ -1,11 +1,14 @@
 import UserData from "../UserData/UserData";
 
 
-export function DisplayUserModal() {
+export function DisplayUserModal({
+    title,
+    user,
+}) {
     return (
         <div
             className="modal fade"
-            id="userInfoModal"
+            id="userDisplayModal"
             tabIndex={-1}
             aria-labelledby="userInfoModalLabel"
             aria-hidden="true"

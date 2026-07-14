@@ -15,6 +15,9 @@ import UserListSort from './UserListSort';
 import { Results } from '../Results/Results';
 import { Form } from '../Form/Form';
 import { settings } from '../Settings/settings';
+import { DeleteUserModal } from '../Modals/DeleteUserModal';
+import { EditUserModal } from '../Modals/EditUserModal';
+import { DisplayUserModal } from '../Modals/DisplayUserModal';
 
 export default function UsersList({ users }) {
 
@@ -48,10 +51,10 @@ export default function UsersList({ users }) {
         // setModalType("Select");
     }
     //eu
-   const handleDeleteUser = (userId) => {
-    setUserData(userId);
-    setModalType("Delete");
-};
+    const handleDeleteUser = (userId) => {
+        setUserData(userId);
+        setModalType("Delete");
+    };
 
     const handleDelete = () => {
         deleteUserFromLocalStorage(userData);
@@ -61,21 +64,21 @@ export default function UsersList({ users }) {
         navigate('/selectUser');
     };
     //eu
-   const handleUpdateUser = (userId) => {
-//       console.log(
-//   users.map(user => ({
-//     id: user.id,
-//     name: user.name
-//   }))
-// );
-    setUserData(userId);
-    setModalType("Edit");
-};
+    const handleUpdateUser = (userId) => {
+        //       console.log(
+        //   users.map(user => ({
+        //     id: user.id,
+        //     name: user.name
+        //   }))
+        // );
+        setUserData(userId);
+        setModalType("Edit");
+    };
 
-   const handleDisplayUser = (userId) => {
-    setUserData(userId);
-    setModalType("Display");
-};
+    const handleDisplayUser = (userId) => {
+        setUserData(userId);
+        setModalType("Display");
+    };
 
     const handleReset = (e) => {
         e.preventDefault();
@@ -94,7 +97,7 @@ export default function UsersList({ users }) {
         setModalType(null);
     };
 
-   console.log(users);
+    console.log(users);
 
     return (
 
@@ -127,7 +130,7 @@ export default function UsersList({ users }) {
                                     title={t("usersList.deleteUserIcon")}
                                     onClick={() => handleDeleteUser(user.id)}
                                     data-bs-toggle="modal"
-                                    data-bs-target="#userInfoModal">
+                                    data-bs-target="#userDeleteModal">
                                     <svg xmlns="http://www.w3.org/2000/svg"
                                         width="16" height="16" fill="currentColor"
                                         className="bi bi-trash" viewBox="0 0 16 16">
@@ -139,7 +142,7 @@ export default function UsersList({ users }) {
                                     title={t("usersList.updateUserIcon")}
                                     onClick={() => handleUpdateUser(user.id)}
                                     data-bs-toggle="modal"
-                                    data-bs-target="#userInfoModal">
+                                    data-bs-target="#userEditModal">
                                     <svg xmlns="http://www.w3.org/2000/svg"
                                         width="16" height="16" fill="currentColor"
                                         className="bi bi-pencil-square" viewBox="0 0 16 16">
@@ -149,9 +152,9 @@ export default function UsersList({ users }) {
                                 </a>
                                 <a className="icon-link"
                                     title={displayUserDataText}
-                                  onClick={() => handleDisplayUser(user.id)}
+                                    onClick={() => handleDisplayUser(user.id)}
                                     data-bs-toggle="modal"
-                                    data-bs-target="#userInfoModal">
+                                    data-bs-target="#userDisplayModal">
                                     <svg xmlns="http://www.w3.org/2000/svg"
                                         width="16" height="16" fill="currentColor"
                                         className="bi bi-info-square" viewBox="0 0 16 16">
@@ -166,90 +169,24 @@ export default function UsersList({ users }) {
                 ))}
             </ul>
 
-            <div className="modal fade"
-                id="userInfoModal"
-                tabIndex="-1"
-                aria-labelledby="userInfoModalLabel"
-                aria-hidden="true">
-                <div className="modal-dialog modal-lg">
-                    <div className="modal-content">
-                        <div className="modal-header">
-                            <h5 className="modal-title">
-                                {modalTitles[modalType]}
-                            </h5>
-                            <button type="button"
-                                className="btn-close"
-                                data-bs-dismiss="modal"
-                                aria-label="Close"></button>
-                        </div>
-                        <div className="modal-body">
-                            {modalType === "Delete" && <DeleteUser user={userData} />}
-                            {modalType === "Edit" && <ModifyUser user={userData} />}
-                            {modalType === "Display" && <UserData user={userData} />}
-                        </div>
-                        <div className="modal-footer">
-{/* 
-                            {modalType === "Edit" && (
-                                <>
-                                    <button
-                                        className="btn btn-secondary"
-                                        onClick={handleReset}
-                                    >
-                                        {t("form.resetButton")}
-                                    </button>
+            <DeleteUserModal
+                title={modalTitles.Delete}
+                user={userData}
+                handleDelete={handleDelete}
+                t={t}
+            />
 
-                                    <button
-                                        type="submit"
-                                        className="btn btn-primary"
-                                       
-                                    >
-                                        {t("form.saveButton")}
-                                        
-                                        
-                                    </button>
+            <EditUserModal
+                title={modalTitles.Edit}
+                user={userData}
+                handleReset={handleReset}
+                t={t}
+            />
 
-                                    <button type="button"
-                                        className="btn btn-secondary"
-                                        data-bs-dismiss="modal">Close
-                                    </button>
-                                </>
-                            )} */}
-                            {modalType === "Delete" && (
-                                <>
-                                    <button
-                                        type="button"
-                                        className="btn btn-danger"
-                                        data-bs-dismiss="modal"
-                                        onClick={() => {
-                                            handleDelete();
-                                            closeModal();
-                                        }}
-                                    >
-                                        {t("deleteUser.confirmButton")}
-                                    </button>
-                                    <button type="button"
-                                        className="btn btn-secondary"
-                                        data-bs-dismiss="modal">
-                                        {t("common.buttons.cancelButton")}
-                                    </button>
-                                </>
-                            )}
-
-                            {modalType === "Display" && (
-                                <button
-                                    type="button"
-                                    className="btn btn-secondary"
-                                    data-bs-dismiss="modal"
-                                >
-                                    Close
-                                </button>
-                            )}
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+            <DisplayUserModal
+                title={modalTitles.Display}
+                user={userData}
+            />
 
         </div>
 

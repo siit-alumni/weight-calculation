@@ -1,6 +1,11 @@
 import { ModifyUser } from "../ModifyUser/ModifyUser";
 
-export function EditUserModal() {
+export function EditUserModal({
+    title,
+    user,
+    handleReset,
+    t,
+}) {
     return (
         <div
             className="modal fade"
@@ -27,30 +32,7 @@ export function EditUserModal() {
                     <div className="modal-body">
                         <ModifyUser user={user} />
                     </div>
-
-                    <div className="modal-footer">
-                        <button
-                            className="btn btn-secondary"
-                            onClick={handleReset}
-                        >
-                            {t("form.resetButton")}
-                        </button>
-
-                        <button
-                            type="button"
-                            className="btn btn-primary"
-                        >
-                            {t("form.saveButton")}
-                        </button>
-
-                        <button
-                            type="button"
-                            className="btn btn-secondary"
-                            data-bs-dismiss="modal"
-                        >
-                            Close
-                        </button>
-                    </div>
+                    
                 </div>
             </div>
         </div>
