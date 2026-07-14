@@ -58,12 +58,18 @@ export default function UserListContainer() {
             <h2 className="pb-5">{t("usersList.title")}</h2>
 
             <h5>{t("usersList.searchTitle")}</h5>
-            <UserListSort users={sortedUsers} onFilteredUsersChange={handleFilteredUsersChange} />
+            <UserListSort
+                users={sortedUsers}
+                onFilteredUsersChange={handleFilteredUsersChange} />
             <div className="d-flex flex-column">
                 {users.profiles.length === 0 ? (
                     <p>{t("usersList.noUsers")}</p>
                 ) : (
-                    <UsersList users={filteredUsers} />
+                    <UsersList
+                        users={filteredUsers}
+                        //
+                        setUsers={setUsers}
+                    />
                 )}
 
                 {/* <UserData  /> */}
@@ -74,8 +80,8 @@ export default function UserListContainer() {
                 {/* <button className="btn btn-primary col-md-4  " disabled={!userData && userData !== 0} onClick={handleSelectUser}>{t("selectUser.selectButton")}</button>
                 <button className="btn btn-primary col-md-4 " disabled={!userData && userData !== 0} onClick={handleUpdateUser}>{t("selectUser.modifyButton")}</button>
                 <button className="btn btn-primary col-md-4 " disabled={!userData && userData !== 0} onClick={handleDeleteUser}>{t("selectUser.deleteButton")}</button> */}
-                <button className="btn btn-primary col-md-4" 
-                onClick={handleCreateUser}>{t("selectUser.createButton")}</button>
+                <button className="btn btn-primary col-md-4"
+                    onClick={handleCreateUser}>{t("selectUser.createButton")}</button>
 
                 {showNewUser && (
                     <NewUser

@@ -3,7 +3,7 @@ import { findUserInLocalStorage, getUserDataFromLocalStorage, saveUserDataToLoca
 import { useTranslation } from 'react-i18next';
 import './UsersList.css';
 
-import { clearUserDataFromLocalStorage, deleteUserFromLocalStorage, replaceUsersIDs } from "../functions/functions";
+import { clearUserDataFromLocalStorage, getUsersFromLocalStorage, deleteUserFromLocalStorage, replaceUsersIDs } from "../functions/functions";
 
 import { UserContext } from '../../App';
 import { useNavigate } from 'react-router-dom';
@@ -19,7 +19,7 @@ import { DeleteUserModal } from '../Modals/DeleteUserModal';
 import { EditUserModal } from '../Modals/EditUserModal';
 import { DisplayUserModal } from '../Modals/DisplayUserModal';
 
-export default function UsersList({ users }) {
+export default function UsersList({ users, setUsers }) {
 
     const { userData, setUserData } = useContext(UserContext);
     const [displayUser, setDisplayUser] = useState(false);
@@ -42,7 +42,7 @@ export default function UsersList({ users }) {
         setUserData(userData);
         saveUserDataToLocalStorage(userData);
         navigate('/results');
-        // setModalType("Select");
+    
     };
 
     const handleUserSelection = () => {
@@ -61,16 +61,13 @@ export default function UsersList({ users }) {
         clearUserDataFromLocalStorage();
         setUserData(null);
         replaceUsersIDs();
-        navigate('/selectUser');
+
+        setUsers(getUsersFromLocalStorage());
+        // navigate('/selectUser');
     };
     //eu
     const handleUpdateUser = (userId) => {
-        //       console.log(
-        //   users.map(user => ({
-        //     id: user.id,
-        //     name: user.name
-        //   }))
-        // );
+
         setUserData(userId);
         setModalType("Edit");
     };

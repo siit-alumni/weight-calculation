@@ -43,7 +43,7 @@ export function DeleteUserModal({
                             data-bs-dismiss="modal"
                             onClick={() => {
                                 handleDelete();
-                                closeModal();
+                              
                             }}
                         >
                             {t("deleteUser.confirmButton")}

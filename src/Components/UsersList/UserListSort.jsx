@@ -10,7 +10,7 @@ export default function UserListSort({ users, onFilteredUsersChange }) {
             user.name.toLowerCase().includes(searchInput.toLowerCase())
         );
         onFilteredUsersChange(filteredUsers);
-    }, [searchInput]);
+    }, [users, searchInput]);
 
     const handleClearSearch = () => {
         setSearchInput('');
