@@ -2,7 +2,7 @@ import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { Form } from "../Form/Form";
 import { useContext, useEffect, useState } from "react";
-import { getUserDataFromLocalStorage,getUsersFromLocalStorage, getUserFromId, saveUserDataToLocalStorage, saveUsersToLocalStorage, updateUserInLocalStorage } from "../functions/functions";
+import { getUserDataFromLocalStorage, getUsersFromLocalStorage, getUserFromId, saveUserDataToLocalStorage, saveUsersToLocalStorage, updateUserInLocalStorage } from "../functions/functions";
 import { UserContext } from "../../App";
 
 
@@ -11,8 +11,8 @@ export function ModifyUser({ user, setUsers }) {
   const { t } = useTranslation();
   const [formData, setFormData] = useState({});
   const navigate = useNavigate();
-   const { userData, setUserData } = useContext(UserContext);
-    const [selectedUserId, setSelectedUserId] = useState(getUserDataFromLocalStorage());
+  const { userData, setUserData } = useContext(UserContext);
+  const [selectedUserId, setSelectedUserId] = useState(getUserDataFromLocalStorage());
 
   useEffect(() => {
     setFormData(getUserFromId(userData));
@@ -28,11 +28,11 @@ export function ModifyUser({ user, setUsers }) {
     saveUserDataToLocalStorage(formData.id);
     updateUserInLocalStorage(formData);
 
-const updatedUsers = getUsersFromLocalStorage();
+    const updatedUsers = getUsersFromLocalStorage();
 
-console.log(updatedUsers);
+    console.log(updatedUsers);
 
-setUsers(updatedUsers);
+    setUsers(updatedUsers);
 
 
     setUsers(getUsersFromLocalStorage());
@@ -43,11 +43,11 @@ setUsers(updatedUsers);
     navigate("/selectUser");
   };
 
- const handleReset = (e) => {
-        e.preventDefault();
-        setSelectedUserId(null);
-        setUserData(null);
-    };
+  const handleReset = (e) => {
+    e.preventDefault();
+    setSelectedUserId(null);
+    setUserData(null);
+  };
   return (
     <div>
       <h2>{t("modifyUser.title")}</h2>

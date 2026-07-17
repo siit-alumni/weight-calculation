@@ -8,7 +8,7 @@ import { settings } from "../Settings/settings";
 import './NewUser.css';
 
 
-export function NewUser({ show, onClose }) {
+export function NewUser({ show, onClose, setUsers }) {
     const { t } = useTranslation();
     const [formData, setFormData] = useState({});
     const navigate = useNavigate();
@@ -26,7 +26,15 @@ export function NewUser({ show, onClose }) {
         saveUserDataToLocalStorage(formData.id);
         addNewUserToLocalStorage(formData);
         onClose();
+       
+        const updatedUsers = getUsersFromLocalStorage();
+
+        console.log(updatedUsers);
+        setUsers(updatedUsers);
+        setUsers(getUsersFromLocalStorage());
+
         navigate("/usersList");
+
     };
 
     const handleSelectUser = () => {
@@ -71,6 +79,7 @@ export function NewUser({ show, onClose }) {
                                         <button
                                             type="submit"
                                             className="btn btn-primary"
+                                        // setUsers={setUsers}
                                         >
                                             {t("form.saveButton")}
                                         </button>
