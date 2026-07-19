@@ -1,4 +1,5 @@
 import { DeleteUser } from "../DeleteUser/DeleteUser";
+import UserData from "../UserData/UserData";
 
 
 
@@ -33,7 +34,7 @@ export function DeleteUserModal({
                     </div>
 
                     <div className="modal-body">
-                        <DeleteUser user={user} />
+                        <UserData />
                     </div>
 
                     <div className="modal-footer">
