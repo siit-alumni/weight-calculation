@@ -72,7 +72,11 @@ export function ModifyUser({ user, setUsers }) {
 
           <button type="button"
             className="btn btn-secondary"
-            data-bs-dismiss="modal">Close
+            data-bs-dismiss="modal">
+
+            {t("common.buttons.cancelButton")}
+
+
           </button>
         </div>
 

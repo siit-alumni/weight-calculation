@@ -1,10 +1,15 @@
+import { useTranslation } from "react-i18next";
 import UserData from "../UserData/UserData";
 
 
 export function DisplayUserModal({
     title,
     user,
-}) {
+    
+}) 
+
+{
+    const { t } = useTranslation();
     return (
         <div
             className="modal fade"
@@ -38,7 +43,7 @@ export function DisplayUserModal({
                             className="btn btn-secondary"
                             data-bs-dismiss="modal"
                         >
-                            Close
+                            {t("common.buttons.cancelButton")}
                         </button>
                     </div>
                 </div>
