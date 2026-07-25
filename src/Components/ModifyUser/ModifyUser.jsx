@@ -86,6 +86,8 @@ export function ModifyUser({ user, setUsers, isModal = false }) {
           <>
             <button
               type="submit"
+              onClick={handleSelectUser}
+
               className="btn btn-primary col-md-5 me-2"
             >
               {t("form.saveButton")}
