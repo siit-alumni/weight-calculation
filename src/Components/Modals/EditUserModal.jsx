@@ -33,7 +33,8 @@ export function EditUserModal({
                     <div className="modal-body">
                         <ModifyUser 
                         user={user} 
-                        setUsers={setUsers}/>
+                        setUsers={setUsers}
+                        isModal={true}/>
                     </div>
                     
                 </div>

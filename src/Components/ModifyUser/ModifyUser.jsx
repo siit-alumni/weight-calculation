@@ -6,7 +6,7 @@ import { getUserDataFromLocalStorage, getUsersFromLocalStorage, getUserFromId, s
 import { UserContext } from "../../App";
 
 
-export function ModifyUser({ user, setUsers }) {
+export function ModifyUser({ user, setUsers, isModal = false }) {
 
   const { t } = useTranslation();
   const [formData, setFormData] = useState({});
@@ -34,7 +34,6 @@ export function ModifyUser({ user, setUsers }) {
 
     setUsers(updatedUsers);
 
-
     setUsers(getUsersFromLocalStorage());
     // navigate("/selectUser");
   };
@@ -57,30 +56,50 @@ export function ModifyUser({ user, setUsers }) {
           getDetails={getDetails}
           userData={formData}
         />
-        <div className="w-100 modal-footer">
-          <button
-            className="btn btn-secondary"
-            onClick={handleReset}
-          >
-            {t("form.resetButton")}
-          </button>
-          <button type="submit"
-            className="btn btn-primary col-md-5 me-2"
-            data-bs-dismiss="modal">
-            {t("form.saveButton")}
-          </button>
+        {isModal ? (
+          <div className="w-100 modal-footer">
+            <button
+              className="btn btn-secondary"
+              onClick={handleReset}
+            >
+              {t("form.resetButton")}
+            </button>
 
-          <button type="button"
-            className="btn btn-secondary"
-            data-bs-dismiss="modal"
-            aria-label="Close">
+            <button
+              type="submit"
+              className="btn btn-primary col-md-5 me-2"
+              data-bs-dismiss="modal"
+            >
+              {t("form.saveButton")}
+            </button>
 
-            {t("common.buttons.cancelButton")}
+            <button
+              type="button"
+              className="btn btn-secondary"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            >
+              {t("common.buttons.cancelButton")}
+            </button>
+          </div>
+        ) : (
+          <>
+            <button
+              type="submit"
+              className="btn btn-primary col-md-5 me-2"
+            >
+              {t("form.saveButton")}
+            </button>
 
-
-          </button>
-        </div>
-
+            <button
+              type="button"
+              onClick={handleSelectUser}
+              className="btn btn-secondary col-md-3"
+            >
+              {t("common.buttons.cancelButton")}
+            </button>
+          </>
+        )}
       </form>
     </div>
   );
