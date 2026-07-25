@@ -72,7 +72,8 @@ export function ModifyUser({ user, setUsers }) {
 
           <button type="button"
             className="btn btn-secondary"
-            data-bs-dismiss="modal">
+            data-bs-dismiss="modal"
+            aria-label="Close">
 
             {t("common.buttons.cancelButton")}
 

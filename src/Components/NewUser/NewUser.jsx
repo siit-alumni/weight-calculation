@@ -89,7 +89,7 @@ export function NewUser({ show, onClose, setUsers }) {
                                             data-bs-dismiss="modal"
                                             onClick={onClose}
                                         >
-                                            Close
+                                            {t("common.buttons.cancelButton")}
                                         </button>
                                     </div>
                                 </form>
