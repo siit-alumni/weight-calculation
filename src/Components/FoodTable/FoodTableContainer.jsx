@@ -10,6 +10,7 @@ import FoodTableSearch from "./FoodTableSearch";
 
 export default function FoodTableContainer() {
     const foodList = foodData;
+
     const { t } = useTranslation();
     const navigate = useNavigate();
     const [filteredFood, setFilteredFood] = useState(foodList);

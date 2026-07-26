@@ -91,6 +91,8 @@ export default function FoodTable({ foodList, onFilteredFoodChange }) {
             onFilteredFoodChange(sortedFoodList);
         }
     };
+ 
+    console.log('foodData', foodData);
 
 
     return (
