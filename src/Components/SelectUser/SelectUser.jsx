@@ -80,7 +80,7 @@ export default function SelectUser() {
             </div>
             <button className="btn btn-secondary col-md-4 mt-3" onClick={handleUserList}>{t("selectUser.userListButton")}</button>
             <button onClick={handleFoodTable} className="btn btn-secondary col-md-4 mt-3">{t("foodTable.title")}</button>
-            <button onClick={handleTest} className="btn btn-secondary col-md-4 mt-3">{t("test.title")}</button>
+            <button onClick={handleTest} className="btn btn-secondary col-md-4 mt-3">Table Test</button>
 
         </div>
     );
