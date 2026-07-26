@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { BodyType } from "./BodyTypeButtonDesign";
 import { useTranslation } from "react-i18next";
 import { settings } from "../Settings/settings";
@@ -12,7 +12,14 @@ export function Form({ getDetails, userData }) {
   const [formData, setFormData] = useState(userData);
   const navigate = useNavigate();
 
-  
+  useEffect(() => {
+    console.log("userData:", userData);
+    setFormData(userData);
+  }, [userData]);
+
+  useEffect(() => {
+    console.log("formData:", formData);
+  }, [formData]);
 
   const onHandleChange = (e) => {
     const { name, value } = e.target;
@@ -37,7 +44,7 @@ export function Form({ getDetails, userData }) {
   };
 
   return (
-    <div>
+    <div className="w-100">
       <div onSubmit={handleFormSubmit} className="container p-3">
         <div className="row mb-2">
           <div className="col-md mb-3">
@@ -51,10 +58,12 @@ export function Form({ getDetails, userData }) {
               id="name"
               placeholder="Alexandru Popescu"
               onChange={onHandleChange}
-              value={formData.name}
+              value={formData?.name ?? ""}
               required
             />
           </div>
+        </div>
+        <div className="row mb-2">
           <div className="col-md mb-3">
             <label htmlFor="age" className="form-label">
               {t("form.age")}
@@ -66,7 +75,7 @@ export function Form({ getDetails, userData }) {
               id="age"
               placeholder={t("form.agePlaceholder")}
               onChange={onHandleChange}
-              value={formData.age}
+              value={formData?.age ?? ""}
               min="12"
               max="120"
               required
@@ -81,7 +90,8 @@ export function Form({ getDetails, userData }) {
               name="gender"
               id="gender"
               onChange={onHandleChange}
-              value={formData.gender}
+              value={formData?.gender ?? ""}
+
             >
               <option value="female">{t("common.genderOption.female")}</option>
               <option value="male">{t("common.genderOption.male")}</option>
@@ -101,7 +111,7 @@ export function Form({ getDetails, userData }) {
               id="weight"
               placeholder={t("form.weightPlaceholder")}
               onChange={onHandleChange}
-              value={formData.weight}
+              value={formData?.weight ?? ""}
               min="30"
               max="300"
               required
@@ -118,7 +128,7 @@ export function Form({ getDetails, userData }) {
               id="height"
               placeholder={t("form.heightPlaceholder")}
               onChange={onHandleChange}
-              value={formData.height}
+              value={formData?.height ?? ""}
               min="100"
               max="250"
               required
@@ -140,7 +150,8 @@ export function Form({ getDetails, userData }) {
               name="bodyType"
               id="bodyType"
               onChange={onHandleChange}
-              value={formData.bodyType}
+              value={formData?.bodyType ?? ""}
+
             >
 
               {Object.entries(settings.bodyTypeCoeff).map(([key]) => (
@@ -164,7 +175,8 @@ export function Form({ getDetails, userData }) {
               name="activityTypes"
               id="activityTypes"
               onChange={onHandleChange}
-              value={formData.activityTypes}
+              value={formData?.activityTypes ?? ""}
+
             >
 
               {Object.entries(settings.calorieConsumptionLevels).map(([key]) =>
@@ -176,9 +188,12 @@ export function Form({ getDetails, userData }) {
           </div>
         </div>
 
-        {formData.name && (
-          <button className="btn btn-secondary" onClick={handleReset}>{t("form.resetButton")}</button>
-        )}
+        <div>
+          {/* {formData.name && (
+            <button className="btn btn-secondary" onClick={handleReset}>{t("form.resetButton")}</button>
+          )} */}
+
+        </div>
       </div>
 
     </div>

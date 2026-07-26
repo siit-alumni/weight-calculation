@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import UserData from '../UserData/UserData';
 import { UserContext } from '../../App';
 import { useNavigate } from 'react-router-dom';
+import { NewUser } from '../NewUser/NewUser';
 
 export default function SelectUser() {
     const [users, setUsers] = useState(getUsersFromLocalStorage());
@@ -12,6 +13,8 @@ export default function SelectUser() {
     const navigate = useNavigate();
     const { t } = useTranslation();
     const sortedUsers = sortUsersAlphabetically(users);
+
+    const [showNewUser, setShowNewUser] = useState(false);
 
     const handleSelectUser = () => {
         const user = users.profiles.find(profile => profile.id === selectedUser);
@@ -29,7 +32,8 @@ export default function SelectUser() {
     };
 
     const handleCreateUser = () => {
-        navigate('/newUser');
+        // navigate('/newUser');
+        setShowNewUser(true);
     };
 
     const handleUserList = () => {
@@ -71,12 +75,28 @@ export default function SelectUser() {
             <UserData />
 
             <div className="d-flex align-items-center justify-content-center flex-wrap">
-                <button className="btn btn-primary col-md-4  " disabled={!selectedUser && selectedUser !== 0} onClick={handleSelectUser}>{t("selectUser.selectButton")}</button>
-                <button className="btn btn-primary col-md-4 " disabled={!selectedUser && selectedUser !== 0} onClick={handleUpdateUser}>{t("selectUser.modifyButton")}</button>
-                <button className="btn btn-primary col-md-4 " disabled={!selectedUser && selectedUser !== 0} onClick={handleDeleteUser}>{t("selectUser.deleteButton")}</button>
-                <button className="btn btn-primary col-md-4" onClick={handleCreateUser}>{t("selectUser.createButton")}</button>
-                
+                <button className="btn btn-primary col-md-4  "
+                    disabled={!selectedUser && selectedUser !== 0}
+                    onClick={handleSelectUser}>{t("selectUser.selectButton")}</button>
+                <button className="btn btn-primary col-md-4 "
+                    disabled={!selectedUser && selectedUser !== 0}
+                    onClick={handleUpdateUser}>{t("selectUser.modifyButton")}</button>
+                <button className="btn btn-primary col-md-4 "
+                    disabled={!selectedUser && selectedUser !== 0}
+                    onClick={handleDeleteUser}>{t("selectUser.deleteButton")}</button>
+                <div className="d-flex align-items-center
+             justify-content-center flex-wrap">
 
+                    <button className="btn btn-primary col-md-12"
+                        onClick={handleCreateUser}>{t("selectUser.createButton")}</button>
+                    {showNewUser && (
+                        <NewUser
+                            show={showNewUser}
+                            onClose={() => setShowNewUser(false)}
+                        />
+                    )}
+
+                </div>
             </div>
             <button className="btn btn-secondary col-md-4 mt-3" onClick={handleUserList}>{t("selectUser.userListButton")}</button>
             <button onClick={handleFoodTable} className="btn btn-secondary col-md-4 mt-3">{t("foodTable.title")}</button>
