@@ -82,7 +82,7 @@ export default function UserListContainer() {
                 <button className="btn btn-primary col-md-4 " disabled={!userData && userData !== 0} onClick={handleDeleteUser}>{t("selectUser.deleteButton")}</button> */}
                 <button className="btn btn-primary col-md-4"
                     onClick={handleCreateUser}>
-                   aici {t("selectUser.createButton")}
+                   {t("selectUser.createButton")}
                 </button>
 
                 {showNewUser && (

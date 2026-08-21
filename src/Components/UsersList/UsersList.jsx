@@ -101,7 +101,7 @@ export default function UsersList({ users, setUsers }) {
         <div className="users-list-container 
         border-top border-bottom ">
 
-            <ul className="users-list-ul">
+            <ol className="users-list-ol">
                 {users.map((user) => (
                     <li
                         // className={selectedUserId === user.id ? 'selected' : ''}
@@ -110,7 +110,7 @@ export default function UsersList({ users, setUsers }) {
                     >
                         <div className="user-list-div">
                             <div>
-                                {user.name}
+                                {user.name}, {user.age} {t("userData.ageUnit")}
                             </div>
                             <div className='d-flex gap-1'>
                                 <a className="icon-link"
@@ -164,7 +164,7 @@ export default function UsersList({ users, setUsers }) {
                         </div>
                     </li>
                 ))}
-            </ul>
+            </ol>
 
             <DeleteUserModal
                 title={modalTitles.Delete}
