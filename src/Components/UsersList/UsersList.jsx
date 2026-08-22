@@ -42,7 +42,7 @@ export default function UsersList({ users, setUsers }) {
         setUserData(userData);
         saveUserDataToLocalStorage(userData);
         navigate('/results');
-    
+
     };
 
     const handleUserSelection = () => {
@@ -109,8 +109,11 @@ export default function UsersList({ users, setUsers }) {
                         onClick={() => handleListSelectUser(user.id)}
                     >
                         <div className="user-list-div">
-                            <div>
-                                {user.name}, {user.age} {t("userData.ageUnit")}
+                            <div className="user-name">
+                                {user.name}
+                                <span className="user-age">
+                                    , {user.age} {t("userData.ageUnit")}
+                                </span>
                             </div>
                             <div className='d-flex gap-1'>
                                 <a className="icon-link"
