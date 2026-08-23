@@ -18,6 +18,7 @@ import { settings } from '../Settings/settings';
 import { DeleteUserModal } from '../Modals/DeleteUserModal';
 import { EditUserModal } from '../Modals/EditUserModal';
 import { DisplayUserModal } from '../Modals/DisplayUserModal';
+import UserDropdownMobile from './UserDropdownMobile';
 
 export default function UsersList({ users, setUsers }) {
 
@@ -115,7 +116,7 @@ export default function UsersList({ users, setUsers }) {
                                     , {user.age} {t("userData.ageUnit")}
                                 </span>
                             </div>
-                            <div className='d-flex gap-1'>
+                            <div className='d-none d-md-flex gap-1'>
                                 <a className="icon-link"
                                     title={t("usersList.selectUserIcon")}
                                     onClick={handleSelectUser} >
@@ -163,7 +164,15 @@ export default function UsersList({ users, setUsers }) {
                                     </svg>
                                 </a>
                             </div>
-
+                            <UserDropdownMobile
+                                user={user}
+                                handleSelectUser={handleSelectUser}
+                                handleDeleteUser={handleDeleteUser}
+                                handleUpdateUser={handleUpdateUser}
+                                handleDisplayUser={handleDisplayUser}
+                                displayUserDataText={displayUserDataText}
+                                t={t}
+                            />
                         </div>
                     </li>
                 ))}

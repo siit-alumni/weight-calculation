@@ -40,8 +40,10 @@
 
 .user-name {
     flex: 1;
+    min-width: 0;
     text-align: left;
     padding-right: 0.5rem;
+    overflow-wrap: anywhere;
 
 }
 
