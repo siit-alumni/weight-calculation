@@ -13,8 +13,11 @@ export default function FoodTable({ foodList, onFilteredFoodChange, showFavourit
     const { userData, setUserData } = useContext(UserContext);
     const selectedUser = getUserFromId(userData);
     const userFavorites = Array.isArray(selectedUser?.favorites) ? selectedUser.favorites : [];
-    // const [showFavourites, setShowFavourites] = useState(false);
-    const [userFavoritesState, setUserFavoritesState] = useState(userFavorites);
+    const [favoriteList, setFavoriteList] = useState(userFavorites);
+
+    useEffect(() => {
+        setFavoriteList(userFavorites);
+    }, [userData, selectedUser?.id]);
     const handleUserSelection = () => {
         navigate('/selectUser');
     };
@@ -35,63 +38,62 @@ export default function FoodTable({ foodList, onFilteredFoodChange, showFavourit
         const sortedFoodList = Object.fromEntries(
             Object.entries(foodList).sort(([keyA, foodA], [keyB, foodB]) =>
                 foodA["Calories 100g"] - foodB["Calories 100g"]
-            )
-        );
-        if (onFilteredFoodChange) {
-            onFilteredFoodChange(sortedFoodList);
-        }
-    };
-    const handleProteinSort = () => {
-        const sortedFoodList = Object.fromEntries(
-            Object.entries(foodList).sort(([keyA, foodA], [keyB, foodB]) =>
-                foodA["Protein g"] - foodB["Protein g"]
-            )
-        );
-        if (onFilteredFoodChange) {
-            onFilteredFoodChange(sortedFoodList);
-        }
-    };
-    const handleCarbsSort = () => {
-        const sortedFoodList = Object.fromEntries(
-            Object.entries(foodList).sort(([keyA, foodA], [keyB, foodB]) =>
-                foodA["Carbs g"] - foodB["Carbs g"]
-            )
-        );
-        if (onFilteredFoodChange) {
-            onFilteredFoodChange(sortedFoodList);
-        }
-    };
-    const handleFatSort = () => {
-        const sortedFoodList = Object.fromEntries(
-            Object.entries(foodList).sort(([keyA, foodA], [keyB, foodB]) =>
-                foodA["Fat g"] - foodB["Fat g"]
-            )
-        );
-        if (onFilteredFoodChange) {
-            onFilteredFoodChange(sortedFoodList);
-        }
-    };
-    const handleFiberSort = () => {
-        const sortedFoodList = Object.fromEntries(
-            Object.entries(foodList).sort(([keyA, foodA], [keyB, foodB]) =>
-                foodA["Fiber g"] - foodB["Fiber g"]
-            )
-        );
-        if (onFilteredFoodChange) {
-            onFilteredFoodChange(sortedFoodList);
-        }
-    };
-    const handleSubgroupSort = () => {
-        const sortedFoodList = Object.fromEntries(
-            Object.entries(foodList).sort(([keyA, foodA], [keyB, foodB]) =>
-                t(`foodDB.subgroup.${foodA["Subgroup"]}`).localeCompare(t(`foodDB.subgroup.${foodB["Subgroup"]}`))
-            )
-        );
-        if (onFilteredFoodChange) {
-            onFilteredFoodChange(sortedFoodList);
-        }
-    };
-
+        )
+    );
+    if (onFilteredFoodChange) {
+        onFilteredFoodChange(sortedFoodList);
+    }
+};
+const handleProteinSort = () => {
+    const sortedFoodList = Object.fromEntries(
+        Object.entries(foodList).sort(([keyA, foodA], [keyB, foodB]) =>
+            foodA["Protein g"] - foodB["Protein g"]
+    )
+);
+if (onFilteredFoodChange) {
+    onFilteredFoodChange(sortedFoodList);
+}
+};
+const handleCarbsSort = () => {
+    const sortedFoodList = Object.fromEntries(
+        Object.entries(foodList).sort(([keyA, foodA], [keyB, foodB]) =>
+            foodA["Carbs g"] - foodB["Carbs g"]
+    )
+);
+if (onFilteredFoodChange) {
+    onFilteredFoodChange(sortedFoodList);
+}
+};
+const handleFatSort = () => {
+    const sortedFoodList = Object.fromEntries(
+        Object.entries(foodList).sort(([keyA, foodA], [keyB, foodB]) =>
+            foodA["Fat g"] - foodB["Fat g"]
+    )
+);
+if (onFilteredFoodChange) {
+    onFilteredFoodChange(sortedFoodList);
+}
+};
+const handleFiberSort = () => {
+    const sortedFoodList = Object.fromEntries(
+        Object.entries(foodList).sort(([keyA, foodA], [keyB, foodB]) =>
+            foodA["Fiber g"] - foodB["Fiber g"]
+    )
+);
+if (onFilteredFoodChange) {
+    onFilteredFoodChange(sortedFoodList);
+}
+};
+const handleSubgroupSort = () => {
+    const sortedFoodList = Object.fromEntries(
+        Object.entries(foodList).sort(([keyA, foodA], [keyB, foodB]) =>
+            t(`foodDB.subgroup.${foodA["Subgroup"]}`).localeCompare(t(`foodDB.subgroup.${foodB["Subgroup"]}`))
+    )
+);
+if (onFilteredFoodChange) {
+    onFilteredFoodChange(sortedFoodList);
+}
+};
     console.log('foodData', foodData);
 
 
@@ -133,44 +135,59 @@ export default function FoodTable({ foodList, onFilteredFoodChange, showFavourit
                     </tr>
                 </thead>
                 <tbody>
-                    {Object.entries(foodList).map(([foodName, foodInfo]) => (
-                        !(showFavourites && !userFavorites.includes(foodName)) &&
-                        <tr key={foodName}>
-                            <td>
-                                <div style={{ display: 'flex', gap: 20 }}>
-                                    <div className="form-check">
-                                        <input
-                                            className="form-check-input"
-                                            type="checkbox"
-                                            id={`favourite-${foodName}`}
-                                            checked={userFavorites.includes(foodName)}
-                                            onChange={() => {
-                                                const updatedFavorites = userFavorites.includes(foodName)
-                                                    ? userFavorites.filter(fav => fav !== foodName)
-                                                    : [...userFavorites, foodName];
+                    {Object.entries(foodList).map(([foodName, foodInfo]) => {
+                        const isFavourite = favoriteList.includes(foodName);
+
+                        if (showFavourites && !isFavourite) {
+                            return null;
+                        }
+
+                        return (
+                            <tr key={foodName}>
+                                <td>
+                                    <div style={{ display: 'flex', gap: 20, alignItems: 'center' }}>
+                                        <button
+                                            type="button"
+                                            className="btn btn-link p-0"
+                                            style={{ color: isFavourite ? '#f4b400' : '#6c757d', lineHeight: 1 }}
+                                            onClick={() => {
+                                                const updatedFavorites = isFavourite
+                                                    ? favoriteList.filter((fav) => fav !== foodName)
+                                                    : [...favoriteList, foodName];
+
+                                                setFavoriteList(updatedFavorites);
+
                                                 const updatedUser = { ...selectedUser, favorites: updatedFavorites };
                                                 updateUserInLocalStorage(updatedUser);
                                                 setUserData(selectedUser.id);
-                                                saveUserDataToLocalStorage(selectedUser.id);
-                                                setUserFavoritesState(updatedFavorites);
                                             }}
-                                        />
+                                            aria-label={isFavourite ? "Remove favorite" : "Add favorite"}
+                                            title={isFavourite ? "Remove favorite" : "Add favorite"}
+                                        >
+                                            <svg
+                                                viewBox="0 0 24 24"
+                                                width="18"
+                                                height="18"
+                                                aria-hidden="true"
+                                                style={{ display: 'block', fill: isFavourite ? '#f4b400' : '#6c757d' }}
+                                            >
+                                                <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                                            </svg>
+                                        </button>
+                                        {t(`foodDB.product.${foodName}`)}
                                     </div>
-                                    {t(`foodDB.product.${foodName}`)}
-                                </div>
-                            </td>
-                            {/* <td>{foodInfo["Name"]}</td> */}
-                            <td>{foodInfo["Category"]}</td>
-                            <td>{t(`foodDB.subgroup.${foodInfo["Subgroup"]}`)}</td>
-                            <td>{foodInfo["Calories 100g"]}</td>
-                            <td>{foodInfo["Protein g"]}</td>
-                            <td>{foodInfo["Carbs g"]}</td>
-                            <td>{foodInfo["Fat g"]}</td>
-                            <td>{foodInfo["Fiber g"]}</td>
-
-                        </tr>
-                    )
-                    )}
+                                </td>
+                                {/* <td>{foodInfo["Name"]}</td> */}
+                                <td>{foodInfo["Category"]}</td>
+                                <td>{t(`foodDB.subgroup.${foodInfo["Subgroup"]}`)}</td>
+                                <td>{foodInfo["Calories 100g"]}</td>
+                                <td>{foodInfo["Protein g"]}</td>
+                                <td>{foodInfo["Carbs g"]}</td>
+                                <td>{foodInfo["Fat g"]}</td>
+                                <td>{foodInfo["Fiber g"]}</td>
+                            </tr>
+                        );
+                    })}
 
                 </tbody>
             </table>
