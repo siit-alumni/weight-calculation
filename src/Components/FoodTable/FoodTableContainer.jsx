@@ -7,6 +7,7 @@ import { useTranslation } from "react-i18next";
 import foodData from '../../assets/foodDB.json';
 import FoodTable from "./FoodTable";
 import FoodTableSearch from "./FoodTableSearch";
+import FoodTableFavourites from "./FoodTableFavourites";
 
 export default function FoodTableContainer() {
     const foodList = foodData;
@@ -14,6 +15,7 @@ export default function FoodTableContainer() {
     const { t } = useTranslation();
     const navigate = useNavigate();
     const [filteredFood, setFilteredFood] = useState(foodList);
+    const [showFavourites, setShowFavourites] = useState(false);
 
     const handleUserSelection = () => {
         navigate('/selectUser');
@@ -28,8 +30,8 @@ export default function FoodTableContainer() {
             <h2>{t("foodTable.title")}</h2>
             <p>{t("foodTable.description")}</p>
             <FoodTableSearch foodList={foodList} onFilteredFoodChange={setFilteredFood} />
-
-            <FoodTable foodList={filteredFood} onFilteredFoodChange={setFilteredFood} />
+            <FoodTableFavourites showFavourites={showFavourites} setShowFavourites={setShowFavourites} />
+            <FoodTable foodList={filteredFood} onFilteredFoodChange={setFilteredFood} showFavourites={showFavourites} />
         </div>
     );
 }

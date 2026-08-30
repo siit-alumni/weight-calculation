@@ -6,14 +6,14 @@ import { getUserDataFromLocalStorage, getUsersFromLocalStorage, saveUserDataToLo
 import { useTranslation } from "react-i18next";
 import foodData from '../../assets/foodDB.json';
 
-export default function FoodTable({ foodList, onFilteredFoodChange }) {
+export default function FoodTable({ foodList, onFilteredFoodChange, showFavourites }) {
     // const foodList = foodData;
     const { t } = useTranslation();
     const navigate = useNavigate();
     const { userData, setUserData } = useContext(UserContext);
     const selectedUser = getUserFromId(userData);
     const userFavorites = Array.isArray(selectedUser?.favorites) ? selectedUser.favorites : [];
-    const [showFavourites, setShowFavourites] = useState(false);
+    // const [showFavourites, setShowFavourites] = useState(false);
     const [userFavoritesState, setUserFavoritesState] = useState(userFavorites);
     const handleUserSelection = () => {
         navigate('/selectUser');
@@ -91,7 +91,7 @@ export default function FoodTable({ foodList, onFilteredFoodChange }) {
             onFilteredFoodChange(sortedFoodList);
         }
     };
- 
+
     console.log('foodData', foodData);
 
 
@@ -129,25 +129,36 @@ export default function FoodTable({ foodList, onFilteredFoodChange }) {
                         <th onClick={handleCarbsSort}>{t("foodDB.Carbs g.title")}</th>
                         <th onClick={handleFatSort}>{t("foodDB.Fat g.title")}</th>
                         <th onClick={handleFiberSort}>{t("foodDB.Fiber g.title")}</th>
-                        <th>
-                            {t("foodTable.favourites")}
-                            <div className="form-check">
-                                <input
-                                    className="form-check-input"
-                                    type="checkbox"
-                                    id="showFavourites"
-                                    checked={showFavourites}
-                                    onChange={handleShowFavouritesChange}
-                                />
-                            </div>
-                        </th>
+
                     </tr>
                 </thead>
                 <tbody>
                     {Object.entries(foodList).map(([foodName, foodInfo]) => (
                         !(showFavourites && !userFavorites.includes(foodName)) &&
                         <tr key={foodName}>
-                            <td>{t(`foodDB.product.${foodName}`)}</td>
+                            <td>
+                                <div style={{ display: 'flex', gap: 20 }}>
+                                    <div className="form-check">
+                                        <input
+                                            className="form-check-input"
+                                            type="checkbox"
+                                            id={`favourite-${foodName}`}
+                                            checked={userFavorites.includes(foodName)}
+                                            onChange={() => {
+                                                const updatedFavorites = userFavorites.includes(foodName)
+                                                    ? userFavorites.filter(fav => fav !== foodName)
+                                                    : [...userFavorites, foodName];
+                                                const updatedUser = { ...selectedUser, favorites: updatedFavorites };
+                                                updateUserInLocalStorage(updatedUser);
+                                                setUserData(selectedUser.id);
+                                                saveUserDataToLocalStorage(selectedUser.id);
+                                                setUserFavoritesState(updatedFavorites);
+                                            }}
+                                        />
+                                    </div>
+                                    {t(`foodDB.product.${foodName}`)}
+                                </div>
+                            </td>
                             {/* <td>{foodInfo["Name"]}</td> */}
                             <td>{foodInfo["Category"]}</td>
                             <td>{t(`foodDB.subgroup.${foodInfo["Subgroup"]}`)}</td>
@@ -156,26 +167,7 @@ export default function FoodTable({ foodList, onFilteredFoodChange }) {
                             <td>{foodInfo["Carbs g"]}</td>
                             <td>{foodInfo["Fat g"]}</td>
                             <td>{foodInfo["Fiber g"]}</td>
-                            <td>
-                                <div className="form-check">
-                                    <input
-                                        className="form-check-input"
-                                        type="checkbox"
-                                        id={`favourite-${foodName}`}
-                                        checked={userFavorites.includes(foodName)}
-                                        onChange={() => {
-                                            const updatedFavorites = userFavorites.includes(foodName)
-                                                ? userFavorites.filter(fav => fav !== foodName)
-                                                : [...userFavorites, foodName];
-                                            const updatedUser = { ...selectedUser, favorites: updatedFavorites };
-                                            updateUserInLocalStorage(updatedUser);
-                                            setUserData(selectedUser.id);
-                                            saveUserDataToLocalStorage(selectedUser.id);
-                                            setUserFavoritesState(updatedFavorites);
-                                        }}
-                                    />
-                                </div>
-                            </td>
+
                         </tr>
                     )
                     )}
