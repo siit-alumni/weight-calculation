@@ -492,6 +492,10 @@
         "title": "Tabel cu alimente",
         "description": "Acest tabel conține informații despre diferite alimente și valoarea lor calorică.",
         "product": "Produs",
-        "searchPlaceholder": "Caută alimente..."
+        "searchPlaceholder": "Caută alimente...",
+        "favourites": "Favorite",
+        "showFavourites": "Afișează favoritele",
+        "hideFavourites": "Ascunde favoritele"
+
     }
 }

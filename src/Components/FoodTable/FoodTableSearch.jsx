@@ -8,7 +8,7 @@ export default function FoodTableSearch({ foodList, onFilteredFoodChange }) {
     useEffect(() => {
         const filteredFood = Object.fromEntries(
             Object.entries(foodList).filter(([key]) =>
-                key.toLowerCase().includes(searchInput.toLowerCase())
+                foodList[key]["Name"].toLowerCase().includes(searchInput.toLowerCase())
             )
         );
         onFilteredFoodChange(filteredFood);

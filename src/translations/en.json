@@ -492,6 +492,9 @@
         "title": "Food Table",
         "description": "This table contains information about different foods and their caloric value.",
         "product": "Product",
-        "searchPlaceholder": "Search for foods..."
+        "searchPlaceholder": "Search for foods...",
+        "favourites": "Favourites",
+        "showFavourites": "Show Favourites",
+        "hideFavourites": "Hide Favourites"
     }
 }

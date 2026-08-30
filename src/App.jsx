@@ -12,6 +12,7 @@ import UserListContainer from "./Components/UsersList/UserListContainer";
 import { getUserDataFromLocalStorage, replaceUsersIDs } from "./Components/functions/functions";
 import FoodTable from "./Components/FoodTable/FoodTable";
 import FoodTableContainer from "./Components/FoodTable/FoodTableContainer";
+import TableTest from "./Components/TableTest/TableTest";
 
 export function App() {
 
@@ -39,6 +40,7 @@ export function App() {
           <Route path="/results" element={<Results />} />
           <Route path="/usersList" element={<UserListContainer />} />
           <Route path="/foodTable" element={<FoodTableContainer />} />
+          <Route path="/test" element={<TableTest />} />
 
 
         </Routes >

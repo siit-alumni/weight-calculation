@@ -1502,7 +1502,7 @@
         "Protein g": 5.8,
         "Carbs g": 3,
         "Fat g": 35.5,
-        "Fiber g": null,
+        "Fiber g": 0,
         "Details": null,
         "Serving g": 50
     }
