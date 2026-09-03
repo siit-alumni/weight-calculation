@@ -105,7 +105,7 @@ export default function UsersList({ users, setUsers }) {
             <ol className="users-list-ol">
                 {users.map((user) => (
                     <li
-                        // className={selectedUserId === user.id ? 'selected' : ''}
+                        className={selectedUserId === user.id ? 'selected' : ''}
                         key={user.id}
                         onClick={() => handleListSelectUser(user.id)}
                     >
