@@ -24,7 +24,7 @@ export default function TableTest() {
         { title: t("foodDB.Fat g.title"), data: 'Fat g' },
         { title: t("foodDB.Fiber g.title"), data: 'Fiber g' },
     ];
-    
+
     const options = {
         layout: {
             topStart: 'info',
@@ -38,6 +38,8 @@ export default function TableTest() {
         info: true,
         select: true,
         responsive: true,
+        order: [[2, 'asc']],
+
     };
 
     useEffect(() => {
