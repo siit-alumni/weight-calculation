@@ -2,13 +2,15 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import DataTable from 'datatables.net-react';
 import DT from 'datatables.net-dt';
-import 'datatables.net-dt/css/dataTables.dataTables.min.css';
+import ColumnControl from 'datatables.net-columncontrol-dt'
+import 'datatables.net-dt/css/dataTables.dataTables.min.css'
+import 'datatables.net-columncontrol-dt/css/columnControl.dataTables.min.css'
 import foodData from '../../assets/foodDB.json';
 import { useTranslation } from 'react-i18next';
 
 export default function TableTest() {
     DataTable.use(DT);
-
+    DataTable.use(ColumnControl)
     const { t, i18n } = useTranslation();
     const navigate = useNavigate();
 
@@ -38,8 +40,11 @@ export default function TableTest() {
         info: true,
         select: true,
         responsive: true,
-        order: [[2, 'asc']],
-
+        columnControl: [
+            'order',
+          ['searchList', 'spacer', 'searchClear']
+        ]
+        
     };
 
     useEffect(() => {
@@ -58,7 +63,7 @@ export default function TableTest() {
         <div>
             <h1>Table Test</h1>
             <DataTable
-                key={i18n.language}
+                key={`${i18n.language}-${foodTableData.length}`}
                 id="example"
                 data={foodTableData}
                 options={options}
