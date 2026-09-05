@@ -10,7 +10,7 @@ import { useTranslation } from 'react-i18next';
 
 export default function TableTest() {
     DataTable.use(DT);
-    DataTable.use(ColumnControl)
+    DataTable.use(ColumnControl);
     const { t, i18n } = useTranslation();
     const navigate = useNavigate();
 
