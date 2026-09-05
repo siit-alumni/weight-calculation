@@ -25,7 +25,7 @@ export default function FoodTableFavourites({
       aria-label={showFavourites ? "Hide favorite foods" : "Show favorite foods"}
       title={showFavourites ? "Hide favorite foods" : "Show favorite foods"}
     >
-      {showFavourites ? t("foodTable.hideFavourites") || "Hide favorites" : t("foodTable.showFavourites") || "Show favorites"}
+      {showFavourites ? t("foodTable.hideFavourites")  : t("foodTable.showFavourites") }
     </button>
   );
 }
