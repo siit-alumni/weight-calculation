@@ -44,6 +44,9 @@ export default function FoodTable({ foodList, onFilteredFoodChange, showFavourit
                 foodA["Calories 100g"] - foodB["Calories 100g"]
             )
         );
+        setSortDirection({ subgroup: null, product: null, protein: null, carbs: null, fat: null, fiber: null });
+        setSortDirection(prevDirection => ({ ...prevDirection, calories: prevDirection.calories === 'asc' ? 'desc' : 'asc' }));
+
         if (onFilteredFoodChange) {
             onFilteredFoodChange(sortedFoodList);
         }
@@ -125,11 +128,34 @@ export default function FoodTable({ foodList, onFilteredFoodChange, showFavourit
                                 </a>
                             </div>
                         </th>
-                        <th onClick={handleCaloriesSort}>{t("foodDB.Calories 100g.title")}</th>
-                        <th onClick={handleProteinSort}>{t("foodDB.Protein g.title")}</th>
-                        <th onClick={handleCarbsSort}>{t("foodDB.Carbs g.title")}</th>
-                        <th onClick={handleFatSort}>{t("foodDB.Fat g.title")}</th>
-                        <th onClick={handleFiberSort}>{t("foodDB.Fiber g.title")}</th>
+                        <th onClick={handleCaloriesSort}>
+                            <div className=" d-flex flex-row justify-content-between align-bottom">
+                                {t("foodDB.Calories 100g.title")}
+                                <a className="icon-link" title={t("usersList.selectUserIcon")} >
+                                    <SortIcon sortDirection={sortDirection.calories} />
+                                </a>
+                            </div>
+                        </th>
+                        <th onClick={handleProteinSort}>
+                            <div className=" d-flex flex-row justify-content-between align-bottom">
+                                {t("foodDB.Protein g.title")}
+                            </div>
+                        </th>
+                        <th onClick={handleCarbsSort}>
+                            <div className=" d-flex flex-row justify-content-between align-bottom">
+                                {t("foodDB.Carbs g.title")}
+                            </div>
+                        </th>
+                        <th onClick={handleFatSort}>
+                            <div className=" d-flex flex-row justify-content-between align-bottom">
+                                {t("foodDB.Fat g.title")}
+                            </div>
+                        </th>
+                        <th onClick={handleFiberSort}>
+                            <div className=" d-flex flex-row justify-content-between align-bottom">
+                                {t("foodDB.Fiber g.title")}
+                            </div>
+                        </th>
 
                     </tr>
                 </thead>
