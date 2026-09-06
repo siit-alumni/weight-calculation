@@ -5,10 +5,22 @@ export default function UserListSort({ users, onFilteredUsersChange }) {
     const [searchInput, setSearchInput] = useState('');
     const { t } = useTranslation();
 
+    // useEffect(() => {
+    //     const filteredUsers = users.filter((user) =>
+    //         user.name.toLowerCase().includes(searchInput.toLowerCase())
+    //     );
+    //     onFilteredUsersChange(filteredUsers);
+    // }, [users, searchInput]);
+
     useEffect(() => {
-        const filteredUsers = users.filter((user) =>
-            user.name.toLowerCase().includes(searchInput.toLowerCase())
-        );
+        const filteredUsers = [...users]
+            .filter((user) =>
+                user.name.toLowerCase().includes(searchInput.toLowerCase())
+            )
+            .sort((a, b) =>
+                a.name.localeCompare(b.name)
+            );
+
         onFilteredUsersChange(filteredUsers);
     }, [users, searchInput]);
 
@@ -26,14 +38,14 @@ export default function UserListSort({ users, onFilteredUsersChange }) {
                 onChange={(e) => setSearchInput(e.target.value)}
                 style={{ width: "auto", minWidth: "200px" }}
             />
-            
-            {searchInput && 
-            <button 
-                onClick={handleClearSearch}
-                className="btn btn-secondary btn-sm mt-2"
-            >
-                {t("usersList.clearButton") || "Clear"}
-            </button>}
+
+            {searchInput &&
+                <button
+                    onClick={handleClearSearch}
+                    className="btn btn-secondary btn-sm mt-2"
+                >
+                    {t("usersList.clearButton") || "Clear"}
+                </button>}
         </div>
     );
 }

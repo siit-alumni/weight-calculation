@@ -20,6 +20,10 @@ import { EditUserModal } from '../Modals/EditUserModal';
 import { DisplayUserModal } from '../Modals/DisplayUserModal';
 import UserDropdownMobile from './UserDropdownMobile';
 
+import UserCheckBox from '../CheckBox/UserCheckBox';
+
+
+
 export default function UsersList({ users, setUsers }) {
 
     const { userData, setUserData } = useContext(UserContext);
@@ -29,13 +33,20 @@ export default function UsersList({ users, setUsers }) {
     const navigate = useNavigate();
 
     const [modalType, setModalType] = useState("");
-
-
+    //
+    {/*  uncomment for Checkbox   
+    const [selectedCheckboxUserId, setSelectedCheckboxUserId] = useState(null);
+*/}
     const displayUserDataText = displayUser ? t("selectUser.hideUserDataButton") : t("selectUser.displayUserButton");
+
     const handleListSelectUser = (userId) => {
         setSelectedUserId(userId);
         const user = users.find(profile => profile.id === userId);
         setUserData(userId);
+        {/* comment "saveUserDataToLocalStorage" for UserCheckBox */ }
+        saveUserDataToLocalStorage(userId);
+        //
+
     };
     const handleSelectUser = () => {
         // const user = users.profiles.find(profile => profile.id === userData);
@@ -45,11 +56,13 @@ export default function UsersList({ users, setUsers }) {
         navigate('/results');
 
     };
+    {/* pt checkbox   */ }
+    const handleUserSelection = (userId) => {
+     
+        {/* uncomment "setUserData","saveUserDataToLocalStorage" for UserCheckBox */ }
+        // setUserData(userId);
+        // saveUserDataToLocalStorage(userId);
 
-    const handleUserSelection = () => {
-        // navigate('/selectUser');
-        // setUserData(userData);
-        // setModalType("Select");
     }
     //eu
     const handleDeleteUser = (userId) => {
@@ -95,7 +108,7 @@ export default function UsersList({ users, setUsers }) {
         setModalType(null);
     };
 
-    console.log(users);
+    // console.log(users);
 
     return (
 
@@ -110,11 +123,27 @@ export default function UsersList({ users, setUsers }) {
                         onClick={() => handleListSelectUser(user.id)}
                     >
                         <div className="user-list-div">
+                            {/* {console.log("user.id:", user.id, "userData:", userData)} */}
+
+
                             <div className="user-name">
                                 {user.name}
                                 <span className="user-age">
                                     , {user.age} {t("userData.ageUnit")}
                                 </span>
+
+                            </div>
+                            {/* uncomment for UserCheckBox */}
+                            {/* <UserCheckBox
+                                visible={selectedUserId === user.id}
+                                checked={selectedCheckboxUserId === user.id}
+                                onChange={() => {
+                                    setSelectedCheckboxUserId(user.id);
+                                    handleUserSelection(user.id);
+                                }}
+                            /> */}
+                            <div>
+
                             </div>
                             <div className='d-none d-md-flex gap-1'>
                                 <a className="icon-link"

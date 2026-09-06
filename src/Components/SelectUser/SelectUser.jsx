@@ -92,7 +92,11 @@ export default function SelectUser() {
                     {showNewUser && (
                         <NewUser
                             show={showNewUser}
-                            onClose={() => setShowNewUser(false)}
+                            onClose={() => {
+                                setShowNewUser(false);
+                                setUsers(getUsersFromLocalStorage());
+                            }}
+
                         />
                     )}
 
