@@ -5,6 +5,7 @@ import { UserContext } from "../../App";
 import { getUserDataFromLocalStorage, getUsersFromLocalStorage, saveUserDataToLocalStorage, sortUsersAlphabetically, getUserFromId, updateUserInLocalStorage } from "../functions/functions";
 import { useTranslation } from "react-i18next";
 import foodData from '../../assets/foodDB.json';
+import SortIcon from "./SortIcon";
 
 export default function FoodTable({ foodList, onFilteredFoodChange, showFavourites }) {
     // const foodList = foodData;
@@ -14,6 +15,7 @@ export default function FoodTable({ foodList, onFilteredFoodChange, showFavourit
     const selectedUser = getUserFromId(userData);
     const userFavorites = Array.isArray(selectedUser?.favorites) ? selectedUser.favorites : [];
     const [favoriteList, setFavoriteList] = useState(userFavorites);
+    const [sortDirection, setSortDirection] = useState({ product: null, subgroup: null, calories: null, protein: null, carbs: null, fat: null, fiber: null });
 
     useEffect(() => {
         setFavoriteList(userFavorites);
@@ -30,6 +32,8 @@ export default function FoodTable({ foodList, onFilteredFoodChange, showFavourit
                 t(`foodDB.product.${keyA}`).localeCompare(t(`foodDB.product.${keyB}`))
             )
         );
+        setSortDirection({ subgroup: null, calories: null, protein: null, carbs: null, fat: null, fiber: null });
+        setSortDirection(prevDirection => ({ ...prevDirection, product: prevDirection.product === 'asc' ? 'desc' : 'asc' }));
         if (onFilteredFoodChange) {
             onFilteredFoodChange(sortedFoodList);
         }
@@ -38,68 +42,69 @@ export default function FoodTable({ foodList, onFilteredFoodChange, showFavourit
         const sortedFoodList = Object.fromEntries(
             Object.entries(foodList).sort(([keyA, foodA], [keyB, foodB]) =>
                 foodA["Calories 100g"] - foodB["Calories 100g"]
-        )
-    );
-    if (onFilteredFoodChange) {
-        onFilteredFoodChange(sortedFoodList);
-    }
-};
-const handleProteinSort = () => {
-    const sortedFoodList = Object.fromEntries(
-        Object.entries(foodList).sort(([keyA, foodA], [keyB, foodB]) =>
-            foodA["Protein g"] - foodB["Protein g"]
-    )
-);
-if (onFilteredFoodChange) {
-    onFilteredFoodChange(sortedFoodList);
-}
-};
-const handleCarbsSort = () => {
-    const sortedFoodList = Object.fromEntries(
-        Object.entries(foodList).sort(([keyA, foodA], [keyB, foodB]) =>
-            foodA["Carbs g"] - foodB["Carbs g"]
-    )
-);
-if (onFilteredFoodChange) {
-    onFilteredFoodChange(sortedFoodList);
-}
-};
-const handleFatSort = () => {
-    const sortedFoodList = Object.fromEntries(
-        Object.entries(foodList).sort(([keyA, foodA], [keyB, foodB]) =>
-            foodA["Fat g"] - foodB["Fat g"]
-    )
-);
-if (onFilteredFoodChange) {
-    onFilteredFoodChange(sortedFoodList);
-}
-};
-const handleFiberSort = () => {
-    const sortedFoodList = Object.fromEntries(
-        Object.entries(foodList).sort(([keyA, foodA], [keyB, foodB]) =>
-            foodA["Fiber g"] - foodB["Fiber g"]
-    )
-);
-if (onFilteredFoodChange) {
-    onFilteredFoodChange(sortedFoodList);
-}
-};
-const handleSubgroupSort = () => {
-    const sortedFoodList = Object.fromEntries(
-        Object.entries(foodList).sort(([keyA, foodA], [keyB, foodB]) =>
-            t(`foodDB.subgroup.${foodA["Subgroup"]}`).localeCompare(t(`foodDB.subgroup.${foodB["Subgroup"]}`))
-    )
-);
-if (onFilteredFoodChange) {
-    onFilteredFoodChange(sortedFoodList);
-}
-};
+            )
+        );
+        if (onFilteredFoodChange) {
+            onFilteredFoodChange(sortedFoodList);
+        }
+    };
+    const handleProteinSort = () => {
+        const sortedFoodList = Object.fromEntries(
+            Object.entries(foodList).sort(([keyA, foodA], [keyB, foodB]) =>
+                foodA["Protein g"] - foodB["Protein g"]
+            )
+        );
+        if (onFilteredFoodChange) {
+            onFilteredFoodChange(sortedFoodList);
+        }
+    };
+    const handleCarbsSort = () => {
+        const sortedFoodList = Object.fromEntries(
+            Object.entries(foodList).sort(([keyA, foodA], [keyB, foodB]) =>
+                foodA["Carbs g"] - foodB["Carbs g"]
+            )
+        );
+        if (onFilteredFoodChange) {
+            onFilteredFoodChange(sortedFoodList);
+        }
+    };
+    const handleFatSort = () => {
+        const sortedFoodList = Object.fromEntries(
+            Object.entries(foodList).sort(([keyA, foodA], [keyB, foodB]) =>
+                foodA["Fat g"] - foodB["Fat g"]
+            )
+        );
+        if (onFilteredFoodChange) {
+            onFilteredFoodChange(sortedFoodList);
+        }
+    };
+    const handleFiberSort = () => {
+        const sortedFoodList = Object.fromEntries(
+            Object.entries(foodList).sort(([keyA, foodA], [keyB, foodB]) =>
+                foodA["Fiber g"] - foodB["Fiber g"]
+            )
+        );
+        if (onFilteredFoodChange) {
+            onFilteredFoodChange(sortedFoodList);
+        }
+    };
+    const handleSubgroupSort = () => {
+        const sortedFoodList = Object.fromEntries(
+            Object.entries(foodList).sort(([keyA, foodA], [keyB, foodB]) =>
+                t(`foodDB.subgroup.${foodA["Subgroup"]}`).localeCompare(t(`foodDB.subgroup.${foodB["Subgroup"]}`))
+            )
+        );
+        setSortDirection({ product: null, calories: null, protein: null, carbs: null, fat: null, fiber: null });
+        setSortDirection(prevDirection => ({ ...prevDirection, subgroup: prevDirection.subgroup === 'asc' ? 'desc' : 'asc' }));
+        if (onFilteredFoodChange) {
+            onFilteredFoodChange(sortedFoodList);
+        }
+    };
     console.log('foodData', foodData);
 
 
     return (
         <div>
-
             <table className="table table-striped table-hover table-sm table-bordered">
                 <thead >
                     <tr >
@@ -107,10 +112,7 @@ if (onFilteredFoodChange) {
                             <div className=" d-flex flex-row justify-content-between align-bottom">
                                 {t("foodTable.product")}
                                 <a className="icon-link" title={t("usersList.selectUserIcon")} >
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-check2-square" viewBox="0 0 16 16">
-                                        <path d="M3 14.5A1.5 1.5 0 0 1 1.5 13V3A1.5 1.5 0 0 1 3 1.5h8a.5.5 0 0 1 0 1H3a.5.5 0 0 0-.5.5v10a.5.5 0 0 0 .5.5h10a.5.5 0 0 0 .5-.5V8a.5.5 0 0 1 1 0v5a1.5 1.5 0 0 1-1.5 1.5z" />
-                                        <path d="m8.354 10.354 7-7a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0" />
-                                    </svg>
+                                    <SortIcon sortDirection={sortDirection.product} />
                                 </a>
                             </div>
                         </th>
@@ -119,10 +121,7 @@ if (onFilteredFoodChange) {
                             <div className=" d-flex flex-row justify-content-between align-bottom">
                                 {t("foodDB.subgroup.title")}
                                 <a className="icon-link" title={t("usersList.selectUserIcon")} >
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-check2-square" viewBox="0 0 16 16">
-                                        <path d="M3 14.5A1.5 1.5 0 0 1 1.5 13V3A1.5 1.5 0 0 1 3 1.5h8a.5.5 0 0 1 0 1H3a.5.5 0 0 0-.5.5v10a.5.5 0 0 0 .5.5h10a.5.5 0 0 0 .5-.5V8a.5.5 0 0 1 1 0v5a1.5 1.5 0 0 1-1.5 1.5z" />
-                                        <path d="m8.354 10.354 7-7a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0" />
-                                    </svg>
+                                    <SortIcon sortDirection={sortDirection.subgroup} />
                                 </a>
                             </div>
                         </th>
