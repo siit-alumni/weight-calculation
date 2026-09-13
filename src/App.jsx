@@ -14,6 +14,8 @@ import FoodTable from "./Components/FoodTable/FoodTable";
 import FoodTableContainer from "./Components/FoodTable/FoodTableContainer";
 import TableTest from "./Components/TableTest/TableTest";
 
+import Navbar from "./Components/Layout/Navbar";
+
 export function App() {
 
   const { t, i18n } = useTranslation();
@@ -28,6 +30,9 @@ export function App() {
       <div className="app-header">
         <button onClick={() => switchLanguage("ro")}>Romana</button>
         <button onClick={() => switchLanguage("en")}>English</button>
+        
+        <Navbar />
+      
       </div>
       <UserContext.Provider value={{ userData, setUserData }}>
 

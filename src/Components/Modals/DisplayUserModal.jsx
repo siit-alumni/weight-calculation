@@ -1,15 +1,24 @@
 import { useTranslation } from "react-i18next";
 import UserData from "../UserData/UserData";
+import { useNavigate } from 'react-router-dom';
 
 
 export function DisplayUserModal({
     title,
     user,
+        
+}) {
     
-}) 
-
-{
     const { t } = useTranslation();
+
+     const navigate = useNavigate();
+
+       const handleSelectUser = () => {
+         
+            navigate('/results');
+    
+        };
+
     return (
         <div
             className="modal fade"
@@ -40,11 +49,21 @@ export function DisplayUserModal({
                     <div className="modal-footer">
                         <button
                             type="button"
+                            className="btn btn-primary"
+                            data-bs-dismiss="modal"
+                            onClick={handleSelectUser} 
+                        >
+                            {t("usersList.selectUserIcon")}
+                        </button>
+
+                        <button
+                            type="button"
                             className="btn btn-secondary"
                             data-bs-dismiss="modal"
                         >
                             {t("common.buttons.cancelButton")}
                         </button>
+
                     </div>
                 </div>
             </div>
