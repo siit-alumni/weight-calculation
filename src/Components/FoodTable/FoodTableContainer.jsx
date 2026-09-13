@@ -12,7 +12,7 @@ import FoodTableFavourites from "./FoodTableFavourites";
 export default function FoodTableContainer() {
     const foodList = foodData;
     const { userData, setUserData } = useContext(UserContext);
-  const selectedUser = getUserFromId(userData);
+    const selectedUser = getUserFromId(userData);
     const { t } = useTranslation();
     const navigate = useNavigate();
     const [filteredFood, setFilteredFood] = useState(foodList);

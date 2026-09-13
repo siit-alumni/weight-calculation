@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import UserData from "../UserData/UserData";
-import { use, useContext, useEffect, useState } from "react";
+import { use, useContext, useEffect, useRef, useState } from "react";
 import { UserContext } from "../../App";
 import { getUserDataFromLocalStorage, getUsersFromLocalStorage, saveUserDataToLocalStorage, sortUsersAlphabetically, getUserFromId, updateUserInLocalStorage } from "../functions/functions";
 import { useTranslation } from "react-i18next";
@@ -16,54 +16,98 @@ export default function FoodTable({ foodList, onFilteredFoodChange, showFavourit
     const userFavorites = Array.isArray(selectedUser?.favorites) ? selectedUser.favorites : [];
     const [favoriteList, setFavoriteList] = useState(userFavorites);
     const [sortDirection, setSortDirection] = useState({ product: null, subgroup: null, calories: null, protein: null, carbs: null, fat: null, fiber: null });
+    const sortDirectionRef = useRef(sortDirection);
 
     useEffect(() => {
         setFavoriteList(userFavorites);
     }, [userData, selectedUser?.id]);
+    useEffect(() => {
+        sortDirectionRef.current = sortDirection;
+    }, [sortDirection]);
     const handleUserSelection = () => {
         navigate('/selectUser');
     };
-    const handleShowFavouritesChange = (event) => {
-        setShowFavourites(event.target.checked);
-    };
+    // const handleShowFavouritesChange = (event) => {
+    //     setShowFavourites(event.target.checked);
+    // };
     const handleProductSort = () => {
+        const direction = sortDirectionRef.current.product === 'asc' ? 'desc' : 'asc';
+        sortDirectionRef.current = {
+            ...sortDirectionRef.current,
+            product: direction,
+            subgroup: null,
+            calories: null,
+            protein: null,
+            carbs: null,
+            fat: null,
+            fiber: null
+        };
         const sortedFoodList = Object.fromEntries(
-            Object.entries(foodList).sort(([keyA], [keyB]) =>
+            Object.entries(foodList).sort(([keyA, foodA], [keyB, foodB]) =>
+                (direction === 'asc' ? 1 : -1) *
                 t(`foodDB.product.${keyA}`).localeCompare(t(`foodDB.product.${keyB}`))
             )
         );
-        setSortDirection({ subgroup: null, calories: null, protein: null, carbs: null, fat: null, fiber: null });
-        setSortDirection(prevDirection => ({ ...prevDirection, product: prevDirection.product === 'asc' ? 'desc' : 'asc' }));
+        setSortDirection(sortDirectionRef.current);
         if (onFilteredFoodChange) {
             onFilteredFoodChange(sortedFoodList);
         }
     };
     const handleCaloriesSort = () => {
+        const direction = sortDirection.calories === 'asc' ? 'desc' : 'asc';
         const sortedFoodList = Object.fromEntries(
             Object.entries(foodList).sort(([keyA, foodA], [keyB, foodB]) =>
-                foodA["Calories 100g"] - foodB["Calories 100g"]
+                (direction === 'asc' ? 1 : -1) *
+                (foodA["Calories 100g"] - foodB["Calories 100g"])
             )
         );
-        setSortDirection({ subgroup: null, product: null, protein: null, carbs: null, fat: null, fiber: null });
-        setSortDirection(prevDirection => ({ ...prevDirection, calories: prevDirection.calories === 'asc' ? 'desc' : 'asc' }));
-
+        setSortDirection({
+            product: null,
+            subgroup: null,
+            calories: direction,
+            protein: null,
+            carbs: null,
+            fat: null,
+            fiber: null
+        });
         if (onFilteredFoodChange) {
             onFilteredFoodChange(sortedFoodList);
         }
     };
     const handleProteinSort = () => {
+        const direction = sortDirection.protein === 'asc' ? 'desc' : 'asc';
         const sortedFoodList = Object.fromEntries(
             Object.entries(foodList).sort(([keyA, foodA], [keyB, foodB]) =>
+                (direction === 'asc' ? 1 : -1) *
                 foodA["Protein g"] - foodB["Protein g"]
-            )
-        );
+            ));
+                    setSortDirection({
+            product: null,
+            subgroup: null,
+            calories: null,
+            protein: direction,
+            carbs: null,
+            fat: null,
+            fiber: null
+        });
         if (onFilteredFoodChange) {
             onFilteredFoodChange(sortedFoodList);
         }
     };
     const handleCarbsSort = () => {
+        const direction = sortDirection.carbs === 'asc' ? 'desc' : 'asc';
+        setSortDirection({
+            product: null,
+            subgroup: null,
+            calories: null,
+            protein: null,
+            carbs: direction,
+            fat: null,
+            fiber: null
+        });
         const sortedFoodList = Object.fromEntries(
             Object.entries(foodList).sort(([keyA, foodA], [keyB, foodB]) =>
+                (direction === 'asc' ? 1 : -1) *
                 foodA["Carbs g"] - foodB["Carbs g"]
             )
         );
@@ -72,8 +116,19 @@ export default function FoodTable({ foodList, onFilteredFoodChange, showFavourit
         }
     };
     const handleFatSort = () => {
+        const direction = sortDirection.fat === 'asc' ? 'desc' : 'asc';
+        setSortDirection({
+            product: null,
+            subgroup: null,
+            calories: null,
+            protein: null,
+            carbs: null,
+            fat: direction,
+            fiber: null
+        });
         const sortedFoodList = Object.fromEntries(
             Object.entries(foodList).sort(([keyA, foodA], [keyB, foodB]) =>
+                (direction === 'asc' ? 1 : -1) *
                 foodA["Fat g"] - foodB["Fat g"]
             )
         );
@@ -82,8 +137,19 @@ export default function FoodTable({ foodList, onFilteredFoodChange, showFavourit
         }
     };
     const handleFiberSort = () => {
+        const direction = sortDirection.fiber === 'asc' ? 'desc' : 'asc';
+        setSortDirection({
+            product: null,
+            subgroup: null,
+            calories: null,
+            protein: null,
+            carbs: null,
+            fat: null,
+            fiber: direction
+        });
         const sortedFoodList = Object.fromEntries(
             Object.entries(foodList).sort(([keyA, foodA], [keyB, foodB]) =>
+                (direction === 'asc' ? 1 : -1) *
                 foodA["Fiber g"] - foodB["Fiber g"]
             )
         );
@@ -92,13 +158,22 @@ export default function FoodTable({ foodList, onFilteredFoodChange, showFavourit
         }
     };
     const handleSubgroupSort = () => {
+        const direction = sortDirection.subgroup === 'asc' ? 'desc' : 'asc';
         const sortedFoodList = Object.fromEntries(
             Object.entries(foodList).sort(([keyA, foodA], [keyB, foodB]) =>
+                (direction === 'asc' ? 1 : -1) *
                 t(`foodDB.subgroup.${foodA["Subgroup"]}`).localeCompare(t(`foodDB.subgroup.${foodB["Subgroup"]}`))
             )
         );
-        setSortDirection({ product: null, calories: null, protein: null, carbs: null, fat: null, fiber: null });
-        setSortDirection(prevDirection => ({ ...prevDirection, subgroup: prevDirection.subgroup === 'asc' ? 'desc' : 'asc' }));
+        setSortDirection({
+            product: null,
+            subgroup: direction,
+            calories: null,
+            protein: null,
+            carbs: null,
+            fat: null,
+            fiber: null
+        });
         if (onFilteredFoodChange) {
             onFilteredFoodChange(sortedFoodList);
         }
@@ -114,7 +189,7 @@ export default function FoodTable({ foodList, onFilteredFoodChange, showFavourit
                         <th onClick={handleProductSort}>
                             <div className=" d-flex flex-row justify-content-between align-bottom">
                                 {t("foodTable.product")}
-                                <a className="icon-link" title={t("usersList.selectUserIcon")} >
+                                <a className="icon-link" title={t("foodTable.sort")} >
                                     <SortIcon sortDirection={sortDirection.product} />
                                 </a>
                             </div>
@@ -123,7 +198,7 @@ export default function FoodTable({ foodList, onFilteredFoodChange, showFavourit
                         <th onClick={handleSubgroupSort}>
                             <div className=" d-flex flex-row justify-content-between align-bottom">
                                 {t("foodDB.subgroup.title")}
-                                <a className="icon-link" title={t("usersList.selectUserIcon")} >
+                                <a className="icon-link" style={{ paddingLeft: '10px' }} title={t("foodTable.sort")} >
                                     <SortIcon sortDirection={sortDirection.subgroup} />
                                 </a>
                             </div>
@@ -131,7 +206,7 @@ export default function FoodTable({ foodList, onFilteredFoodChange, showFavourit
                         <th onClick={handleCaloriesSort}>
                             <div className=" d-flex flex-row justify-content-between align-bottom">
                                 {t("foodDB.Calories 100g.title")}
-                                <a className="icon-link" title={t("usersList.selectUserIcon")} >
+                                <a className="icon-link" style={{ paddingLeft: '10px' }} title={t("foodTable.sort")} >
                                     <SortIcon sortDirection={sortDirection.calories} />
                                 </a>
                             </div>
@@ -139,21 +214,33 @@ export default function FoodTable({ foodList, onFilteredFoodChange, showFavourit
                         <th onClick={handleProteinSort}>
                             <div className=" d-flex flex-row justify-content-between align-bottom">
                                 {t("foodDB.Protein g.title")}
+                                <a className="icon-link" style={{ paddingLeft: '10px' }} title={t("foodTable.sort")} >
+                                    <SortIcon sortDirection={sortDirection.protein} />
+                                </a>
                             </div>
                         </th>
                         <th onClick={handleCarbsSort}>
                             <div className=" d-flex flex-row justify-content-between align-bottom">
                                 {t("foodDB.Carbs g.title")}
+                                <a className="icon-link" style={{ paddingLeft: '10px' }} title={t("foodTable.sort")} >
+                                    <SortIcon sortDirection={sortDirection.carbs} />
+                                </a>
                             </div>
                         </th>
                         <th onClick={handleFatSort}>
                             <div className=" d-flex flex-row justify-content-between align-bottom">
                                 {t("foodDB.Fat g.title")}
+                                <a className="icon-link" style={{ paddingLeft: '10px' }} title={t("foodTable.sort")} >
+                                    <SortIcon sortDirection={sortDirection.fat} />
+                                </a>
                             </div>
                         </th>
                         <th onClick={handleFiberSort}>
                             <div className=" d-flex flex-row justify-content-between align-bottom">
                                 {t("foodDB.Fiber g.title")}
+                                <a className="icon-link" style={{ paddingLeft: '10px' }} title={t("foodTable.sort")} >
+                                    <SortIcon sortDirection={sortDirection.fiber} />
+                                </a>
                             </div>
                         </th>
 

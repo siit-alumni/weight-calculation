@@ -495,7 +495,8 @@
         "searchPlaceholder": "Caută alimente...",
         "favourites": "Favorite",
         "showFavourites": "Afișează favoritele",
-        "hideFavourites": "Afișează toate alimentele"
+        "hideFavourites": "Afișează toate alimentele",
+        "sort": "Sortează"
 
     }
 }
