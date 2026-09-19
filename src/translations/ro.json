@@ -496,7 +496,15 @@
         "favourites": "Favorite",
         "showFavourites": "Afișează favoritele",
         "hideFavourites": "Afișează toate alimentele",
-        "sort": "Sortează"
+        "sort": "Sortează",
+        "previousPage": "<",
+        "nextPage": ">",
+        "firstPage": "<<",
+        "lastPage": ">>",
+        "page": "Pagina",
+        "of": "din",
+        "addToFavourites": "Adaugă la favorite",
+        "removeFromFavourites": "Elimină din favorite"
 
     }
 }

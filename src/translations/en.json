@@ -496,6 +496,14 @@
         "favourites": "Favourites",
         "showFavourites": "Show Favourites",
         "hideFavourites": "Show All Foods",
-        "sort": "Sort by"
+        "sort": "Sort by",
+        "previousPage": "Previous Page",
+        "nextPage": "Next Page",
+        "firstPage": "First Page",
+        "lastPage": "Last Page",
+        "page": "Page",
+        "of": "of",
+        "addToFavourites": "Add to Favourites",
+        "removeFromFavourites": "Remove from Favourites"
     }
 }
