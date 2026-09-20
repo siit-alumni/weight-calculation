@@ -1,6 +1,7 @@
 import { useState } from "react";
 import bodyTypes from "../../assets/img/bodyTypes.png";
 import { useTranslation } from "react-i18next";
+import BodyTypesCards from "../Cards/BodyTypesCards";
 
 export function BodyType() {
   const { t } = useTranslation();
@@ -22,7 +23,7 @@ export function BodyType() {
           <div className="modal-backdrop fade show"></div>
 
           <div
-           className="modal show d-block"
+            className="modal show d-block"
             tabIndex="-1"
 
           >
@@ -46,11 +47,16 @@ export function BodyType() {
                     <strong>{t("common.bodyTypeOption.endomorph")}</strong>.
                   </p>
 
+
+                  {/* // aici inlocuiesc cu BodyTypesCards
+
                   <img
                     src={bodyTypes}
                     alt="Tipuri de corp"
                     className="img-fluid rounded shadow-sm"
-                  />
+                  /> */}
+
+                  <BodyTypesCards/>
                 </div>
 
                 <div className="modal-footer border-0">
