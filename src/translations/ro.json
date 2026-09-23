@@ -53,8 +53,11 @@
         },
         "bodyTypeOption": {
             "ectomorph": "Ectomorf",
+            "ectomorphDescription": "Tip de corp caracterizat printr-o constitutie supla, cu membre lungi si o masa musculara redusa. Persoanele ectomorfe tind sa aiba un metabolism rapid si pot intampina dificultati in acumularea masei musculare si a greutatii.",
             "mesomorph": "Mezomorf",
-            "endomorph": "Endomorf"
+            "mesomorphDescription": "Tip de corp caracterizat printr-o structura atletica, cu umeri lati si o musculatura bine dezvoltata. Persoanele mezomorfe tind sa castige masa musculara relativ usor si sa mentina o forma fizica echilibrata.",
+            "endomorph": "Endomorf",
+            "endomorphDescription": "Tip de corp caracterizat printr-o structura mai robusta, cu tendinta de a acumula mai usor grasime corporala. Persoanele endomorfe pot avea un metabolism mai lent si pot intampina dificultati in mentinerea unei greutati scazute."
         },
         "measurement": {
             "weightUnit": "grame",
@@ -497,6 +500,5 @@
         "showFavourites": "Afișează favoritele",
         "hideFavourites": "Afișează toate alimentele",
         "sort": "Sortează"
-
     }
 }

@@ -13,50 +13,66 @@ export default function BodyTypesCards() {
 
 
     return (
-        <div className="body-types-cards">
+        <div className="row g-4">
 
-            <div className="body-card">
-                <img src={Ectomorff} alt="Tip corp Ectomorf" />
+            <div className="col-md-4">
+                <div className="card body-card">
 
-                <div className="body-card-description">
-                    <p>
-                        Descriere  {t("common.bodyTypeOption.ectomorph")}
-                        tertrtete
-                        teterteteterterteterte
-                        tertetertertertete
-                        tertetetertetert
-                        Etertertertertet
-                        ERtertertertertertertertertertER
-                        tertetertetertertertertertreterterterterT
-                        tertertertreterterterterTRE
-                        terterteter
-                    </p>
+                    <img
+                        src={Ectomorff}
+                        className="body-card-image"
+                        alt={t("common.bodyTypeOption.ectomorph")}
+                    />
+
+                    <div className="body-card-description">
+                        <p className="card-text">
+                            {t("common.bodyTypeOption.ectomorphDescription")}
+                        </p>
+                    </div>
+
                 </div>
             </div>
 
-            <div className="body-card">
+            <div className="col-md-4">
+                <div className="card body-card">
 
-                <img src={Endomorf} alt="Tip corp Endomorf" />
+                    <img
+                        src={Mezomorf}
+                        className="body-card-image"
+                        alt={t("common.bodyTypeOption.mesomorph")}
+                    />
 
-                <div className="body-card-description">
-                    <p>
-                        Descriere  {t("common.bodyTypeOption.endomorph")}
-                    </p>
+                    <div className="body-card-description">
+                        <p className="card-text">
+                            {t("common.bodyTypeOption.mesomorphDescription")}
+                        </p>
+                    </div>
+
                 </div>
             </div>
 
+            <div className="col-md-4">
+                <div className="card body-card">
 
-            <div className="body-card">
-                <img src={Mezomorf} alt="Tip corp Mezomorf" />
+                    <img
+                        src={Endomorf}
+                        className="body-card-image"
+                        alt={t("common.bodyTypeOption.endomorph")}
+                    />
 
-                <div className="body-card-description">
-                    <p>
-                        Descriere  {t("common.bodyTypeOption.mesomorph")}
-                    </p>
+                    <div className="body-card-description">
+                        <p className="card-text">
+                            {t("common.bodyTypeOption.endomorphDescription")}
+                        </p>
+                    </div>
+
                 </div>
             </div>
 
         </div>
     );
+
+
 }
+
 
