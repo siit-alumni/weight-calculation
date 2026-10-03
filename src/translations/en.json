@@ -504,6 +504,7 @@
         "page": "Page",
         "of": "of",
         "addToFavourites": "Add to Favourites",
-        "removeFromFavourites": "Remove from Favourites"
+        "removeFromFavourites": "Remove from Favourites",
+        "itemsPerPage": "Items per page"
     }
 }

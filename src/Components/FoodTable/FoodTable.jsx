@@ -18,8 +18,8 @@ export default function FoodTable({ foodList, onFilteredFoodChange, showFavourit
     const sortDirectionRef = useRef(sortDirection);
     const vectorList = Object.entries(foodList);
     const [page, setPage] = useState(0);
+    const [itemsPerPage, setItemsPerPage] = useState(10);
 
-    console.log('vector de 5', vectorList[5]);
     useEffect(() => {
         setFavoriteList(userFavorites);
     }, [userData, selectedUser?.id]);
@@ -178,11 +178,24 @@ export default function FoodTable({ foodList, onFilteredFoodChange, showFavourit
             onFilteredFoodChange(sortedFoodList);
         }
     };
-    console.log('foodList', foodList);
-
 
     return (
         <div>
+            <label htmlFor="items-per-page">{t("foodTable.itemsPerPage")}: </label>
+            <select
+                id="items-per-page"
+                className="form-select form-select-sm d-inline-block w-auto ms-2 mb-2"
+                value={itemsPerPage}
+                onChange={(event) => {
+                    setItemsPerPage(Number(event.target.value));
+                    setPage(0);
+                }}
+            >
+                {[5, 10, 15, 20].map((count) => (
+                    <option key={count} value={count}>{count}</option>
+                ))}
+            </select>
+            
             <table className="table table-striped table-hover table-sm table-bordered">
                 <thead >
                     <tr >
@@ -247,7 +260,7 @@ export default function FoodTable({ foodList, onFilteredFoodChange, showFavourit
                     </tr>
                 </thead>
                 <tbody>
-                    {Object.entries(foodList).slice(page * 10, page * 10 + 10).map(([foodName, foodInfo]) => {
+                    {Object.entries(foodList).slice(page * itemsPerPage, page * itemsPerPage + itemsPerPage).map(([foodName, foodInfo]) => {
                         const isFavourite = favoriteList.includes(foodName);
 
                         if (showFavourites && !isFavourite) {
@@ -308,7 +321,7 @@ export default function FoodTable({ foodList, onFilteredFoodChange, showFavourit
                             <div className="d-flex flex-wrap align-items-center align-content-center justify-content-between">
 
                                 <div>
-                                    <p style={{ marginBottom: '0px', paddingLeft: '2rem' }}>{t("foodTable.page")} {page + 1} {t("foodTable.of")} {Math.ceil(vectorList.length / 10)}</p>
+                                    <p style={{ marginBottom: '0px', paddingLeft: '2rem' }}>{t("foodTable.page")} {page + 1} {t("foodTable.of")} {Math.ceil(vectorList.length / itemsPerPage)}</p>
                                 </div>
                                 <div style={{  paddingRight: '2rem' }}>
                                     <button
@@ -336,8 +349,8 @@ export default function FoodTable({ foodList, onFilteredFoodChange, showFavourit
                                     <button
                                         type="button"
                                         className="btn btn-link p-0"
-                                        style={{ margin: '0.5rem', color: (page + 1) * 10 >= vectorList.length ? "grey" : "black" }}
-                                        onClick={() => setPage(page + 1)} disabled={(page + 1) * 10 >= vectorList.length}>
+                                        style={{ margin: '0.5rem', color: (page + 1) * itemsPerPage >= vectorList.length ? "grey" : "black" }}
+                                        onClick={() => setPage(page + 1)} disabled={(page + 1) * itemsPerPage >= vectorList.length}>
                                         {/* {t("foodTable.nextPage")} */}
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
                                             <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708" />
@@ -346,8 +359,8 @@ export default function FoodTable({ foodList, onFilteredFoodChange, showFavourit
                                     <button
                                         type="button"
                                         className="btn btn-link p-0"
-                                        style={{ color: (page + 1) * 10 >= vectorList.length ? "grey" : "black" }}
-                                        onClick={() => setPage(Math.ceil(vectorList.length / 10) - 1)} disabled={(page + 1) * 10 >= vectorList.length}>
+                                        style={{ color: (page + 1) * itemsPerPage >= vectorList.length ? "grey" : "black" }}
+                                        onClick={() => setPage(Math.ceil(vectorList.length / itemsPerPage) - 1)} disabled={(page + 1) * itemsPerPage >= vectorList.length}>
                                         {/* {t("foodTable.lastPage")} */}
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-double-right" viewBox="0 0 16 16">
                                             <path fill-rule="evenodd" d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708" />

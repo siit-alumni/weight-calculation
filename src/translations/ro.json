@@ -504,7 +504,8 @@
         "page": "Pagina",
         "of": "din",
         "addToFavourites": "Adaugă la favorite",
-        "removeFromFavourites": "Elimină din favorite"
+        "removeFromFavourites": "Elimină din favorite",
+        "itemsPerPage": "Articole pe pagină"
 
     }
 }

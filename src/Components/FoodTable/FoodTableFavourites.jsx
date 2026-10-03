@@ -23,7 +23,7 @@ export default function FoodTableFavourites({
       disabled={disabled}
       aria-pressed={Boolean(showFavourites)}
       aria-label={showFavourites ? "Hide favorite foods" : "Show favorite foods"}
-      title={showFavourites ? "Hide favorite foods" : "Show favorite foods"}
+      title={showFavourites ? t("foodTable.hideFavourites") : t("foodTable.showFavourites")}
     >
       {showFavourites ? t("foodTable.hideFavourites")  : t("foodTable.showFavourites") }
     </button>
