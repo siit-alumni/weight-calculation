@@ -198,8 +198,10 @@ export default function FoodTable({ foodList, onFilteredFoodChange, showFavourit
                         setPage(0);
                     }}
                 >
-                    {[5, 10, 15, 20].map((count) => (
-                        <option key={count} value={count}>{count}</option>
+                    {[{ label: "5", value: 5 }, { label: "10", value: 10 }, { label: "15", value: 15 }, { label: "20", value: 20 }  , { label: t("foodTable.all"), value: vectorList.length }].map((option) => (
+                        <option key={option.value} value={option.value}>
+                            {option.label}
+                        </option>
                     ))}
                 </select>
             </div>
