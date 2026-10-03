@@ -181,21 +181,24 @@ export default function FoodTable({ foodList, onFilteredFoodChange, showFavourit
 
     return (
         <div>
-            <label htmlFor="items-per-page">{t("foodTable.itemsPerPage")}: </label>
-            <select
-                id="items-per-page"
-                className="form-select form-select-sm d-inline-block w-auto ms-2 mb-2"
-                value={itemsPerPage}
-                onChange={(event) => {
-                    setItemsPerPage(Number(event.target.value));
-                    setPage(0);
-                }}
-            >
-                {[5, 10, 15, 20].map((count) => (
-                    <option key={count} value={count}>{count}</option>
-                ))}
-            </select>
-            
+            <div className="d-flex flex-row justify-content-end align-items-center mb-2">
+
+                <label htmlFor="items-per-page">{t("foodTable.itemsPerPage")}: </label>
+                <select
+                    id="items-per-page"
+                    className="form-select form-select-sm d-inline-block w-auto ms-2 mb-2"
+                    value={itemsPerPage}
+                    onChange={(event) => {
+                        setItemsPerPage(Number(event.target.value));
+                        setPage(0);
+                    }}
+                >
+                    {[5, 10, 15, 20].map((count) => (
+                        <option key={count} value={count}>{count}</option>
+                    ))}
+                </select>
+            </div>
+
             <table className="table table-striped table-hover table-sm table-bordered">
                 <thead >
                     <tr >
@@ -321,9 +324,9 @@ export default function FoodTable({ foodList, onFilteredFoodChange, showFavourit
                             <div className="d-flex flex-wrap align-items-center align-content-center justify-content-between">
 
                                 <div>
-                                    <p style={{ marginBottom: '0px', paddingLeft: '2rem' }}>{t("foodTable.page")} {page + 1} {t("foodTable.of")} {Math.ceil(vectorList.length / itemsPerPage)}</p>
+                                    <p style={{ marginBottom: '0px', paddingLeft: '2rem' }}>{t("foodTable.itemsFromTo", { start: page * itemsPerPage + 1, end: Math.min((page + 1) * itemsPerPage, vectorList.length), total: vectorList.length })}</p>
                                 </div>
-                                <div style={{  paddingRight: '2rem' }}>
+                                <div style={{ paddingRight: '2rem' }}>
                                     <button
                                         type="button"
                                         className="btn btn-link p-0"

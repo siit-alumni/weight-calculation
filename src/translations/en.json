@@ -505,6 +505,7 @@
         "of": "of",
         "addToFavourites": "Add to Favourites",
         "removeFromFavourites": "Remove from Favourites",
-        "itemsPerPage": "Items per page"
+        "itemsPerPage": "Items per page",
+        "itemsFromTo": "Items from {{start}} to {{end}} of {{total}}"
     }
 }
