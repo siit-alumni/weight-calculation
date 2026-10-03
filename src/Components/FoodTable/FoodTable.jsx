@@ -19,6 +19,11 @@ export default function FoodTable({ foodList, onFilteredFoodChange, showFavourit
     const vectorList = Object.entries(foodList);
     const [page, setPage] = useState(0);
     const [itemsPerPage, setItemsPerPage] = useState(10);
+    const pages = [];
+
+    for (let i = 1; i <= Math.ceil(vectorList.length / itemsPerPage); i++) {
+        pages.push(i);
+    }
 
     useEffect(() => {
         setFavoriteList(userFavorites);
@@ -316,69 +321,74 @@ export default function FoodTable({ foodList, onFilteredFoodChange, showFavourit
                             </tr>
                         );
                     })}
-
                 </tbody>
-                <tfoot>
-                    <tr>
-                        <td colSpan="8" >
-                            <div className="d-flex flex-wrap align-items-center align-content-center justify-content-between">
-
-                                <div>
-                                    <p style={{ marginBottom: '0px', paddingLeft: '2rem' }}>{t("foodTable.itemsFromTo", { start: page * itemsPerPage + 1, end: Math.min((page + 1) * itemsPerPage, vectorList.length), total: vectorList.length })}</p>
-                                </div>
-                                <div style={{ paddingRight: '2rem' }}>
-                                    <button
-                                        type="button"
-                                        className="btn btn-link p-0"
-                                        style={{ paddingBottom: "100px", color: page == 0 ? "grey" : "black" }}
-                                        onClick={() => setPage(0)} disabled={page === 0}>
-                                        {/* {t("foodTable.firstPage")} */}
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-double-left" viewBox="0 0 16 16">
-                                            <path fill-rule="evenodd" d="M8.354 1.646a.5.5 0 0 1 0 .708L2.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0" />
-                                            <path fill-rule="evenodd" d="M12.354 1.646a.5.5 0 0 1 0 .708L6.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0" />
-                                        </svg>
-                                    </button>
-                                    <button
-                                        type="button"
-                                        className="btn btn-link p-0"
-                                        style={{ margin: '0.5rem', color: (page === 0) ? "grey" : "black" }}
-                                        onClick={() => setPage(page - 1)} disabled={page === 0}>
-                                        {/* {t("foodTable.previousPage")} */}
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-left" viewBox="0 0 16 16">
-                                            <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0" />
-                                        </svg>
-                                    </button>
-                                    <span style={{ paddingTop: "20px" }}> {page + 1} </span>
-                                    <button
-                                        type="button"
-                                        className="btn btn-link p-0"
-                                        style={{ margin: '0.5rem', color: (page + 1) * itemsPerPage >= vectorList.length ? "grey" : "black" }}
-                                        onClick={() => setPage(page + 1)} disabled={(page + 1) * itemsPerPage >= vectorList.length}>
-                                        {/* {t("foodTable.nextPage")} */}
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
-                                            <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708" />
-                                        </svg>
-                                    </button>
-                                    <button
-                                        type="button"
-                                        className="btn btn-link p-0"
-                                        style={{ color: (page + 1) * itemsPerPage >= vectorList.length ? "grey" : "black" }}
-                                        onClick={() => setPage(Math.ceil(vectorList.length / itemsPerPage) - 1)} disabled={(page + 1) * itemsPerPage >= vectorList.length}>
-                                        {/* {t("foodTable.lastPage")} */}
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-double-right" viewBox="0 0 16 16">
-                                            <path fill-rule="evenodd" d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708" />
-                                            <path fill-rule="evenodd" d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708" />
-                                        </svg>
-                                    </button>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                </tfoot>
 
             </table>
+            <div className="d-flex flex-wrap align-items-center align-content-center justify-content-between">
+                <div>
+                    <p style={{ marginBottom: '0px', paddingLeft: '2rem' }}>{t("foodTable.itemsFromTo", { start: page * itemsPerPage + 1, end: Math.min((page + 1) * itemsPerPage, vectorList.length), total: vectorList.length })}</p>
+                </div>
+                <div style={{ paddingRight: '2rem' }}>
+                    <button
+                        type="button"
+                        className="btn btn-link p-0"
+                        style={{ paddingBottom: "10px !important", color: page == 0 ? "grey" : "black" }}
+                        onClick={() => setPage(0)} disabled={page === 0}>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-chevron-double-left" viewBox="0 0 16 16">
+                            <path fillRule="evenodd" d="M8.354 1.646a.5.5 0 0 1 0 .708L2.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0" />
+                            <path fillRule="evenodd" d="M12.354 1.646a.5.5 0 0 1 0 .708L6.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0" />
+                        </svg>
+                    </button>
+                    <button
+                        type="button"
+                        className="btn btn-link p-0"
+                        style={{ margin: '0.5rem', color: (page === 0) ? "grey" : "black" }}
+                        onClick={() => setPage(page - 1)} disabled={page === 0}>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-chevron-left" viewBox="0 0 16 16">
+                            <path fillRule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0" />
+                        </svg>
+                    </button>
+                    <span style={{ paddingRight: "10px" }}>{t("foodTable.page")}  </span>
+                    <span style={{ paddingTop: "20px" }}>
+                        <select
+                            id="page-number"
+                            // className="form-select form-select-sm d-inline-block w-auto ms-2 mb-2"
+                            value={page + 1}
+                            onChange={(event) => {
+                                setPage(Number(event.target.value) - 1);
+                            }}
+                        >
+                            {pages.map((pageNumber) => (
+                                <option key={pageNumber} value={pageNumber}>{pageNumber}</option>
+                            ))}
+                        </select>
+                    </span>
+                    <span style={{ paddingLeft: "10px" }}> {t("foodTable.of")} {pages.length}</span>
+
+                    <button
+                        type="button"
+                        className="btn btn-link p-0"
+                        style={{ margin: '0.5rem', color: (page + 1) * itemsPerPage >= vectorList.length ? "grey" : "black" }}
+                        onClick={() => setPage(page + 1)} disabled={(page + 1) * itemsPerPage >= vectorList.length}>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-chevron-right" viewBox="0 0 16 16">
+                            <path fillRule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708" />
+                        </svg>
+                    </button>
+                    <button
+                        type="button"
+                        className="btn btn-link p-0"
+                        style={{ color: (page + 1) * itemsPerPage >= vectorList.length ? "grey" : "black" }}
+                        onClick={() => setPage(Math.ceil(vectorList.length / itemsPerPage) - 1)} disabled={(page + 1) * itemsPerPage >= vectorList.length}>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-chevron-double-right" viewBox="0 0 16 16">
+                            <path fillRule="evenodd" d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708" />
+                            <path fillRule="evenodd" d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708" />
+                        </svg>
+                    </button>
+                </div>
+            </div >
+
             <button onClick={handleUserSelection} className="btn btn-secondary col-md-4 mt-3">{t("report.userSelectionButton")}</button>
-        </div>
+        </div >
 
     );
 }
