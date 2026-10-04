@@ -11,8 +11,9 @@ export default function FoodTableSearch({ foodList, onFilteredFoodChange }) {
                 foodList[key]["Name"].toLowerCase().includes(searchInput.toLowerCase())
             )
         );
+
         onFilteredFoodChange(filteredFood);
-    }, [searchInput]);
+    }, [searchInput, foodList]);
 
     const handleClearSearch = () => {
         setSearchInput('');

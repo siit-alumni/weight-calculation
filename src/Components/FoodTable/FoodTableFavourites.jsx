@@ -1,18 +1,35 @@
-import React from "react";
+import { useContext } from "react";
 import { useTranslation } from "react-i18next";
+import { UserContext } from "../../App";
+import { getUserFromId } from "../functions/functions";
 
 export default function FoodTableFavourites({
   showFavourites,
   setShowFavourites,
+  onFavouriteFoodChange,
+  foodList,
   className = "btn btn-outline-secondary mb-3",
   disabled = false,
 }) {
+
   const { t } = useTranslation();
+  const { userData } = useContext(UserContext);
+  const selectedUser = getUserFromId(userData);
+  const userFavorites = Object.fromEntries(
+    (Array.isArray(selectedUser?.favorites) ? selectedUser.favorites : [])
+      .map((foodName) => [foodName, true])
+  );
 
   const handleToggle = () => {
-    if (setShowFavourites) {
-      setShowFavourites(!showFavourites);
-    }
+    const nextShowFavourites = !showFavourites;
+    setShowFavourites(nextShowFavourites);
+
+    const visibleFoodList = nextShowFavourites
+      ? Object.fromEntries(
+          Object.entries(foodList).filter(([foodName]) => userFavorites[foodName])
+        )
+      : foodList;
+    onFavouriteFoodChange(visibleFoodList);
   };
 
   return (

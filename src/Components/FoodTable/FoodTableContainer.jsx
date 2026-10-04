@@ -16,6 +16,7 @@ export default function FoodTableContainer() {
     const { t } = useTranslation();
     const navigate = useNavigate();
     const [filteredFood, setFilteredFood] = useState(foodList);
+    const [favouriteFoods, setFavouriteFoods] = useState(foodList);
     const [showFavourites, setShowFavourites] = useState(false);
 
     const handleUserSelection = () => {
@@ -26,13 +27,14 @@ export default function FoodTableContainer() {
         foodList[foodName]["Name"] = t(`foodDB.product.${foodName}`);
     }
     );
+
     return (
         <div>
             <h2>{t("foodTable.title")}</h2>
             <p>{t("foodTable.description")}</p>
             <p>{t("usersList.selectedUser", { name: selectedUser.name })}</p>
-            <FoodTableSearch foodList={foodList} onFilteredFoodChange={setFilteredFood} />
-            <FoodTableFavourites showFavourites={showFavourites} setShowFavourites={setShowFavourites} />
+            <FoodTableSearch foodList={favouriteFoods} onFilteredFoodChange={setFilteredFood} />
+            <FoodTableFavourites foodList={foodList} showFavourites={showFavourites} setShowFavourites={setShowFavourites} onFavouriteFoodChange={setFavouriteFoods} />
             <FoodTable foodList={filteredFood} onFilteredFoodChange={setFilteredFood} showFavourites={showFavourites} />
         </div>
     );

@@ -17,6 +17,7 @@ export default function FoodTable({ foodList, onFilteredFoodChange, showFavourit
     const [sortDirection, setSortDirection] = useState({ product: null, subgroup: null, calories: null, protein: null, carbs: null, fat: null, fiber: null });
     const sortDirectionRef = useRef(sortDirection);
     const vectorList = Object.entries(foodList);
+
     const [page, setPage] = useState(0);
     const [itemsPerPage, setItemsPerPage] = useState(10);
     const pages = [];
@@ -28,9 +29,15 @@ export default function FoodTable({ foodList, onFilteredFoodChange, showFavourit
     useEffect(() => {
         setFavoriteList(userFavorites);
     }, [userData, selectedUser?.id]);
+
+    useEffect(() => {
+        setPage(0);
+    }, [showFavourites]);
+
     useEffect(() => {
         sortDirectionRef.current = sortDirection;
     }, [sortDirection]);
+
     const handleUserSelection = () => {
         navigate('/selectUser');
     };
@@ -48,7 +55,7 @@ export default function FoodTable({ foodList, onFilteredFoodChange, showFavourit
             fiber: null
         };
         const sortedFoodList = Object.fromEntries(
-            Object.entries(foodList).sort(([keyA, foodA], [keyB, foodB]) =>
+            vectorList.sort(([keyA, foodA], [keyB, foodB]) =>
                 (direction === 'asc' ? 1 : -1) *
                 t(`foodDB.product.${keyA}`).localeCompare(t(`foodDB.product.${keyB}`))
             )
@@ -58,10 +65,11 @@ export default function FoodTable({ foodList, onFilteredFoodChange, showFavourit
             onFilteredFoodChange(sortedFoodList);
         }
     };
+
     const handleCaloriesSort = () => {
         const direction = sortDirection.calories === 'asc' ? 'desc' : 'asc';
         const sortedFoodList = Object.fromEntries(
-            Object.entries(foodList).sort(([keyA, foodA], [keyB, foodB]) =>
+            vectorList.sort(([keyA, foodA], [keyB, foodB]) =>
                 (direction === 'asc' ? 1 : -1) *
                 (foodA["Calories 100g"] - foodB["Calories 100g"])
             )
@@ -79,10 +87,11 @@ export default function FoodTable({ foodList, onFilteredFoodChange, showFavourit
             onFilteredFoodChange(sortedFoodList);
         }
     };
+
     const handleProteinSort = () => {
         const direction = sortDirection.protein === 'asc' ? 'desc' : 'asc';
         const sortedFoodList = Object.fromEntries(
-            Object.entries(foodList).sort(([keyA, foodA], [keyB, foodB]) =>
+            vectorList.sort(([keyA, foodA], [keyB, foodB]) =>
                 (direction === 'asc' ? 1 : -1) *
                 foodA["Protein g"] - foodB["Protein g"]
             ));
@@ -99,6 +108,7 @@ export default function FoodTable({ foodList, onFilteredFoodChange, showFavourit
             onFilteredFoodChange(sortedFoodList);
         }
     };
+
     const handleCarbsSort = () => {
         const direction = sortDirection.carbs === 'asc' ? 'desc' : 'asc';
         setSortDirection({
@@ -111,7 +121,7 @@ export default function FoodTable({ foodList, onFilteredFoodChange, showFavourit
             fiber: null
         });
         const sortedFoodList = Object.fromEntries(
-            Object.entries(foodList).sort(([keyA, foodA], [keyB, foodB]) =>
+            vectorList.sort(([keyA, foodA], [keyB, foodB]) =>
                 (direction === 'asc' ? 1 : -1) *
                 foodA["Carbs g"] - foodB["Carbs g"]
             )
@@ -120,6 +130,7 @@ export default function FoodTable({ foodList, onFilteredFoodChange, showFavourit
             onFilteredFoodChange(sortedFoodList);
         }
     };
+
     const handleFatSort = () => {
         const direction = sortDirection.fat === 'asc' ? 'desc' : 'asc';
         setSortDirection({
@@ -132,7 +143,7 @@ export default function FoodTable({ foodList, onFilteredFoodChange, showFavourit
             fiber: null
         });
         const sortedFoodList = Object.fromEntries(
-            Object.entries(foodList).sort(([keyA, foodA], [keyB, foodB]) =>
+            vectorList.sort(([keyA, foodA], [keyB, foodB]) =>
                 (direction === 'asc' ? 1 : -1) *
                 foodA["Fat g"] - foodB["Fat g"]
             )
@@ -141,6 +152,7 @@ export default function FoodTable({ foodList, onFilteredFoodChange, showFavourit
             onFilteredFoodChange(sortedFoodList);
         }
     };
+
     const handleFiberSort = () => {
         const direction = sortDirection.fiber === 'asc' ? 'desc' : 'asc';
         setSortDirection({
@@ -153,7 +165,7 @@ export default function FoodTable({ foodList, onFilteredFoodChange, showFavourit
             fiber: direction
         });
         const sortedFoodList = Object.fromEntries(
-            Object.entries(foodList).sort(([keyA, foodA], [keyB, foodB]) =>
+            vectorList.sort(([keyA, foodA], [keyB, foodB]) =>
                 (direction === 'asc' ? 1 : -1) *
                 foodA["Fiber g"] - foodB["Fiber g"]
             )
@@ -162,10 +174,11 @@ export default function FoodTable({ foodList, onFilteredFoodChange, showFavourit
             onFilteredFoodChange(sortedFoodList);
         }
     };
+    
     const handleSubgroupSort = () => {
         const direction = sortDirection.subgroup === 'asc' ? 'desc' : 'asc';
         const sortedFoodList = Object.fromEntries(
-            Object.entries(foodList).sort(([keyA, foodA], [keyB, foodB]) =>
+            vectorList.sort(([keyA, foodA], [keyB, foodB]) =>
                 (direction === 'asc' ? 1 : -1) *
                 t(`foodDB.subgroup.${foodA["Subgroup"]}`).localeCompare(t(`foodDB.subgroup.${foodB["Subgroup"]}`))
             )
@@ -198,7 +211,7 @@ export default function FoodTable({ foodList, onFilteredFoodChange, showFavourit
                         setPage(0);
                     }}
                 >
-                    {[{ label: "5", value: 5 }, { label: "10", value: 10 }, { label: "15", value: 15 }, { label: "20", value: 20 }  , { label: t("foodTable.all"), value: vectorList.length }].map((option) => (
+                    {[{ label: "5", value: 5 }, { label: "10", value: 10 }, { label: "15", value: 15 }, { label: "20", value: 20 }, { label: t("foodTable.all"), value: vectorList.length }].map((option) => (
                         <option key={option.value} value={option.value}>
                             {option.label}
                         </option>
@@ -270,12 +283,8 @@ export default function FoodTable({ foodList, onFilteredFoodChange, showFavourit
                     </tr>
                 </thead>
                 <tbody>
-                    {Object.entries(foodList).slice(page * itemsPerPage, page * itemsPerPage + itemsPerPage).map(([foodName, foodInfo]) => {
+                    {vectorList.slice(page * itemsPerPage, page * itemsPerPage + itemsPerPage).map(([foodName, foodInfo]) => {
                         const isFavourite = favoriteList.includes(foodName);
-
-                        if (showFavourites && !isFavourite) {
-                            return null;
-                        }
 
                         return (
                             <tr key={foodName}>
