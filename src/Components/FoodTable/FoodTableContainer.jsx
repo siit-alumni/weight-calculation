@@ -19,9 +19,22 @@ export default function FoodTableContainer() {
     const [favouriteFoods, setFavouriteFoods] = useState(foodList);
     const [showFavourites, setShowFavourites] = useState(false);
 
+    const handleFavoritesChange = (updatedFavorites) => {
+        setFavouriteFoods(
+            showFavourites
+                ? Object.fromEntries(
+                    Object.entries(foodList).filter(([foodName]) => updatedFavorites.includes(foodName))
+                )
+                : foodList
+        );
+    };
+
     const handleUserSelection = () => {
         navigate('/selectUser');
     };
+
+ 
+
 
     Object.entries(foodList).forEach(([foodName, foodInfo]) => {
         foodList[foodName]["Name"] = t(`foodDB.product.${foodName}`);
@@ -35,7 +48,12 @@ export default function FoodTableContainer() {
             <p>{t("usersList.selectedUser", { name: selectedUser.name })}</p>
             <FoodTableSearch foodList={favouriteFoods} onFilteredFoodChange={setFilteredFood} />
             <FoodTableFavourites foodList={foodList} showFavourites={showFavourites} setShowFavourites={setShowFavourites} onFavouriteFoodChange={setFavouriteFoods} />
-            <FoodTable foodList={filteredFood} onFilteredFoodChange={setFilteredFood} showFavourites={showFavourites} />
+            <FoodTable
+                foodList={filteredFood}
+                onFilteredFoodChange={setFilteredFood}
+                onFavoritesChange={handleFavoritesChange}
+                showFavourites={showFavourites}
+            />
         </div>
     );
 }

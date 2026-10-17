@@ -7,7 +7,7 @@ import { useTranslation } from "react-i18next";
 import foodData from '../../assets/foodDB.json';
 import SortIcon from "./SortIcon";
 
-export default function FoodTable({ foodList, onFilteredFoodChange, showFavourites }) {
+export default function FoodTable({ foodList, onFilteredFoodChange, onFavoritesChange, showFavourites}) {
     const { t } = useTranslation();
     const navigate = useNavigate();
     const { userData, setUserData } = useContext(UserContext);
@@ -32,6 +32,15 @@ export default function FoodTable({ foodList, onFilteredFoodChange, showFavourit
 
     useEffect(() => {
         setPage(0);
+        setSortDirection({
+            product: null,
+            subgroup: null,
+            calories: null,
+            protein: null,
+            carbs: null,
+            fat: null,
+            fiber: null
+        });
     }, [showFavourites]);
 
     useEffect(() => {
@@ -174,7 +183,7 @@ export default function FoodTable({ foodList, onFilteredFoodChange, showFavourit
             onFilteredFoodChange(sortedFoodList);
         }
     };
-    
+
     const handleSubgroupSort = () => {
         const direction = sortDirection.subgroup === 'asc' ? 'desc' : 'asc';
         const sortedFoodList = Object.fromEntries(
@@ -304,6 +313,8 @@ export default function FoodTable({ foodList, onFilteredFoodChange, showFavourit
                                                 const updatedUser = { ...selectedUser, favorites: updatedFavorites };
                                                 updateUserInLocalStorage(updatedUser);
                                                 setUserData(selectedUser.id);
+                                                onFavoritesChange(updatedFavorites);
+
                                             }}
                                             aria-label={isFavourite ? t("foodTable.removeFromFavourites") : t("foodTable.addToFavourites")}
                                             title={isFavourite ? t("foodTable.removeFromFavourites") : t("foodTable.addToFavourites")}

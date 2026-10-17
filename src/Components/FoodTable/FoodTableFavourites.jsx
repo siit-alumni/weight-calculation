@@ -14,19 +14,18 @@ export default function FoodTableFavourites({
 
   const { t } = useTranslation();
   const { userData } = useContext(UserContext);
-  const selectedUser = getUserFromId(userData);
-  const userFavorites = Object.fromEntries(
-    (Array.isArray(selectedUser?.favorites) ? selectedUser.favorites : [])
-      .map((foodName) => [foodName, true])
-  );
 
   const handleToggle = () => {
     const nextShowFavourites = !showFavourites;
     setShowFavourites(nextShowFavourites);
 
+    const selectedUser = getUserFromId(userData);
+    const userFavorites = new Set(
+      Array.isArray(selectedUser?.favorites) ? selectedUser.favorites : []
+    );
     const visibleFoodList = nextShowFavourites
       ? Object.fromEntries(
-          Object.entries(foodList).filter(([foodName]) => userFavorites[foodName])
+          Object.entries(foodList).filter(([foodName]) => userFavorites.has(foodName))
         )
       : foodList;
     onFavouriteFoodChange(visibleFoodList);
