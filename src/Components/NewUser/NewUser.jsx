@@ -8,7 +8,10 @@ import { settings } from "../Settings/settings";
 import './NewUser.css';
 
 
-export function NewUser({ show, onClose, setUsers }) {
+export function NewUser({ show,
+    onClose,
+    setUsers,
+    setSelectedUser }) {
     const { t } = useTranslation();
     const [formData, setFormData] = useState({});
     const navigate = useNavigate();
@@ -23,10 +26,14 @@ export function NewUser({ show, onClose, setUsers }) {
     const handleFormSubmit = (e) => {
         e.preventDefault();
         formData.id = length;
+
+
         saveUserDataToLocalStorage(formData.id);
         addNewUserToLocalStorage(formData);
+
+        setSelectedUser(formData.id);
         onClose();
-       
+
         const updatedUsers = getUsersFromLocalStorage();
 
         console.log(updatedUsers);

@@ -24,11 +24,15 @@ import UserCheckBox from '../CheckBox/UserCheckBox';
 
 
 
-export default function UsersList({ users, setUsers }) {
+export default function UsersList({
+    users,
+    setUsers,
+    selectedUserId,
+    setSelectedUserId}) {
 
     const { userData, setUserData } = useContext(UserContext);
     const [displayUser, setDisplayUser] = useState(false);
-    const [selectedUserId, setSelectedUserId] = useState(getUserDataFromLocalStorage());
+    // const [selectedUserId, setSelectedUserId] = useState(getUserDataFromLocalStorage());
     const { t } = useTranslation();
     const navigate = useNavigate();
 
@@ -58,7 +62,7 @@ export default function UsersList({ users, setUsers }) {
     };
     {/* pt checkbox   */ }
     const handleUserSelection = (userId) => {
-     
+
         {/* uncomment "setUserData","saveUserDataToLocalStorage" for UserCheckBox */ }
         // setUserData(userId);
         // saveUserDataToLocalStorage(userId);
