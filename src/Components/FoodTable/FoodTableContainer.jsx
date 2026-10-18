@@ -33,9 +33,6 @@ export default function FoodTableContainer() {
         navigate('/selectUser');
     };
 
- 
-
-
     Object.entries(foodList).forEach(([foodName, foodInfo]) => {
         foodList[foodName]["Name"] = t(`foodDB.product.${foodName}`);
     }
@@ -48,12 +45,7 @@ export default function FoodTableContainer() {
             <p>{t("usersList.selectedUser", { name: selectedUser.name })}</p>
             <FoodTableSearch foodList={favouriteFoods} onFilteredFoodChange={setFilteredFood} />
             <FoodTableFavourites foodList={foodList} showFavourites={showFavourites} setShowFavourites={setShowFavourites} onFavouriteFoodChange={setFavouriteFoods} />
-            <FoodTable
-                foodList={filteredFood}
-                onFilteredFoodChange={setFilteredFood}
-                onFavoritesChange={handleFavoritesChange}
-                showFavourites={showFavourites}
-            />
+            <FoodTable foodList={filteredFood} onFilteredFoodChange={setFilteredFood} onFavoritesChange={handleFavoritesChange} showFavourites={showFavourites} />
         </div>
     );
 }
