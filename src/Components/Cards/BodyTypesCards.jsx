@@ -17,55 +17,73 @@ export default function BodyTypesCards() {
 
             <div className="col-md-4">
                 <div className="card body-card">
+                    <div className="body-card-content">
+                        <img
+                            src={Ectomorff}
+                            className="body-card-image"
+                            alt={t("common.bodyTypeOption.ectomorph")}
+                        />
 
-                    <img
-                        src={Ectomorff}
-                        className="body-card-image"
-                        alt={t("common.bodyTypeOption.ectomorph")}
-                    />
+                        <div className="body-card-description">
+                            <div>
+                                <h5 className="body-card-title">
+                                    {t("common.bodyTypeOption.ectomorph")}
+                                </h5>
 
-                    <div className="body-card-description">
-                        <p className="card-text">
-                            {t("common.bodyTypeOption.ectomorphDescription")}
-                        </p>
+                                <p className="card-text">
+                                    {t("common.bodyTypeOption.ectomorphDescription")}
+                                </p>
+
+                            </div>
+                        </div>
                     </div>
-
                 </div>
             </div>
 
             <div className="col-md-4">
                 <div className="card body-card">
+                    <div className="body-card-content">
+                        <img
+                            src={Mezomorf}
+                            className="body-card-image"
+                            alt={t("common.bodyTypeOption.mesomorph")}
+                        />
 
-                    <img
-                        src={Mezomorf}
-                        className="body-card-image"
-                        alt={t("common.bodyTypeOption.mesomorph")}
-                    />
+                        <div className="body-card-description">
+                            <div>
+                                <h5 className="body-card-title">
+                                    {t("common.bodyTypeOption.mesomorph")}
+                                </h5>
+                                <p className="card-text">
+                                    {t("common.bodyTypeOption.mesomorphDescription")}
+                                </p>
 
-                    <div className="body-card-description">
-                        <p className="card-text">
-                            {t("common.bodyTypeOption.mesomorphDescription")}
-                        </p>
+                            </div>
+                        </div>
                     </div>
-
                 </div>
             </div>
 
             <div className="col-md-4">
                 <div className="card body-card">
+                    <div className="body-card-content">
+                        <img
+                            src={Endomorf}
+                            className="body-card-image"
+                            alt={t("common.bodyTypeOption.endomorph")}
+                        />
 
-                    <img
-                        src={Endomorf}
-                        className="body-card-image"
-                        alt={t("common.bodyTypeOption.endomorph")}
-                    />
-
-                    <div className="body-card-description">
-                        <p className="card-text">
-                            {t("common.bodyTypeOption.endomorphDescription")}
-                        </p>
+                        <div className="body-card-description">
+                            <div>
+                                <h5 className="body-card-title">
+                                    {t("common.bodyTypeOption.endomorph")}
+                                </h5>
+                                <p className="card-text">
+                                    {t("common.bodyTypeOption.endomorphDescription")}
+                                </p>
+                            </div>
+                        </div>
                     </div>
-
                 </div>
             </div>
 
