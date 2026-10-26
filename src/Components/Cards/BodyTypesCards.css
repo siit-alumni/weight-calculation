@@ -78,6 +78,21 @@
     font-size: 1.2rem;
 }
 
+.body-card-mesomorph .body-card-description {
+    background-color: #DCEBE2;
+    color: #244B38;
+}
+
+.body-card-endomorph .body-card-description {
+    background-color: #DCE7F5;
+    color: #243F60;
+}
+
+.body-card-ectomorph .body-card-description {
+    background-color: #E6D5F5;
+    color: #4B2673;
+}
+
 @media (prefers-reduced-motion: reduce) {
 
     .body-card-image,

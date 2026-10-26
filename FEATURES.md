@@ -7,5 +7,5 @@
 
 
 
-## "Body types" consists of 3 cards—3 images with explanations that appear on hover.
+## "Body types" consists of 3 cards—3 images with explanations that appear on hover. The cards retain the color of the images.
 

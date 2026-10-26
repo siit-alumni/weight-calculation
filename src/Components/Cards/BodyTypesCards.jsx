@@ -17,14 +17,14 @@ export default function BodyTypesCards() {
 
             <div className="col-md-4">
                 <div className="card body-card">
-                    <div className="body-card-content">
+                    <div className="body-card-content body-card-ectomorph ">
                         <img
                             src={Ectomorff}
                             className="body-card-image"
                             alt={t("common.bodyTypeOption.ectomorph")}
                         />
 
-                        <div className="body-card-description">
+                        <div className="body-card-description body-card-ectomorph">
                             <div>
                                 <h5 className="body-card-title">
                                     {t("common.bodyTypeOption.ectomorph")}
@@ -42,14 +42,14 @@ export default function BodyTypesCards() {
 
             <div className="col-md-4">
                 <div className="card body-card">
-                    <div className="body-card-content">
+                    <div className="body-card-content body-card-mesomorph">
                         <img
                             src={Mezomorf}
                             className="body-card-image"
                             alt={t("common.bodyTypeOption.mesomorph")}
                         />
 
-                        <div className="body-card-description">
+                        <div className="body-card-description body-card-mesomorph">
                             <div>
                                 <h5 className="body-card-title">
                                     {t("common.bodyTypeOption.mesomorph")}
@@ -66,14 +66,14 @@ export default function BodyTypesCards() {
 
             <div className="col-md-4">
                 <div className="card body-card">
-                    <div className="body-card-content">
+                    <div className="body-card-content body-card-endomorph">
                         <img
                             src={Endomorf}
                             className="body-card-image"
                             alt={t("common.bodyTypeOption.endomorph")}
                         />
 
-                        <div className="body-card-description">
+                        <div className="body-card-description body-card-endomorph">
                             <div>
                                 <h5 className="body-card-title">
                                     {t("common.bodyTypeOption.endomorph")}
