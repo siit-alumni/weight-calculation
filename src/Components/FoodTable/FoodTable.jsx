@@ -18,17 +18,43 @@ export default function FoodTable({ foodList, onFilteredFoodChange, onFavoritesC
     const [sortDirection, setSortDirection] = useState({ product: null, subgroup: null, calories: null, protein: null, carbs: null, fat: null, fiber: null });
     const [page, setPage] = useState(0);
     const [itemsPerPage, setItemsPerPage] = useState(10);
+    const [selectedCategories, setSelectedCategories] = useState(["all"]);
 
     const [sortComparator, setSortComparator] = useState(null);
 
     const vectorList = Object.entries(foodList);
+    const categoryOptions = ["all", ...new Set(vectorList
+        .map(([, foodInfo]) => foodInfo["Category"])
+        .filter((category) => category && category !== ""))];
+
+    const filteredVectorList = selectedCategories.includes("all")
+        ? vectorList
+        : vectorList.filter(([, foodInfo]) => selectedCategories.includes(foodInfo["Category"]));
+
+    const toggleCategory = (category) => {
+        setSelectedCategories((current) => {
+            const allCategories = categoryOptions.filter((option) => option !== "all");
+            if (category === "all") {
+                return current.includes("all") ? [] : ["all"];
+            }
+
+            const selected = current.includes("all") ? allCategories : current;
+            const updated = selected.includes(category)
+                ? selected.filter((value) => value !== category)
+                : [...selected, category];
+
+            return updated.length === allCategories.length ? ["all"] : updated;
+        });
+    };
+
+    const displayList = [...filteredVectorList];
 
     if (sortComparator) {
-        vectorList.sort(sortComparator);
+        displayList.sort(sortComparator);
     }
 
     const pages = [];
-    for (let i = 1; i <= Math.ceil(vectorList.length / itemsPerPage); i++) {
+    for (let i = 1; i <= Math.ceil(displayList.length / itemsPerPage); i++) {
         pages.push(i);
     }
 
@@ -38,8 +64,7 @@ export default function FoodTable({ foodList, onFilteredFoodChange, onFavoritesC
 
     useEffect(() => {
         setPage(0);
-
-    }, [showFavourites]);
+    }, [showFavourites, selectedCategories]);
 
     const handleUserSelection = () => {
         navigate('/selectUser');
@@ -161,7 +186,7 @@ export default function FoodTable({ foodList, onFilteredFoodChange, onFavoritesC
     const handleSubgroupSort = () => {
         const direction = sortDirection.subgroup === 'asc' ? 'desc' : 'asc';
         const sortedFoodList = Object.fromEntries(
-            vectorList.sort(([keyA, foodA], [keyB, foodB]) =>
+            [...filteredVectorList].sort(([keyA, foodA], [keyB, foodB]) =>
                 (direction === 'asc' ? 1 : -1) *
                 t(`foodDB.subgroup.${foodA["Subgroup"]}`).localeCompare(t(`foodDB.subgroup.${foodB["Subgroup"]}`))
             )
@@ -182,24 +207,27 @@ export default function FoodTable({ foodList, onFilteredFoodChange, onFavoritesC
 
     return (
         <div>
-            <div className="d-flex flex-row justify-content-end align-items-center mb-2">
+            <div className="d-flex flex-row justify-content-end align-items-center mb-2 gap-3">
 
-                <label htmlFor="items-per-page">{t("foodTable.itemsPerPage")}: </label>
-                <select
-                    id="items-per-page"
-                    className="form-select form-select-sm d-inline-block w-auto ms-2 mb-2"
-                    value={itemsPerPage}
-                    onChange={(event) => {
-                        setItemsPerPage(Number(event.target.value));
-                        setPage(0);
-                    }}
-                >
-                    {[{ label: "5", value: 5 }, { label: "10", value: 10 }, { label: "15", value: 15 }, { label: "20", value: 20 }, { label: t("foodTable.all"), value: vectorList.length }].map((option) => (
-                        <option key={option.value} value={option.value}>
-                            {option.label}
-                        </option>
-                    ))}
-                </select>
+
+                <div className="d-flex align-items-center">
+                    <label htmlFor="items-per-page">{t("foodTable.itemsPerPage")}: </label>
+                    <select
+                        id="items-per-page"
+                        className="form-select form-select-sm d-inline-block w-auto ms-2"
+                        value={itemsPerPage}
+                        onChange={(event) => {
+                            setItemsPerPage(Number(event.target.value));
+                            setPage(0);
+                        }}
+                    >
+                        {[{ label: "5", value: 5 }, { label: "10", value: 10 }, { label: "15", value: 15 }, { label: "20", value: 20 }, { label: t("foodTable.all"), value: displayList.length }].map((option) => (
+                            <option key={option.value} value={option.value}>
+                                {option.label}
+                            </option>
+                        ))}
+                    </select>
+                </div>
             </div>
 
             <table className="table table-striped table-hover table-sm table-bordered">
@@ -213,7 +241,27 @@ export default function FoodTable({ foodList, onFilteredFoodChange, onFavoritesC
                                 </a>
                             </div>
                         </th>
-                        <th>{t("foodDB.category.title")}</th>
+                        <th>
+                            <div>
+                                {t("foodDB.category.title")}
+                              <details className="d-inline-block ms-2 position-relative">
+                                    <summary style={{ cursor: "pointer" }}></summary>
+                                    <div className="position-absolute bg-white border rounded shadow-sm p-2"
+                                        style={{ zIndex: 10, minWidth: "max-content", maxHeight: "200px", overflowY: "auto" }}>
+                                        {categoryOptions.map((category) => (
+                                            <label key={category} className="d-flex align-items-center gap-2 mb-1">
+                                                <input
+                                                    type="checkbox"
+                                                    checked={selectedCategories.includes(category)}
+                                                    onChange={() => toggleCategory(category)}
+                                                />
+                                                {category === "all" ? t("foodTable.all") : category}
+                                            </label>
+                                        ))}
+                                    </div>
+                                </details>
+                            </div>
+                        </th>
                         <th onClick={handleSubgroupSort}>
                             <div className=" d-flex flex-row justify-content-between align-bottom">
                                 {t("foodDB.subgroup.title")}
@@ -221,6 +269,7 @@ export default function FoodTable({ foodList, onFilteredFoodChange, onFavoritesC
                                     <SortIcon sortDirection={sortDirection.subgroup} />
                                 </a>
                             </div>
+
                         </th>
                         <th onClick={handleCaloriesSort}>
                             <div className=" d-flex flex-row justify-content-between align-bottom">
@@ -266,7 +315,7 @@ export default function FoodTable({ foodList, onFilteredFoodChange, onFavoritesC
                     </tr>
                 </thead>
                 <tbody>
-                    {vectorList.slice(page * itemsPerPage, page * itemsPerPage + itemsPerPage).map(([foodName, foodInfo]) => {
+                    {displayList.slice(page * itemsPerPage, page * itemsPerPage + itemsPerPage).map(([foodName, foodInfo]) => {
                         const isFavourite = favoriteList.includes(foodName);
 
                         return (
@@ -322,14 +371,14 @@ export default function FoodTable({ foodList, onFilteredFoodChange, onFavoritesC
             </table>
             <div className="d-flex flex-wrap align-items-center align-content-center justify-content-between">
                 <div>
-                    <p style={{ marginBottom: '0px', paddingLeft: '2rem' }}>{t("foodTable.itemsFromTo", { start: page * itemsPerPage + 1, end: Math.min((page + 1) * itemsPerPage, vectorList.length), total: vectorList.length })}</p>
+                    <p style={{ marginBottom: '0px', paddingLeft: '2rem' }}>{t("foodTable.itemsFromTo", { start: page * itemsPerPage + 1, end: Math.min((page + 1) * itemsPerPage, displayList.length), total: displayList.length })}</p>
                 </div>
                 <div style={{ paddingRight: '2rem' }}>
                     <button
                         type="button"
                         className="btn btn-link p-0"
                         style={{ paddingBottom: "10px !important", color: page == 0 ? "grey" : "black" }}
-                        onClick={() => setPage(0)} disabled={page === 0}>
+                        onClick={() => setPage(0)} disabled={page === 0 || displayList.length === 0}>
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-chevron-double-left" viewBox="0 0 16 16">
                             <path fillRule="evenodd" d="M8.354 1.646a.5.5 0 0 1 0 .708L2.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0" />
                             <path fillRule="evenodd" d="M12.354 1.646a.5.5 0 0 1 0 .708L6.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0" />
@@ -338,8 +387,8 @@ export default function FoodTable({ foodList, onFilteredFoodChange, onFavoritesC
                     <button
                         type="button"
                         className="btn btn-link p-0"
-                        style={{ margin: '0.5rem', color: (page === 0) ? "grey" : "black" }}
-                        onClick={() => setPage(page - 1)} disabled={page === 0}>
+                        style={{ margin: '0.5rem', color: (page === 0 || displayList.length === 0) ? "grey" : "black" }}
+                        onClick={() => setPage(page - 1)} disabled={page === 0 || displayList.length === 0}>
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-chevron-left" viewBox="0 0 16 16">
                             <path fillRule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0" />
                         </svg>
@@ -364,8 +413,8 @@ export default function FoodTable({ foodList, onFilteredFoodChange, onFavoritesC
                     <button
                         type="button"
                         className="btn btn-link p-0"
-                        style={{ margin: '0.5rem', color: (page + 1) * itemsPerPage >= vectorList.length ? "grey" : "black" }}
-                        onClick={() => setPage(page + 1)} disabled={(page + 1) * itemsPerPage >= vectorList.length}>
+                        style={{ margin: '0.5rem', color: (page + 1) * itemsPerPage >= displayList.length || displayList.length === 0 ? "grey" : "black" }}
+                        onClick={() => setPage(page + 1)} disabled={(page + 1) * itemsPerPage >= displayList.length || displayList.length === 0}>
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-chevron-right" viewBox="0 0 16 16">
                             <path fillRule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708" />
                         </svg>
@@ -373,8 +422,8 @@ export default function FoodTable({ foodList, onFilteredFoodChange, onFavoritesC
                     <button
                         type="button"
                         className="btn btn-link p-0"
-                        style={{ color: (page + 1) * itemsPerPage >= vectorList.length ? "grey" : "black" }}
-                        onClick={() => setPage(Math.ceil(vectorList.length / itemsPerPage) - 1)} disabled={(page + 1) * itemsPerPage >= vectorList.length}>
+                        style={{ color: (page + 1) * itemsPerPage >= displayList.length || displayList.length === 0 ? "grey" : "black" }}
+                        onClick={() => setPage(Math.ceil(displayList.length / itemsPerPage) - 1)} disabled={(page + 1) * itemsPerPage >= displayList.length || displayList.length === 0}>
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-chevron-double-right" viewBox="0 0 16 16">
                             <path fillRule="evenodd" d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708" />
                             <path fillRule="evenodd" d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708" />
