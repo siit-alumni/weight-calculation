@@ -1,15 +1,13 @@
 import { useNavigate } from "react-router-dom";
-import UserData from "../UserData/UserData";
-import { use, useContext, useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { UserContext } from "../../App";
-import { getUserDataFromLocalStorage, getUsersFromLocalStorage, saveUserDataToLocalStorage, sortUsersAlphabetically, getUserFromId, updateUserInLocalStorage } from "../functions/functions";
+import { getUserFromId, updateUserInLocalStorage } from "../functions/functions";
 import { useTranslation } from "react-i18next";
-import foodData from '../../assets/foodDB.json';
 import SortIcon from "./SortIcon";
-import { useMemo } from "react";
+
 
 export default function FoodTable({ foodList, onFilteredFoodChange, onFavoritesChange, showFavourites }) {
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
     const navigate = useNavigate();
     const { userData, setUserData } = useContext(UserContext);
     const selectedUser = getUserFromId(userData);
@@ -20,17 +18,32 @@ export default function FoodTable({ foodList, onFilteredFoodChange, onFavoritesC
     const [itemsPerPage, setItemsPerPage] = useState(10);
     const [selectedCategories, setSelectedCategories] = useState(["all"]);
     const [selectedSubgroup, setSelectedSubgroup] = useState("all");
+    const [sortComparator, setSortComparator] = useState(null);
     const subgroupFilterRef = useRef(null);
 
-    const [sortComparator, setSortComparator] = useState(null);
-
     const vectorList = Object.entries(foodList);
-    const categoryOptions = ["all", ...new Set(vectorList
-        .map(([, foodInfo]) => foodInfo["Category"])
-        .filter((category) => category && category !== ""))];
-    const subgroupOptions = ["all", ...new Set(vectorList
-        .map(([, foodInfo]) => foodInfo["Subgroup"])
-        .filter((subgroup) => subgroup && subgroup !== ""))];
+    const categoryOptions = [];
+    const subgroupOptions = [];
+
+    for (const [, foodInfo] of vectorList) {
+        const category = foodInfo["Category"];
+        const subgroup = foodInfo["Subgroup"];
+
+        if (category && !categoryOptions.includes(category)) {
+            categoryOptions.push(category);
+        }
+
+        if (subgroup && !subgroupOptions.includes(subgroup)) {
+            subgroupOptions.push(subgroup);
+        }
+    }
+    categoryOptions.sort((a, b) => a.localeCompare(b));
+    subgroupOptions.sort((a, b) =>
+        t(`foodDB.subgroup.${a}`).localeCompare(
+            t(`foodDB.subgroup.${b}`)
+        ));
+    categoryOptions.unshift("all");
+    subgroupOptions.unshift("all");
 
     const filteredVectorList = vectorList.filter(([, foodInfo]) =>
         (selectedCategories.includes("all") || selectedCategories.includes(foodInfo["Category"])) &&
@@ -188,28 +201,7 @@ export default function FoodTable({ foodList, onFilteredFoodChange, onFavoritesC
         );
     };
 
-    const handleSubgroupSort = () => {
-        const direction = sortDirection.subgroup === 'asc' ? 'desc' : 'asc';
-        const sortedFoodList = Object.fromEntries(
-            [...filteredVectorList].sort(([keyA, foodA], [keyB, foodB]) =>
-                (direction === 'asc' ? 1 : -1) *
-                t(`foodDB.subgroup.${foodA["Subgroup"]}`).localeCompare(t(`foodDB.subgroup.${foodB["Subgroup"]}`))
-            )
-        );
-        setSortDirection({
-            product: null,
-            subgroup: direction,
-            calories: null,
-            protein: null,
-            carbs: null,
-            fat: null,
-            fiber: null
-        });
-        if (onFilteredFoodChange) {
-            onFilteredFoodChange(sortedFoodList);
-        }
-    };
-    console.log("Selected Categories:", selectedCategories);
+
     return (
         <div>
             <div className="d-flex flex-row justify-content-end align-items-center mb-2 gap-3">
@@ -279,11 +271,7 @@ export default function FoodTable({ foodList, onFilteredFoodChange, onFavoritesC
                                 >
                                     <summary
                                         style={{ cursor: "pointer" }}>
-                                        {/* {selectedSubgroup === "all"
-                                            ? t("foodTable.all")
-                                            : t(`foodDB.subgroup.${selectedSubgroup}`)} */}
-                                        {selectedSubgroup === "all"
-                                            ? "" : "*"}
+                                        {selectedSubgroup === "all" ? "" : "*"}
                                     </summary>
                                     <div
                                         className="position-absolute bg-white border rounded shadow-sm p-2"
@@ -391,7 +379,6 @@ export default function FoodTable({ foodList, onFilteredFoodChange, onFavoritesC
                                         {t(`foodDB.product.${foodName}`)}
                                     </div>
                                 </td>
-                                {/* <td>{foodInfo["Name"]}</td> */}
                                 <td>{foodInfo["Category"]}</td>
                                 <td>{t(`foodDB.subgroup.${foodInfo["Subgroup"]}`)}</td>
                                 <td>{foodInfo["Calories 100g"]}</td>
@@ -433,7 +420,6 @@ export default function FoodTable({ foodList, onFilteredFoodChange, onFavoritesC
                     <span style={{ paddingTop: "20px" }}>
                         <select
                             id="page-number"
-                            // className="form-select form-select-sm d-inline-block w-auto ms-2 mb-2"
                             value={page + 1}
                             onChange={(event) => {
                                 setPage(Number(event.target.value) - 1);
