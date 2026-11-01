@@ -19,6 +19,8 @@ export default function FoodTable({ foodList, onFilteredFoodChange, onFavoritesC
     const [page, setPage] = useState(0);
     const [itemsPerPage, setItemsPerPage] = useState(10);
     const [selectedCategories, setSelectedCategories] = useState(["all"]);
+    const [selectedSubgroup, setSelectedSubgroup] = useState("all");
+    const subgroupFilterRef = useRef(null);
 
     const [sortComparator, setSortComparator] = useState(null);
 
@@ -26,10 +28,14 @@ export default function FoodTable({ foodList, onFilteredFoodChange, onFavoritesC
     const categoryOptions = ["all", ...new Set(vectorList
         .map(([, foodInfo]) => foodInfo["Category"])
         .filter((category) => category && category !== ""))];
+    const subgroupOptions = ["all", ...new Set(vectorList
+        .map(([, foodInfo]) => foodInfo["Subgroup"])
+        .filter((subgroup) => subgroup && subgroup !== ""))];
 
-    const filteredVectorList = selectedCategories.includes("all")
-        ? vectorList
-        : vectorList.filter(([, foodInfo]) => selectedCategories.includes(foodInfo["Category"]));
+    const filteredVectorList = vectorList.filter(([, foodInfo]) =>
+        (selectedCategories.includes("all") || selectedCategories.includes(foodInfo["Category"])) &&
+        (selectedSubgroup === "all" || foodInfo["Subgroup"] === selectedSubgroup)
+    );
 
     const toggleCategory = (category) => {
         setSelectedCategories((current) => {
@@ -46,7 +52,6 @@ export default function FoodTable({ foodList, onFilteredFoodChange, onFavoritesC
             return updated.length === allCategories.length ? ["all"] : updated;
         });
     };
-
     const displayList = [...filteredVectorList];
 
     if (sortComparator) {
@@ -64,7 +69,7 @@ export default function FoodTable({ foodList, onFilteredFoodChange, onFavoritesC
 
     useEffect(() => {
         setPage(0);
-    }, [showFavourites, selectedCategories]);
+    }, [showFavourites, selectedCategories, selectedSubgroup]);
 
     const handleUserSelection = () => {
         navigate('/selectUser');
@@ -204,7 +209,7 @@ export default function FoodTable({ foodList, onFilteredFoodChange, onFavoritesC
             onFilteredFoodChange(sortedFoodList);
         }
     };
-
+    console.log("Selected Categories:", selectedCategories);
     return (
         <div>
             <div className="d-flex flex-row justify-content-end align-items-center mb-2 gap-3">
@@ -244,8 +249,10 @@ export default function FoodTable({ foodList, onFilteredFoodChange, onFavoritesC
                         <th>
                             <div>
                                 {t("foodDB.category.title")}
-                              <details className="d-inline-block ms-2 position-relative">
-                                    <summary style={{ cursor: "pointer" }}></summary>
+                                <details className="d-inline-block ms-2 position-relative">
+                                    <summary style={{ cursor: "pointer" }}>
+                                        {selectedCategories[0] === "all" ? "" : "*"}
+                                    </summary>
                                     <div className="position-absolute bg-white border rounded shadow-sm p-2"
                                         style={{ zIndex: 10, minWidth: "max-content", maxHeight: "200px", overflowY: "auto" }}>
                                         {categoryOptions.map((category) => (
@@ -262,12 +269,41 @@ export default function FoodTable({ foodList, onFilteredFoodChange, onFavoritesC
                                 </details>
                             </div>
                         </th>
-                        <th onClick={handleSubgroupSort}>
+                        <th >
                             <div className=" d-flex flex-row justify-content-between align-bottom">
                                 {t("foodDB.subgroup.title")}
-                                <a className="icon-link" style={{ paddingLeft: '10px' }} title={t("foodTable.sort")} >
-                                    <SortIcon sortDirection={sortDirection.subgroup} />
-                                </a>
+
+                                <details
+                                    ref={subgroupFilterRef}
+                                    className="d-inline-block ms-2 position-relative"
+                                >
+                                    <summary
+                                        style={{ cursor: "pointer" }}>
+                                        {/* {selectedSubgroup === "all"
+                                            ? t("foodTable.all")
+                                            : t(`foodDB.subgroup.${selectedSubgroup}`)} */}
+                                        {selectedSubgroup === "all"
+                                            ? "" : "*"}
+                                    </summary>
+                                    <div
+                                        className="position-absolute bg-white border rounded shadow-sm p-2"
+                                        style={{ zIndex: 10, minWidth: "max-content", maxHeight: "200px", overflowY: "auto" }}
+                                    >
+                                        {subgroupOptions.map((subgroup) => (
+                                            <button
+                                                key={subgroup}
+                                                type="button"
+                                                className={`dropdown-item${selectedSubgroup === subgroup ? " active" : ""}`}
+                                                onClick={() => {
+                                                    setSelectedSubgroup(subgroup);
+                                                    subgroupFilterRef.current.open = false;
+                                                }}
+                                            >
+                                                {subgroup === "all" ? t("foodTable.all") : t(`foodDB.subgroup.${subgroup}`)}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </details>
                             </div>
 
                         </th>
