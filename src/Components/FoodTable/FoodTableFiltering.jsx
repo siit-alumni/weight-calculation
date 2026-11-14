@@ -69,8 +69,6 @@ export default function FoodTableFiltering({ foodList, onFilteredFoodChange }) {
         onFilteredFoodChange(Object.fromEntries(filtered));
     }, [foodList, selectedCategories, selectedSubGroup, onFilteredFoodChange]);
 
-    console.log("Filtered Vector List", filteredVectorList);
-
 
     return (
         <div className="pb-4 flex-inline d-flex align-items-md-center ">
