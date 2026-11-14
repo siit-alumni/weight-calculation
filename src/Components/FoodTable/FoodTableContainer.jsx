@@ -8,6 +8,7 @@ import foodData from '../../assets/foodDB.json';
 import FoodTable from "./FoodTable";
 import FoodTableSearch from "./FoodTableSearch";
 import FoodTableFavourites from "./FoodTableFavourites";
+import FoodTableFiltering from "./FoodTableFiltering";
 
 export default function FoodTableContainer() {
     const foodList = foodData;
@@ -16,6 +17,7 @@ export default function FoodTableContainer() {
     const { t } = useTranslation();
     const navigate = useNavigate();
     const [filteredFood, setFilteredFood] = useState(foodList);
+    const [searchedFood, setSearchedFood] = useState(foodList);
     const [favouriteFoods, setFavouriteFoods] = useState(foodList);
     const [showFavourites, setShowFavourites] = useState(false);
 
@@ -43,7 +45,8 @@ export default function FoodTableContainer() {
             <h2>{t("foodTable.title")}</h2>
             <p>{t("foodTable.description")}</p>
             <p>{t("usersList.selectedUser", { name: selectedUser.name })}</p>
-            <FoodTableSearch foodList={favouriteFoods} onFilteredFoodChange={setFilteredFood} />
+            <FoodTableSearch foodList={favouriteFoods} onSearchedFoodChange={setSearchedFood} />
+            <FoodTableFiltering foodList={searchedFood} onFilteredFoodChange={setFilteredFood} />
             <FoodTableFavourites foodList={foodList} showFavourites={showFavourites} setShowFavourites={setShowFavourites} onFavouriteFoodChange={setFavouriteFoods} />
             <FoodTable foodList={filteredFood} onFilteredFoodChange={setFilteredFood} onFavoritesChange={handleFavoritesChange} showFavourites={showFavourites} />
         </div>

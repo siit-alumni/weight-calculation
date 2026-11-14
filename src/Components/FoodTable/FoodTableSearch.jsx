@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
-export default function FoodTableSearch({ foodList, onFilteredFoodChange }) {
+export default function FoodTableSearch({ foodList, onSearchedFoodChange }) {
     const [searchInput, setSearchInput] = useState('');
     const { t } = useTranslation();
 
@@ -12,7 +12,7 @@ export default function FoodTableSearch({ foodList, onFilteredFoodChange }) {
             )
         );
 
-        onFilteredFoodChange(filteredFood);
+        onSearchedFoodChange(filteredFood);
     }, [searchInput, foodList]);
 
     const handleClearSearch = () => {
