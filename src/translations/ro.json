@@ -507,7 +507,8 @@
         "removeFromFavourites": "Elimină din favorite",
         "itemsPerPage": "Articole pe pagină",
         "itemsFromTo": "Articole de la {{start}} la {{end}} din {{total}}",
-        "all": "Toate"
+        "all": "Toate",
+        "nrcrt": "Nr. crt."
 
     }
 }

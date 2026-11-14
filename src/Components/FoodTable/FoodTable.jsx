@@ -230,6 +230,11 @@ export default function FoodTable({ foodList, onFilteredFoodChange, onFavoritesC
             <table className="table table-striped table-hover table-sm table-bordered">
                 <thead >
                     <tr >
+                        <th>
+                            <div className="d-flex flex-row justify-content-between align-bottom">
+                                {t("foodTable.nrcrt")}
+                            </div>
+                        </th>
                         <th onClick={() => handleProductSort()}>
                             <div className=" d-flex flex-row justify-content-between align-bottom">
                                 {t("foodTable.product")}
@@ -339,11 +344,12 @@ export default function FoodTable({ foodList, onFilteredFoodChange, onFavoritesC
                     </tr>
                 </thead>
                 <tbody>
-                    {displayList.slice(page * itemsPerPage, page * itemsPerPage + itemsPerPage).map(([foodName, foodInfo]) => {
+                    {displayList.slice(page * itemsPerPage, page * itemsPerPage + itemsPerPage).map(([foodName, foodInfo], index) => {
                         const isFavourite = favoriteList.includes(foodName);
 
                         return (
-                            <tr key={foodName}>
+                            <tr key={foodName} index={foodName}>
+                                <td>{page * itemsPerPage + index + 1}</td>
                                 <td>
                                     <div style={{ display: 'flex', gap: 20, alignItems: 'center' }}>
                                         <button
