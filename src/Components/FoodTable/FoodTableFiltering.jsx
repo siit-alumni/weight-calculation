@@ -30,6 +30,9 @@ export default function FoodTableFiltering({ foodList, onFilteredFoodChange }) {
         ));
     categoryOptions.unshift("all");
     subgroupOptions.unshift("all");
+    const displayedCategories = selectedCategories.includes("all")
+        ? categoryOptions.slice(1)
+        : selectedCategories;
 
     const toggleCategory = (category) => {
         setSelectedCategories((current) => {
@@ -66,12 +69,12 @@ export default function FoodTableFiltering({ foodList, onFilteredFoodChange }) {
 
 
     return (
-        <div className="pb-4 flex-inline d-flex align-items-md-center ">
+        <div className="pb-4 flex-inline d-flex align-items-md-center justify-content-md-center gap-4">
             <div>
                 {t("foodDB.category.title")}
                 <details className="d-inline-block ms-2 position-relative">
                     <summary style={{ cursor: "pointer" }}>
-                        {selectedCategories.join(", ")}
+                        {displayedCategories.join(", ")}
                     </summary>
                     <div className="position-absolute bg-white border rounded shadow-sm p-2"
                         style={{ zIndex: 10, minWidth: "max-content", maxHeight: "200px", overflowY: "auto" }}>
