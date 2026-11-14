@@ -236,7 +236,8 @@
             "oil": "Ulei",
             "flour": "Făinoase",
             "condiment": "Condimente",
-            "sugar": "Zahăr"
+            "sugar": "Zahăr",
+            "all": "Toate"
         },
         "Calories 100g": {
             "title": "Calorii per 100g"

@@ -236,7 +236,8 @@
             "oil": "Oil",
             "flour": "Flour",
             "condiment": "Condiments",
-            "sugar": "Sugar"
+            "sugar": "Sugar",
+            "all": "All"
         },
         "Calories 100g": {
             "title": "Calories per 100g"

@@ -31,16 +31,13 @@ export default function FoodTableFiltering({ foodList, onFilteredFoodChange }) {
     categoryOptions.unshift("all");
     subgroupOptions.unshift("all");
 
-    const filteredVectorList = vectorList.filter(([, foodInfo]) =>
-        (selectedCategories.includes("all") || selectedCategories.includes(foodInfo["Category"])) &&
-        (selectedSubGroup === "all" || foodInfo["Subgroup"] === selectedSubGroup)
-    );
-
     const toggleCategory = (category) => {
         setSelectedCategories((current) => {
             const allCategories = categoryOptions.filter((option) => option !== "all");
             if (category === "all") {
-                return current.includes("all") ? [] : ["all"];
+                const allSelected = current.includes("all") ||
+                    allCategories.every((value) => current.includes(value));
+                return allSelected ? [] : allCategories;
             }
 
             const selected = current.includes("all") ? allCategories : current;
@@ -48,7 +45,7 @@ export default function FoodTableFiltering({ foodList, onFilteredFoodChange }) {
                 ? selected.filter((value) => value !== category)
                 : [...selected, category];
 
-            return updated.length === allCategories.length ? ["all"] : updated;
+            return updated;
         });
 
     };
@@ -60,10 +57,8 @@ export default function FoodTableFiltering({ foodList, onFilteredFoodChange }) {
 
     useEffect(() => {
         const filtered = Object.entries(foodList).filter(([, foodInfo]) =>
-            (selectedCategories.includes("all") ||
-                selectedCategories.includes(foodInfo["Category"])) &&
-            (selectedSubGroup === "all" ||
-                foodInfo["Subgroup"] === selectedSubGroup)
+            (selectedCategories.includes("all") || selectedCategories.includes(foodInfo["Category"])) &&
+            (selectedSubGroup === "all" || foodInfo["Subgroup"] === selectedSubGroup)
         );
 
         onFilteredFoodChange(Object.fromEntries(filtered));
@@ -76,7 +71,7 @@ export default function FoodTableFiltering({ foodList, onFilteredFoodChange }) {
                 {t("foodDB.category.title")}
                 <details className="d-inline-block ms-2 position-relative">
                     <summary style={{ cursor: "pointer" }}>
-                        {selectedCategories[0] === "all" ? "" : "*"}
+                        {selectedCategories.join(", ")}
                     </summary>
                     <div className="position-absolute bg-white border rounded shadow-sm p-2"
                         style={{ zIndex: 10, minWidth: "max-content", maxHeight: "200px", overflowY: "auto" }}>
@@ -84,7 +79,12 @@ export default function FoodTableFiltering({ foodList, onFilteredFoodChange }) {
                             <label key={category} className="d-flex align-items-center gap-2 mb-1">
                                 <input
                                     type="checkbox"
-                                    checked={selectedCategories.includes(category)}
+                                    checked={
+                                        category === "all"
+                                            ? selectedCategories.includes("all") ||
+                                                categoryOptions.slice(1).every((value) => selectedCategories.includes(value))
+                                            : selectedCategories.includes("all") || selectedCategories.includes(category)
+                                    }
                                     onChange={() => toggleCategory(category)}
                                 />
                                 {category === "all" ? t("foodTable.all") : category}
@@ -102,7 +102,7 @@ export default function FoodTableFiltering({ foodList, onFilteredFoodChange }) {
                 >
                     <summary
                         style={{ cursor: "pointer" }}>
-                        {selectedSubGroup === "all" ? "" : "*"}
+                        {t(`foodDB.subgroup.${selectedSubGroup}`)}
                     </summary>
                     <div
                         className="position-absolute bg-white border rounded shadow-sm p-2"
