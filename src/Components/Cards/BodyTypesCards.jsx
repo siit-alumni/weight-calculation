@@ -24,10 +24,10 @@ export default function BodyTypesCards() {
                             alt={t("common.bodyTypeOption.ectomorph")}
                         />
 
-                        <div className="body-card-description body-card-ectomorph">
+                        <div className="body-card-description body-card-ectomorph p-2">
                             <div>
                                 <h5 className="body-card-title">
-                                    {t("common.bodyTypeOption.ectomorph")}
+                                    {t("common.bodyTypeOption.ectomorph").toUpperCase()}
                                 </h5>
 
                                 <p className="card-text">
@@ -49,10 +49,10 @@ export default function BodyTypesCards() {
                             alt={t("common.bodyTypeOption.mesomorph")}
                         />
 
-                        <div className="body-card-description body-card-mesomorph">
+                        <div className="body-card-description body-card-mesomorph p-2">
                             <div>
                                 <h5 className="body-card-title">
-                                    {t("common.bodyTypeOption.mesomorph")}
+                                    {t("common.bodyTypeOption.mesomorph").toUpperCase()}
                                 </h5>
                                 <p className="card-text">
                                     {t("common.bodyTypeOption.mesomorphDescription")}
@@ -73,10 +73,10 @@ export default function BodyTypesCards() {
                             alt={t("common.bodyTypeOption.endomorph")}
                         />
 
-                        <div className="body-card-description body-card-endomorph">
+                        <div className="body-card-description body-card-endomorph p-2">
                             <div>
                                 <h5 className="body-card-title">
-                                    {t("common.bodyTypeOption.endomorph")}
+                                    {t("common.bodyTypeOption.endomorph").toUpperCase()}
                                 </h5>
                                 <p className="card-text">
                                     {t("common.bodyTypeOption.endomorphDescription")}
