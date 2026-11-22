@@ -53,10 +53,10 @@ export default function FoodTableFiltering({ foodList, onFilteredFoodChange }) {
 
     };
 
-    const handleSubGroupChange = (subgroup) => {
-        setSelectedSubGroup(subgroup);
+    // const handleSubGroupChange = (subgroup) => {
+    //     setSelectedSubGroup(subgroup);
 
-    }
+    // }
 
     useEffect(() => {
         const filtered = Object.entries(foodList).filter(([, foodInfo]) =>
@@ -69,64 +69,59 @@ export default function FoodTableFiltering({ foodList, onFilteredFoodChange }) {
 
 
     return (
-        <div className="pb-4 flex-inline d-flex align-items-md-center justify-content-md-center gap-4">
-            <div>
-                {t("foodDB.category.title")}
-                <details className="d-inline-block ms-2 position-relative">
-                    <summary style={{ cursor: "pointer" }}>
-                        {displayedCategories.join(", ")}
-                    </summary>
-                    <div className="position-absolute bg-white border rounded shadow-sm p-2"
-                        style={{ zIndex: 10, minWidth: "max-content", maxHeight: "200px", overflowY: "auto" }}>
-                        {categoryOptions.map((category) => (
-                            <label key={category} className="d-flex align-items-center gap-2 mb-1">
-                                <input
-                                    type="checkbox"
-                                    checked={
-                                        category === "all"
-                                            ? selectedCategories.includes("all") ||
-                                                categoryOptions.slice(1).every((value) => selectedCategories.includes(value))
-                                            : selectedCategories.includes("all") || selectedCategories.includes(category)
-                                    }
-                                    onChange={() => toggleCategory(category)}
-                                />
-                                {category === "all" ? t("foodTable.all") : category}
-                            </label>
-                        ))}
-                    </div>
-                </details>
-            </div>
-            <div className="ms-4">
-                {t("foodDB.subgroup.title")}
+        <div className="pb-4 d-flex flex-row align-items-md-center justify-content-md-center gap-4">
+            <div className="d-flex flex-row gap-3 ">
+                <div className="fw-bold">
+                    {t("foodDB.category.title")}
+                </div>
 
-                <details
-                    ref={subGroupFilterRef}
-                    className="d-inline-block ms-2 position-relative"
-                >
-                    <summary
-                        style={{ cursor: "pointer" }}>
-                        {t(`foodDB.subgroup.${selectedSubGroup}`)}
-                    </summary>
-                    <div
-                        className="position-absolute bg-white border rounded shadow-sm p-2"
-                        style={{ zIndex: 10, minWidth: "max-content", maxHeight: "200px", overflowY: "auto" }}
-                    >
-                        {subgroupOptions.map((subgroup) => (
-                            <button
-                                key={subgroup}
-                                type="button"
-                                className={`dropdown-item${selectedSubGroup === subgroup ? " active" : ""}`}
-                                onClick={() => {
-                                    setSelectedSubGroup(subgroup);
-                                    subGroupFilterRef.current.open = false;
-                                    handleSubGroupChange(subgroup);
-                                }}
-                            >
-                                {subgroup === "all" ? t("foodTable.all") : t(`foodDB.subgroup.${subgroup}`)}
-                            </button>
-                        ))}
+                <div className="d-flex flex-row  ">
+                    {categoryOptions.map((category) => (
+                        <label key={category} className="d-flex align-items-center mb-1 me-2">
+                            <input
+                                type="checkbox"
+                                checked={
+                                    category === "all"
+                                        ? selectedCategories.includes("all") ||
+                                        categoryOptions.slice(1).every((value) => selectedCategories.includes(value))
+                                        : selectedCategories.includes("all") || selectedCategories.includes(category)
+                                }
+                                onChange={() => toggleCategory(category)}
+                            />
+                            {category === "all" ? t("foodTable.all") : category}
+                        </label>
+                    ))}
+                </div>
+            </div>
+            <div className="d-flex ms-4 gap-2">
+                {/* <div className="fw-bold">
+                    {t("foodDB.subgroup.title")}
+                </div> */}
+
+                <div className="d-flex flex-row gap-3">
+                    <div className="btn-group dropdown">
+                        <button className="btn fw-bold dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {t("foodDB.subgroup.title")}
+                        </button>
+                        <div className="dropdown-menu" aria-labelledby="dropdownMenu2">
+                            {subgroupOptions.map((subgroup) => (
+                                <button
+                                    key={subgroup}
+                                    type="button"
+                                    className={`dropdown-item${selectedSubGroup === subgroup ? " active" : ""}`}
+                                    onClick={() => {
+                                        setSelectedSubGroup(subgroup);
+                                        subGroupFilterRef.current.open = false;
+                                        // handleSubGroupChange(subgroup);
+                                    }}
+                                >
+                                    {subgroup === "all" ? t("foodTable.all") : t(`foodDB.subgroup.${subgroup}`)}
+                                </button>
+                            ))}
+                        </div>
                     </div>
-                </details>
+
+                </div>
             </div>
         </div>
     );
