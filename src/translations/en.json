@@ -50,8 +50,11 @@
         },
         "bodyTypeOption": {
             "ectomorph": "Ectomorph",
+            "ectomorphDescription": "A body type characterized by a slim build, long limbs, and relatively low muscle mass. Ectomorphs tend to have a fast metabolism and may have difficulty gaining muscle mass and body weight.",
             "mesomorph": "Mesomorph",
-            "endomorph": "Endomorph"
+            "mesomorphDescription": "A body type characterized by an athletic build, broad shoulders, and well-developed muscles. Mesomorphs tend to gain muscle mass relatively easily and maintain a balanced physique.",
+            "endomorph": "Endomorph",
+            "endomorphDescription": "A body type characterized by a more robust build and a tendency to accumulate body fat more easily. Endomorphs may have a slower metabolism and may find it more difficult to maintain a lower body weight."
         },
         "measurement": {
             "weightUnit": "grams",
